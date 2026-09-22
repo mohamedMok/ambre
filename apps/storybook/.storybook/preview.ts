@@ -1,10 +1,27 @@
 import type { Preview } from '@storybook/web-components-vite';
+import { presetList } from '@ambre/tokens';
 import '@ambre/tokens/css';
+import '@ambre/tokens/css/presets';
 import '@fontsource/source-sans-3/400.css';
 import '@fontsource/source-sans-3/600.css';
+import '@fontsource/nunito-sans/400.css';
+import '@fontsource/nunito-sans/600.css';
 
 const preview: Preview = {
   globalTypes: {
+    brand: {
+      description: 'Brand preset',
+      defaultValue: 'ambre',
+      toolbar: {
+        title: 'Brand',
+        icon: 'paintbrush',
+        items: [
+          { value: 'ambre', title: 'Ambre' },
+          ...presetList.map((preset) => ({ value: preset.id, title: preset.name })),
+        ],
+        dynamicTitle: true,
+      },
+    },
     theme: {
       description: 'Color theme',
       defaultValue: 'light',
@@ -21,6 +38,9 @@ const preview: Preview = {
   },
   decorators: [
     (story, context) => {
+      const brand = context.globals.brand;
+      if (!brand || brand === 'ambre') delete document.documentElement.dataset.brand;
+      else document.documentElement.dataset.brand = brand;
       document.documentElement.dataset.theme = context.globals.theme ?? 'light';
       document.body.style.background = 'var(--amb-color-bg-canvas)';
       document.body.style.color = 'var(--amb-color-fg-default)';

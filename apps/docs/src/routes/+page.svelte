@@ -15,7 +15,7 @@
 		<p class="eyebrow">Open source</p>
 		<h1>Warm by default.</h1>
 		<p class="lede">
-			One library of Svelte web components. Theme a product by overriding semantic variables.
+			One library of Svelte web components. A brand is a preset of the same tokens.
 			The components stay still.
 		</p>
 		<div class="actions">
@@ -43,6 +43,7 @@
 <h2>Use it</h2>
 <div class="snippets">
 	<pre><code>import '@ambre/tokens/css';
+import '@ambre/tokens/css/presets';
 import '@ambre/ui';</code></pre>
 	<pre><code>&lt;amb-button type="submit"&gt;Save changes&lt;/amb-button&gt;</code></pre>
 </div>

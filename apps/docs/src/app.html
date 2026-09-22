@@ -15,6 +15,8 @@
             stored ||
             (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
           document.documentElement.dataset.theme = theme;
+          var brand = localStorage.getItem('amb-brand');
+          if (brand && brand !== 'ambre') document.documentElement.dataset.brand = brand;
         } catch (error) {
           document.documentElement.dataset.theme = 'light';
         }

@@ -145,8 +145,8 @@
               "description": "font.lineHeight.tight"
             },
             {
-              "name": "--amb-radius-md",
-              "description": "radius.md"
+              "name": "--amb-radius-action",
+              "description": "radius.action"
             },
             {
               "name": "--amb-border-width-default",

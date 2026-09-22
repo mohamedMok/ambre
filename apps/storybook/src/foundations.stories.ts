@@ -11,7 +11,7 @@ const meta = {
         ${colors.map(
           (token) => html`
             <div style="border: 1px solid var(--amb-color-border-default); border-radius: var(--amb-radius-md); overflow: hidden;">
-              <div style="height: 48px; background: ${token.value};"></div>
+              <div style="height: 48px; background: var(${token.css});"></div>
               <div style="padding: 8px 12px; font: 14px/1.4 var(--amb-font-family-mono);">
                 ${token.css}
               </div>

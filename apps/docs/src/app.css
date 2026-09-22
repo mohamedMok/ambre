@@ -154,8 +154,20 @@ nav {
 .action {
 	min-height: var(--amb-size-control-md);
 	padding-inline: var(--amb-space-500);
-	border-radius: var(--amb-radius-md);
+	border-radius: var(--amb-radius-action);
 	font-size: var(--amb-font-size-300);
+}
+
+.brand-select {
+	min-height: var(--amb-size-control-sm);
+	padding-inline: var(--amb-space-300);
+	border: var(--amb-border-width-default) solid var(--amb-color-border-default);
+	border-radius: var(--amb-radius-full);
+	background: var(--amb-color-bg-surface);
+	color: var(--amb-color-fg-default);
+	font: inherit;
+	font-size: var(--amb-font-size-200);
+	font-weight: var(--amb-font-weight-semibold);
 }
 
 .workshop:hover,
@@ -631,6 +643,7 @@ pre {
 	.action,
 	.action-quiet,
 	.theme-toggle,
+	.brand-select,
 	.stage-card,
 	.path a,
 	.film,

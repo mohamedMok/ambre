@@ -15,6 +15,11 @@
       "$value": "{dimension.200}",
       "$description": "Default control corner. 8px."
     },
+    "action": {
+      "$type": "dimension",
+      "$value": "{radius.md}",
+      "$description": "Action corner. Buttons. Aliased to the control corner until a brand sets its own."
+    },
     "lg": {
       "$type": "dimension",
       "$value": "{dimension.300}",

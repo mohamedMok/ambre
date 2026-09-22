@@ -10,8 +10,12 @@
     "src"
   ],
   "exports": {
-    ".": "./dist/js/tokens.js",
+    ".": {
+      "types": "./types.d.ts",
+      "default": "./dist/js/tokens.js"
+    },
     "./css": "./dist/css/tokens.css",
+    "./css/presets": "./dist/css/presets.css",
     "./scss": "./dist/scss/_tokens.scss",
     "./json": "./dist/json/tokens.json"
   },

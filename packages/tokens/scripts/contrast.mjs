@@ -12,6 +12,10 @@ function index(list) {
 
 const light = index(data.system);
 const dark = { ...light, ...index(data.dark) };
+const brands = [['ambre', light, dark]];
+for (const [id, preset] of Object.entries(data.presets ?? {})) {
+  brands.push([id, { ...light, ...index(preset.light) }, { ...dark, ...index(preset.dark) }]);
+}
 
 function channels(hex) {
   const value = hex.replace('#', '');
@@ -36,15 +40,17 @@ function contrast(foreground, background) {
 }
 
 let failed = 0;
-for (const pair of pairs) {
-  const map = pair.theme === 'dark' ? dark : light;
-  const ratio = contrast(map[pair.fg], map[pair.bg]);
-  const rounded = Math.round(ratio * 100) / 100;
-  if (ratio + 0.001 < pair.min) {
-    failed += 1;
-    console.error(
-      `FAIL ${pair.theme} ${pair.fg} on ${pair.bg}: ${rounded} < ${pair.min} (${pair.purpose})`,
-    );
+for (const [brand, lightMap, darkMap] of brands) {
+  for (const pair of pairs) {
+    const map = pair.theme === 'dark' ? darkMap : lightMap;
+    const ratio = contrast(map[pair.fg], map[pair.bg]);
+    const rounded = Math.round(ratio * 100) / 100;
+    if (ratio + 0.001 < pair.min) {
+      failed += 1;
+      console.error(
+        `FAIL ${brand} ${pair.theme} ${pair.fg} on ${pair.bg}: ${rounded} < ${pair.min} (${pair.purpose})`,
+      );
+    }
   }
 }
 
@@ -53,4 +59,6 @@ if (failed > 0) {
   process.exit(1);
 }
 
-console.log(`${pairs.length} contrast pairs pass`);
+console.log(
+  `${pairs.length} contrast pairs pass for ${brands.map(([brand]) => brand).join(', ')}`,
+);

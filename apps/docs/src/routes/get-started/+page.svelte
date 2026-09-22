@@ -72,11 +72,24 @@ import '@ambre/ui';</code></pre>
 
 &lt;html data-theme="dark"&gt;</code></pre>
 
+<h2>Use a brand</h2>
+<p class="lede">
+	A brand is one file in <code>packages/tokens/src/preset</code>. The build compiles every file there onto the same variables, under <code>data-brand</code>. Ambre stays the default when the attribute is absent. Load the preset CSS after the theme.
+</p>
+<pre><code>import '@ambre/tokens/css';
+import '@ambre/tokens/css/presets';
+
+&lt;html data-brand="apple"&gt;
+&lt;html data-brand="airbnb"&gt;</code></pre>
+<p class="lede">
+	The product loads the font the preset names. Apple uses the system font. Airbnb uses Nunito Sans. No brand file ships a proprietary face.
+</p>
 <div class="do-grid">
 	<section class="note">
 		<h2>Do</h2>
 		<ul>
 			<li>Load the token CSS before the components.</li>
+			<li>Switch brand by editing its preset file, then set <code>data-brand</code>.</li>
 			<li>Put the visible label in the slot.</li>
 			<li>Use a link to go somewhere and a button to start an action.</li>
 			<li>Keep headings as native HTML.</li>
@@ -86,6 +99,7 @@ import '@ambre/ui';</code></pre>
 		<h2>Don't</h2>
 		<ul>
 			<li>Don't paint a component with a raw hex color.</li>
+			<li>Don't restyle a component to imitate a brand.</li>
 			<li>Don't import the library during server rendering.</li>
 			<li>Don't look for a heading component. Type is a token.</li>
 		</ul>

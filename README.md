@@ -27,6 +27,7 @@ Load the theme once, then the library:
 
 ```js
 import '@ambre/tokens/css';
+import '@ambre/tokens/css/presets';
 import '@ambre/ui';
 ```
 
@@ -38,10 +39,12 @@ Theme a product by overriding semantic variables such as `--amb-color-accent-bg`
 
 Set `data-theme="dark"` on an ancestor to switch the dark decisions.
 
+A brand is one file in `packages/tokens/src/preset`. The build writes every file onto the same variables. Set `data-brand="apple"` or `data-brand="airbnb"` on an ancestor. Omit it for Ambre. The product loads the font the preset names.
+
 ## Layout
 
 ```text
-packages/tokens/src   DTCG sources
+packages/tokens/src   DTCG sources, including src/preset for brands
 contracts             component contracts
 packages/ui           Svelte custom elements
 apps/docs             documentation site

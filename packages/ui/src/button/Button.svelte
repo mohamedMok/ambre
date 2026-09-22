@@ -71,7 +71,7 @@
 		margin: 0;
 		padding-inline: var(--amb-space-400);
 		border: var(--amb-border-width-default) solid transparent;
-		border-radius: var(--amb-radius-md);
+		border-radius: var(--amb-radius-action);
 		background: var(--amb-color-accent-bg);
 		color: inherit;
 		font: inherit;

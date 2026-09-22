@@ -74,7 +74,7 @@ tokens:
   - font.size.400
   - font.weight.semibold
   - font.lineHeight.tight
-  - radius.md
+  - radius.action
   - border.width.default
   - space.100
   - space.300

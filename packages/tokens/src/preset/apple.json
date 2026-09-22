@@ -1,0 +1,395 @@
+{
+  "name": "Apple",
+  "description": "System font, pill actions, 12px fields, neutral surfaces, blue links. Colors are 6-digit hex. The build expands them to DTCG color objects. The fill is black in light and light in dark so labels meet WCAG AA. Borders are darker than apple.com for the same reason.",
+  "shared": {
+    "font": {
+      "family": {
+        "sans": {
+          "$type": "fontFamily",
+          "$value": [
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Segoe UI",
+            "sans-serif"
+          ],
+          "$description": "UI text. The system face. No font file is shipped."
+        }
+      },
+      "lineHeight": {
+        "tight": {
+          "$type": "number",
+          "$value": 1.15,
+          "$description": "Controls and headings."
+        }
+      }
+    },
+    "radius": {
+      "sm": {
+        "$type": "dimension",
+        "$value": {
+          "value": 8,
+          "unit": "px"
+        },
+        "$description": "Tight corner. 8px."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        },
+        "$description": "Default control corner. 12px."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "px"
+        },
+        "$description": "Large surface corner. 20px."
+      },
+      "action": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9999,
+          "unit": "px"
+        },
+        "$description": "Action corner. Pill."
+      }
+    }
+  },
+  "light": {
+    "color": {
+      "bg": {
+        "canvas": {
+          "$type": "color",
+          "$value": "#f5f5f7",
+          "$description": "Page background."
+        },
+        "surface": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "Cards, fields, and secondary buttons."
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#e8e8ed",
+          "$description": "Hover fill for quiet controls."
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#d2d2d7",
+          "$description": "Pressed fill for quiet controls."
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Inverted surface."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#e8e8ed",
+          "$description": "Disabled control fill."
+        }
+      },
+      "fg": {
+        "default": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Default text."
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#424245",
+          "$description": "Secondary text."
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#6e6e73",
+          "$description": "Tertiary text. Still meets AA on the canvas."
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#f5f5f7",
+          "$description": "Text on an inverted surface."
+        },
+        "on-accent": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "Text on an accent fill."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#6e6e73",
+          "$description": "Disabled control text. Disabled text is exempt from WCAG contrast, and this pair stays visible."
+        }
+      },
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "#6e6e73",
+          "$description": "UI boundary. Meets 3:1 against the canvas."
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Emphasis boundary."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#d2d2d7",
+          "$description": "Disabled control boundary."
+        }
+      },
+      "accent": {
+        "bg": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Primary action fill."
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "#000000",
+          "$description": "Primary action hover fill."
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "#3a3a3c",
+          "$description": "Primary action pressed fill."
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#0066cc",
+          "$description": "Accent text, including links and ghost controls."
+        }
+      },
+      "focus": {
+        "ring": {
+          "$type": "color",
+          "$value": "#0066cc",
+          "$description": "Focus ring. Meets 3:1 against the canvas and surfaces."
+        }
+      },
+      "status": {
+        "danger": {
+          "fg": {
+            "$type": "color",
+            "$value": "#b42318",
+            "$description": "Danger text on the canvas."
+          },
+          "bg": {
+            "$type": "color",
+            "$value": "#b42318",
+            "$description": "Danger fill."
+          },
+          "on": {
+            "$type": "color",
+            "$value": "#ffffff",
+            "$description": "Text on a danger fill."
+          }
+        },
+        "success": {
+          "fg": {
+            "$type": "color",
+            "$value": "#067647",
+            "$description": "Success text on the canvas."
+          },
+          "bg": {
+            "$type": "color",
+            "$value": "#067647",
+            "$description": "Success fill."
+          },
+          "on": {
+            "$type": "color",
+            "$value": "#ffffff",
+            "$description": "Text on a success fill."
+          }
+        }
+      }
+    },
+    "elevation": {
+      "1": {
+        "$type": "shadow",
+        "$value": "0px 1px 2px 0px rgb(0 0 0 / 0.08)",
+        "$description": "Raised control."
+      },
+      "2": {
+        "$type": "shadow",
+        "$value": "0px 4px 16px 0px rgb(0 0 0 / 0.08)",
+        "$description": "Dropdown and popover."
+      },
+      "3": {
+        "$type": "shadow",
+        "$value": "0px 12px 40px 0px rgb(0 0 0 / 0.12)",
+        "$description": "Dialog and overlay."
+      }
+    }
+  },
+  "dark": {
+    "color": {
+      "bg": {
+        "canvas": {
+          "$type": "color",
+          "$value": "#000000",
+          "$description": "Page background."
+        },
+        "surface": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Cards, fields, and secondary buttons."
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#2c2c2e",
+          "$description": "Hover fill for quiet controls."
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#3a3a3c",
+          "$description": "Pressed fill for quiet controls."
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#f5f5f7",
+          "$description": "Inverted surface."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#2c2c2e",
+          "$description": "Disabled control fill."
+        }
+      },
+      "fg": {
+        "default": {
+          "$type": "color",
+          "$value": "#f5f5f7",
+          "$description": "Default text."
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#a1a1a6",
+          "$description": "Secondary text."
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#86868b",
+          "$description": "Tertiary text. Still meets AA on the canvas."
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Text on an inverted surface."
+        },
+        "on-accent": {
+          "$type": "color",
+          "$value": "#1d1d1f",
+          "$description": "Text on an accent fill."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#86868b",
+          "$description": "Disabled control text. Disabled text is exempt from WCAG contrast, and this pair stays visible."
+        }
+      },
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "#86868b",
+          "$description": "UI boundary. Meets 3:1 against the canvas."
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "#f5f5f7",
+          "$description": "Emphasis boundary."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#3a3a3c",
+          "$description": "Disabled control boundary."
+        }
+      },
+      "accent": {
+        "bg": {
+          "$type": "color",
+          "$value": "#f5f5f7",
+          "$description": "Primary action fill."
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "Primary action hover fill."
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "#d2d2d7",
+          "$description": "Primary action pressed fill."
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#2997ff",
+          "$description": "Accent text, including links and ghost controls."
+        }
+      },
+      "focus": {
+        "ring": {
+          "$type": "color",
+          "$value": "#2997ff",
+          "$description": "Focus ring. Meets 3:1 against the canvas and surfaces."
+        }
+      },
+      "status": {
+        "danger": {
+          "fg": {
+            "$type": "color",
+            "$value": "#ff6961",
+            "$description": "Danger text on the canvas."
+          },
+          "bg": {
+            "$type": "color",
+            "$value": "#ff453a",
+            "$description": "Danger fill."
+          },
+          "on": {
+            "$type": "color",
+            "$value": "#000000",
+            "$description": "Text on a danger fill."
+          }
+        },
+        "success": {
+          "fg": {
+            "$type": "color",
+            "$value": "#30d158",
+            "$description": "Success text on the canvas."
+          },
+          "bg": {
+            "$type": "color",
+            "$value": "#30d158",
+            "$description": "Success fill."
+          },
+          "on": {
+            "$type": "color",
+            "$value": "#000000",
+            "$description": "Text on a success fill."
+          }
+        }
+      }
+    },
+    "elevation": {
+      "1": {
+        "$type": "shadow",
+        "$value": "0px 1px 2px 0px rgb(0 0 0 / 0.48)",
+        "$description": "Raised control."
+      },
+      "2": {
+        "$type": "shadow",
+        "$value": "0px 4px 16px 0px rgb(0 0 0 / 0.48)",
+        "$description": "Dropdown and popover."
+      },
+      "3": {
+        "$type": "shadow",
+        "$value": "0px 12px 40px 0px rgb(0 0 0 / 0.64)",
+        "$description": "Dialog and overlay."
+      }
+    }
+  }
+}
