@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { storybookUrl } from '$lib/site';
+
 	let status = $state('The form has not been submitted.');
 
 	function onSubmit(event: SubmitEvent) {
@@ -16,15 +18,18 @@
 	<meta name="description" content="amb-button starts an action. Use a link for navigation." />
 </svelte:head>
 
+<p class="eyebrow">Components</p>
 <h1>Button</h1>
-<p class="lede">Use a button to start an action. Use a link to go somewhere.</p>
-
-<div class="row">
-	<amb-button>Save changes</amb-button>
-	<amb-button variant="secondary">Cancel</amb-button>
-	<amb-button variant="ghost">Learn more</amb-button>
-	<amb-button disabled>Unavailable</amb-button>
+<div class="stage-card">
+	<p class="stage-label">amb-button</p>
+	<div class="row">
+		<amb-button>Save changes</amb-button>
+		<amb-button variant="secondary">Cancel</amb-button>
+		<amb-button variant="ghost">Learn more</amb-button>
+		<amb-button disabled>Unavailable</amb-button>
+	</div>
 </div>
+<p class="lede">Use a button to start an action. Use a link to go somewhere.</p>
 
 <h2>Sizes</h2>
 <div class="row">
@@ -45,7 +50,7 @@
 <pre><code>&lt;amb-button type="submit"&gt;Save changes&lt;/amb-button&gt;</code></pre>
 
 <div class="do-grid">
-	<section>
+	<section class="note">
 		<h2>Do</h2>
 		<ul>
 			<li>Write the action as the label. The slot is the accessible name.</li>
@@ -53,7 +58,7 @@
 			<li>Use medium unless the surface is dense or the action is prominent.</li>
 		</ul>
 	</section>
-	<section>
+	<section class="note">
 		<h2>Don't</h2>
 		<ul>
 			<li>Don't use a button for navigation.</li>
@@ -62,3 +67,6 @@
 		</ul>
 	</section>
 </div>
+<p class="lede">
+	<a href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a> to inspect every variant, size, and theme.
+</p>

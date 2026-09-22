@@ -11,35 +11,37 @@
 	<meta name="description" content="Ambre space scale, radii, and control heights." />
 </svelte:head>
 
+<p class="eyebrow">Foundations</p>
 <h1>Space</h1>
-<p class="lede">The space scale aliases the dimension reference. Components use space, not the raw scale.</p>
-
 <div class="stack-list">
 	{#each space as token}
 		<div class="token-row">
 			<span>{token.path}</span>
-			<span class="bar" style:width={String(token.value)}></span>
+			<span class="meter" style:width={String(token.value)}></span>
+			<small>{token.value}</small>
+		</div>
+	{/each}
+</div>
+<p class="lede">Use the space scale. Leave the raw dimension reference in the token files.</p>
+
+<h2>Radius</h2>
+<div class="radius-row">
+	{#each radius as token}
+		<div class="radius-tile">
+			<span style:border-radius={String(token.value)}></span>
+			{token.path}
 			<small>{token.value}</small>
 		</div>
 	{/each}
 </div>
 
-<h2>Radius</h2>
-<div class="row">
-	{#each radius as token}
-		<div
-			style:width="var(--amb-size-control-lg)"
-			style:height="var(--amb-size-control-lg)"
-			style:background="var(--amb-color-accent-bg)"
-			style:border-radius={String(token.value)}
-			title="{token.path} {token.value}"
-		></div>
+<h2>Control heights</h2>
+<div class="control-row">
+	{#each control as token}
+		<div class="control">
+			<span class="shaft" style:height={String(token.value)} aria-hidden="true"></span>
+			<span>{token.path}</span>
+			<small>{token.value}</small>
+		</div>
 	{/each}
 </div>
-
-<h2>Control heights</h2>
-<ul>
-	{#each control as token}
-		<li>{token.path}: {token.value}. {token.description}</li>
-	{/each}
-</ul>

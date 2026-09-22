@@ -20,12 +20,18 @@
 	<meta name="description" content="Ambre color tokens. Reference palette and semantic theme API." />
 </svelte:head>
 
+<p class="eyebrow">Foundations</p>
 <h1>Color</h1>
+<ul class="film" aria-label="Theme colors">
+	<li class="film-canvas">--amb-color-bg-canvas</li>
+	<li>--amb-color-bg-surface</li>
+	<li class="film-accent">--amb-color-accent-bg</li>
+	<li class="film-inverse">--amb-color-bg-inverse</li>
+</ul>
 <p class="lede">
-	Products theme Ambre by overriding semantic variables. The reference palette stays inside the
-	token files.
+	Theme a product by overriding semantic variables. Leave the reference palette in the token files.
 </p>
-<p aria-live="polite">{copied ? `Copied ${copied}` : 'Select a swatch to copy its value.'}</p>
+<p class="copy-note" aria-live="polite">{copied ? `Copied ${copied}` : 'Select a swatch to copy its value.'}</p>
 
 {#each semantic as [family, group]}
 	<h2>{family}</h2>
