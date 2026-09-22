@@ -4,27 +4,35 @@ import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const contract = parse(fs.readFileSync(path.join(root, 'contracts/button.yaml'), 'utf8'));
-const source = fs.readFileSync(
-  path.join(root, 'packages/ui/src/button/Button.svelte'),
-  'utf8',
-);
+const contractsDir = path.join(root, 'contracts');
 const manifest = JSON.parse(
   fs.readFileSync(path.join(root, 'packages/ui/custom-elements.json'), 'utf8'),
 );
-
 const failures = [];
-if (!source.includes(`tag: '${contract.tag}'`)) failures.push(`missing tag ${contract.tag}`);
-for (const prop of contract.props) {
-  if (!source.includes(`${prop.name}:`)) failures.push(`missing prop ${prop.name}`);
-}
-if (/#[0-9a-fA-F]{3,8}\b/.test(source)) failures.push('raw hex color in Button.svelte');
 
-const declared = manifest.modules?.[0]?.declarations?.[0];
-if (declared?.tagName !== contract.tag) failures.push('manifest tag does not match the contract');
-const manifestProps = new Set((declared?.attributes ?? []).map((attribute) => attribute.fieldName));
-for (const prop of contract.props) {
-  if (!manifestProps.has(prop.name)) failures.push(`manifest missing prop ${prop.name}`);
+for (const file of fs.readdirSync(contractsDir).filter((entry) => entry.endsWith('.yaml'))) {
+  const contract = parse(fs.readFileSync(path.join(contractsDir, file), 'utf8'));
+  const sourceDir = path.join(root, 'packages/ui/src', contract.id);
+  const svelteFile = fs.readdirSync(sourceDir).find((entry) => entry.endsWith('.svelte'));
+  const source = fs.readFileSync(path.join(sourceDir, svelteFile), 'utf8');
+
+  if (!source.includes(`tag: '${contract.tag}'`)) failures.push(`${contract.id}: missing tag ${contract.tag}`);
+  for (const prop of contract.props) {
+    if (!source.includes(`${prop.name}:`)) failures.push(`${contract.id}: missing prop ${prop.name}`);
+  }
+  if (/#[0-9a-fA-F]{3,8}\b/.test(source)) failures.push(`${contract.id}: raw hex color`);
+
+  const declared = manifest.modules
+    ?.flatMap((module) => module.declarations ?? [])
+    .find((declaration) => declaration.tagName === contract.tag);
+  if (!declared) {
+    failures.push(`${contract.id}: manifest missing tag ${contract.tag}`);
+    continue;
+  }
+  const manifestProps = new Set((declared.attributes ?? []).map((attribute) => attribute.fieldName));
+  for (const prop of contract.props) {
+    if (!manifestProps.has(prop.name)) failures.push(`${contract.id}: manifest missing prop ${prop.name}`);
+  }
 }
 
 if (failures.length > 0) {
@@ -32,4 +40,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log('button contract matches source and manifest');
+console.log('contracts match source and manifest');

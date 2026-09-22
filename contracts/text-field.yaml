@@ -1,0 +1,106 @@
+id: text-field
+tag: amb-text-field
+status: stable
+summary: Collects a single line of text. The label is the slotted text, and the value joins the nearest form.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: label
+    slot: default
+  - id: control
+    element: input
+    part: control
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form submission name.
+  - name: value
+    type: string
+    default: ""
+    description: Current text. This is a property, not a reflected attribute.
+  - name: type
+    type: enum
+    values: [text, email, password, search, tel, url]
+    default: text
+    attribute: type
+    reflect: true
+    description: Native input type.
+  - name: placeholder
+    type: string
+    default: ""
+    attribute: placeholder
+    reflect: true
+    description: Hint shown when the value is empty. It is not the label.
+  - name: autocomplete
+    type: string
+    default: ""
+    attribute: autocomplete
+    reflect: true
+    description: Autofill hint. Set it when the field collects a person's own data.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks editing.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The form cannot submit while the value is empty.
+  - name: readonly
+    type: boolean
+    default: false
+    attribute: readonly
+    reflect: true
+    description: The value can be read and submitted, and it cannot be edited.
+slots:
+  - name: default
+    description: Accessible name. Keep this text visible.
+events:
+  - name: input
+    description: Fired when the value changes.
+  - name: change
+    description: Fired when the field commits a value.
+a11y:
+  role: textbox
+  name: Slotted text. The placeholder is not the accessible name.
+  keyboard:
+    - Characters edit the value.
+    - Tab moves away.
+  notes:
+    - The inner input is native, so the role is not re-authored with ARIA.
+    - The label wraps the input.
+    - A validation message appears after a failed submit.
+tokens:
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.disabled
+  - color.bg.surface
+  - color.bg.disabled
+  - color.border.default
+  - color.status.danger.fg
+  - color.focus.ring
+  - focus.ring.width
+  - focus.ring.offset
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.semibold
+  - font.weight.regular
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - radius.md
+  - border.width.default
+  - space.100
+  - space.200
+  - space.300
+  - size.control.md

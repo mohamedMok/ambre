@@ -201,6 +201,1028 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/checkbox/Checkbox.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Checkbox",
+          "description": "Selects a choice that can stand alone. The label is the slotted text, and a checked box joins the nearest form.",
+          "tagName": "amb-checkbox",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form submission name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "on",
+              "description": "Value submitted while the box is checked.",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether the choice is selected.",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks toggling.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit while the box is unchecked.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when the checked state changes."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-size-icon-lg",
+              "description": "size.icon.lg"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-checkbox",
+          "declaration": {
+            "name": "Checkbox",
+            "module": "src/checkbox/Checkbox.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/disclosure/Disclosure.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Disclosure",
+          "description": "Shows or hides a region. The button label is the default slot, and the panel is a named slot.",
+          "tagName": "amb-disclosure",
+          "attributes": [
+            {
+              "name": "open",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether the panel is shown.",
+              "fieldName": "open"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks toggling.",
+              "fieldName": "disabled"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name of the button. Keep this text visible."
+            },
+            {
+              "name": "panel",
+              "description": "Content that is shown while the disclosure is open."
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "description": "Fired after the open state changes. detail.open is the next state."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "panel",
+              "description": "panel"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-space-500",
+              "description": "space.500"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-disclosure",
+          "declaration": {
+            "name": "Disclosure",
+            "module": "src/disclosure/Disclosure.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/icon/Icon.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Icon",
+          "description": "Sizes a graphic. An empty label is decorative. A label makes the graphic an image with that name.",
+          "tagName": "amb-icon",
+          "attributes": [
+            {
+              "name": "size",
+              "type": "sm | md | lg",
+              "default": "md",
+              "description": "Box size. Small is 16px, medium is 20px, large is 24px.",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": "string",
+              "default": "",
+              "description": "Accessible name. Leave empty when the graphic is decorative.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The graphic, usually an SVG. It does not supply the accessible name."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "graphic",
+              "description": "graphic"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-size-icon-lg",
+              "description": "size.icon.lg"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "src/icon/Icon.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/link/Link.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Link",
+          "description": "Goes somewhere. The label is the slotted text, and the control is a native link.",
+          "tagName": "amb-link",
+          "attributes": [
+            {
+              "name": "href",
+              "type": "string",
+              "default": "",
+              "description": "Destination URL. A link without an href is not a link.",
+              "fieldName": "href"
+            },
+            {
+              "name": "variant",
+              "type": "text | quiet",
+              "default": "text",
+              "description": "Visual emphasis. Text is the accent link. Quiet is for a secondary destination.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "external",
+              "type": "boolean",
+              "default": "false",
+              "description": "Opens the destination in a new browsing context and sets rel to noreferrer.",
+              "fieldName": "external"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible."
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "description": "Native click from the inner link."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control",
+              "description": "control"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-link",
+          "declaration": {
+            "name": "Link",
+            "module": "src/link/Link.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/radio/Radio.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Radio",
+          "description": "Selects one choice in a named group. The label is the slotted text, and the checked radio joins the nearest form.",
+          "tagName": "amb-radio",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Group name. Radios that share a name in one form submit a single value.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "Value submitted while this radio is checked.",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether this choice is selected.",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks selection.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit until one radio in the group is checked.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when this radio becomes checked."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-size-icon-lg",
+              "description": "size.icon.lg"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-radio",
+          "declaration": {
+            "name": "Radio",
+            "module": "src/radio/Radio.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/select/Select.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Select",
+          "description": "Chooses one option. The label is the slotted text, the options are child option elements, and the value joins the nearest form.",
+          "tagName": "amb-select",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form submission name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "Selected option value. This is a property, not a reflected attribute.",
+              "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks changes.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit until an option with a value is selected.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible. Child option elements are the choices, not the name."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when the selected option changes."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-select",
+          "declaration": {
+            "name": "Select",
+            "module": "src/select/Select.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/text-field/TextField.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TextField",
+          "description": "Collects a single line of text. The label is the slotted text, and the value joins the nearest form.",
+          "tagName": "amb-text-field",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form submission name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "Current text. This is a property, not a reflected attribute.",
+              "fieldName": "value"
+            },
+            {
+              "name": "type",
+              "type": "text | email | password | search | tel | url",
+              "default": "text",
+              "description": "Native input type.",
+              "fieldName": "type"
+            },
+            {
+              "name": "placeholder",
+              "type": "string",
+              "default": "",
+              "description": "Hint shown when the value is empty. It is not the label.",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "autocomplete",
+              "type": "string",
+              "default": "",
+              "description": "Autofill hint. Set it when the field collects a person's own data.",
+              "fieldName": "autocomplete"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks editing.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit while the value is empty.",
+              "fieldName": "required"
+            },
+            {
+              "name": "readonly",
+              "type": "boolean",
+              "default": "false",
+              "description": "The value can be read and submitted, and it cannot be edited.",
+              "fieldName": "readonly"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible."
+            }
+          ],
+          "events": [
+            {
+              "name": "input",
+              "description": "Fired when the value changes."
+            },
+            {
+              "name": "change",
+              "description": "Fired when the field commits a value."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-text-field",
+          "declaration": {
+            "name": "TextField",
+            "module": "src/text-field/TextField.svelte"
+          }
+        }
+      ]
     }
   ]
 }

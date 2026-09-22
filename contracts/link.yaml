@@ -1,0 +1,57 @@
+id: link
+tag: amb-link
+status: stable
+summary: Goes somewhere. The label is the slotted text, and the control is a native link.
+anatomy:
+  - id: control
+    element: a
+    part: control
+  - id: label
+    slot: default
+props:
+  - name: href
+    type: string
+    default: ""
+    attribute: href
+    reflect: true
+    description: Destination URL. A link without an href is not a link.
+  - name: variant
+    type: enum
+    values: [text, quiet]
+    default: text
+    attribute: variant
+    reflect: true
+    description: Visual emphasis. Text is the accent link. Quiet is for a secondary destination.
+  - name: external
+    type: boolean
+    default: false
+    attribute: external
+    reflect: true
+    description: Opens the destination in a new browsing context and sets rel to noreferrer.
+slots:
+  - name: default
+    description: Accessible name. Keep this text visible.
+events:
+  - name: click
+    description: Native click from the inner link.
+a11y:
+  role: link
+  name: Slotted text. An empty slot has no accessible name.
+  keyboard:
+    - Enter follows the link.
+  notes:
+    - The inner anchor is native, so the role is not re-authored with ARIA.
+    - An inline link is exempt from the 24px target-size rule. Do not stretch it into a button.
+    - Use a button to start an action. Use a link to go somewhere.
+tokens:
+  - color.accent.fg
+  - color.fg.muted
+  - color.focus.ring
+  - focus.ring.width
+  - focus.ring.offset
+  - font.family.sans
+  - font.weight.semibold
+  - font.lineHeight.body
+  - border.width.default
+  - duration.fast
+  - easing.standard

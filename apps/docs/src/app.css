@@ -253,6 +253,8 @@ pre,
 }
 
 .stage-card {
+	display: grid;
+	gap: var(--amb-space-500);
 	padding: var(--amb-space-600);
 	box-shadow: var(--amb-elevation-3);
 }
@@ -536,6 +538,26 @@ pre {
 
 .status {
 	color: var(--amb-color-status-success-fg);
+}
+
+.form-stack {
+	display: grid;
+	gap: var(--amb-space-500);
+	max-width: 28rem;
+}
+
+.choice-group {
+	display: grid;
+	gap: var(--amb-space-100);
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.choice-group legend {
+	margin-bottom: var(--amb-space-200);
+	padding: 0;
+	font-weight: var(--amb-font-weight-semibold);
 }
 
 .do-grid {

@@ -7,7 +7,7 @@ Custom elements use the `amb-` prefix. Packages use the `@ambre` scope.
 ## Packages
 
 - `@ambre/tokens` — design tokens in the [DTCG 2025.10](https://www.designtokens.org/TR/2025.10/format/) format, compiled with Style Dictionary to CSS variables, Sass variables, and JSON.
-- `@ambre/ui` — the component library. `amb-button` is the first component.
+- `@ambre/ui` — the component library. The basics are `amb-button`, `amb-link`, `amb-disclosure`, and `amb-icon`. Forms are `amb-text-field`, `amb-checkbox`, `amb-radio`, and `amb-select`.
 
 Documentation is a SvelteKit site. Storybook is the workshop.
 

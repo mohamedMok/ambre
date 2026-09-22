@@ -1,0 +1,40 @@
+id: icon
+tag: amb-icon
+status: stable
+summary: Sizes a graphic. An empty label is decorative. A label makes the graphic an image with that name.
+anatomy:
+  - id: graphic
+    element: span
+    part: graphic
+  - id: svg
+    slot: default
+props:
+  - name: size
+    type: enum
+    values: [sm, md, lg]
+    default: md
+    attribute: size
+    reflect: true
+    description: Box size. Small is 16px, medium is 20px, large is 24px.
+  - name: label
+    type: string
+    default: ""
+    attribute: label
+    reflect: true
+    description: Accessible name. Leave empty when the graphic is decorative.
+slots:
+  - name: default
+    description: The graphic, usually an SVG. It does not supply the accessible name.
+events: []
+a11y:
+  role: img
+  name: The label prop when it is set. An empty label hides the graphic from assistive technology.
+  keyboard: []
+  notes:
+    - An icon is not a control. Put the action on a button or a link, with visible text.
+    - The large size is 24px. Smaller sizes belong inside a control that meets the target size.
+tokens:
+  - color.fg.default
+  - size.icon.sm
+  - size.icon.md
+  - size.icon.lg

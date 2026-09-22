@@ -12,7 +12,14 @@
   ],
   "sideEffects": [
     "./dist/index.js",
-    "./dist/button.js"
+    "./dist/button.js",
+    "./dist/checkbox.js",
+    "./dist/disclosure.js",
+    "./dist/icon.js",
+    "./dist/link.js",
+    "./dist/radio.js",
+    "./dist/select.js",
+    "./dist/text-field.js"
   ],
   "types": "./types/index.d.ts",
   "exports": {
@@ -23,6 +30,34 @@
     "./button": {
       "types": "./types/index.d.ts",
       "import": "./dist/button.js"
+    },
+    "./disclosure": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/disclosure.js"
+    },
+    "./icon": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/icon.js"
+    },
+    "./checkbox": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/checkbox.js"
+    },
+    "./link": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/link.js"
+    },
+    "./radio": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/radio.js"
+    },
+    "./select": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/select.js"
+    },
+    "./text-field": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/text-field.js"
     },
     "./custom-elements.json": "./custom-elements.json"
   },

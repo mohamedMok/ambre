@@ -1,0 +1,79 @@
+id: checkbox
+tag: amb-checkbox
+status: stable
+summary: Selects a choice that can stand alone. The label is the slotted text, and a checked box joins the nearest form.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: control
+    element: input
+    part: control
+  - id: label
+    slot: default
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form submission name.
+  - name: value
+    type: string
+    default: "on"
+    attribute: value
+    reflect: true
+    description: Value submitted while the box is checked.
+  - name: checked
+    type: boolean
+    default: false
+    attribute: checked
+    reflect: true
+    description: Whether the choice is selected.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks toggling.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The form cannot submit while the box is unchecked.
+slots:
+  - name: default
+    description: Accessible name. Keep this text visible.
+events:
+  - name: change
+    description: Fired when the checked state changes.
+a11y:
+  role: checkbox
+  name: Slotted text.
+  keyboard:
+    - Space toggles the choice.
+  notes:
+    - The inner input is native, so the role is not re-authored with ARIA.
+    - The label wraps the input, so the text is part of the target.
+    - Disabled leaves the control out of the tab order.
+tokens:
+  - color.fg.default
+  - color.fg.disabled
+  - color.accent.bg
+  - color.status.danger.fg
+  - color.focus.ring
+  - focus.ring.width
+  - focus.ring.offset
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.regular
+  - font.lineHeight.body
+  - space.100
+  - space.300
+  - size.control.md
+  - size.icon.lg

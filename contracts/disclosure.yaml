@@ -1,0 +1,72 @@
+id: disclosure
+tag: amb-disclosure
+status: stable
+summary: Shows or hides a region. The button label is the default slot, and the panel is a named slot.
+anatomy:
+  - id: control
+    element: button
+    part: control
+  - id: label
+    slot: default
+  - id: panel
+    element: div
+    part: panel
+    slot: panel
+props:
+  - name: open
+    type: boolean
+    default: false
+    attribute: open
+    reflect: true
+    description: Whether the panel is shown.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks toggling.
+slots:
+  - name: default
+    description: Accessible name of the button. Keep this text visible.
+  - name: panel
+    description: Content that is shown while the disclosure is open.
+events:
+  - name: toggle
+    description: Fired after the open state changes. detail.open is the next state.
+a11y:
+  role: button
+  name: Slotted text on the button. The panel is labeled by that button.
+  keyboard:
+    - Enter toggles the panel.
+    - Space toggles the panel.
+  notes:
+    - The inner button is native, so the role is not re-authored with ARIA.
+    - aria-expanded reflects the open state. The panel is hidden when closed.
+    - Disabled leaves the control out of the tab order.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.muted
+  - color.bg.disabled
+  - color.fg.default
+  - color.fg.disabled
+  - color.border.default
+  - color.focus.ring
+  - focus.ring.width
+  - focus.ring.offset
+  - font.family.sans
+  - font.size.300
+  - font.weight.semibold
+  - font.weight.regular
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - radius.md
+  - border.width.default
+  - border.width.strong
+  - space.200
+  - space.300
+  - space.400
+  - space.500
+  - size.control.md
+  - duration.fast
+  - easing.standard

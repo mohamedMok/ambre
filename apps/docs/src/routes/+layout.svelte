@@ -13,10 +13,18 @@
 	let theme = $state('light');
 
 	const links = [
+		{ href: '/get-started', label: 'Install' },
 		{ href: '/foundations/color', label: 'Color' },
 		{ href: '/foundations/typography', label: 'Type' },
 		{ href: '/foundations/space', label: 'Space' },
-		{ href: '/components/button', label: 'Button' }
+		{ href: '/components/button', label: 'Button' },
+		{ href: '/components/link', label: 'Link' },
+		{ href: '/components/disclosure', label: 'Disclosure' },
+		{ href: '/components/icon', label: 'Icon' },
+		{ href: '/components/text-field', label: 'Text field' },
+		{ href: '/components/checkbox', label: 'Checkbox' },
+		{ href: '/components/radio', label: 'Radio' },
+		{ href: '/components/select', label: 'Select' }
 	];
 
 	onMount(async () => {

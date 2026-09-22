@@ -15,6 +15,13 @@ export default defineConfig({
       entry: {
         index: resolve('src/index.ts'),
         button: resolve('src/button/register.ts'),
+        checkbox: resolve('src/checkbox/register.ts'),
+        disclosure: resolve('src/disclosure/register.ts'),
+        icon: resolve('src/icon/register.ts'),
+        link: resolve('src/link/register.ts'),
+        radio: resolve('src/radio/register.ts'),
+        select: resolve('src/select/register.ts'),
+        'text-field': resolve('src/text-field/register.ts'),
       },
       formats: ['es'],
     },

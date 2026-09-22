@@ -1,0 +1,78 @@
+id: select
+tag: amb-select
+status: stable
+summary: Chooses one option. The label is the slotted text, the options are child option elements, and the value joins the nearest form.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: label
+    slot: default
+  - id: control
+    element: select
+    part: control
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form submission name.
+  - name: value
+    type: string
+    default: ""
+    description: Selected option value. This is a property, not a reflected attribute.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks changes.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The form cannot submit until an option with a value is selected.
+slots:
+  - name: default
+    description: Accessible name. Keep this text visible. Child option elements are the choices, not the name.
+events:
+  - name: change
+    description: Fired when the selected option changes.
+a11y:
+  role: combobox
+  name: Slotted text. Each option keeps its own text.
+  keyboard:
+    - Arrow keys move between options.
+    - Enter and Space open the native picker where the platform provides one.
+  notes:
+    - The inner select is native, so the role is not re-authored with ARIA.
+    - The label wraps the select.
+    - A validation message appears after a failed submit.
+tokens:
+  - color.fg.default
+  - color.fg.disabled
+  - color.bg.surface
+  - color.bg.disabled
+  - color.border.default
+  - color.status.danger.fg
+  - color.focus.ring
+  - focus.ring.width
+  - focus.ring.offset
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.semibold
+  - font.weight.regular
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - radius.md
+  - border.width.default
+  - space.100
+  - space.200
+  - space.300
+  - size.control.md
