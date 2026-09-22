@@ -19,7 +19,7 @@
 			The components stay still.
 		</p>
 		<div class="actions">
-			<a class="action" href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a>
+			<a class="action" href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a>
 			<a class="action action-quiet" href="/get-started">Install and use</a>
 		</div>
 	</div>
@@ -57,69 +57,15 @@ import '@ambre/ui';</code></pre>
 		</a>
 	</li>
 	<li class="path">
-		<a href="/foundations/color">
-			<strong>Color</strong>
-			<small>Override the theme. Leave the palette alone.</small>
+		<a href="/foundations">
+			<strong>Foundations</strong>
+			<small>Color, type, and space. Override the decision, not the palette.</small>
 		</a>
 	</li>
 	<li class="path">
-		<a href="/foundations/typography">
-			<strong>Type</strong>
-			<small>Source Sans 3 for the interface. Source Code Pro for the names.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/foundations/space">
-			<strong>Space</strong>
-			<small>One scale for rhythm, radius, and the height of a control.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/button">
-			<strong>Button</strong>
-			<small>An action. A link is for going somewhere.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/link">
-			<strong>Link</strong>
-			<small>A destination. The text in the slot is the name.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/disclosure">
-			<strong>Disclosure</strong>
-			<small>Show a region. Hide it again.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/icon">
-			<strong>Icon</strong>
-			<small>A sized graphic. Name it only when it carries meaning.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/text-field">
-			<strong>Text field</strong>
-			<small>One line. The label is the name, and the value joins the form.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/checkbox">
-			<strong>Checkbox</strong>
-			<small>A choice that can stand alone.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/radio">
-			<strong>Radio</strong>
-			<small>One choice in a named group.</small>
-		</a>
-	</li>
-	<li class="path">
-		<a href="/components/select">
-			<strong>Select</strong>
-			<small>One option from a list.</small>
+		<a href="/components">
+			<strong>Components</strong>
+			<small>Basics for acting and navigating. Forms for collecting a choice.</small>
 		</a>
 	</li>
 </ul>
@@ -127,5 +73,5 @@ import '@ambre/ui';</code></pre>
 <section class="invite">
 	<h2>Every state lives in Storybook.</h2>
 	<p>Variants, sizes, both themes, and the accessibility panel. The workshop sits next to these pages.</p>
-	<a class="action" href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a>
+	<a class="action" href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a>
 </section>

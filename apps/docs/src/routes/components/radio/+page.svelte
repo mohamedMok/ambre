@@ -45,5 +45,5 @@
 	</section>
 </div>
 <p class="lede">
-	<a href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a> to inspect a group, a selection, and a disabled choice.
+	<a href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a> to inspect a group, a selection, and a disabled choice.
 </p>

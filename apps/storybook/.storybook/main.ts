@@ -7,6 +7,10 @@ const config: StorybookConfig = {
     name: '@storybook/web-components-vite',
     options: {},
   },
+  async viteFinal(config, { configType }) {
+    if (configType === 'PRODUCTION') config.base = '/storybook/';
+    return config;
+  },
 };
 
 export default config;

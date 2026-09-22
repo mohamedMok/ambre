@@ -107,5 +107,5 @@ import '@ambre/tokens/css/presets';
 </div>
 
 <p class="lede">
-	<a href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a> to inspect every variant and both themes.
+	<a href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a> to inspect every variant and both themes.
 </p>

@@ -40,5 +40,5 @@
 	</section>
 </div>
 <p class="lede">
-	<a href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a> to inspect checked, required, and disabled.
+	<a href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a> to inspect checked, required, and disabled.
 </p>

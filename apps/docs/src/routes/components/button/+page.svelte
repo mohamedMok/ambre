@@ -68,5 +68,5 @@
 	</section>
 </div>
 <p class="lede">
-	<a href={storybookUrl} target="_blank" rel="noreferrer">Open Storybook</a> to inspect every variant, size, and theme.
+	<a href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a> to inspect every variant, size, and theme.
 </p>

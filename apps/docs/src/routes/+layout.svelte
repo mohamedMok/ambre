@@ -11,27 +11,13 @@
 	import '@fontsource/nunito-sans/400.css';
 	import '@fontsource/nunito-sans/500.css';
 	import '@fontsource/nunito-sans/600.css';
+	import { header, inSection } from '$lib/sections';
 	import { storybookUrl } from '$lib/site';
 	import '../app.css';
 
 	let { children } = $props();
 	let theme = $state('light');
 	let brand = $state('ambre');
-
-	const links = [
-		{ href: '/get-started', label: 'Install' },
-		{ href: '/foundations/color', label: 'Color' },
-		{ href: '/foundations/typography', label: 'Type' },
-		{ href: '/foundations/space', label: 'Space' },
-		{ href: '/components/button', label: 'Button' },
-		{ href: '/components/link', label: 'Link' },
-		{ href: '/components/disclosure', label: 'Disclosure' },
-		{ href: '/components/icon', label: 'Icon' },
-		{ href: '/components/text-field', label: 'Text field' },
-		{ href: '/components/checkbox', label: 'Checkbox' },
-		{ href: '/components/radio', label: 'Radio' },
-		{ href: '/components/select', label: 'Select' }
-	];
 
 	onMount(async () => {
 		theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
@@ -63,9 +49,16 @@
 		</a>
 		<nav aria-label="Documentation">
 			<ul class="nav-list">
-				{#each links as link}
+				{#each header as link}
 					<li>
-						<a href={link.href} aria-current={$page.url.pathname === link.href ? 'page' : undefined}>
+						<a
+							href={link.href}
+							aria-current={$page.url.pathname === link.href
+								? 'page'
+								: inSection($page.url.pathname, link.href)
+									? 'true'
+									: undefined}
+						>
 							{link.label}
 						</a>
 					</li>
@@ -73,7 +66,7 @@
 			</ul>
 		</nav>
 		<div class="header-tools">
-			<a class="workshop" href={storybookUrl} target="_blank" rel="noreferrer">Storybook</a>
+			<a class="workshop" href={storybookUrl} target="_blank" rel="external noreferrer">Storybook</a>
 			<select class="brand-select" aria-label="Brand" value={brand} onchange={applyBrand}>
 				<option value="ambre">Ambre</option>
 				{#each presetList as preset}
@@ -94,6 +87,6 @@
 <footer class="site-footer">
 	<div class="shell footer-row">
 		<p>Ambre is open source under the MIT license.</p>
-		<a href={storybookUrl} target="_blank" rel="noreferrer">Storybook</a>
+		<a href={storybookUrl} target="_blank" rel="external noreferrer">Storybook</a>
 	</div>
 </footer>

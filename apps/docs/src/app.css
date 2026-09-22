@@ -117,12 +117,58 @@ nav {
 }
 
 .nav-list a:hover,
-.nav-list a[aria-current='page'] {
+.nav-list a[aria-current='page'],
+.nav-list a[aria-current='true'] {
 	color: var(--amb-color-fg-default);
 }
 
-.nav-list a[aria-current='page'] {
+.nav-list a[aria-current='page'],
+.nav-list a[aria-current='true'] {
 	box-shadow: inset 0 calc(-1 * var(--amb-border-width-strong)) 0 var(--amb-color-accent-fg);
+}
+
+.doc-frame {
+	display: grid;
+	grid-template-columns: 11rem minmax(0, 1fr);
+	gap: var(--amb-space-700);
+	align-items: start;
+}
+
+.section-nav {
+	position: sticky;
+	top: calc(var(--amb-size-control-lg) + var(--amb-space-600));
+}
+
+.section-label {
+	margin: 0 0 var(--amb-space-300);
+	color: var(--amb-color-fg-subtle);
+	font-size: var(--amb-font-size-100);
+	font-weight: var(--amb-font-weight-semibold);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.section-nav ul {
+	display: grid;
+	gap: var(--amb-space-100);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.section-nav a {
+	color: var(--amb-color-fg-muted);
+	font-size: var(--amb-font-size-200);
+	text-decoration: none;
+}
+
+.section-nav a:hover,
+.section-nav a[aria-current='page'] {
+	color: var(--amb-color-fg-default);
+}
+
+.section-nav a[aria-current='page'] {
+	font-weight: var(--amb-font-weight-semibold);
 }
 
 .header-tools {
@@ -601,8 +647,13 @@ pre {
 	.hero,
 	.film,
 	.paths,
-	.bar {
+	.bar,
+	.doc-frame {
 		grid-template-columns: 1fr;
+	}
+
+	.section-nav {
+		position: static;
 	}
 
 	.bar {
@@ -644,6 +695,7 @@ pre {
 	.action-quiet,
 	.theme-toggle,
 	.brand-select,
+	.section-nav a,
 	.stage-card,
 	.path a,
 	.film,
