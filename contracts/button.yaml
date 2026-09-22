@@ -1,0 +1,87 @@
+id: button
+tag: amb-button
+status: stable
+summary: Starts an action. The label is the slotted text, and the control participates in the nearest form.
+anatomy:
+  - id: control
+    element: button
+    part: control
+  - id: label
+    slot: default
+props:
+  - name: variant
+    type: enum
+    values: [primary, secondary, ghost]
+    default: primary
+    attribute: variant
+    reflect: true
+    description: Visual emphasis. Primary is the page's main action.
+  - name: size
+    type: enum
+    values: [sm, md, lg]
+    default: md
+    attribute: size
+    reflect: true
+    description: Target height. Medium is 44px.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks activation.
+  - name: type
+    type: enum
+    values: [button, submit, reset]
+    default: button
+    attribute: type
+    reflect: true
+    description: Form behavior. Submit and reset use the host's associated form.
+slots:
+  - name: default
+    description: Accessible name. Keep this text visible.
+events:
+  - name: click
+    description: Native click from the inner button, including Enter and Space.
+a11y:
+  role: button
+  name: Slotted text. An empty slot has no accessible name.
+  keyboard:
+    - Enter activates the control.
+    - Space activates the control.
+  notes:
+    - The inner button is native, so the role is not re-authored with ARIA.
+    - Clicking type=submit calls requestSubmit on the associated form.
+    - Pressing Enter inside a text field still uses a native submit button when the form has one.
+tokens:
+  - color.accent.bg
+  - color.accent.bg-hover
+  - color.accent.bg-active
+  - color.fg.on-accent
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.muted
+  - color.bg.disabled
+  - color.fg.default
+  - color.fg.disabled
+  - color.accent.fg
+  - color.border.default
+  - color.focus.ring
+  - focus.ring.width
+  - focus.ring.offset
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.size.400
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - radius.md
+  - border.width.default
+  - space.100
+  - space.300
+  - space.400
+  - space.500
+  - size.control.sm
+  - size.control.md
+  - size.control.lg
+  - duration.fast
+  - easing.standard

@@ -1,0 +1,27 @@
+{
+  "name": "@ambre/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "pnpm --dir ../.. build",
+    "prebuild": "pnpm --dir ../.. build",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ambre/tokens": "workspace:*",
+    "@ambre/ui": "workspace:*",
+    "@fontsource/source-code-pro": "^5.3.0",
+    "@fontsource/source-sans-3": "^5.3.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "svelte": "^5.57.1",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.0"
+  }
+}

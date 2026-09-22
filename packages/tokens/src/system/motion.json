@@ -1,0 +1,41 @@
+{
+  "duration": {
+    "fast": {
+      "$type": "duration",
+      "$value": "120ms",
+      "$description": "Hover and press."
+    },
+    "moderate": {
+      "$type": "duration",
+      "$value": "200ms",
+      "$description": "Default transition."
+    },
+    "slow": {
+      "$type": "duration",
+      "$value": "320ms",
+      "$description": "Large surface enter and exit."
+    }
+  },
+  "easing": {
+    "standard": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ],
+      "$description": "Default easing."
+    },
+    "exit": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
+      "$description": "Elements leaving."
+    }
+  }
+}

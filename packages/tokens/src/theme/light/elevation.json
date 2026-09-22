@@ -1,0 +1,100 @@
+{
+  "elevation": {
+    "1": {
+      "$type": "shadow",
+      "$description": "Raised control on a light surface.",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1098,
+            0.0941,
+            0.0784
+          ],
+          "hex": "#1c1814",
+          "alpha": 0.12
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 1,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 2,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "2": {
+      "$type": "shadow",
+      "$description": "Dropdown and popover on a light surface.",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1098,
+            0.0941,
+            0.0784
+          ],
+          "hex": "#1c1814",
+          "alpha": 0.12
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 4,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 16,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "3": {
+      "$type": "shadow",
+      "$description": "Dialog on a light surface.",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1098,
+            0.0941,
+            0.0784
+          ],
+          "hex": "#1c1814",
+          "alpha": 0.16
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 16,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 40,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/button/Button.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Button",
+          "description": "Starts an action. The label is the slotted text, and the control participates in the nearest form.",
+          "tagName": "amb-button",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": "primary | secondary | ghost",
+              "default": "primary",
+              "description": "Visual emphasis. Primary is the page's main action.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": "sm | md | lg",
+              "default": "md",
+              "description": "Target height. Medium is 44px.",
+              "fieldName": "size"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks activation.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "type",
+              "type": "button | submit | reset",
+              "default": "button",
+              "description": "Form behavior. Submit and reset use the host's associated form.",
+              "fieldName": "type"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible."
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "description": "Native click from the inner button, including Enter and Space."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control",
+              "description": "control"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-size-400",
+              "description": "font.size.400"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-space-500",
+              "description": "space.500"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-size-control-lg",
+              "description": "size.control.lg"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-button",
+          "declaration": {
+            "name": "Button",
+            "module": "src/button/Button.svelte"
+          }
+        }
+      ]
+    }
+  ]
+}

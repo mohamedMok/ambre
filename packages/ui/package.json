@@ -1,0 +1,45 @@
+{
+  "name": "@ambre/ui",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Ambre web components. One library, custom elements prefixed amb-.",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "types",
+    "custom-elements.json"
+  ],
+  "sideEffects": [
+    "./dist/index.js",
+    "./dist/button.js"
+  ],
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./button": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/button.js"
+    },
+    "./custom-elements.json": "./custom-elements.json"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-manifest.mjs && vite build",
+    "test": "node ../../scripts/build-manifest.mjs && node ../../scripts/check-contract.mjs",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "@ambre/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@tsconfig/svelte": "^5.0.6",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.3.3",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.0"
+  }
+}

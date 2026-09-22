@@ -1,0 +1,150 @@
+{
+  "color": {
+    "bg": {
+      "canvas": {
+        "$type": "color",
+        "$value": "{color.neutral.950}",
+        "$description": "Page background."
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{color.neutral.900}",
+        "$description": "Cards, fields, and secondary buttons."
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.800}",
+        "$description": "Hover fill for quiet controls."
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{color.neutral.700}",
+        "$description": "Pressed fill for quiet controls."
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.50}",
+        "$description": "Inverted surface."
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.800}",
+        "$description": "Disabled control fill."
+      }
+    },
+    "fg": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.50}",
+        "$description": "Default text."
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{color.neutral.300}",
+        "$description": "Secondary text."
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.400}",
+        "$description": "Tertiary text. Still meets AA on the canvas."
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.900}",
+        "$description": "Text on an inverted surface."
+      },
+      "on-accent": {
+        "$type": "color",
+        "$value": "{color.neutral.950}",
+        "$description": "Text on an accent fill."
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.500}",
+        "$description": "Disabled control text. Disabled text is exempt from WCAG contrast, and this pair stays visible."
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.500}",
+        "$description": "UI boundary. Meets 3:1 against the canvas."
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.neutral.300}",
+        "$description": "Emphasis boundary."
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.700}",
+        "$description": "Disabled control boundary."
+      }
+    },
+    "accent": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.amber.400}",
+        "$description": "Primary action fill."
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.amber.300}",
+        "$description": "Primary action hover fill."
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.amber.500}",
+        "$description": "Primary action pressed fill."
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.amber.300}",
+        "$description": "Accent text, including links and ghost controls."
+      }
+    },
+    "focus": {
+      "ring": {
+        "$type": "color",
+        "$value": "{color.amber.300}",
+        "$description": "Focus ring. Meets 3:1 against the canvas and surfaces."
+      }
+    },
+    "status": {
+      "danger": {
+        "fg": {
+          "$type": "color",
+          "$value": "{color.danger.300}",
+          "$description": "Danger text on the canvas."
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{color.danger.700}",
+          "$description": "Danger fill."
+        },
+        "on": {
+          "$type": "color",
+          "$value": "{color.neutral.0}",
+          "$description": "Text on a danger fill."
+        }
+      },
+      "success": {
+        "fg": {
+          "$type": "color",
+          "$value": "{color.success.300}",
+          "$description": "Success text on the canvas."
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{color.success.700}",
+          "$description": "Success fill."
+        },
+        "on": {
+          "$type": "color",
+          "$value": "{color.neutral.0}",
+          "$description": "Text on a success fill."
+        }
+      }
+    }
+  }
+}

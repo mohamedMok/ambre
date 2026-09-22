@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ambre.dev/schema/component.json",
+  "title": "Ambre component contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "tag", "status", "summary", "anatomy", "props", "slots", "events", "a11y", "tokens"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "tag": { "type": "string", "pattern": "^amb-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "status": { "enum": ["draft", "stable", "deprecated"] },
+    "summary": { "type": "string", "minLength": 20 },
+    "anatomy": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "string" },
+          "element": { "type": "string" },
+          "part": { "type": "string" },
+          "slot": { "type": "string" }
+        }
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "type", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "enum": ["string", "boolean", "number", "enum"] },
+          "values": { "type": "array", "items": { "type": "string" } },
+          "default": {},
+          "attribute": { "type": "string" },
+          "reflect": { "type": "boolean" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name", "keyboard"],
+      "properties": {
+        "role": { "type": "string" },
+        "name": { "type": "string" },
+        "keyboard": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "tokens": { "type": "array", "items": { "type": "string" } }
+  }
+}

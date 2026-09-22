@@ -1,0 +1,23 @@
+{
+  "name": "ambre",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Open-source design system. One library of Svelte web components.",
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "pnpm --filter @ambre/tokens build && pnpm --filter @ambre/ui build",
+    "test": "pnpm --filter @ambre/tokens test && pnpm --filter @ambre/ui test",
+    "docs": "pnpm --filter @ambre/docs dev",
+    "storybook": "pnpm --filter @ambre/storybook dev",
+    "check": "pnpm -r --if-present check"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "yaml": "^2.9.1"
+  },
+  "license": "MIT"
+}

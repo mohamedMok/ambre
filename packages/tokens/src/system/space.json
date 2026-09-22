@@ -1,0 +1,54 @@
+{
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": "{dimension.0}",
+      "$description": "Space 0. Alias of dimension.0."
+    },
+    "100": {
+      "$type": "dimension",
+      "$value": "{dimension.100}",
+      "$description": "Space 100. Alias of dimension.100."
+    },
+    "200": {
+      "$type": "dimension",
+      "$value": "{dimension.200}",
+      "$description": "Space 200. Alias of dimension.200."
+    },
+    "300": {
+      "$type": "dimension",
+      "$value": "{dimension.300}",
+      "$description": "Space 300. Alias of dimension.300."
+    },
+    "400": {
+      "$type": "dimension",
+      "$value": "{dimension.400}",
+      "$description": "Space 400. Alias of dimension.400."
+    },
+    "500": {
+      "$type": "dimension",
+      "$value": "{dimension.500}",
+      "$description": "Space 500. Alias of dimension.500."
+    },
+    "600": {
+      "$type": "dimension",
+      "$value": "{dimension.600}",
+      "$description": "Space 600. Alias of dimension.600."
+    },
+    "700": {
+      "$type": "dimension",
+      "$value": "{dimension.700}",
+      "$description": "Space 700. Alias of dimension.700."
+    },
+    "800": {
+      "$type": "dimension",
+      "$value": "{dimension.800}",
+      "$description": "Space 800. Alias of dimension.800."
+    },
+    "900": {
+      "$type": "dimension",
+      "$value": "{dimension.900}",
+      "$description": "Space 900. Alias of dimension.900."
+    }
+  }
+}

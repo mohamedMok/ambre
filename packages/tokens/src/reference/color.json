@@ -1,0 +1,350 @@
+{
+  "color": {
+    "neutral": {
+      "0": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$description": "White."
+      },
+      "50": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9804,
+            0.9686,
+            0.949
+          ],
+          "hex": "#faf7f2"
+        },
+        "$description": "Warm paper. Default light canvas."
+      },
+      "100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9529,
+            0.9333,
+            0.902
+          ],
+          "hex": "#f3eee6"
+        },
+        "$description": "Subtle warm fill."
+      },
+      "200": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9059,
+            0.8745,
+            0.8235
+          ],
+          "hex": "#e7dfd2"
+        },
+        "$description": "Muted warm fill and disabled surface."
+      },
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8314,
+            0.7843,
+            0.7059
+          ],
+          "hex": "#d4c8b4"
+        },
+        "$description": "Quiet warm tone. Dark-theme muted text."
+      },
+      "400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7098,
+            0.6431,
+            0.549
+          ],
+          "hex": "#b5a48c"
+        },
+        "$description": "Mid warm tone. Dark-theme subtle text."
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5608,
+            0.4902,
+            0.4
+          ],
+          "hex": "#8f7d66"
+        },
+        "$description": "Border on light surfaces. Meets 3:1 against paper."
+      },
+      "600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4314,
+            0.3725,
+            0.298
+          ],
+          "hex": "#6e5f4c"
+        },
+        "$description": "Subtle text on light surfaces."
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.302,
+            0.2627,
+            0.2196
+          ],
+          "hex": "#4d4338"
+        },
+        "$description": "Muted text on light surfaces."
+      },
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1961,
+            0.1725,
+            0.1451
+          ],
+          "hex": "#322c25"
+        },
+        "$description": "Strong dark fill."
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1098,
+            0.0941,
+            0.0784
+          ],
+          "hex": "#1c1814"
+        },
+        "$description": "Default light text and inverse surface."
+      },
+      "950": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0627,
+            0.0549,
+            0.0471
+          ],
+          "hex": "#100e0c"
+        },
+        "$description": "Dark canvas. Dark text on accent fills."
+      }
+    },
+    "amber": {
+      "50": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.9725,
+            0.9294
+          ],
+          "hex": "#fff8ed"
+        },
+        "$description": "Amber tint."
+      },
+      "100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.9373,
+            0.8314
+          ],
+          "hex": "#ffefd4"
+        },
+        "$description": "Amber wash."
+      },
+      "200": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.851,
+            0.6588
+          ],
+          "hex": "#ffd9a8"
+        },
+        "$description": "Amber light."
+      },
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.7529,
+            0.4157
+          ],
+          "hex": "#ffc06a"
+        },
+        "$description": "Amber highlight. Focus ring and accent text on dark."
+      },
+      "400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9412,
+            0.6275,
+            0.2275
+          ],
+          "hex": "#f0a03a"
+        },
+        "$description": "Amber mid. Primary action fill on dark."
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8314,
+            0.5176,
+            0.102
+          ],
+          "hex": "#d4841a"
+        },
+        "$description": "Amber pressed fill on dark."
+      },
+      "600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.651,
+            0.3686,
+            0.0392
+          ],
+          "hex": "#a65e0a"
+        },
+        "$description": "Primary action fill on light. White text passes WCAG 2.2 AA."
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5412,
+            0.3098,
+            0.0431
+          ],
+          "hex": "#8a4f0b"
+        },
+        "$description": "Accent text on light, and hover fill for primary actions."
+      },
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3961,
+            0.2314,
+            0.0471
+          ],
+          "hex": "#653b0c"
+        },
+        "$description": "Pressed fill for primary actions on light."
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2392,
+            0.1333,
+            0.0314
+          ],
+          "hex": "#3d2208"
+        },
+        "$description": "Deep amber."
+      }
+    },
+    "danger": {
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.7059,
+            0.6588
+          ],
+          "hex": "#ffb4a8"
+        },
+        "$description": "Danger text on dark surfaces."
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6039,
+            0.2,
+            0.1725
+          ],
+          "hex": "#9a332c"
+        },
+        "$description": "Danger text on light surfaces, and danger fill in both themes."
+      }
+    },
+    "success": {
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5608,
+            0.8157,
+            0.6588
+          ],
+          "hex": "#8fd0a8"
+        },
+        "$description": "Success text on dark surfaces."
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0784,
+            0.4196,
+            0.2275
+          ],
+          "hex": "#146b3a"
+        },
+        "$description": "Success text on light surfaces, and success fill in both themes."
+      }
+    }
+  }
+}

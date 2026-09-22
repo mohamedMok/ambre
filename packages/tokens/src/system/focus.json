@@ -1,0 +1,22 @@
+{
+  "focus": {
+    "ring": {
+      "width": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        },
+        "$description": "Focus ring thickness."
+      },
+      "offset": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        },
+        "$description": "Space between the control and the focus ring."
+      }
+    }
+  }
+}

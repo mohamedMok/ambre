@@ -1,0 +1,9 @@
+{
+  "opacity": {
+    "scrim": {
+      "$type": "number",
+      "$value": 0.48,
+      "$description": "Overlay scrim. Not for text."
+    }
+  }
+}

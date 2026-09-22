@@ -1,0 +1,282 @@
+[
+  {
+    "fg": "color.fg.default",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Body text on the page"
+  },
+  {
+    "fg": "color.fg.default",
+    "bg": "color.bg.surface",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Body text on a surface"
+  },
+  {
+    "fg": "color.fg.default",
+    "bg": "color.bg.subtle",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Body text on a subtle fill"
+  },
+  {
+    "fg": "color.fg.muted",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Secondary text"
+  },
+  {
+    "fg": "color.fg.subtle",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Tertiary text"
+  },
+  {
+    "fg": "color.fg.on-accent",
+    "bg": "color.accent.bg",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Primary button label"
+  },
+  {
+    "fg": "color.fg.on-accent",
+    "bg": "color.accent.bg-hover",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Primary button label on hover"
+  },
+  {
+    "fg": "color.fg.on-accent",
+    "bg": "color.accent.bg-active",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Primary button label when pressed"
+  },
+  {
+    "fg": "color.accent.fg",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Accent text and ghost button"
+  },
+  {
+    "fg": "color.accent.fg",
+    "bg": "color.bg.subtle",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Ghost button label on hover"
+  },
+  {
+    "fg": "color.fg.inverse",
+    "bg": "color.bg.inverse",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Inverted text"
+  },
+  {
+    "fg": "color.status.danger.fg",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Danger text"
+  },
+  {
+    "fg": "color.status.success.fg",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Success text"
+  },
+  {
+    "fg": "color.status.danger.on",
+    "bg": "color.status.danger.bg",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Text on a danger fill"
+  },
+  {
+    "fg": "color.status.success.on",
+    "bg": "color.status.success.bg",
+    "theme": "light",
+    "min": 4.5,
+    "purpose": "Text on a success fill"
+  },
+  {
+    "fg": "color.border.default",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 3,
+    "purpose": "Default border"
+  },
+  {
+    "fg": "color.border.default",
+    "bg": "color.bg.surface",
+    "theme": "light",
+    "min": 3,
+    "purpose": "Border on a surface"
+  },
+  {
+    "fg": "color.focus.ring",
+    "bg": "color.bg.canvas",
+    "theme": "light",
+    "min": 3,
+    "purpose": "Focus ring on the page"
+  },
+  {
+    "fg": "color.focus.ring",
+    "bg": "color.bg.surface",
+    "theme": "light",
+    "min": 3,
+    "purpose": "Focus ring on a surface"
+  },
+  {
+    "fg": "color.fg.disabled",
+    "bg": "color.bg.disabled",
+    "theme": "light",
+    "min": 3,
+    "purpose": "Disabled control stays visible"
+  },
+  {
+    "fg": "color.fg.default",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Body text on the page"
+  },
+  {
+    "fg": "color.fg.default",
+    "bg": "color.bg.surface",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Body text on a surface"
+  },
+  {
+    "fg": "color.fg.default",
+    "bg": "color.bg.subtle",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Body text on a subtle fill"
+  },
+  {
+    "fg": "color.fg.muted",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Secondary text"
+  },
+  {
+    "fg": "color.fg.subtle",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Tertiary text"
+  },
+  {
+    "fg": "color.fg.on-accent",
+    "bg": "color.accent.bg",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Primary button label"
+  },
+  {
+    "fg": "color.fg.on-accent",
+    "bg": "color.accent.bg-hover",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Primary button label on hover"
+  },
+  {
+    "fg": "color.fg.on-accent",
+    "bg": "color.accent.bg-active",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Primary button label when pressed"
+  },
+  {
+    "fg": "color.accent.fg",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Accent text and ghost button"
+  },
+  {
+    "fg": "color.accent.fg",
+    "bg": "color.bg.subtle",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Ghost button label on hover"
+  },
+  {
+    "fg": "color.fg.inverse",
+    "bg": "color.bg.inverse",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Inverted text"
+  },
+  {
+    "fg": "color.status.danger.fg",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Danger text"
+  },
+  {
+    "fg": "color.status.success.fg",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Success text"
+  },
+  {
+    "fg": "color.status.danger.on",
+    "bg": "color.status.danger.bg",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Text on a danger fill"
+  },
+  {
+    "fg": "color.status.success.on",
+    "bg": "color.status.success.bg",
+    "theme": "dark",
+    "min": 4.5,
+    "purpose": "Text on a success fill"
+  },
+  {
+    "fg": "color.border.default",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 3,
+    "purpose": "Default border"
+  },
+  {
+    "fg": "color.border.default",
+    "bg": "color.bg.surface",
+    "theme": "dark",
+    "min": 3,
+    "purpose": "Border on a surface"
+  },
+  {
+    "fg": "color.focus.ring",
+    "bg": "color.bg.canvas",
+    "theme": "dark",
+    "min": 3,
+    "purpose": "Focus ring on the page"
+  },
+  {
+    "fg": "color.focus.ring",
+    "bg": "color.bg.surface",
+    "theme": "dark",
+    "min": 3,
+    "purpose": "Focus ring on a surface"
+  },
+  {
+    "fg": "color.fg.disabled",
+    "bg": "color.bg.disabled",
+    "theme": "dark",
+    "min": 3,
+    "purpose": "Disabled control stays visible"
+  }
+]
