@@ -1147,7 +1147,7 @@
         {
           "kind": "class",
           "name": "Menu",
-          "description": "A button that opens a list of actions. The default slot names the button, and the panel slot holds the actions.",
+          "description": "A button that opens a menu of actions. The default slot names the button, and the panel slot holds the actions.",
           "tagName": "amb-menu",
           "attributes": [
             {
@@ -1172,7 +1172,7 @@
             },
             {
               "name": "panel",
-              "description": "Native buttons, one action each. They are not menu items."
+              "description": "Native buttons, one action each. Each receives the menuitem role."
             }
           ],
           "events": [
@@ -1447,6 +1447,192 @@
           "declaration": {
             "name": "Progress",
             "module": "src/progress/Progress.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "../commerce/src/quantity/Quantity.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Quantity",
+          "description": "Sets how many of a product to add. The slotted text names the product.",
+          "tagName": "amb-quantity",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form name submitted with the quantity.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "number",
+              "default": "1",
+              "description": "The current quantity.",
+              "fieldName": "value"
+            },
+            {
+              "name": "min",
+              "type": "number",
+              "default": "1",
+              "description": "Smallest allowed quantity.",
+              "fieldName": "min"
+            },
+            {
+              "name": "max",
+              "type": "number",
+              "default": "99",
+              "description": "Largest allowed quantity.",
+              "fieldName": "max"
+            },
+            {
+              "name": "step",
+              "type": "number",
+              "default": "1",
+              "description": "Amount the quantity changes per step.",
+              "fieldName": "step"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks changes.",
+              "fieldName": "disabled"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible name of the product being counted."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired after the quantity changes. detail.value is the next number."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "stepper",
+              "description": "stepper"
+            },
+            {
+              "name": "decrease",
+              "description": "decrease"
+            },
+            {
+              "name": "value",
+              "description": "value"
+            },
+            {
+              "name": "increase",
+              "description": "increase"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-quantity",
+          "declaration": {
+            "name": "Quantity",
+            "module": "../commerce/src/quantity/Quantity.svelte"
           }
         }
       ]

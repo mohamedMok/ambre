@@ -15,8 +15,16 @@
 
 	let { text = '' }: Props = $props();
 	let open = $state(false);
+	let placement = $state<'top' | 'bottom'>('top');
 	let trigger = $state<HTMLElement>();
 	const host = $host();
+
+	function place() {
+		const rect = host.getBoundingClientRect();
+		const above = rect.top;
+		const below = window.innerHeight - rect.bottom;
+		placement = below > above ? 'bottom' : 'top';
+	}
 
 	function describe() {
 		if (!trigger) return;
@@ -25,6 +33,7 @@
 	}
 
 	function show() {
+		place();
 		open = true;
 		describe();
 	}
@@ -58,7 +67,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <span class="wrap" onmouseenter={show} onmouseleave={hide} onfocusin={show} onfocusout={hide} onkeydown={onKeydown}>
 	<slot />
-	<span part="tip" role="tooltip" hidden={!open}>{text}</span>
+	<span part="tip" role="tooltip" data-placement={placement} hidden={!open}>{text}</span>
 </span>
 
 <style>
@@ -76,7 +85,6 @@
 		position: absolute;
 		z-index: 1;
 		left: 50%;
-		bottom: calc(100% + var(--amb-space-200));
 		translate: -50% 0;
 		max-width: 16rem;
 		padding: var(--amb-space-200) var(--amb-space-300);
@@ -89,6 +97,14 @@
 		animation: amb-arrive var(--amb-duration-fast) var(--amb-easing-enter) both;
 	}
 
+	span[part='tip'][data-placement='top'] {
+		bottom: calc(100% + var(--amb-space-200));
+	}
+
+	span[part='tip'][data-placement='bottom'] {
+		top: calc(100% + var(--amb-space-200));
+	}
+
 	span[hidden] {
 		display: none;
 	}
@@ -96,12 +112,6 @@
 	@keyframes amb-arrive {
 		from {
 			opacity: 0;
-			translate: -50% var(--amb-space-100);
-		}
-
-		to {
-			opacity: 1;
-			translate: -50% 0;
 		}
 	}
 

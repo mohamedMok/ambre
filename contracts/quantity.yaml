@@ -1,0 +1,98 @@
+id: quantity
+tag: amb-quantity
+status: stable
+summary: Sets how many of a product to add. The slotted text names the product.
+anatomy:
+  - id: field
+    element: div
+    part: field
+  - id: label
+    element: span
+    part: label
+    slot: default
+  - id: stepper
+    element: div
+    part: stepper
+  - id: decrease
+    element: button
+    part: decrease
+  - id: value
+    element: input
+    part: value
+  - id: increase
+    element: button
+    part: increase
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form name submitted with the quantity.
+  - name: value
+    type: number
+    default: 1
+    attribute: value
+    reflect: true
+    description: The current quantity.
+  - name: min
+    type: number
+    default: 1
+    attribute: min
+    reflect: true
+    description: Smallest allowed quantity.
+  - name: max
+    type: number
+    default: 99
+    attribute: max
+    reflect: true
+    description: Largest allowed quantity.
+  - name: step
+    type: number
+    default: 1
+    attribute: step
+    reflect: true
+    description: Amount the quantity changes per step.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks changes.
+slots:
+  - name: default
+    description: Visible name of the product being counted.
+events:
+  - name: change
+    description: Fired after the quantity changes. detail.value is the next number.
+a11y:
+  role: spinbutton
+  name: Slotted label text. Decrease and Increase name the buttons.
+  keyboard:
+    - Tab reaches Decrease, the number, then Increase.
+    - Arrow keys change the number by one step.
+  notes:
+    - The number field is a native input, so its role is not re-authored with ARIA.
+    - Decrease is disabled at the minimum. Increase is disabled at the maximum.
+    - This is a quantity control. A cart and a checkout stay in the product.
+tokens:
+  - color.fg.default
+  - color.fg.disabled
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.disabled
+  - color.border.default
+  - color.focus.ring
+  - font.family.sans
+  - font.size.300
+  - font.weight.regular
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - radius.md
+  - border.width.default
+  - space.200
+  - space.300
+  - size.control.md
+  - focus.ring.width
+  - focus.ring.offset

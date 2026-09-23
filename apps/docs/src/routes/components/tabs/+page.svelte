@@ -13,7 +13,7 @@
 		<button slot="tab" type="button" disabled>Packs</button>
 		<div slot="panel"><p>A brand is one preset of the same tokens.</p></div>
 		<div slot="panel"><p>The markup stays still when the brand changes.</p></div>
-		<div slot="panel"><p>Domain packs wait for a second product.</p></div>
+		<div slot="panel"><p>Commerce is a pack. Checkout stays in the product.</p></div>
 	</amb-tabs>
 </div>
 <p class="lede">Each tab is a button. Each panel is the matching region. Arrow keys move, and Home and End jump.</p>

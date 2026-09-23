@@ -29,17 +29,29 @@ for (const file of files) {
     process.exit(1);
   }
 
-  const sourceDir = path.join(root, 'packages/ui/src', contract.id);
-  const svelteFile = fs.readdirSync(sourceDir).find((entry) => entry.endsWith('.svelte'));
-  if (!svelteFile) {
+  const located = ['ui', 'commerce']
+    .map((pkg) => {
+      const dir = path.join(root, 'packages', pkg, 'src', contract.id);
+      if (!fs.existsSync(dir)) return null;
+      const svelteFile = fs.readdirSync(dir).find((entry) => entry.endsWith('.svelte'));
+      if (!svelteFile) return null;
+      const modulePath =
+        pkg === 'ui'
+          ? `src/${contract.id}/${svelteFile}`
+          : `../commerce/src/${contract.id}/${svelteFile}`;
+      return { svelteFile, modulePath };
+    })
+    .find(Boolean);
+  if (!located) {
     console.error(`No Svelte component for contract ${contract.id}`);
     process.exit(1);
   }
+  const { svelteFile, modulePath } = located;
 
   const className = svelteFile.replace(/\.svelte$/, '');
   modules.push({
     kind: 'javascript-module',
-    path: `src/${contract.id}/${svelteFile}`,
+    path: modulePath,
     declarations: [
       {
         kind: 'class',
@@ -74,7 +86,7 @@ for (const file of files) {
       {
         kind: 'custom-element-definition',
         name: contract.tag,
-        declaration: { name: className, module: `src/${contract.id}/${svelteFile}` },
+        declaration: { name: className, module: modulePath },
       },
     ],
   });

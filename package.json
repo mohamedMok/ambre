@@ -9,7 +9,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "pnpm --filter @ambre/tokens build && pnpm --filter @ambre/ui build",
+    "build": "pnpm --filter @ambre/tokens build && pnpm --filter @ambre/ui build && pnpm --filter @ambre/commerce build",
     "test": "pnpm --filter @ambre/tokens test && pnpm --filter @ambre/ui test",
     "docs": "pnpm --filter @ambre/docs dev",
     "storybook": "pnpm --filter @ambre/storybook dev",

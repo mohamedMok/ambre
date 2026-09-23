@@ -1,7 +1,7 @@
 id: menu
 tag: amb-menu
 status: stable
-summary: A button that opens a list of actions. The default slot names the button, and the panel slot holds the actions.
+summary: A button that opens a menu of actions. The default slot names the button, and the panel slot holds the actions.
 anatomy:
   - id: control
     element: button
@@ -28,20 +28,22 @@ slots:
   - name: default
     description: Visible name of the button that opens the list.
   - name: panel
-    description: Native buttons, one action each. They are not menu items.
+    description: Native buttons, one action each. Each receives the menuitem role.
 events:
   - name: toggle
     description: Fired after the open state changes. detail.open is the next state.
 a11y:
-  role: button
-  name: Slotted text on the button.
+  role: menu
+  name: The button is named by its slotted text. Each action is named by its own text.
   keyboard:
-    - Enter and Space toggle the list.
+    - Enter and Space toggle the list from the button, and activate an action.
     - ArrowDown opens the list and moves through the actions.
     - ArrowUp, Home, and End move through the actions.
     - Escape closes the list and returns focus to the button.
+    - Tab closes the list and moves focus onward.
   notes:
-    - The trigger and the actions are native buttons, so the menu role is not used.
+    - The trigger is a native button with aria-haspopup set to menu.
+    - Each action is a native button with the menuitem role.
     - A click outside the list closes it.
 tokens:
   - color.fg.default

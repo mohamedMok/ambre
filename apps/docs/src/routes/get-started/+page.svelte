@@ -31,7 +31,8 @@
 </div>
 
 <p class="lede">
-	Two packages. <code>@ambre/tokens</code> carries the theme. <code>@ambre/ui</code> carries the components.
+	<code>@ambre/tokens</code> carries the theme. <code>@ambre/ui</code> carries the components.
+	<code>@ambre/commerce</code> carries shop compositions such as quantity. Checkout stays in the product.
 	The packages are not on npm yet. Build them from this repository.
 </p>
 
@@ -53,7 +54,8 @@ pnpm add @fontsource/source-sans-3 @fontsource/source-code-pro</code></pre>
 import '@fontsource/source-sans-3/600.css';
 import '@fontsource/source-code-pro/400.css';
 import '@ambre/tokens/css';
-import '@ambre/ui';</code></pre>
+import '@ambre/ui';
+import '@ambre/commerce';</code></pre>
 <pre><code>&lt;amb-button type="submit"&gt;Save changes&lt;/amb-button&gt;
 &lt;amb-link href="/account"&gt;Account&lt;/amb-link&gt;</code></pre>
 

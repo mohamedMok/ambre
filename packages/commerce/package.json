@@ -1,0 +1,39 @@
+{
+  "name": "@ambre/commerce",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Ambre commerce compositions. Built from core components and the same tokens.",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "sideEffects": [
+    "./dist/index.js",
+    "./dist/quantity.js"
+  ],
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./quantity": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/quantity.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@ambre/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "svelte": "^5.57.1",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.0"
+  }
+}

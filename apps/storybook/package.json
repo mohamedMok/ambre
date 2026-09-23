@@ -10,6 +10,7 @@
     "build": "storybook build"
   },
   "dependencies": {
+    "@ambre/commerce": "workspace:*",
     "@ambre/tokens": "workspace:*",
     "@ambre/ui": "workspace:*",
     "@fontsource/material-symbols-outlined": "^5.3.7",

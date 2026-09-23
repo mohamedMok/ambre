@@ -172,6 +172,17 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 				summary: 'A modal conversation. Escape closes it.'
 			}
 		]
+	},
+	{
+		title: 'Commerce',
+		summary: 'Shop compositions. They live in @ambre/commerce, outside the core library.',
+		items: [
+			{
+				href: '/components/quantity',
+				label: 'Quantity',
+				summary: 'How many. Decrease and increase stay within the bounds.'
+			}
+		]
 	}
 ];
 

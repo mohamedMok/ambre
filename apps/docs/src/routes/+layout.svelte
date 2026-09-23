@@ -28,6 +28,7 @@
 		theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 		brand = document.documentElement.dataset.brand || 'ambre';
 		await import('@ambre/ui');
+		await import('@ambre/commerce');
 	});
 
 	function toggleTheme() {

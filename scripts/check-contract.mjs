@@ -12,7 +12,13 @@ const failures = [];
 
 for (const file of fs.readdirSync(contractsDir).filter((entry) => entry.endsWith('.yaml'))) {
   const contract = parse(fs.readFileSync(path.join(contractsDir, file), 'utf8'));
-  const sourceDir = path.join(root, 'packages/ui/src', contract.id);
+  const sourceDir = ['ui', 'commerce']
+    .map((pkg) => path.join(root, 'packages', pkg, 'src', contract.id))
+    .find((dir) => fs.existsSync(dir));
+  if (!sourceDir) {
+    failures.push(`${contract.id}: missing source`);
+    continue;
+  }
   const svelteFile = fs.readdirSync(sourceDir).find((entry) => entry.endsWith('.svelte'));
   const source = fs.readFileSync(path.join(sourceDir, svelteFile), 'utf8');
 

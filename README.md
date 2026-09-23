@@ -8,6 +8,7 @@ Custom elements use the `amb-` prefix. Packages use the `@ambre` scope.
 
 - `@ambre/tokens` — design tokens in the [DTCG 2025.10](https://www.designtokens.org/TR/2025.10/format/) format, compiled with Style Dictionary to CSS variables, Sass variables, and JSON.
 - `@ambre/ui` — the component library. Basics, forms, feedback, and navigation. Icons use a Material Symbols ligature or a slotted SVG.
+- `@ambre/commerce` — shop compositions built from the core library. Quantity is the first. Checkout stays in the product.
 
 Documentation is a SvelteKit site. Storybook is the workshop.
 
@@ -29,6 +30,7 @@ Load the theme once, then the library:
 import '@ambre/tokens/css';
 import '@ambre/tokens/css/presets';
 import '@ambre/ui';
+import '@ambre/commerce';
 ```
 
 ```html
@@ -47,6 +49,7 @@ A brand is one file in `packages/tokens/src/preset`. The build writes every file
 packages/tokens/src   DTCG sources, including src/preset for brands
 contracts             component contracts
 packages/ui           Svelte custom elements
+packages/commerce     shop compositions, starting with quantity
 apps/docs             documentation site
 apps/storybook        Storybook
 decisions             architectural decision records

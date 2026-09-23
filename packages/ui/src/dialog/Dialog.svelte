@@ -19,9 +19,18 @@
 	let dialog = $state<HTMLDialogElement>();
 	const host = $host();
 
+	let announcing = false;
+
 	function finish() {
+		if (announcing) return;
+		const wasOpen = Boolean(host.open || dialog?.open);
+		if (!wasOpen) return;
+		announcing = true;
 		if (host.open) host.open = false;
 		host.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
+		queueMicrotask(() => {
+			announcing = false;
+		});
 	}
 
 	function dismiss() {
@@ -38,8 +47,9 @@
 		const sync = () => {
 			if (!dialog?.open) finish();
 		};
-		dialog.addEventListener('close', sync);
-		dialog.addEventListener('cancel', sync);
+		const onCancel = () => finish();
+		dialog.onclose = sync;
+		dialog.addEventListener('cancel', onCancel);
 		const observer = new MutationObserver(sync);
 		observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
 		if (open === true) {
@@ -48,8 +58,8 @@
 			dialog.close();
 		}
 		return () => {
-			dialog.removeEventListener('close', sync);
-			dialog.removeEventListener('cancel', sync);
+			dialog.onclose = null;
+			dialog.removeEventListener('cancel', onCancel);
 			observer.disconnect();
 		};
 	});

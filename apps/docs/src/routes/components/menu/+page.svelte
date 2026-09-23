@@ -14,7 +14,7 @@
 	</amb-menu>
 </div>
 <p class="lede">
-	The trigger and the actions are native buttons. ArrowDown opens the list. Escape closes it and
+	The trigger is a button. Each action is a menu item. ArrowDown opens the list. Escape closes it and
 	returns focus to the trigger.
 </p>
 <pre><code>&lt;amb-menu&gt;

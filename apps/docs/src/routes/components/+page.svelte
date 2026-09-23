@@ -6,7 +6,7 @@
 	<title>Components — Ambre</title>
 	<meta
 		name="description"
-		content="Ambre components. Actions, forms, status, and navigation."
+		content="Ambre components. Actions, forms, status, navigation, and commerce compositions."
 	/>
 </svelte:head>
 

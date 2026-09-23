@@ -18,10 +18,13 @@
 	let { open = false, disabled = false }: Props = $props();
 	let trigger = $state<HTMLButtonElement>();
 	const host = $host();
+	const triggerId = `amb-menu-${Math.random().toString(36).slice(2, 8)}`;
+	const panelId = `${triggerId}-panel`;
 
 	function setOpen(next: boolean) {
 		if (disabled) return;
 		host.open = next;
+		markItems(next);
 		host.dispatchEvent(
 			new CustomEvent('toggle', {
 				bubbles: true,
@@ -37,9 +40,30 @@
 		);
 	}
 
+	function markItems(shown: boolean) {
+		for (const button of actions()) {
+			button.setAttribute('role', 'menuitem');
+			if (!shown) button.tabIndex = -1;
+		}
+	}
+
+	function focusAction(index: number) {
+		const list = actions();
+		if (!list.length) return;
+		const next = ((index % list.length) + list.length) % list.length;
+		list.forEach((button, i) => {
+			button.tabIndex = i === next ? 0 : -1;
+		});
+		list[next].focus();
+	}
+
 	function onKeydown(event: KeyboardEvent) {
 		const list = actions();
 		const current = list.indexOf(document.activeElement as HTMLButtonElement);
+		if (event.key === 'Tab' && open) {
+			setOpen(false);
+			return;
+		}
 		if (event.key === 'Escape' && open) {
 			event.preventDefault();
 			setOpen(false);
@@ -50,22 +74,22 @@
 			event.preventDefault();
 			if (!open) {
 				setOpen(true);
-				queueMicrotask(() => actions()[0]?.focus());
+				queueMicrotask(() => focusAction(0));
 				return;
 			}
-			list[(current + 1) % list.length]?.focus();
+			focusAction(current + 1);
 		}
 		if (event.key === 'ArrowUp' && open && list.length) {
 			event.preventDefault();
-			list[(current <= 0 ? list.length : current) - 1]?.focus();
+			focusAction(current <= 0 ? list.length - 1 : current - 1);
 		}
 		if (event.key === 'Home' && open) {
 			event.preventDefault();
-			list[0]?.focus();
+			focusAction(0);
 		}
 		if (event.key === 'End' && open) {
 			event.preventDefault();
-			list[list.length - 1]?.focus();
+			focusAction(list.length - 1);
 		}
 	}
 
@@ -82,10 +106,15 @@
 	}
 
 	$effect(() => {
+		markItems(open);
+		const panelSlot = host.shadowRoot?.querySelector('slot[name="panel"]');
+		const sync = () => markItems(open);
+		panelSlot?.addEventListener('slotchange', sync);
 		host.addEventListener('keydown', onKeydown);
 		host.addEventListener('click', onClick);
 		document.addEventListener('pointerdown', onPointer);
 		return () => {
+			panelSlot?.removeEventListener('slotchange', sync);
 			host.removeEventListener('keydown', onKeydown);
 			host.removeEventListener('click', onClick);
 			document.removeEventListener('pointerdown', onPointer);
@@ -95,16 +124,18 @@
 
 <button
 	bind:this={trigger}
+	id={triggerId}
 	part="control"
 	type="button"
+	aria-haspopup="menu"
 	aria-expanded={open}
-	aria-controls="panel"
+	aria-controls={panelId}
 	{disabled}
 	onclick={() => setOpen(!open)}
 >
 	<slot />
 </button>
-<div id="panel" part="panel" hidden={!open}>
+<div id={panelId} part="panel" role="menu" aria-labelledby={triggerId} hidden={!open}>
 	<slot name="panel" />
 </div>
 

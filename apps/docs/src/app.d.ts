@@ -88,6 +88,14 @@ declare global {
 			'amb-tabs': {};
 			'amb-dialog': { open?: boolean; label?: string };
 			'amb-menu': { open?: boolean; disabled?: boolean };
+			'amb-quantity': {
+				name?: string;
+				value?: number;
+				min?: number;
+				max?: number;
+				step?: number;
+				disabled?: boolean;
+			};
 		}
 	}
 }

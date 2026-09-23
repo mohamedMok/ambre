@@ -25,6 +25,7 @@ a11y:
     - Escape hides the tip.
   notes:
     - The tip does not contain a control. Put actions in a dialog.
+    - The tip sits above the control, or below it when there is more room below.
     - Escape hides the tip.
 tokens:
   - color.fg.on-accent
