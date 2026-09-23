@@ -4,6 +4,268 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/badge/Badge.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Badge",
+          "description": "A small status label. The slotted text is the name, and it is not a control.",
+          "tagName": "amb-badge",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": "neutral | accent | success | danger",
+              "default": "neutral",
+              "description": "Status color.",
+              "fieldName": "variant"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The status text. It is the accessible name."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "label",
+              "description": "label"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-status-success-bg",
+              "description": "color.status.success.bg"
+            },
+            {
+              "name": "--amb-color-status-success-on",
+              "description": "color.status.success.on"
+            },
+            {
+              "name": "--amb-color-status-danger-bg",
+              "description": "color.status.danger.bg"
+            },
+            {
+              "name": "--amb-color-status-danger-on",
+              "description": "color.status.danger.on"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-100",
+              "description": "font.size.100"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-badge",
+          "declaration": {
+            "name": "Badge",
+            "module": "src/badge/Badge.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/banner/Banner.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Banner",
+          "description": "A page-level message with a status. The slotted text is the message.",
+          "tagName": "amb-banner",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": "neutral | success | danger",
+              "default": "neutral",
+              "description": "Status of the message.",
+              "fieldName": "variant"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The message. It is the accessible name."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-status-success-bg",
+              "description": "color.status.success.bg"
+            },
+            {
+              "name": "--amb-color-status-success-on",
+              "description": "color.status.success.on"
+            },
+            {
+              "name": "--amb-color-status-danger-bg",
+              "description": "color.status.danger.bg"
+            },
+            {
+              "name": "--amb-color-status-danger-on",
+              "description": "color.status.danger.on"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-banner",
+          "declaration": {
+            "name": "Banner",
+            "module": "src/banner/Banner.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/breadcrumbs/Breadcrumbs.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Breadcrumbs",
+          "description": "Shows the path back through the site. The current page is the last item and is not a link.",
+          "tagName": "amb-breadcrumbs",
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "List items. Earlier items contain a link. The last item is the current page."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "list",
+              "description": "list"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-breadcrumbs",
+          "declaration": {
+            "name": "Breadcrumbs",
+            "module": "src/breadcrumbs/Breadcrumbs.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/button/Button.svelte",
       "declarations": [
         {
@@ -355,6 +617,172 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/dialog/Dialog.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Dialog",
+          "description": "A modal conversation. The slotted content is the message, and the close slot names the dismiss control.",
+          "tagName": "amb-dialog",
+          "attributes": [
+            {
+              "name": "open",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether the dialog is shown as a modal.",
+              "fieldName": "open"
+            },
+            {
+              "name": "label",
+              "type": "string",
+              "default": "Dialog",
+              "description": "Accessible name of the dialog.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The dialog content. Headings stay native HTML."
+            },
+            {
+              "name": "close",
+              "description": "Visible name of the button that dismisses the dialog."
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "description": "Fired after the dialog closes, including Escape and the backdrop."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "surface",
+              "description": "surface"
+            },
+            {
+              "name": "body",
+              "description": "body"
+            },
+            {
+              "name": "close",
+              "description": "close"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-space-500",
+              "description": "space.500"
+            },
+            {
+              "name": "--amb-space-600",
+              "description": "space.600"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-elevation-3",
+              "description": "elevation.3"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-dialog",
+          "declaration": {
+            "name": "Dialog",
+            "module": "src/dialog/Dialog.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/disclosure/Disclosure.svelte",
       "declarations": [
         {
@@ -534,6 +962,13 @@
           "tagName": "amb-icon",
           "attributes": [
             {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Material Symbols Outlined ligature. Leave empty to slot an SVG instead. The product loads the font.",
+              "fieldName": "name"
+            },
+            {
               "name": "size",
               "type": "sm | md | lg",
               "default": "md",
@@ -565,6 +1000,10 @@
             {
               "name": "--amb-color-fg-default",
               "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-font-family-icon",
+              "description": "font.family.icon"
             },
             {
               "name": "--amb-size-icon-sm",
@@ -697,6 +1136,317 @@
           "declaration": {
             "name": "Link",
             "module": "src/link/Link.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/menu/Menu.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Menu",
+          "description": "A button that opens a list of actions. The default slot names the button, and the panel slot holds the actions.",
+          "tagName": "amb-menu",
+          "attributes": [
+            {
+              "name": "open",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether the action list is shown.",
+              "fieldName": "open"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the button from the tab order and blocks opening.",
+              "fieldName": "disabled"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible name of the button that opens the list."
+            },
+            {
+              "name": "panel",
+              "description": "Native buttons, one action each. They are not menu items."
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "description": "Fired after the open state changes. detail.open is the next state."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "panel",
+              "description": "panel"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-menu",
+          "declaration": {
+            "name": "Menu",
+            "module": "src/menu/Menu.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pagination/Pagination.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Pagination",
+          "description": "Moves between pages of a list. The slotted links are the pages, and the current one is marked.",
+          "tagName": "amb-pagination",
+          "attributes": [
+            {
+              "name": "label",
+              "type": "string",
+              "default": "Pagination",
+              "description": "Accessible name of the navigation.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "List items. Each contains a link or a button. Mark the current page with aria-current."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "list",
+              "description": "list"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-pagination",
+          "declaration": {
+            "name": "Pagination",
+            "module": "src/pagination/Pagination.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/progress/Progress.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Progress",
+          "description": "Shows how much of a task is finished. The label names the task.",
+          "tagName": "amb-progress",
+          "attributes": [
+            {
+              "name": "value",
+              "type": "number",
+              "default": "0",
+              "description": "Amount finished, from 0 to max.",
+              "fieldName": "value"
+            },
+            {
+              "name": "max",
+              "type": "number",
+              "default": "100",
+              "description": "Amount that means finished.",
+              "fieldName": "max"
+            },
+            {
+              "name": "label",
+              "type": "string",
+              "default": "Progress",
+              "description": "Accessible name of the task.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "track",
+              "description": "track"
+            },
+            {
+              "name": "fill",
+              "description": "fill"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-progress",
+          "declaration": {
+            "name": "Progress",
+            "module": "src/progress/Progress.svelte"
           }
         }
       ]
@@ -848,6 +1598,151 @@
           "declaration": {
             "name": "Radio",
             "module": "src/radio/Radio.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/range/Range.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Range",
+          "description": "Chooses a number between a minimum and a maximum. The slotted text is the label.",
+          "tagName": "amb-range",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form name submitted with the value.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "number",
+              "default": "0",
+              "description": "The current number.",
+              "fieldName": "value"
+            },
+            {
+              "name": "min",
+              "type": "number",
+              "default": "0",
+              "description": "Smallest allowed number.",
+              "fieldName": "min"
+            },
+            {
+              "name": "max",
+              "type": "number",
+              "default": "100",
+              "description": "Largest allowed number.",
+              "fieldName": "max"
+            },
+            {
+              "name": "step",
+              "type": "number",
+              "default": "1",
+              "description": "Amount the value changes per step.",
+              "fieldName": "step"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks changes.",
+              "fieldName": "disabled"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible label. It names the range."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-range",
+          "declaration": {
+            "name": "Range",
+            "module": "src/range/Range.svelte"
           }
         }
       ]
@@ -1016,6 +1911,550 @@
           "declaration": {
             "name": "Select",
             "module": "src/select/Select.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/skeleton/Skeleton.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Skeleton",
+          "description": "Holds the place of content that has not arrived. It is hidden from assistive technology.",
+          "tagName": "amb-skeleton",
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "Optional shape. Leave it empty for a single bar."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "block",
+              "description": "block"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-duration-loop",
+              "description": "duration.loop"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-skeleton",
+          "declaration": {
+            "name": "Skeleton",
+            "module": "src/skeleton/Skeleton.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/spinner/Spinner.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Spinner",
+          "description": "Shows that content is loading. The label names the wait for assistive technology.",
+          "tagName": "amb-spinner",
+          "attributes": [
+            {
+              "name": "label",
+              "type": "string",
+              "default": "Loading",
+              "description": "Accessible name of the wait.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "graphic",
+              "description": "graphic"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-size-icon-lg",
+              "description": "size.icon.lg"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-duration-loop",
+              "description": "duration.loop"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-spinner",
+          "declaration": {
+            "name": "Spinner",
+            "module": "src/spinner/Spinner.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/tabs/Tabs.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Tabs",
+          "description": "Switches between panels. Each tab is a button, and each panel is the matching region.",
+          "tagName": "amb-tabs",
+          "attributes": [],
+          "slots": [
+            {
+              "name": "tab",
+              "description": "One button per panel, in the same order. The button text is the tab name."
+            },
+            {
+              "name": "panel",
+              "description": "The region shown when the matching tab is selected."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when the selected tab changes. detail.index is the new index."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "list",
+              "description": "list"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-tabs",
+          "declaration": {
+            "name": "Tabs",
+            "module": "src/tabs/Tabs.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/tag/Tag.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Tag",
+          "description": "Labels an object for recognition. The slotted text is the name, and it is not a control.",
+          "tagName": "amb-tag",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": "neutral | accent",
+              "default": "neutral",
+              "description": "Quiet or accent fill.",
+              "fieldName": "variant"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The label text. It is the accessible name."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "label",
+              "description": "label"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-tag",
+          "declaration": {
+            "name": "Tag",
+            "module": "src/tag/Tag.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/text-area/TextArea.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TextArea",
+          "description": "A multi-line field. The slotted text is the label, and the value is the typed text.",
+          "tagName": "amb-text-area",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form name submitted with the value.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "The current text.",
+              "fieldName": "value"
+            },
+            {
+              "name": "placeholder",
+              "type": "string",
+              "default": "",
+              "description": "Hint shown while the field is empty. It is not a label.",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "rows",
+              "type": "number",
+              "default": "4",
+              "description": "Visible line count of the control.",
+              "fieldName": "rows"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks editing.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The field must have a value before the form submits.",
+              "fieldName": "required"
+            },
+            {
+              "name": "readonly",
+              "type": "boolean",
+              "default": "false",
+              "description": "The value can be focused and copied, and it cannot be edited.",
+              "fieldName": "readonly"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible label. It names the field."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-text-area",
+          "declaration": {
+            "name": "TextArea",
+            "module": "src/text-area/TextArea.svelte"
           }
         }
       ]
@@ -1220,6 +2659,278 @@
           "declaration": {
             "name": "TextField",
             "module": "src/text-field/TextField.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/toggle/Toggle.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Toggle",
+          "description": "A switch between two states. The slotted text is the label, and checked is the on state.",
+          "tagName": "amb-toggle",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form name submitted when the switch is on.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "on",
+              "description": "Form value submitted when the switch is on.",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether the switch is on.",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the control from the tab order and blocks toggling.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The switch must be on before the form submits.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible label. It names the switch."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-toggle",
+          "declaration": {
+            "name": "Toggle",
+            "module": "src/toggle/Toggle.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/tooltip/Tooltip.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Tooltip",
+          "description": "A short description that appears on hover and focus of the slotted control.",
+          "tagName": "amb-tooltip",
+          "attributes": [
+            {
+              "name": "text",
+              "type": "string",
+              "default": "",
+              "description": "The description. It is the accessible name of the tip.",
+              "fieldName": "text"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The control the tip describes. One focusable element."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "tip",
+              "description": "tip"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-tooltip",
+          "declaration": {
+            "name": "Tooltip",
+            "module": "src/tooltip/Tooltip.svelte"
           }
         }
       ]

@@ -12,14 +12,29 @@
   ],
   "sideEffects": [
     "./dist/index.js",
+    "./dist/badge.js",
+    "./dist/banner.js",
+    "./dist/breadcrumbs.js",
     "./dist/button.js",
     "./dist/checkbox.js",
+    "./dist/dialog.js",
     "./dist/disclosure.js",
     "./dist/icon.js",
     "./dist/link.js",
+    "./dist/menu.js",
+    "./dist/pagination.js",
+    "./dist/progress.js",
     "./dist/radio.js",
+    "./dist/range.js",
     "./dist/select.js",
-    "./dist/text-field.js"
+    "./dist/skeleton.js",
+    "./dist/spinner.js",
+    "./dist/tabs.js",
+    "./dist/tag.js",
+    "./dist/text-area.js",
+    "./dist/text-field.js",
+    "./dist/toggle.js",
+    "./dist/tooltip.js"
   ],
   "types": "./types/index.d.ts",
   "exports": {
@@ -55,9 +70,69 @@
       "types": "./types/index.d.ts",
       "import": "./dist/select.js"
     },
+    "./badge": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/badge.js"
+    },
+    "./banner": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/banner.js"
+    },
+    "./breadcrumbs": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/breadcrumbs.js"
+    },
+    "./dialog": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/dialog.js"
+    },
+    "./menu": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/menu.js"
+    },
+    "./pagination": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/pagination.js"
+    },
+    "./progress": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/progress.js"
+    },
+    "./range": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/range.js"
+    },
+    "./skeleton": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/skeleton.js"
+    },
+    "./spinner": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/spinner.js"
+    },
+    "./tabs": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/tabs.js"
+    },
+    "./tag": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/tag.js"
+    },
+    "./text-area": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/text-area.js"
+    },
     "./text-field": {
       "types": "./types/index.d.ts",
       "import": "./dist/text-field.js"
+    },
+    "./toggle": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/toggle.js"
+    },
+    "./tooltip": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/tooltip.js"
     },
     "./custom-elements.json": "./custom-elements.json"
   },

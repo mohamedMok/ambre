@@ -1,0 +1,26 @@
+id: breadcrumbs
+tag: amb-breadcrumbs
+status: stable
+summary: Shows the path back through the site. The current page is the last item and is not a link.
+anatomy:
+  - id: list
+    element: ol
+    part: list
+props: []
+slots:
+  - name: default
+    description: List items. Earlier items contain a link. The last item is the current page.
+events: []
+a11y:
+  role: navigation
+  name: Breadcrumbs, from the nav label.
+  keyboard:
+    - Tab moves between the links.
+  notes:
+    - The last item has aria-current set to page.
+tokens:
+  - color.fg.muted
+  - font.family.sans
+  - font.size.200
+  - font.lineHeight.body
+  - space.200

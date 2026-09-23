@@ -14,6 +14,11 @@
       "$type": "duration",
       "$value": "320ms",
       "$description": "Large surface enter and exit."
+    },
+    "loop": {
+      "$type": "duration",
+      "$value": "900ms",
+      "$description": "One cycle of a repeated motion, such as a spinner."
     }
   },
   "easing": {
@@ -26,6 +31,16 @@
         1
       ],
       "$description": "Default easing."
+    },
+    "enter": {
+      "$type": "cubicBezier",
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
+      "$description": "Elements arriving. They decelerate into place."
     },
     "exit": {
       "$type": "cubicBezier",

@@ -1,0 +1,41 @@
+id: tooltip
+tag: amb-tooltip
+status: stable
+summary: A short description that appears on hover and focus of the slotted control.
+anatomy:
+  - id: tip
+    element: span
+    part: tip
+props:
+  - name: text
+    type: string
+    default: ""
+    attribute: text
+    reflect: true
+    description: The description. It is the accessible name of the tip.
+slots:
+  - name: default
+    description: The control the tip describes. One focusable element.
+events: []
+a11y:
+  role: tooltip
+  name: The text prop.
+  keyboard:
+    - Tab shows the tip when the slotted control receives focus, and hides it when focus leaves.
+    - Escape hides the tip.
+  notes:
+    - The tip does not contain a control. Put actions in a dialog.
+    - Escape hides the tip.
+tokens:
+  - color.fg.on-accent
+  - color.accent.bg
+  - font.family.sans
+  - font.size.200
+  - font.lineHeight.body
+  - radius.sm
+  - space.100
+  - space.200
+  - space.300
+  - elevation.2
+  - duration.fast
+  - easing.enter

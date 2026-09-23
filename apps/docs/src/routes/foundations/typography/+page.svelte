@@ -14,24 +14,24 @@
 <h1>Type</h1>
 <p class="type-poster" style:font-family="var(--amb-font-family-sans)">Warm by default.</p>
 <p class="lede">
-	Load Source Sans 3 and Source Code Pro in the product. The tokens name the stack. They do not
-	ship the font files.
+	The default face is Source Sans 3. A preset replaces the stack, the sizes, and the weights. Load
+	the face the preset names. The tokens do not ship the font files.
 </p>
 
 <div class="family-grid">
 	{#each families as token}
 		<article class="family-card">
 			<small>{token.path}</small>
-			<p style:font-family={String(token.value)}>{token.value}</p>
+			<p style:font-family="var({token.css})">{token.path}</p>
 		</article>
 	{/each}
 </div>
 
 <div class="scale">
 	{#each sizes as token}
-		<p style:font-size={String(token.value)} style:line-height="var(--amb-font-line-height-tight)" style:margin="0">
+		<p style:font-size="var({token.css})" style:line-height="var(--amb-font-line-height-tight)" style:margin="0">
 			{token.path}
-			<small style:display="block" style:color="var(--amb-color-fg-muted)">{token.value}. {token.description}</small>
+			<small style:display="block" style:color="var(--amb-color-fg-muted)">{token.css}</small>
 		</p>
 	{/each}
 </div>

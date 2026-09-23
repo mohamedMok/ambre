@@ -1,0 +1,32 @@
+id: pagination
+tag: amb-pagination
+status: stable
+summary: Moves between pages of a list. The slotted links are the pages, and the current one is marked.
+anatomy:
+  - id: list
+    element: ol
+    part: list
+props:
+  - name: label
+    type: string
+    default: Pagination
+    attribute: label
+    reflect: true
+    description: Accessible name of the navigation.
+slots:
+  - name: default
+    description: List items. Each contains a link or a button. Mark the current page with aria-current.
+events: []
+a11y:
+  role: navigation
+  name: The label prop.
+  keyboard:
+    - Tab moves between the page controls.
+  notes:
+    - The product sets aria-current page on the current item.
+tokens:
+  - color.fg.default
+  - font.family.sans
+  - font.size.300
+  - font.lineHeight.body
+  - space.200

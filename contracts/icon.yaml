@@ -9,6 +9,12 @@ anatomy:
   - id: svg
     slot: default
 props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Material Symbols Outlined ligature. Leave empty to slot an SVG instead. The product loads the font.
   - name: size
     type: enum
     values: [sm, md, lg]
@@ -35,6 +41,7 @@ a11y:
     - The large size is 24px. Smaller sizes belong inside a control that meets the target size.
 tokens:
   - color.fg.default
+  - font.family.icon
   - size.icon.sm
   - size.icon.md
   - size.icon.lg

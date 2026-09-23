@@ -1,0 +1,45 @@
+id: progress
+tag: amb-progress
+status: stable
+summary: Shows how much of a task is finished. The label names the task.
+anatomy:
+  - id: track
+    element: div
+    part: track
+  - id: fill
+    element: div
+    part: fill
+props:
+  - name: value
+    type: number
+    default: 0
+    attribute: value
+    reflect: true
+    description: Amount finished, from 0 to max.
+  - name: max
+    type: number
+    default: 100
+    attribute: max
+    reflect: true
+    description: Amount that means finished.
+  - name: label
+    type: string
+    default: Progress
+    attribute: label
+    reflect: true
+    description: Accessible name of the task.
+slots: []
+events: []
+a11y:
+  role: progressbar
+  name: The label prop.
+  keyboard: []
+  notes:
+    - The value and max are exposed so assistive technology can announce the amount.
+tokens:
+  - color.accent.bg
+  - color.bg.subtle
+  - radius.full
+  - size.icon.sm
+  - duration.moderate
+  - easing.enter

@@ -8,22 +8,17 @@
 <div class="stage-card">
 	<p class="stage-label">amb-icon</p>
 	<div class="row">
-		<amb-icon size="sm" label="Add">
-			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" /></svg>
-		</amb-icon>
-		<amb-icon size="md" label="Add">
-			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" /></svg>
-		</amb-icon>
-		<amb-icon size="lg" label="Add">
-			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" /></svg>
-		</amb-icon>
+		<amb-icon name="favorite" label="Favorite"></amb-icon>
+		<amb-icon name="search" label="Search"></amb-icon>
+		<amb-icon name="settings" size="lg" label="Settings"></amb-icon>
 	</div>
 </div>
-<p class="lede">Size a graphic with the icon box. Ambre does not ship an icon set. You bring the SVG.</p>
+<p class="lede">
+	Set <code>name</code> to any Material Symbols Outlined ligature. Load the font in the product.
+	Leave <code>name</code> empty and slot an SVG when you need a different drawing.
+</p>
 
-<pre><code>&lt;amb-icon label="Add"&gt;
-  &lt;svg viewBox="0 0 24 24" aria-hidden="true"&gt;...&lt;/svg&gt;
-&lt;/amb-icon&gt;</code></pre>
+<pre><code>&lt;amb-icon name="favorite" label="Favorite"&gt;&lt;/amb-icon&gt;</code></pre>
 
 <div class="do-grid">
 	<section class="note">
@@ -31,7 +26,8 @@
 		<ul>
 			<li>Leave <code>label</code> empty when nearby text already names the action.</li>
 			<li>Set <code>label</code> when the graphic is the only meaning.</li>
-			<li>Use <code>currentColor</code> so the icon follows the text color.</li>
+			<li>Use a ligature name from Material Symbols Outlined, such as <code>favorite</code>.</li>
+			<li>Use <code>currentColor</code> on a slotted SVG so it follows the text color.</li>
 		</ul>
 	</section>
 	<section class="note">

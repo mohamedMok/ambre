@@ -1,0 +1,40 @@
+id: tag
+tag: amb-tag
+status: stable
+summary: Labels an object for recognition. The slotted text is the name, and it is not a control.
+anatomy:
+  - id: label
+    element: span
+    part: label
+props:
+  - name: variant
+    type: enum
+    values: [neutral, accent]
+    default: neutral
+    attribute: variant
+    reflect: true
+    description: Quiet or accent fill.
+slots:
+  - name: default
+    description: The label text. It is the accessible name.
+events: []
+a11y:
+  role: text
+  name: The slotted text.
+  keyboard: []
+  notes:
+    - A tag does not navigate. Use a link when the label goes somewhere.
+tokens:
+  - color.fg.default
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.bg.surface
+  - color.border.default
+  - font.family.sans
+  - font.size.200
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - radius.full
+  - border.width.default
+  - space.100
+  - space.300

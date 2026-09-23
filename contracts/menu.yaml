@@ -1,0 +1,70 @@
+id: menu
+tag: amb-menu
+status: stable
+summary: A button that opens a list of actions. The default slot names the button, and the panel slot holds the actions.
+anatomy:
+  - id: control
+    element: button
+    part: control
+    slot: default
+  - id: panel
+    element: div
+    part: panel
+    slot: panel
+props:
+  - name: open
+    type: boolean
+    default: false
+    attribute: open
+    reflect: true
+    description: Whether the action list is shown.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the button from the tab order and blocks opening.
+slots:
+  - name: default
+    description: Visible name of the button that opens the list.
+  - name: panel
+    description: Native buttons, one action each. They are not menu items.
+events:
+  - name: toggle
+    description: Fired after the open state changes. detail.open is the next state.
+a11y:
+  role: button
+  name: Slotted text on the button.
+  keyboard:
+    - Enter and Space toggle the list.
+    - ArrowDown opens the list and moves through the actions.
+    - ArrowUp, Home, and End move through the actions.
+    - Escape closes the list and returns focus to the button.
+  notes:
+    - The trigger and the actions are native buttons, so the menu role is not used.
+    - A click outside the list closes it.
+tokens:
+  - color.fg.default
+  - color.fg.disabled
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.disabled
+  - color.border.default
+  - color.focus.ring
+  - font.family.sans
+  - font.size.300
+  - font.weight.regular
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - radius.md
+  - border.width.default
+  - space.100
+  - space.300
+  - space.400
+  - size.control.md
+  - elevation.2
+  - focus.ring.width
+  - focus.ring.offset
+  - duration.fast
+  - easing.enter

@@ -10,6 +10,11 @@
         "$type": "fontFamily",
         "$value": ["Source Code Pro", "ui-monospace", "monospace"],
         "$description": "Code and token names."
+      },
+      "icon": {
+        "$type": "fontFamily",
+        "$value": ["Material Symbols Outlined", "sans-serif"],
+        "$description": "Icon ligatures. Material Symbols Outlined. Load the font in the product."
       }
     },
     "weight": {

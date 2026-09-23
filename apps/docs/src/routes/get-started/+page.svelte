@@ -80,15 +80,17 @@ import '@ambre/ui';</code></pre>
 import '@ambre/tokens/css/presets';
 
 &lt;html data-brand="apple"&gt;
-&lt;html data-brand="airbnb"&gt;</code></pre>
+&lt;html data-brand="airbnb"&gt;
+&lt;html data-brand="press"&gt;</code></pre>
 <p class="lede">
-	The product loads the font the preset names. Apple uses the system font. Airbnb uses Nunito Sans. No brand file ships a proprietary face.
+	The same file sets type, radius, border width, space, control size, focus, and motion. The product loads the font the preset names. Apple uses the system font. Airbnb uses Nunito Sans. Press uses Source Serif 4. No brand file ships a proprietary face.
 </p>
 <div class="do-grid">
 	<section class="note">
 		<h2>Do</h2>
 		<ul>
 			<li>Load the token CSS before the components.</li>
+			<li>Load Material Symbols Outlined where <code>amb-icon</code> uses a name.</li>
 			<li>Switch brand by editing its preset file, then set <code>data-brand</code>.</li>
 			<li>Put the visible label in the slot.</li>
 			<li>Use a link to go somewhere and a button to start an action.</li>

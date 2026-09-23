@@ -17,8 +17,8 @@
 	{#each space as token}
 		<div class="token-row">
 			<span>{token.path}</span>
-			<span class="meter" style:width={String(token.value)}></span>
-			<small>{token.value}</small>
+			<span class="meter" style:width="var({token.css})"></span>
+			<small>{token.css}</small>
 		</div>
 	{/each}
 </div>
@@ -28,9 +28,9 @@
 <div class="radius-row">
 	{#each radius as token}
 		<div class="radius-tile">
-			<span style:border-radius={String(token.value)}></span>
+			<span style:border-radius="var({token.css})"></span>
 			{token.path}
-			<small>{token.value}</small>
+			<small>{token.css}</small>
 		</div>
 	{/each}
 </div>
@@ -39,9 +39,9 @@
 <div class="control-row">
 	{#each control as token}
 		<div class="control">
-			<span class="shaft" style:height={String(token.value)} aria-hidden="true"></span>
+			<span class="shaft" style:height="var({token.css})" aria-hidden="true"></span>
 			<span>{token.path}</span>
-			<small>{token.value}</small>
+			<small>{token.css}</small>
 		</div>
 	{/each}
 </div>

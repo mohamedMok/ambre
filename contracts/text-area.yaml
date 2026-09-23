@@ -1,0 +1,99 @@
+id: text-area
+tag: amb-text-area
+status: stable
+summary: A multi-line field. The slotted text is the label, and the value is the typed text.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: label
+    element: span
+    part: label
+    slot: default
+  - id: control
+    element: textarea
+    part: control
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form name submitted with the value.
+  - name: value
+    type: string
+    default: ""
+    attribute: value
+    reflect: false
+    description: The current text.
+  - name: placeholder
+    type: string
+    default: ""
+    attribute: placeholder
+    reflect: true
+    description: Hint shown while the field is empty. It is not a label.
+  - name: rows
+    type: number
+    default: 4
+    attribute: rows
+    reflect: true
+    description: Visible line count of the control.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks editing.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The field must have a value before the form submits.
+  - name: readonly
+    type: boolean
+    default: false
+    attribute: readonly
+    reflect: true
+    description: The value can be focused and copied, and it cannot be edited.
+slots:
+  - name: default
+    description: Visible label. It names the field.
+events: []
+a11y:
+  role: textbox
+  name: Slotted label text. The textarea is native.
+  keyboard:
+    - Characters edit the value.
+    - Enter inserts a line break.
+    - Tab moves away.
+  notes:
+    - The inner textarea is native, so the role is not re-authored with ARIA.
+    - The label wraps the textarea.
+    - A validation message appears after a failed submit.
+tokens:
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.disabled
+  - color.bg.surface
+  - color.bg.disabled
+  - color.border.default
+  - color.focus.ring
+  - color.status.danger.fg
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.regular
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - radius.md
+  - border.width.default
+  - space.200
+  - space.300
+  - size.control.md
+  - focus.ring.width
+  - focus.ring.offset

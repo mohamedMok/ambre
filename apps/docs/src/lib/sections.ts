@@ -19,12 +19,17 @@ export const foundations: DocLink[] = [
 	{
 		href: '/foundations/typography',
 		label: 'Type',
-		summary: 'Source Sans 3 for the interface. Source Code Pro for the names.'
+		summary: 'The face, the scale, and the weight. A preset replaces them.'
 	},
 	{
 		href: '/foundations/space',
 		label: 'Space',
-		summary: 'One scale for rhythm, radius, and the height of a control.'
+		summary: 'Rhythm, corners, and the height of a control. A preset replaces them.'
+	},
+	{
+		href: '/foundations/motion',
+		label: 'Motion',
+		summary: 'How something arrives, leaves, and repeats. A preset replaces the timing.'
 	}
 ];
 
@@ -51,7 +56,7 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 			{
 				href: '/components/icon',
 				label: 'Icon',
-				summary: 'A sized graphic. Name it only when it carries meaning.'
+				summary: 'A Material Symbols name, or an SVG you bring.'
 			}
 		]
 	},
@@ -63,6 +68,11 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 				href: '/components/text-field',
 				label: 'Text field',
 				summary: 'One line. The label is the name, and the value joins the form.'
+			},
+			{
+				href: '/components/text-area',
+				label: 'Text area',
+				summary: 'Several lines. The label is the name.'
 			},
 			{
 				href: '/components/checkbox',
@@ -78,6 +88,88 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 				href: '/components/select',
 				label: 'Select',
 				summary: 'One option from a list.'
+			},
+			{
+				href: '/components/toggle',
+				label: 'Toggle',
+				summary: 'On or off. The label is the name.'
+			},
+			{
+				href: '/components/range',
+				label: 'Range',
+				summary: 'A number between two ends.'
+			}
+		]
+	},
+	{
+		title: 'Feedback',
+		summary: 'Status, progress, and a short description.',
+		items: [
+			{
+				href: '/components/badge',
+				label: 'Badge',
+				summary: 'A small status. It is not a button.'
+			},
+			{
+				href: '/components/tag',
+				label: 'Tag',
+				summary: 'A label for recognition. It does not navigate.'
+			},
+			{
+				href: '/components/banner',
+				label: 'Banner',
+				summary: 'A page-level message with a status.'
+			},
+			{
+				href: '/components/progress',
+				label: 'Progress',
+				summary: 'How much of a task is finished.'
+			},
+			{
+				href: '/components/spinner',
+				label: 'Spinner',
+				summary: 'Something is loading. The label names the wait.'
+			},
+			{
+				href: '/components/skeleton',
+				label: 'Skeleton',
+				summary: 'The shape of content that has not arrived.'
+			},
+			{
+				href: '/components/tooltip',
+				label: 'Tooltip',
+				summary: 'A short description on hover and focus.'
+			}
+		]
+	},
+	{
+		title: 'Navigation',
+		summary: 'Move through a place, a list, or a conversation.',
+		items: [
+			{
+				href: '/components/breadcrumbs',
+				label: 'Breadcrumbs',
+				summary: 'The path back. The last item is the current page.'
+			},
+			{
+				href: '/components/pagination',
+				label: 'Pagination',
+				summary: 'Pages of a list. Mark the current one.'
+			},
+			{
+				href: '/components/tabs',
+				label: 'Tabs',
+				summary: 'One panel at a time. Arrow keys move the selection.'
+			},
+			{
+				href: '/components/menu',
+				label: 'Menu',
+				summary: 'A button that opens a list of actions.'
+			},
+			{
+				href: '/components/dialog',
+				label: 'Dialog',
+				summary: 'A modal conversation. Escape closes it.'
 			}
 		]
 	}

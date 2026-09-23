@@ -1,0 +1,80 @@
+id: range
+tag: amb-range
+status: stable
+summary: Chooses a number between a minimum and a maximum. The slotted text is the label.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: label
+    element: span
+    part: label
+    slot: default
+  - id: control
+    element: input
+    part: control
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form name submitted with the value.
+  - name: value
+    type: number
+    default: 0
+    attribute: value
+    reflect: true
+    description: The current number.
+  - name: min
+    type: number
+    default: 0
+    attribute: min
+    reflect: true
+    description: Smallest allowed number.
+  - name: max
+    type: number
+    default: 100
+    attribute: max
+    reflect: true
+    description: Largest allowed number.
+  - name: step
+    type: number
+    default: 1
+    attribute: step
+    reflect: true
+    description: Amount the value changes per step.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks changes.
+slots:
+  - name: default
+    description: Visible label. It names the range.
+events: []
+a11y:
+  role: slider
+  name: Slotted label text. The range input is native.
+  keyboard:
+    - Arrow keys change the value by one step.
+    - Home and End jump to the minimum and maximum.
+  notes:
+    - The inner range input is native, so the role is not re-authored with ARIA.
+    - The label wraps the input.
+tokens:
+  - color.fg.default
+  - color.fg.disabled
+  - color.accent.bg
+  - font.family.sans
+  - font.size.300
+  - font.weight.regular
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - space.200
+  - size.control.md
+  - focus.ring.width
+  - focus.ring.offset
+  - color.focus.ring

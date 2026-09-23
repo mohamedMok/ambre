@@ -1,60 +1,92 @@
 {
   "name": "Airbnb",
-  "description": "Nunito Sans, 8px actions and fields, warm neutral surfaces. The action fill is #d70466 rather than #ff385c so white labels meet WCAG AA. Load Nunito Sans in the product. Cereal is not shipped.",
+  "description": "Nunito Sans at 700, 16px actions, 12px fields, 2px borders, taller controls. The action fill is #d70466 rather than #ff385c so white labels meet WCAG AA. Load Nunito Sans in the product. Cereal is not shipped.",
   "shared": {
     "font": {
       "family": {
         "sans": {
           "$type": "fontFamily",
-          "$value": [
-            "Nunito Sans",
-            "Segoe UI",
-            "sans-serif"
-          ],
+          "$value": ["Nunito Sans", "Segoe UI", "sans-serif"],
           "$description": "UI text. Nunito Sans is the open-license face. Load it in the product."
+        },
+        "mono": {
+          "$type": "fontFamily",
+          "$value": ["ui-monospace", "monospace"],
+          "$description": "Code and token names."
         }
       },
+      "weight": {
+        "regular": { "$type": "fontWeight", "$value": 400, "$description": "Body text." },
+        "medium": { "$type": "fontWeight", "$value": 600, "$description": "Emphasis inside body text." },
+        "semibold": { "$type": "fontWeight", "$value": 700, "$description": "Controls and headings." }
+      },
       "lineHeight": {
-        "tight": {
-          "$type": "number",
-          "$value": 1.2,
-          "$description": "Controls and headings."
-        }
+        "tight": { "$type": "number", "$value": 1.25, "$description": "Controls and headings." },
+        "body": { "$type": "number", "$value": 1.5, "$description": "Paragraphs." },
+        "loose": { "$type": "number", "$value": 1.65, "$description": "Long reading text." }
+      },
+      "size": {
+        "100": { "$type": "dimension", "$value": { "value": 12, "unit": "px" }, "$description": "Caption." },
+        "200": { "$type": "dimension", "$value": { "value": 14, "unit": "px" }, "$description": "Compact control." },
+        "300": { "$type": "dimension", "$value": { "value": 16, "unit": "px" }, "$description": "Body and default control." },
+        "400": { "$type": "dimension", "$value": { "value": 18, "unit": "px" }, "$description": "Large control and lead-in." },
+        "500": { "$type": "dimension", "$value": { "value": 22, "unit": "px" }, "$description": "Title small." },
+        "600": { "$type": "dimension", "$value": { "value": 26, "unit": "px" }, "$description": "Title." },
+        "700": { "$type": "dimension", "$value": { "value": 32, "unit": "px" }, "$description": "Title large." },
+        "800": { "$type": "dimension", "$value": { "value": 44, "unit": "px" }, "$description": "Display small." },
+        "900": { "$type": "dimension", "$value": { "value": 52, "unit": "px" }, "$description": "Display." }
       }
     },
     "radius": {
-      "sm": {
-        "$type": "dimension",
-        "$value": {
-          "value": 4,
-          "unit": "px"
-        },
-        "$description": "Tight corner. 4px."
-      },
-      "md": {
-        "$type": "dimension",
-        "$value": {
-          "value": 8,
-          "unit": "px"
-        },
-        "$description": "Default control corner. 8px."
-      },
-      "lg": {
-        "$type": "dimension",
-        "$value": {
-          "value": 16,
-          "unit": "px"
-        },
-        "$description": "Large surface corner. 16px."
-      },
-      "action": {
-        "$type": "dimension",
-        "$value": {
-          "value": 8,
-          "unit": "px"
-        },
-        "$description": "Action corner. 8px."
+      "sm": { "$type": "dimension", "$value": { "value": 8, "unit": "px" }, "$description": "Tight corner. 8px." },
+      "md": { "$type": "dimension", "$value": { "value": 12, "unit": "px" }, "$description": "Default control corner. 12px." },
+      "lg": { "$type": "dimension", "$value": { "value": 24, "unit": "px" }, "$description": "Large surface corner. 24px." },
+      "action": { "$type": "dimension", "$value": { "value": 16, "unit": "px" }, "$description": "Action corner. 16px." }
+    },
+    "border": {
+      "width": {
+        "default": { "$type": "dimension", "$value": { "value": 2, "unit": "px" }, "$description": "Default stroke." },
+        "strong": { "$type": "dimension", "$value": { "value": 2, "unit": "px" }, "$description": "Emphasis stroke." }
       }
+    },
+    "size": {
+      "control": {
+        "sm": { "$type": "dimension", "$value": { "value": 40, "unit": "px" }, "$description": "Compact control height." },
+        "md": { "$type": "dimension", "$value": { "value": 48, "unit": "px" }, "$description": "Default control height." },
+        "lg": { "$type": "dimension", "$value": { "value": 56, "unit": "px" }, "$description": "Large control height." }
+      },
+      "icon": {
+        "sm": { "$type": "dimension", "$value": { "value": 16, "unit": "px" }, "$description": "Icon in a compact control." },
+        "md": { "$type": "dimension", "$value": { "value": 20, "unit": "px" }, "$description": "Icon in a default control." },
+        "lg": { "$type": "dimension", "$value": { "value": 24, "unit": "px" }, "$description": "Icon in a large control." }
+      }
+    },
+    "space": {
+      "0": { "$type": "dimension", "$value": { "value": 0, "unit": "px" }, "$description": "Space 0." },
+      "100": { "$type": "dimension", "$value": { "value": 4, "unit": "px" }, "$description": "Space 100." },
+      "200": { "$type": "dimension", "$value": { "value": 8, "unit": "px" }, "$description": "Space 200." },
+      "300": { "$type": "dimension", "$value": { "value": 12, "unit": "px" }, "$description": "Space 300." },
+      "400": { "$type": "dimension", "$value": { "value": 16, "unit": "px" }, "$description": "Space 400." },
+      "500": { "$type": "dimension", "$value": { "value": 20, "unit": "px" }, "$description": "Space 500." },
+      "600": { "$type": "dimension", "$value": { "value": 28, "unit": "px" }, "$description": "Space 600." },
+      "700": { "$type": "dimension", "$value": { "value": 40, "unit": "px" }, "$description": "Space 700." },
+      "800": { "$type": "dimension", "$value": { "value": 56, "unit": "px" }, "$description": "Space 800." },
+      "900": { "$type": "dimension", "$value": { "value": 80, "unit": "px" }, "$description": "Space 900." }
+    },
+    "focus": {
+      "ring": {
+        "width": { "$type": "dimension", "$value": { "value": 2, "unit": "px" }, "$description": "Focus ring thickness." },
+        "offset": { "$type": "dimension", "$value": { "value": 3, "unit": "px" }, "$description": "Space between the control and the focus ring." }
+      }
+    },
+    "duration": {
+      "fast": { "$type": "duration", "$value": "180ms", "$description": "Hover and press." },
+      "moderate": { "$type": "duration", "$value": "240ms", "$description": "Default transition." },
+      "slow": { "$type": "duration", "$value": "360ms", "$description": "Large surface enter and exit." }
+    },
+    "easing": {
+      "standard": { "$type": "cubicBezier", "$value": [0.22, 1, 0.36, 1], "$description": "Default easing." },
+      "exit": { "$type": "cubicBezier", "$value": [0.4, 0, 1, 1], "$description": "Elements leaving." }
     }
   },
   "light": {

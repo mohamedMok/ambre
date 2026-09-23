@@ -1,0 +1,31 @@
+id: spinner
+tag: amb-spinner
+status: stable
+summary: Shows that content is loading. The label names the wait for assistive technology.
+anatomy:
+  - id: graphic
+    element: span
+    part: graphic
+props:
+  - name: label
+    type: string
+    default: Loading
+    attribute: label
+    reflect: true
+    description: Accessible name of the wait.
+slots: []
+events: []
+a11y:
+  role: status
+  name: The label prop.
+  keyboard: []
+  notes:
+    - Reduced motion stops the spin and leaves the mark visible.
+tokens:
+  - color.accent.bg
+  - color.border.default
+  - size.icon.lg
+  - border.width.strong
+  - radius.full
+  - duration.loop
+  - easing.standard

@@ -6,72 +6,87 @@
 	<title>Ambre</title>
 	<meta
 		name="description"
-		content="Ambre is an open-source design system. A warm theme, semantic tokens, and one library of Svelte web components."
+		content="Ambre is an open-source design system. One library of web components. A brand is one preset file."
 	/>
 </svelte:head>
 
-<div class="hero">
-	<div>
-		<p class="eyebrow">Open source</p>
-		<h1>Warm by default.</h1>
-		<p class="lede">
-			One library of Svelte web components. A brand is a preset of the same tokens.
-			The components stay still.
-		</p>
-		<div class="actions">
-			<a class="action" href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a>
-			<a class="action action-quiet" href="/get-started">Install and use</a>
-		</div>
+<div class="mast">
+	<p class="eyebrow enter">Open source</p>
+	<h1 class="enter enter-2">One library. Any brand.</h1>
+	<p class="lede enter enter-3">
+		The components stay still. A brand is one preset of the same tokens: type, shape, borders,
+		space, motion, and color. Ambre is the default. Switch it in the header.
+	</p>
+	<div class="actions enter enter-4">
+		<a class="action" href="/get-started">Install and use</a>
+		<a class="action action-quiet" href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a>
 	</div>
-	<div class="stage-card">
-		<p class="stage-label">amb-button</p>
+</div>
+
+<section class="stage enter enter-5" aria-label="Components in the active brand">
+	<div class="stage-copy">
+		<p class="stage-label">Same markup</p>
+		<p>Buttons, fields, and links read the active preset. Nothing else changes.</p>
+	</div>
+	<div class="stage-board">
 		<div class="row">
 			<amb-button>Save changes</amb-button>
 			<amb-button variant="secondary">Cancel</amb-button>
 			<amb-button variant="ghost">Learn more</amb-button>
 		</div>
+		<amb-text-field name="email" type="email" autocomplete="email" placeholder="ada@example.com">
+			Email
+		</amb-text-field>
+		<p class="stage-note">
+			Read the <amb-link href="/foundations/color">color decisions</amb-link>
+			or the <amb-link href="/get-started" variant="quiet">install guide</amb-link>.
+		</p>
 	</div>
-</div>
-
-<ul class="film" aria-label="Theme colors">
-	<li class="film-canvas">--amb-color-bg-canvas</li>
-	<li>--amb-color-bg-surface</li>
-	<li class="film-accent">--amb-color-accent-bg</li>
-	<li class="film-inverse">--amb-color-bg-inverse</li>
-</ul>
-
-<h2>Use it</h2>
-<div class="snippets">
-	<pre><code>import '@ambre/tokens/css';
-import '@ambre/tokens/css/presets';
-import '@ambre/ui';</code></pre>
-	<pre><code>&lt;amb-button type="submit"&gt;Save changes&lt;/amb-button&gt;</code></pre>
-</div>
+</section>
 
 <h2>Start here</h2>
-<ul class="paths">
-	<li class="path">
-		<a href="/get-started">
-			<strong>Install</strong>
-			<small>Load the theme, then the library, then write the elements.</small>
+<ul class="atlas enter enter-6">
+	<li>
+		<a href="/foundations/color">
+			<span class="atlas-swatch" aria-hidden="true">
+				<i></i><i></i><i></i><i></i>
+			</span>
+			<strong>Color</strong>
+			<small>Semantic decisions. The palette stays in the token files.</small>
 		</a>
 	</li>
-	<li class="path">
-		<a href="/foundations">
-			<strong>Foundations</strong>
-			<small>Color, type, and space. Override the decision, not the palette.</small>
+	<li>
+		<a href="/foundations/typography">
+			<span class="atlas-type" aria-hidden="true">Aa</span>
+			<strong>Type</strong>
+			<small>The face, the scale, and the weight follow the preset.</small>
 		</a>
 	</li>
-	<li class="path">
+	<li>
+		<a href="/foundations/space">
+			<span class="atlas-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+			<strong>Space</strong>
+			<small>Rhythm, corners, and the height of a control.</small>
+		</a>
+	</li>
+	<li>
+		<a href="/foundations/motion">
+			<span class="atlas-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+			<strong>Motion</strong>
+			<small>Arrival, exit, and the cycle of a spinner.</small>
+		</a>
+	</li>
+	<li>
 		<a href="/components">
+			<span class="atlas-mark" aria-hidden="true"></span>
 			<strong>Components</strong>
-			<small>Basics for acting and navigating. Forms for collecting a choice.</small>
+			<small>Actions, forms, status, and a way through.</small>
 		</a>
 	</li>
 </ul>
 
 <section class="invite">
 	<h2>Every state lives in Storybook.</h2>
-	<p>Variants, sizes, both themes, and the accessibility panel. The workshop sits next to these pages.</p>
+	<p>Variants, sizes, both themes, every brand, and the accessibility panel.</p>
 	<a class="action" href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a>
 </section>

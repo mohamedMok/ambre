@@ -7,7 +7,7 @@ Custom elements use the `amb-` prefix. Packages use the `@ambre` scope.
 ## Packages
 
 - `@ambre/tokens` — design tokens in the [DTCG 2025.10](https://www.designtokens.org/TR/2025.10/format/) format, compiled with Style Dictionary to CSS variables, Sass variables, and JSON.
-- `@ambre/ui` — the component library. The basics are `amb-button`, `amb-link`, `amb-disclosure`, and `amb-icon`. Forms are `amb-text-field`, `amb-checkbox`, `amb-radio`, and `amb-select`.
+- `@ambre/ui` — the component library. Basics, forms, feedback, and navigation. Icons use a Material Symbols ligature or a slotted SVG.
 
 Documentation is a SvelteKit site. Storybook is the workshop.
 
@@ -39,7 +39,7 @@ Theme a product by overriding semantic variables such as `--amb-color-accent-bg`
 
 Set `data-theme="dark"` on an ancestor to switch the dark decisions.
 
-A brand is one file in `packages/tokens/src/preset`. The build writes every file onto the same variables. Set `data-brand="apple"` or `data-brand="airbnb"` on an ancestor. Omit it for Ambre. The product loads the font the preset names.
+A brand is one file in `packages/tokens/src/preset`. The build writes every file onto the same variables: color, type, radius, border width, space, control size, focus, and motion. Set `data-brand="apple"`, `data-brand="airbnb"`, or `data-brand="press"` on an ancestor. Omit it for Ambre. The product loads the font the preset names.
 
 ## Layout
 

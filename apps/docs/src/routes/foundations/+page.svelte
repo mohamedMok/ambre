@@ -4,11 +4,11 @@
 
 <svelte:head>
 	<title>Foundations — Ambre</title>
-	<meta name="description" content="Color, type, and space. The decisions a product theme overrides." />
+	<meta name="description" content="Color, type, space, and motion. The decisions a product theme overrides." />
 </svelte:head>
 
 <p class="eyebrow">Foundations</p>
-<h1>Color, type, and space.</h1>
+<h1>Color, type, space, and motion.</h1>
 <p class="lede">Semantic tokens. A product overrides the decision, and the reference palette stays in the token files.</p>
 
 <ul class="paths">

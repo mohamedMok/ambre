@@ -1,0 +1,55 @@
+id: tabs
+tag: amb-tabs
+status: stable
+summary: Switches between panels. Each tab is a button, and each panel is the matching region.
+anatomy:
+  - id: list
+    element: div
+    part: list
+  - id: tab
+    element: button
+    slot: tab
+  - id: panel
+    element: div
+    slot: panel
+props: []
+slots:
+  - name: tab
+    description: One button per panel, in the same order. The button text is the tab name.
+  - name: panel
+    description: The region shown when the matching tab is selected.
+events:
+  - name: change
+    description: Fired when the selected tab changes. detail.index is the new index.
+a11y:
+  role: tablist
+  name: Each tab is named by its button text. Each panel is named by its tab.
+  keyboard:
+    - ArrowLeft and ArrowRight move to the next enabled tab and show its panel.
+    - Home and End move to the first and last enabled tab.
+  notes:
+    - The buttons stay native. The tab role is added to them.
+    - Only the selected tab is in the tab order.
+    - Disabled tabs are skipped.
+tokens:
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.disabled
+  - color.accent.bg
+  - color.border.default
+  - color.focus.ring
+  - font.family.sans
+  - font.size.300
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - font.lineHeight.body
+  - border.width.default
+  - border.width.strong
+  - space.100
+  - space.300
+  - space.400
+  - size.control.md
+  - focus.ring.width
+  - focus.ring.offset
+  - duration.fast
+  - easing.enter

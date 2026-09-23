@@ -18,6 +18,7 @@ declare global {
 				disabled?: boolean;
 			};
 			'amb-icon': {
+				name?: string;
 				size?: 'sm' | 'md' | 'lg';
 				label?: string;
 			};
@@ -51,6 +52,42 @@ declare global {
 				disabled?: boolean;
 				required?: boolean;
 			};
+			'amb-text-area': {
+				name?: string;
+				value?: string;
+				placeholder?: string;
+				rows?: number;
+				disabled?: boolean;
+				required?: boolean;
+				readonly?: boolean;
+			};
+			'amb-toggle': {
+				name?: string;
+				value?: string;
+				checked?: boolean;
+				disabled?: boolean;
+				required?: boolean;
+			};
+			'amb-range': {
+				name?: string;
+				value?: number;
+				min?: number;
+				max?: number;
+				step?: number;
+				disabled?: boolean;
+			};
+			'amb-badge': { variant?: 'neutral' | 'accent' | 'success' | 'danger' };
+			'amb-tag': { variant?: 'neutral' | 'accent' };
+			'amb-spinner': { label?: string };
+			'amb-progress': { value?: number; max?: number; label?: string };
+			'amb-skeleton': {};
+			'amb-banner': { variant?: 'neutral' | 'success' | 'danger' };
+			'amb-breadcrumbs': {};
+			'amb-pagination': { label?: string };
+			'amb-tooltip': { text?: string };
+			'amb-tabs': {};
+			'amb-dialog': { open?: boolean; label?: string };
+			'amb-menu': { open?: boolean; disabled?: boolean };
 		}
 	}
 }

@@ -1,0 +1,40 @@
+id: banner
+tag: amb-banner
+status: stable
+summary: A page-level message with a status. The slotted text is the message.
+anatomy:
+  - id: message
+    element: div
+    part: message
+props:
+  - name: variant
+    type: enum
+    values: [neutral, success, danger]
+    default: neutral
+    attribute: variant
+    reflect: true
+    description: Status of the message.
+slots:
+  - name: default
+    description: The message. It is the accessible name.
+events: []
+a11y:
+  role: status
+  name: The slotted text.
+  keyboard: []
+  notes:
+    - A banner announces itself. Do not also move focus to it.
+tokens:
+  - color.fg.default
+  - color.fg.on-accent
+  - color.bg.subtle
+  - color.status.success.bg
+  - color.status.success.on
+  - color.status.danger.bg
+  - color.status.danger.on
+  - font.family.sans
+  - font.size.300
+  - font.lineHeight.body
+  - radius.md
+  - space.300
+  - space.400

@@ -6,12 +6,12 @@
 	<title>Components — Ambre</title>
 	<meta
 		name="description"
-		content="Ambre components. Basics for acting and navigating. Forms for collecting a choice."
+		content="Ambre components. Actions, forms, status, and navigation."
 	/>
 </svelte:head>
 
 <p class="eyebrow">Components</p>
-<h1>Basics, then forms.</h1>
+<h1>Actions, forms, status, and a way through.</h1>
 <p class="lede">The label is the slotted text. Headings stay native HTML.</p>
 
 {#each componentGroups as group}

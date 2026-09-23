@@ -1,0 +1,86 @@
+id: toggle
+tag: amb-toggle
+status: stable
+summary: A switch between two states. The slotted text is the label, and checked is the on state.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: control
+    element: input
+    part: control
+  - id: label
+    element: span
+    part: label
+    slot: default
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form name submitted when the switch is on.
+  - name: value
+    type: string
+    default: "on"
+    attribute: value
+    reflect: true
+    description: Form value submitted when the switch is on.
+  - name: checked
+    type: boolean
+    default: false
+    attribute: checked
+    reflect: true
+    description: Whether the switch is on.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the control from the tab order and blocks toggling.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The switch must be on before the form submits.
+slots:
+  - name: default
+    description: Visible label. It names the switch.
+events: []
+a11y:
+  role: switch
+  name: Slotted label text.
+  keyboard:
+    - Space toggles the switch.
+  notes:
+    - The control is a native checkbox with the switch role.
+    - The label wraps the control, so the text is part of the target.
+    - Disabled leaves the control out of the tab order.
+tokens:
+  - color.fg.default
+  - color.fg.disabled
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.bg.subtle
+  - color.border.default
+  - color.focus.ring
+  - color.status.danger.fg
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.regular
+  - font.lineHeight.body
+  - radius.full
+  - border.width.default
+  - space.100
+  - space.300
+  - size.icon.sm
+  - size.control.md
+  - focus.ring.width
+  - focus.ring.offset
+  - duration.fast
+  - easing.enter

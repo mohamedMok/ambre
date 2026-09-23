@@ -1,0 +1,72 @@
+id: dialog
+tag: amb-dialog
+status: stable
+summary: A modal conversation. The slotted content is the message, and the close slot names the dismiss control.
+anatomy:
+  - id: surface
+    element: dialog
+    part: surface
+  - id: body
+    element: div
+    part: body
+    slot: default
+  - id: close
+    element: button
+    part: close
+    slot: close
+props:
+  - name: open
+    type: boolean
+    default: false
+    attribute: open
+    reflect: true
+    description: Whether the dialog is shown as a modal.
+  - name: label
+    type: string
+    default: Dialog
+    attribute: label
+    reflect: true
+    description: Accessible name of the dialog.
+slots:
+  - name: default
+    description: The dialog content. Headings stay native HTML.
+  - name: close
+    description: Visible name of the button that dismisses the dialog.
+events:
+  - name: close
+    description: Fired after the dialog closes, including Escape and the backdrop.
+a11y:
+  role: dialog
+  name: The label prop.
+  keyboard:
+    - Escape closes the dialog and returns focus to the control that opened it.
+    - Tab stays inside the dialog while it is open.
+  notes:
+    - The inner dialog is native, so the role is not re-authored with ARIA.
+    - The close control is a native button.
+    - Reduced motion removes the entrance animation.
+tokens:
+  - color.fg.default
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.bg.surface
+  - color.border.default
+  - color.focus.ring
+  - font.family.sans
+  - font.size.300
+  - font.weight.semibold
+  - font.lineHeight.body
+  - radius.md
+  - radius.lg
+  - border.width.default
+  - space.200
+  - space.300
+  - space.400
+  - space.500
+  - space.600
+  - size.control.md
+  - elevation.3
+  - focus.ring.width
+  - focus.ring.offset
+  - duration.moderate
+  - easing.enter

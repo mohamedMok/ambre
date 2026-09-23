@@ -38,7 +38,7 @@
 	<div class="swatches">
 		{#each group as token}
 			<button class="swatch" type="button" onclick={() => copy(token.css ?? String(token.value))}>
-				<span class="swatch-chip" style:background={String(token.value)}></span>
+				<span class="swatch-chip" style:background="var({token.css})"></span>
 				<span>
 					{token.path}
 					<small>{token.css}</small>

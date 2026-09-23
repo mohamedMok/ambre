@@ -8,29 +8,35 @@ const meta = {
   title: 'Basics/Icon',
   component: 'amb-icon',
   args: {
+    name: 'favorite',
     size: 'md',
-    label: 'Add',
+    label: 'Favorite',
   },
   argTypes: {
+    name: { control: 'text' },
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
     label: { control: 'text' },
   },
-  render: ({ size, label }) => html`<amb-icon size=${size} label=${label}>${plus}</amb-icon>`,
+  render: ({ name, size, label }) => html`<amb-icon name=${name} size=${size} label=${label}></amb-icon>`,
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
 
-export const Medium: Story = {};
-export const Small: Story = { args: { size: 'sm' } };
-export const Large: Story = { args: { size: 'lg' } };
+export const Favorite: Story = {};
+export const Search: Story = { args: { name: 'search', label: 'Search' } };
+export const Settings: Story = { args: { name: 'settings', size: 'lg', label: 'Settings' } };
+export const Slotted: Story = {
+  args: { name: '', label: 'Add' },
+  render: ({ size, label }) => html`<amb-icon size=${size} label=${label}>${plus}</amb-icon>`,
+};
 export const Decorative: Story = { args: { label: '' } };
 export const Sizes: Story = {
   render: () => html`
     <div style="display:flex; gap: var(--amb-space-400); align-items:center;">
-      <amb-icon size="sm" label="Add">${plus}</amb-icon>
-      <amb-icon size="md" label="Add">${plus}</amb-icon>
-      <amb-icon size="lg" label="Add">${plus}</amb-icon>
+      <amb-icon name="favorite" size="sm" label="Favorite"></amb-icon>
+      <amb-icon name="favorite" size="md" label="Favorite"></amb-icon>
+      <amb-icon name="favorite" size="lg" label="Favorite"></amb-icon>
     </div>
   `,
 };

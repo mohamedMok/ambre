@@ -1,0 +1,42 @@
+id: badge
+tag: amb-badge
+status: stable
+summary: A small status label. The slotted text is the name, and it is not a control.
+anatomy:
+  - id: label
+    element: span
+    part: label
+props:
+  - name: variant
+    type: enum
+    values: [neutral, accent, success, danger]
+    default: neutral
+    attribute: variant
+    reflect: true
+    description: Status color.
+slots:
+  - name: default
+    description: The status text. It is the accessible name.
+events: []
+a11y:
+  role: text
+  name: The slotted text.
+  keyboard: []
+  notes:
+    - A badge is not a button. Put the action on a separate control.
+tokens:
+  - color.fg.default
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.bg.subtle
+  - color.status.success.bg
+  - color.status.success.on
+  - color.status.danger.bg
+  - color.status.danger.on
+  - font.family.sans
+  - font.size.100
+  - font.weight.semibold
+  - font.lineHeight.tight
+  - radius.sm
+  - space.100
+  - space.200

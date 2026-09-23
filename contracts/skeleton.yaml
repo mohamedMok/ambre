@@ -1,0 +1,26 @@
+id: skeleton
+tag: amb-skeleton
+status: stable
+summary: Holds the place of content that has not arrived. It is hidden from assistive technology.
+anatomy:
+  - id: block
+    element: div
+    part: block
+props: []
+slots:
+  - name: default
+    description: Optional shape. Leave it empty for a single bar.
+events: []
+a11y:
+  role: presentation
+  name: None. The placeholder is hidden from assistive technology.
+  keyboard: []
+  notes:
+    - Put the real name on the content that replaces the skeleton.
+    - Reduced motion stops the pulse.
+tokens:
+  - color.bg.subtle
+  - radius.sm
+  - size.control.sm
+  - duration.loop
+  - easing.standard
