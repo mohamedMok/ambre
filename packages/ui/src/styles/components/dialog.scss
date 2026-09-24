@@ -1,0 +1,157 @@
+////
+/// Component — Dialog (`amb-dialog`).
+/// Block `.c-dialog` on the native modal `<dialog>`, elements `__body` and `__close`.
+/// State comes from the native `[open]` attribute that `showModal()` and `close()` set.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: contents;
+	}
+
+	.c-dialog {
+		// FLOATING SURFACE at the highest level: top-edge highlight over elevation-3.
+		@include depth(overlay);
+		width: min(32rem, calc(100% - #{token(space-600)}));
+		margin: auto;
+		padding: token(space-500);
+		border: token(border-width-default) solid token(color-border-default);
+		border-radius: token(radius-lg);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+		// Closed values double as the exit target; overlay + display keep it in the top layer
+		// until the fade finishes.
+		opacity: 0;
+
+		@include motion {
+			translate: 0 token(space-200);
+			scale: 0.96;
+			transition:
+				opacity token(duration-fast) token(easing-exit),
+				translate token(duration-fast) token(easing-exit),
+				scale token(duration-fast) token(easing-exit),
+				overlay token(duration-fast) allow-discrete,
+				display token(duration-fast) allow-discrete;
+		}
+
+		&[open] {
+			opacity: 1;
+
+			@include motion {
+				translate: 0 0;
+				scale: 1;
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring),
+					scale token(duration-moderate) token(easing-spring),
+					overlay token(duration-moderate) allow-discrete,
+					display token(duration-moderate) allow-discrete;
+			}
+
+			&::backdrop {
+				opacity: token(opacity-scrim);
+
+				@include motion {
+					transition:
+						opacity token(duration-moderate) token(easing-enter),
+						overlay token(duration-moderate) allow-discrete,
+						display token(duration-moderate) allow-discrete;
+				}
+			}
+		}
+
+		// The scrim dims with the system scrim opacity; where supported it also softens the page.
+		&::backdrop {
+			background: token(color-fg-default);
+			opacity: 0;
+
+			@include motion {
+				transition:
+					opacity token(duration-fast) token(easing-exit),
+					overlay token(duration-fast) allow-discrete,
+					display token(duration-fast) allow-discrete;
+			}
+
+			@supports (backdrop-filter: blur(1px)) {
+				backdrop-filter: blur(token(space-100));
+			}
+		}
+
+		&__body {
+			margin-bottom: token(space-400);
+		}
+
+		// The close control uses the RAISED primary recipe from amb-button.
+		&__close {
+			@include depth(raised);
+			min-height: token(size-control-md);
+			padding-inline: token(space-400);
+			border: token(border-width-default) solid rim(token(color-accent-bg-active), 55%, token(color-accent-bg));
+			border-radius: token(radius-action);
+			background: token(color-accent-bg);
+			color: token(color-fg-on-accent);
+			font-weight: token(font-weight-semibold);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, box-shadow, translate, scale);
+			}
+
+			@include hover {
+				--_depth: #{depth(lifted)};
+				background: token(color-accent-bg-hover);
+
+				@include motion {
+					translate: 0 -1px;
+				}
+			}
+
+			@include active {
+				--_depth: #{depth(sunken)};
+				background: token(color-accent-bg-active);
+
+				@include motion {
+					translate: 0 0;
+					scale: 0.98;
+				}
+			}
+
+			@include focus-visible;
+		}
+	}
+
+	@include motion {
+		@starting-style {
+			.c-dialog[open] {
+				opacity: 0;
+				translate: 0 token(space-200);
+				scale: 0.96;
+			}
+
+			.c-dialog[open]::backdrop {
+				opacity: 0;
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-dialog {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			color: CanvasText;
+		}
+
+		.c-dialog__close {
+			border: token(border-width-default) solid ButtonText;
+			background: ButtonFace;
+			color: ButtonText;
+			box-shadow: none;
+		}
+	}
+}

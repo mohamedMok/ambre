@@ -1,0 +1,53 @@
+////
+/// Component — Tag (`amb-tag`).
+/// Block `.c-tag` on the inner label span.
+/// Modifier: `--accent`. Neutral is the block itself.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	// The type stays on the host: the inline-block host's line box (its strut) is sized by it,
+	// so moving it inward would change the tag's height in running text.
+	:host {
+		display: inline-block;
+		vertical-align: middle;
+		font-family: token(font-family-sans);
+		font-size: token(font-size-200);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+	}
+
+	// A quiet chip: surface pill with a top-edge highlight so it reads as a
+	// physical label, without the drop shadow that would make it look pressable.
+	.c-tag {
+		box-sizing: border-box;
+		display: inline-flex;
+		align-items: center;
+		gap: token(space-100);
+		min-height: token(size-control-sm);
+		padding-inline: token(space-300);
+		border: token(border-width-default) solid token(color-border-default);
+		border-radius: token(radius-full);
+		background: token(color-bg-surface);
+		box-shadow: inset 0 1px 0 token(color-highlight);
+		color: token(color-fg-default);
+		white-space: nowrap;
+
+		// Accent is a tint of the accent text color, not a solid fill.
+		&--accent {
+			border-color: rim(token(color-accent-fg), 28%);
+			background: tint(token(color-accent-fg), 12%);
+			color: token(color-accent-fg);
+		}
+	}
+
+	@include forced-colors {
+		.c-tag {
+			border: token(border-width-default) solid ButtonText;
+			background: Canvas;
+			color: CanvasText;
+		}
+	}
+}

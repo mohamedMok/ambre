@@ -1,0 +1,57 @@
+////
+/// Component — Skeleton (`amb-skeleton`).
+/// Block `.c-skeleton` on the inner placeholder. No elements, modifiers or states.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	// Warm shimmer: a soft band of the muted tone sweeps across the subtle base,
+	// like light moving over paper. The base color stays underneath as fallback.
+	.c-skeleton {
+		min-height: token(size-control-sm);
+		border-radius: token(radius-sm);
+		background-color: token(color-bg-subtle);
+		background-image: linear-gradient(
+			100deg,
+			token(color-bg-subtle) 20%,
+			token(color-bg-muted) 50%,
+			token(color-bg-subtle) 80%
+		);
+		background-size: 300% 100%;
+		background-repeat: no-repeat;
+		background-position: 100% 0;
+		animation: amb-shimmer token(duration-loop) token(easing-standard) infinite;
+	}
+
+	@keyframes amb-shimmer {
+		from {
+			background-position: 100% 0;
+		}
+
+		to {
+			background-position: 0% 0;
+		}
+	}
+
+	// The loop stops under reduced motion and the band goes, leaving the flat base.
+	@include reduced-motion {
+		.c-skeleton {
+			animation: none;
+			background-image: none;
+		}
+	}
+
+	@include forced-colors {
+		.c-skeleton {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			animation: none;
+		}
+	}
+}

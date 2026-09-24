@@ -1,0 +1,61 @@
+////
+/// Component — Badge (`amb-badge`).
+/// Block `.c-badge` on the inner label span.
+/// Modifiers: `--accent`, `--success`, `--danger`. Neutral is the block itself.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	// The type stays on the host: the inline-block host's line box (its strut) is sized by it,
+	// so moving it inward would change the badge's height in running text.
+	:host {
+		display: inline-block;
+		vertical-align: middle;
+		font-family: token(font-family-sans);
+		font-size: token(font-size-100);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+	}
+
+	// Tinted pill: the text color drives a faint wash and a fine rim.
+	// `--_ink` is the -fg color of the variant; the fill never exceeds 12% of it.
+	.c-badge {
+		--_ink: #{token(color-fg-default)};
+
+		box-sizing: border-box;
+		display: inline-flex;
+		align-items: center;
+		gap: token(space-100);
+		padding: token(space-100) token(space-200);
+		border: token(border-width-default) solid rim(var(--_ink), 28%);
+		border-radius: token(radius-full);
+		background: token(color-bg-subtle);
+		color: var(--_ink);
+		white-space: nowrap;
+
+		&--accent {
+			--_ink: #{token(color-accent-fg)};
+			background: tint(var(--_ink), 12%);
+		}
+
+		&--success {
+			--_ink: #{token(color-status-success-fg)};
+			background: tint(var(--_ink), 12%);
+		}
+
+		&--danger {
+			--_ink: #{token(color-status-danger-fg)};
+			background: tint(var(--_ink), 12%);
+		}
+	}
+
+	@include forced-colors {
+		.c-badge {
+			border: token(border-width-default) solid ButtonText;
+			background: Canvas;
+			color: CanvasText;
+		}
+	}
+}

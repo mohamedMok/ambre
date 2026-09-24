@@ -1,0 +1,171 @@
+////
+/// Component — Disclosure (`amb-disclosure`).
+/// Block `.c-disclosure` (a `display: contents` root that carries the type), elements `__trigger`
+/// (the native button) and `__panel`. State `.is-open` mirrors `open`; the panel closes through
+/// `[hidden]` and a disabled header through the native `:disabled`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-disclosure {
+		display: contents;
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+		// Lets block-size transition to and from auto where supported.
+		interpolate-size: allow-keywords;
+
+		// The header is a RAISED surface; `--_depth` is its resting shadow, focus adds the halo.
+		&__trigger {
+			@include depth(raised);
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: token(space-300);
+			width: 100%;
+			min-height: token(size-control-md);
+			padding-inline: token(space-400);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-surface);
+			text-align: start;
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, border-color, box-shadow, border-radius, translate, scale);
+			}
+
+			// Chevron from two borders; it turns over with a spring as the panel opens.
+			// Its offset and rotation are its shape, not motion, so they hold under reduced motion.
+			&::after {
+				content: '';
+				flex: none;
+				width: token(space-200);
+				height: token(space-200);
+				border-right: token(border-width-strong) solid currentColor;
+				border-bottom: token(border-width-strong) solid currentColor;
+				translate: 0 -2px;
+				rotate: 45deg;
+
+				@include motion {
+					@include transition(translate, rotate);
+				}
+			}
+
+			@include hover {
+				border-color: token(color-border-strong);
+				background: token(color-bg-subtle);
+			}
+
+			@include active {
+				--_depth: #{depth(sunken)};
+				background: token(color-bg-muted);
+
+				@include motion {
+					translate: 0 0;
+					scale: 0.98;
+				}
+			}
+
+			@include focus-visible {
+				z-index: 1;
+			}
+
+			&:disabled {
+				--_depth: #{depth(flat)};
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+			}
+		}
+
+		// Lift only while closed, so an open header stays joined to its panel.
+		&:not(.is-open) &__trigger {
+			@include hover {
+				--_depth: #{depth(lifted)};
+
+				@include motion {
+					translate: 0 -1px;
+				}
+			}
+		}
+
+		&.is-open &__trigger {
+			border-radius: token(radius-md) token(radius-md) 0 0;
+
+			&::after {
+				translate: 0 2px;
+				rotate: 225deg;
+			}
+		}
+
+		// The panel unrolls: block-size eases between 0 and auto (interpolate-size), and display
+		// flips discretely so the close is animated too. Browsers without support simply toggle.
+		&__panel {
+			overflow: clip;
+			block-size: auto;
+			padding: token(space-400) token(space-500) token(space-500);
+			border: token(border-width-default) solid token(color-border-default);
+			border-top: 0;
+			border-radius: 0 0 token(radius-md) token(radius-md);
+			background: token(color-bg-surface);
+			box-shadow: token(elevation-1);
+			font-weight: token(font-weight-regular);
+			line-height: token(font-line-height-body);
+			opacity: 1;
+
+			@include motion {
+				transition:
+					block-size token(duration-moderate) token(easing-standard),
+					padding-block token(duration-moderate) token(easing-standard),
+					opacity token(duration-moderate) token(easing-enter),
+					display token(duration-moderate) allow-discrete;
+			}
+
+			&[hidden] {
+				display: none;
+				block-size: 0;
+				padding-block: 0;
+				opacity: 0;
+
+				@include motion {
+					transition:
+						block-size token(duration-fast) token(easing-exit),
+						padding-block token(duration-fast) token(easing-exit),
+						opacity token(duration-fast) token(easing-exit),
+						display token(duration-fast) allow-discrete;
+				}
+			}
+		}
+	}
+
+	@include motion {
+		@starting-style {
+			.c-disclosure__panel:not([hidden]) {
+				block-size: 0;
+				padding-block: 0;
+				opacity: 0;
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-disclosure__trigger,
+		.c-disclosure__panel {
+			border: token(border-width-strong) solid ButtonText;
+			background: ButtonFace;
+			color: ButtonText;
+			box-shadow: none;
+		}
+	}
+}

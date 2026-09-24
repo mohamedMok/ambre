@@ -1,9 +1,22 @@
 <svelte:options
 	customElement={{
 		tag: 'amb-breadcrumbs',
-		shadow: { mode: 'open' }
+		shadow: { mode: 'open' },
+		extend: (Base) => {
+			return class extends Base {
+				constructor() {
+					super();
+					adopt(this.shadowRoot, styles);
+				}
+			};
+		}
 	}}
 />
+
+<script module lang="ts">
+	import { adopt } from '../styles/adopt';
+	import styles from '../styles/components/breadcrumbs.scss?inline';
+</script>
 
 <script lang="ts">
 	const host = $host();
@@ -37,48 +50,6 @@
 	});
 </script>
 
-<nav aria-label="Breadcrumbs">
-	<ol part="list"><slot /></ol>
+<nav class="c-breadcrumbs" aria-label="Breadcrumbs">
+	<ol part="list" class="c-breadcrumbs__list"><slot /></ol>
 </nav>
-
-<style>
-	:host {
-		display: block;
-		font-family: var(--amb-font-family-sans);
-		font-size: var(--amb-font-size-200);
-		line-height: var(--amb-font-line-height-body);
-		color: var(--amb-color-fg-muted);
-	}
-
-	ol {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--amb-space-100) var(--amb-space-200);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	:host :global(::slotted(li)) {
-		display: inline-flex;
-		align-items: center;
-	}
-
-	/* The page you are on rests in a soft neutral pill: you-are-here, without looking clickable. */
-	:host :global(::slotted(li[aria-current='page'])) {
-		padding-inline: var(--amb-space-200);
-		border-radius: var(--amb-radius-full);
-		background: var(--amb-color-bg-subtle);
-		color: var(--amb-color-fg-default);
-		font-weight: var(--amb-font-weight-semibold);
-	}
-
-	@media (forced-colors: active) {
-		:host :global(::slotted(li[aria-current='page'])) {
-			border: var(--amb-border-width-default) solid CanvasText;
-			background: Canvas;
-			color: CanvasText;
-		}
-	}
-</style>

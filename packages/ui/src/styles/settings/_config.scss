@@ -1,0 +1,13 @@
+////
+/// Settings — global configuration. This layer outputs no CSS.
+/// @group settings
+////
+
+/// Prefix of every custom property the tokens package emits.
+/// @type String
+$prefix: 'amb' !default;
+
+/// ITCSS cascade layers, lowest priority first. Declared once in `base.scss`
+/// so every shadow root sorts rules the same way, whatever the sheet order.
+/// @type List
+$layers: (generic, objects, components, utilities) !default;

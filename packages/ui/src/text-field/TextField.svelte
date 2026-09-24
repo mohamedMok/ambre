@@ -19,11 +19,17 @@
 				constructor() {
 					super();
 					this.attachedInternals = this.attachInternals();
+					adopt(this.shadowRoot, styles);
 				}
 			};
 		}
 	}}
 />
+
+<script module lang="ts">
+	import { adopt } from '../styles/adopt';
+	import styles from '../styles/components/text-field.scss?inline';
+</script>
 
 <script lang="ts">
 	interface Props {
@@ -89,11 +95,12 @@
 	});
 </script>
 
-<label part="field">
-	<span part="label"><slot /></span>
+<label part="field" class="c-text-field">
+	<span part="label" class="c-text-field__label"><slot /></span>
 	<input
 		bind:this={input}
 		part="control"
+		class="c-text-field__control"
 		{type}
 		{name}
 		{disabled}
@@ -104,116 +111,6 @@
 		oninvalid={onInvalid}
 	/>
 	{#if showMessage && message}
-		<p part="message">{message}</p>
+		<p part="message" class="c-text-field__message">{message}</p>
 	{/if}
 </label>
-
-<style>
-	:host {
-		display: block;
-		color: var(--amb-color-fg-default);
-		font-family: var(--amb-font-family-sans);
-		font-size: var(--amb-font-size-300);
-		font-weight: var(--amb-font-weight-regular);
-		line-height: var(--amb-font-line-height-body);
-	}
-
-	label {
-		display: grid;
-		gap: var(--amb-space-200);
-	}
-
-	span {
-		font-weight: var(--amb-font-weight-semibold);
-		line-height: var(--amb-font-line-height-tight);
-	}
-
-	input {
-		box-sizing: border-box;
-		width: 100%;
-		min-height: var(--amb-size-control-md);
-		margin: 0;
-		padding-inline: var(--amb-space-300);
-		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
-		border-radius: var(--amb-radius-md);
-		background: var(--amb-color-bg-surface);
-		/* A sunken well: the field sits below the surface a button rises from. */
-		box-shadow: var(--amb-elevation-inset);
-		color: inherit;
-		font: inherit;
-		transition:
-			border-color var(--amb-duration-fast) var(--amb-easing-standard),
-			box-shadow var(--amb-duration-fast) var(--amb-easing-standard);
-	}
-
-	input::placeholder {
-		color: var(--amb-color-fg-muted);
-	}
-
-	@media (hover: hover) {
-		input:hover:not(:disabled):not(:focus-visible) {
-			border-color: var(--amb-color-border-strong);
-		}
-	}
-
-	input:focus {
-		outline: none;
-	}
-
-	input:focus-visible {
-		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
-		outline-offset: var(--amb-focus-ring-offset);
-		border-color: var(--amb-color-focus-ring);
-		box-shadow:
-			var(--amb-elevation-inset),
-			0 0 0 calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
-				var(--amb-color-focus-halo);
-	}
-
-	input:disabled {
-		background: var(--amb-color-bg-disabled);
-		border-color: var(--amb-color-border-disabled);
-		box-shadow: none;
-		color: var(--amb-color-fg-disabled);
-	}
-
-	input:user-invalid {
-		border-color: var(--amb-color-status-danger-fg);
-	}
-
-	p {
-		margin: 0;
-		color: var(--amb-color-status-danger-fg);
-		font-size: var(--amb-font-size-200);
-		transition:
-			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
-			translate var(--amb-duration-moderate) var(--amb-easing-spring);
-	}
-
-	/* The message arrives: it settles down into place from just above. */
-	@starting-style {
-		p {
-			opacity: 0;
-			translate: 0 calc(var(--amb-space-100) * -1);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		input,
-		p {
-			transition: none;
-		}
-	}
-
-	@media (forced-colors: active) {
-		input {
-			border: var(--amb-border-width-default) solid ButtonText;
-			background: Field;
-			color: FieldText;
-		}
-
-		p {
-			color: CanvasText;
-		}
-	}
-</style>

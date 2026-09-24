@@ -1,0 +1,155 @@
+////
+/// Component — Radio (`amb-radio`).
+/// Block `.c-radio` (the label), elements `__control` (the native input), `__label`, `__message`.
+/// States: `.is-disabled` on the block (the label text dims); the circle reads the native
+/// `:checked`, `:disabled`, `:focus-visible`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-radio {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		column-gap: token(space-300);
+		row-gap: token(space-100);
+		min-height: token(size-control-md);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+		cursor: pointer;
+
+		&.is-disabled {
+			color: token(color-fg-disabled);
+		}
+
+		// The native input stays (semantics, arrow keys, forms); only its skin changes.
+		// Unchecked it is a round sunken well; checked it fills with accent and the dot pops in.
+		// `--_depth` is the resting shadow; focus adds the halo on top.
+		&__control {
+			@include depth(sunken);
+			appearance: none;
+			display: grid;
+			place-content: center;
+			width: token(size-icon-lg);
+			height: token(size-icon-lg);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-full);
+			background: token(color-bg-surface);
+			accent-color: token(color-accent-bg);
+			cursor: inherit;
+
+			@include motion {
+				@include transition(background-color, border-color, box-shadow, scale);
+			}
+
+			// The dot: an on-accent disc, hidden until checked.
+			// Its scale is the checked state itself, so it stays under reduced motion; only the pop is motion.
+			&::before {
+				content: '';
+				width: calc(#{token(size-icon-lg)} * 0.4);
+				height: calc(#{token(size-icon-lg)} * 0.4);
+				border-radius: token(radius-full);
+				background: token(color-fg-on-accent);
+				scale: 0;
+
+				@include motion {
+					@include transition(scale);
+				}
+			}
+
+			&:checked {
+				--_depth: #{depth(raised)};
+				border-color: rim(token(color-accent-bg-active), 55%, token(color-accent-bg));
+				background: token(color-accent-bg);
+			}
+
+			&:checked::before {
+				scale: 1;
+			}
+
+			// Hovering anywhere on the label previews the circle.
+			@media (hover: hover) {
+				.c-radio:hover &:not(:disabled, :checked) {
+					border-color: token(color-border-strong);
+				}
+
+				.c-radio:hover &:checked:not(:disabled) {
+					background: token(color-accent-bg-hover);
+				}
+			}
+
+			@include motion {
+				.c-radio:active &:not(:disabled) {
+					scale: 0.92;
+				}
+			}
+
+			@include focus-visible;
+
+			&:disabled,
+			&:disabled:checked {
+				--_depth: #{depth(flat)};
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+			}
+
+			&:disabled::before {
+				background: token(color-fg-disabled);
+			}
+		}
+
+		&__message {
+			grid-column: 1 / -1;
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring);
+			}
+		}
+	}
+
+	// The message arrives: it settles down into place from just above.
+	@include motion {
+		@starting-style {
+			.c-radio__message {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	@include forced-colors {
+		// Hand the circle back to the system so it draws with system colors.
+		.c-radio__control {
+			appearance: auto;
+			accent-color: auto;
+			border: none;
+			box-shadow: none;
+			outline: token(border-width-default) solid ButtonText;
+
+			&::before {
+				content: none;
+			}
+
+			&:focus-visible {
+				outline: token(focus-ring-width) solid Highlight;
+			}
+		}
+
+		.c-radio__message {
+			color: CanvasText;
+		}
+	}
+}

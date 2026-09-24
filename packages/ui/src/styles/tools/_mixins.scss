@@ -1,0 +1,88 @@
+////
+/// Tools — mixins. This layer outputs no CSS.
+/// @group tools
+////
+
+@use 'functions' as *;
+
+/// Hover styles for pointers that can hover, never for a disabled control, so touch never sticks.
+@mixin hover {
+	@media (hover: hover) {
+		&:hover:not(:disabled, [aria-disabled='true']) {
+			@content;
+		}
+	}
+}
+
+/// Pressed styles, never for a disabled control.
+@mixin active {
+	&:active:not(:disabled, [aria-disabled='true']) {
+		@content;
+	}
+}
+
+/// Movement (translate, scale, rotate) is declared only inside this mixin, so reduced motion never
+/// has to fight selector specificity to undo it.
+@mixin motion {
+	@media (prefers-reduced-motion: no-preference) {
+		@content;
+	}
+}
+
+/// Reduced-motion overrides, for what `motion` cannot express (e.g. stopping a loop).
+@mixin reduced-motion {
+	@media (prefers-reduced-motion: reduce) {
+		@content;
+	}
+}
+
+/// Forced-colors overrides. Shadows vanish there, so keep a system border.
+@mixin forced-colors {
+	@media (forced-colors: active) {
+		@content;
+	}
+}
+
+/// Sets the resting shadow stack of a layer through `--_depth`, so focus can add the halo on top.
+/// @param {String} $kind - See `depth()`.
+@mixin depth($kind) {
+	--_depth: #{depth($kind)};
+	box-shadow: var(--_depth);
+}
+
+/// The focus indicator: a solid ring that carries the 3:1 contrast, plus the halo.
+/// Keeps the current `--_depth` underneath.
+@mixin focus-ring {
+	outline: token(focus-ring-width) solid token(color-focus-ring);
+	outline-offset: token(focus-ring-offset);
+	box-shadow:
+		var(--_depth, 0 0 0 0 transparent),
+		halo();
+}
+
+/// Removes the default focus outline where `:focus-visible` draws the ring instead.
+@mixin focus-visible {
+	&:focus {
+		outline: none;
+	}
+
+	&:focus-visible {
+		@include focus-ring;
+		@content;
+	}
+}
+
+/// Transition helper. See `transitions()`.
+@mixin transition($properties...) {
+	transition: transitions($properties...);
+}
+
+/// Hides content visually and keeps it for assistive technology.
+@mixin visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

@@ -1,0 +1,116 @@
+////
+/// Component — Button (`amb-button`).
+/// Block `.c-button` on the inner native button, framed by `.o-control`.
+/// Modifiers: `--secondary`, `--ghost`. Primary is the block itself.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.c-button {
+		@include depth(raised);
+		border: token(border-width-default) solid rim(token(color-accent-bg-active), 55%, token(color-accent-bg));
+		border-radius: token(radius-action);
+		background: token(color-accent-bg);
+		color: token(color-fg-on-accent);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+
+		@include motion {
+			@include transition(background-color, border-color, box-shadow, translate, scale);
+		}
+
+		@include hover {
+			--_depth: #{depth(lifted)};
+			background: token(color-accent-bg-hover);
+
+			@include motion {
+				translate: 0 -1px;
+			}
+		}
+
+		@include active {
+			--_depth: #{depth(sunken)};
+			background: token(color-accent-bg-active);
+
+			@include motion {
+				translate: 0 0;
+				scale: 0.98;
+			}
+		}
+
+		@include focus-visible;
+
+		&:disabled {
+			--_depth: #{depth(flat)};
+			border-color: transparent;
+			background: token(color-bg-disabled);
+			color: token(color-fg-disabled);
+		}
+
+		// Sizes: the frame comes from `.o-control--sm|--lg`; the type follows here.
+		&.o-control--sm {
+			font-size: token(font-size-200);
+		}
+
+		&.o-control--lg {
+			font-size: token(font-size-400);
+		}
+
+		&--secondary {
+			border-color: token(color-border-default);
+			background: token(color-bg-surface);
+			color: token(color-fg-default);
+
+			@include hover {
+				background: token(color-bg-subtle);
+			}
+
+			@include active {
+				background: token(color-bg-muted);
+			}
+		}
+
+		&--ghost {
+			@include depth(flat);
+			border-color: transparent;
+			background: transparent;
+			color: token(color-accent-fg);
+
+			@include hover {
+				--_depth: #{depth(flat)};
+				background: token(color-bg-subtle);
+
+				@include motion {
+					translate: 0 0;
+				}
+			}
+
+			@include active {
+				background: token(color-bg-muted);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-button {
+			border: 1px solid ButtonText;
+			background: ButtonText;
+			color: ButtonFace;
+
+			&--secondary,
+			&--ghost {
+				background: ButtonFace;
+				color: ButtonText;
+			}
+		}
+	}
+}

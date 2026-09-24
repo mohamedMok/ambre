@@ -1,0 +1,167 @@
+////
+/// Component — Toggle (`amb-toggle`).
+/// Block `.c-toggle` (the label), elements `__control` (the native checkbox with `role="switch"`,
+/// drawn as the track, its `::after` is the thumb), `__label`, `__message`.
+/// States: `.is-disabled` on the block (the label text dims); the switch reads the native
+/// `:checked`, `:disabled`, `:focus-visible`, `:user-invalid`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-toggle {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		column-gap: token(space-300);
+		row-gap: token(space-100);
+		min-height: token(size-control-md);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+		cursor: pointer;
+
+		&.is-disabled {
+			color: token(color-fg-disabled);
+		}
+
+		// The track is a sunken well; the thumb is a raised bead that springs across it.
+		// `--_depth` is the track's resting shadow, on or off; focus adds the halo on top.
+		&__control {
+			@include depth(sunken);
+			appearance: none;
+			position: relative;
+			width: calc(#{token(size-icon-sm)} * 2);
+			height: token(size-icon-sm);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-full);
+			background: token(color-bg-subtle);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, border-color, box-shadow);
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: token(space-100);
+				left: token(space-100);
+				width: calc(#{token(size-icon-sm)} - #{token(space-100)} * 2);
+				height: calc(#{token(size-icon-sm)} - #{token(space-100)} * 2);
+				border-radius: token(radius-full);
+				background: token(color-fg-default);
+				box-shadow: depth(raised);
+
+				@include motion {
+					@include transition(background-color, translate, scale);
+				}
+			}
+
+			&:checked {
+				border-color: rim(token(color-accent-bg-active), 55%, token(color-accent-bg));
+				background: token(color-accent-bg);
+			}
+
+			// The thumb's position is the on state itself, so it stays under reduced motion;
+			// only the slide is motion.
+			&:checked::after {
+				translate: calc(#{token(size-icon-sm)}) 0;
+				background: token(color-fg-on-accent);
+			}
+
+			// Hovering anywhere on the label previews the track.
+			@media (hover: hover) {
+				.c-toggle:hover &:not(:disabled, :checked) {
+					border-color: token(color-border-strong);
+				}
+
+				.c-toggle:hover &:checked:not(:disabled) {
+					background: token(color-accent-bg-hover);
+				}
+			}
+
+			// Pressing squeezes the bead a little, like a physical switch.
+			@include motion {
+				.c-toggle:active &:not(:disabled)::after {
+					scale: 0.9;
+				}
+			}
+
+			@include focus-visible;
+
+			&:user-invalid:not(:checked) {
+				border-color: token(color-status-danger-fg);
+			}
+
+			&:disabled,
+			&:disabled:checked {
+				--_depth: #{depth(flat)};
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+				cursor: not-allowed;
+			}
+
+			&:disabled::after {
+				background: token(color-fg-disabled);
+				box-shadow: none;
+			}
+		}
+
+		&__message {
+			grid-column: 1 / -1;
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring);
+			}
+		}
+	}
+
+	// The message arrives: it settles down into place from just above.
+	@include motion {
+		@starting-style {
+			.c-toggle__message {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-toggle__control {
+			border: token(border-width-default) solid ButtonText;
+			background: Canvas;
+			box-shadow: none;
+
+			&::after,
+			&:checked::after {
+				background: ButtonText;
+				box-shadow: none;
+			}
+
+			&:disabled {
+				border-color: GrayText;
+			}
+
+			&:disabled::after,
+			&:disabled:checked::after {
+				background: GrayText;
+			}
+		}
+
+		.c-toggle__message {
+			color: CanvasText;
+		}
+	}
+}

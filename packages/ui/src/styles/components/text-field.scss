@@ -1,0 +1,100 @@
+////
+/// Component — Text field (`amb-text-field`).
+/// Block `.c-text-field` (the label), elements `__label`, `__control` (the native input), `__message`.
+/// States come from the native input: `:focus-visible`, `:disabled`, `:read-only`, `:user-invalid`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-text-field {
+		display: grid;
+		gap: token(space-200);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+
+		&__label {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		// A sunken well: the field sits below the surface a button rises from.
+		&__control {
+			@include depth(sunken);
+			width: 100%;
+			min-height: token(size-control-md);
+			padding-inline: token(space-300);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-surface);
+
+			@include motion {
+				@include transition(border-color, box-shadow);
+			}
+
+			&::placeholder {
+				color: token(color-fg-muted);
+			}
+
+			@media (hover: hover) {
+				&:hover:not(:disabled, :focus-visible) {
+					border-color: token(color-border-strong);
+				}
+			}
+
+			@include focus-visible {
+				border-color: token(color-focus-ring);
+			}
+
+			&:user-invalid {
+				border-color: token(color-status-danger-fg);
+			}
+
+			&:disabled {
+				@include depth(flat);
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+			}
+		}
+
+		&__message {
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+
+			@include motion {
+				@include transition(opacity, translate);
+			}
+		}
+	}
+
+	// The message arrives: it settles into place from just above.
+	@include motion {
+		@starting-style {
+			.c-text-field__message {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-text-field__control {
+			border: token(border-width-default) solid ButtonText;
+			background: Field;
+			color: FieldText;
+		}
+
+		.c-text-field__message {
+			color: CanvasText;
+		}
+	}
+}

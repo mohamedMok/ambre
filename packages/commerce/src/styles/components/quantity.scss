@@ -1,0 +1,173 @@
+////
+/// Component — Quantity (`amb-quantity`).
+/// Block `.c-quantity` (the field), elements `__label`, `__stepper` (the well), `__step` (the two
+/// native buttons), `__value` (the native number input).
+/// State: `.is-disabled` on the block (the `disabled` prop). The steps also use native `:disabled` at the bounds.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: inline-block;
+	}
+
+	.c-quantity {
+		display: grid;
+		gap: token(space-200);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+
+		&__label {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		// One sunken well holds the number; the two steppers rise out of it.
+		&__stepper {
+			@include depth(sunken);
+			box-sizing: border-box;
+			display: inline-flex;
+			align-items: stretch;
+			gap: token(space-100);
+			min-height: token(size-control-md);
+			padding: token(space-100);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-subtle);
+
+			@include motion {
+				@include transition(border-color, box-shadow);
+			}
+
+			@media (hover: hover) {
+				.c-quantity:not(.is-disabled) &:hover:not(:has(.c-quantity__value:focus-visible)) {
+					border-color: token(color-border-strong);
+				}
+			}
+
+			// Typing in the number focuses the whole well, like a text field.
+			&:has(.c-quantity__value:focus-visible) {
+				@include focus-ring;
+				border-color: token(color-focus-ring);
+			}
+		}
+
+		&__step,
+		&__value {
+			box-sizing: border-box;
+			margin: 0;
+			border: 0;
+			background: transparent;
+			color: inherit;
+			font: inherit;
+		}
+
+		&__step {
+			@include depth(raised);
+			padding-inline: token(space-300);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-sm);
+			background: token(color-bg-surface);
+			font-weight: token(font-weight-semibold);
+			cursor: pointer;
+			-webkit-tap-highlight-color: transparent;
+
+			@include motion {
+				@include transition(background-color, box-shadow, translate, scale);
+			}
+
+			@include hover {
+				--_depth: #{depth(lifted)};
+
+				@include motion {
+					translate: 0 -1px;
+				}
+			}
+
+			@include active {
+				--_depth: #{depth(sunken)};
+				background: token(color-bg-muted);
+
+				@include motion {
+					translate: 0 0;
+					scale: 0.96;
+				}
+			}
+
+			@include focus-visible;
+
+			&:disabled {
+				--_depth: #{depth(flat)};
+				border-color: transparent;
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+
+				@include motion {
+					translate: 0 0;
+					scale: 1;
+				}
+			}
+		}
+
+		&__value {
+			width: calc(#{token(size-control-md)} * 1.5);
+			font-weight: token(font-weight-semibold);
+			font-variant-numeric: tabular-nums;
+			text-align: center;
+			appearance: textfield;
+
+			// The well draws the focus ring for the number.
+			&:focus {
+				outline: none;
+			}
+
+			&::-webkit-inner-spin-button,
+			&::-webkit-outer-spin-button {
+				margin: 0;
+				appearance: none;
+			}
+		}
+
+		&.is-disabled {
+			color: token(color-fg-disabled);
+
+			.c-quantity__stepper {
+				@include depth(flat);
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-quantity {
+			&__stepper {
+				border: token(border-width-default) solid ButtonText;
+				background: Canvas;
+				color: CanvasText;
+			}
+
+			&__step {
+				border: token(border-width-default) solid ButtonText;
+				background: ButtonFace;
+				color: ButtonText;
+
+				&:disabled {
+					border-color: GrayText;
+					color: GrayText;
+				}
+			}
+
+			&__value {
+				background: Field;
+				color: FieldText;
+			}
+		}
+	}
+}

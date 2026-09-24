@@ -28,6 +28,23 @@ for (const file of fs.readdirSync(contractsDir).filter((entry) => entry.endsWith
   }
   if (/#[0-9a-fA-F]{3,8}\b/.test(source)) failures.push(`${contract.id}: raw hex color`);
 
+  // Styles live outside the component, in the package's ITCSS components layer.
+  if (/<style[\s>]/.test(source)) failures.push(`${contract.id}: <style> block in the component; move it to styles/components/${contract.id}.scss`);
+  const sheetPath = path.join(sourceDir, '..', 'styles', 'components', `${contract.id}.scss`);
+  if (!fs.existsSync(sheetPath)) {
+    failures.push(`${contract.id}: missing styles/components/${contract.id}.scss`);
+  } else {
+    const sheet = fs.readFileSync(sheetPath, 'utf8');
+    if (/#[0-9a-fA-F]{3,8}\b/.test(sheet)) failures.push(`${contract.id}: raw hex color in ${contract.id}.scss`);
+    if (/var\(--amb-/.test(sheet)) failures.push(`${contract.id}: raw var(--amb-…) in ${contract.id}.scss; use token()`);
+    if (/!important/.test(sheet)) failures.push(`${contract.id}: !important in ${contract.id}.scss`);
+    if (!source.includes(`styles/components/${contract.id}.scss?inline`)) {
+      failures.push(`${contract.id}: the component does not adopt styles/components/${contract.id}.scss`);
+    }
+    const block = `.c-${contract.id}`;
+    if (!sheet.includes(block)) failures.push(`${contract.id}: ${contract.id}.scss has no BEM block ${block}`);
+  }
+
   const declared = manifest.modules
     ?.flatMap((module) => module.declarations ?? [])
     .find((declaration) => declaration.tagName === contract.tag);

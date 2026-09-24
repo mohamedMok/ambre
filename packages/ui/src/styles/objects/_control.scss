@@ -1,0 +1,49 @@
+////
+/// Objects — `o-control`: the undecorated frame every pressable control shares.
+/// Layout and size only. Color, border, and depth belong to the component that uses it.
+/// @group objects
+////
+
+@use '../tools' as *;
+
+@layer objects {
+	.o-control {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: token(space-100);
+		min-height: token(size-control-md);
+		padding-inline: token(space-400);
+		white-space: nowrap;
+		cursor: pointer;
+
+		&:disabled,
+		&[aria-disabled='true'] {
+			cursor: not-allowed;
+		}
+
+		&--sm {
+			min-height: token(size-control-sm);
+			padding-inline: token(space-300);
+		}
+
+		&--lg {
+			min-height: token(size-control-lg);
+			padding-inline: token(space-500);
+		}
+
+		/// A square control, such as an icon-only stepper.
+		&--square {
+			min-width: token(size-control-md);
+			padding-inline: 0;
+
+			&.o-control--sm {
+				min-width: token(size-control-sm);
+			}
+
+			&.o-control--lg {
+				min-width: token(size-control-lg);
+			}
+		}
+	}
+}

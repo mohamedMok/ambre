@@ -1,0 +1,80 @@
+////
+/// Component — Icon (`amb-icon`).
+/// Block `.c-icon` on the graphic box, element `__symbol` (the ligature glyph).
+/// Modifiers: `--sm`, `--lg`. The md size is the block itself.
+/// A slotted SVG fills the box.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	// `color` stays on the host: it is the hook consumers tint the icon with (the glyph follows currentColor).
+	:host {
+		display: inline-block;
+		vertical-align: middle;
+		color: token(color-fg-default);
+		line-height: 0;
+	}
+
+	// A fixed square that never flexes, so the glyph lands on whole pixels.
+	// The glyph gets the same square, so both read the size from `--_size`.
+	.c-icon,
+	.c-icon__symbol {
+		box-sizing: border-box;
+		display: inline-flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: var(--_size);
+		height: var(--_size);
+		overflow: hidden;
+	}
+
+	.c-icon {
+		--_size: #{token(size-icon-md)};
+		// Outlined, regular weight, neutral grade, optical size matched to the box.
+		--_opsz: 20;
+
+		&__symbol {
+			font-family: token(font-family-icon);
+			font-weight: normal;
+			font-style: normal;
+			font-size: var(--_size);
+			line-height: 1;
+			letter-spacing: normal;
+			text-transform: none;
+			white-space: nowrap;
+			word-wrap: normal;
+			direction: ltr;
+			font-feature-settings: 'liga';
+			font-variation-settings:
+				'FILL' 0,
+				'wght' 400,
+				'GRAD' 0,
+				'opsz' var(--_opsz);
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-rendering: optimizeLegibility;
+			user-select: none;
+		}
+
+		// 20 is the smallest optical size the font ships; it keeps 16px strokes open.
+		&--sm {
+			--_size: #{token(size-icon-sm)};
+			--_opsz: 20;
+		}
+
+		&--lg {
+			--_size: #{token(size-icon-lg)};
+			--_opsz: 24;
+		}
+	}
+
+	::slotted(svg) {
+		width: 100%;
+		height: 100%;
+		display: block;
+		fill: currentColor;
+	}
+}

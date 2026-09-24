@@ -1,0 +1,74 @@
+////
+/// Component — Link (`amb-link`).
+/// Block `.c-link` on the inner native anchor.
+/// Modifier: `--quiet`. The text variant is the block itself.
+/// States come from the native anchor: `:hover`, `:focus-visible`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: inline;
+	}
+
+	// A refined underline: a thin, softened line that sits a little below the text,
+	// then tightens, thickens and takes full colour when the pointer arrives.
+	.c-link {
+		border-radius: token(radius-sm);
+		color: token(color-accent-fg);
+		font-family: token(font-family-sans);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-body);
+		text-decoration-line: underline;
+		text-decoration-thickness: token(border-width-default);
+		text-decoration-color: rim(currentColor, 45%);
+		text-underline-offset: token(space-100);
+		text-decoration-skip-ink: auto;
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+		-webkit-tap-highlight-color: transparent;
+
+		@include motion {
+			@include transition(
+				color,
+				text-decoration-color,
+				text-decoration-thickness,
+				text-underline-offset,
+				box-shadow
+			);
+		}
+
+		// Plain `:hover`, not the `hover` mixin: a link has always reacted to any hover, touch included.
+		&:hover {
+			text-decoration-color: currentColor;
+			text-decoration-thickness: token(border-width-strong);
+			text-underline-offset: calc(#{token(space-100)} / 2);
+		}
+
+		@include focus-visible;
+
+		// Quiet keeps the underline line so it can fade in instead of popping.
+		&--quiet {
+			color: token(color-fg-muted);
+			text-decoration-color: transparent;
+
+			&:hover {
+				color: token(color-fg-default);
+				text-decoration-color: currentColor;
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-link {
+			&,
+			&--quiet {
+				color: LinkText;
+				text-decoration: underline;
+				text-decoration-color: LinkText;
+			}
+		}
+	}
+}

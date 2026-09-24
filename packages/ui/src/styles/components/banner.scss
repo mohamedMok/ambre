@@ -1,0 +1,67 @@
+////
+/// Component — Banner (`amb-banner`).
+/// Block `.c-banner` on the inner status panel.
+/// Modifiers: `--success`, `--danger`. Neutral is the block itself.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	// A tinted panel: the variant's text color washes the surface, rims it,
+	// and a top-edge highlight gives it a lit, layered edge.
+	.c-banner {
+		--_ink: #{token(color-fg-default)};
+
+		box-sizing: border-box;
+		padding: token(space-300) token(space-400);
+		border: token(border-width-default) solid rim(var(--_ink), 28%);
+		border-radius: token(radius-lg);
+		background: token(color-bg-subtle);
+		box-shadow: inset 0 1px 0 token(color-highlight);
+		color: var(--_ink);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+
+		// The arrival fades in on the enter curve (not the fast repaint), so it is written out
+		// rather than built with `transition()`.
+		@include motion {
+			transition:
+				opacity token(duration-moderate) token(easing-enter),
+				translate token(duration-moderate) token(easing-spring);
+		}
+
+		&--success {
+			--_ink: #{token(color-status-success-fg)};
+			background: tint(var(--_ink), 12%);
+		}
+
+		&--danger {
+			--_ink: #{token(color-status-danger-fg)};
+			background: tint(var(--_ink), 12%);
+		}
+	}
+
+	// The banner arrives: it settles down into place from just above.
+	@include motion {
+		@starting-style {
+			.c-banner {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-banner {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			color: CanvasText;
+		}
+	}
+}

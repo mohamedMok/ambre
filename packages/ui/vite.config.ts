@@ -3,6 +3,14 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // `@use 'tools'` resolves to src/styles; `@use 'tokens'` to the compiled token variables.
+        loadPaths: [resolve('src/styles'), resolve('../tokens/dist/scss')],
+      },
+    },
+  },
   plugins: [
     svelte({
       compilerOptions: {

@@ -1,0 +1,50 @@
+////
+/// Component — Progress (`amb-progress`).
+/// Block `.c-progress` on the track (the `progressbar`), element `__fill`.
+/// The fill width is set inline from `value / max`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	// A sunken groove with a raised, lit accent bar riding inside it.
+	.c-progress {
+		@include depth(sunken);
+		box-sizing: border-box;
+		height: token(size-icon-sm);
+		overflow: hidden;
+		border-radius: token(radius-full);
+		background: token(color-bg-subtle);
+
+		&__fill {
+			@include depth(raised);
+			height: 100%;
+			border-radius: inherit;
+			background: token(color-accent-bg);
+
+			// Width is layout, not a transform, so it takes the standard curve, not the spring.
+			// Written out because `transition()` would give it the fast repaint duration.
+			@include motion {
+				transition:
+					width token(duration-moderate) token(easing-standard),
+					background-color token(duration-fast) token(easing-standard);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-progress {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+		}
+
+		.c-progress__fill {
+			background: Highlight;
+		}
+	}
+}

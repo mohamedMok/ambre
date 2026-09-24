@@ -4,9 +4,22 @@
 		shadow: { mode: 'open' },
 		props: {
 			label: { reflect: true, type: 'String', attribute: 'label' }
+		},
+		extend: (Base) => {
+			return class extends Base {
+				constructor() {
+					super();
+					adopt(this.shadowRoot, styles);
+				}
+			};
 		}
 	}}
 />
+
+<script module lang="ts">
+	import { adopt } from '../styles/adopt';
+	import styles from '../styles/components/pagination.scss?inline';
+</script>
 
 <script lang="ts">
 	interface Props {
@@ -41,87 +54,6 @@
 	});
 </script>
 
-<nav aria-label={label}>
-	<ol part="list"><slot /></ol>
+<nav class="c-pagination" aria-label={label}>
+	<ol part="list" class="c-pagination__list"><slot /></ol>
 </nav>
-
-<style>
-	:host {
-		display: block;
-		font-family: var(--amb-font-family-sans);
-		font-size: var(--amb-font-size-300);
-		line-height: var(--amb-font-line-height-body);
-		color: var(--amb-color-fg-default);
-	}
-
-	ol {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--amb-space-200);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	/* Each page is a quiet button: no chrome at rest, a soft fill under the pointer,
-	   a springy press. The current page rises off the row as a RAISED control. */
-	:host :global(::slotted(li)) {
-		box-sizing: border-box;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-inline-size: var(--amb-size-control-md);
-		min-block-size: var(--amb-size-control-md);
-		padding-inline: var(--amb-space-200);
-		border: var(--amb-border-width-default) solid transparent;
-		border-radius: var(--amb-radius-action);
-		background: transparent;
-		font-variant-numeric: tabular-nums;
-		transition:
-			background-color var(--amb-duration-fast) var(--amb-easing-standard),
-			border-color var(--amb-duration-fast) var(--amb-easing-standard),
-			box-shadow var(--amb-duration-fast) var(--amb-easing-standard),
-			translate var(--amb-duration-moderate) var(--amb-easing-spring),
-			scale var(--amb-duration-moderate) var(--amb-easing-spring);
-	}
-
-	@media (hover: hover) {
-		:host :global(::slotted(li:not([data-amb-current]):hover)) {
-			background: var(--amb-color-bg-subtle);
-		}
-	}
-
-	:host :global(::slotted(li:not([data-amb-current]):active)) {
-		background: var(--amb-color-bg-muted);
-		scale: 0.96;
-	}
-
-	:host :global(::slotted(li[data-amb-current])) {
-		border-color: var(--amb-color-border-default);
-		background: var(--amb-color-bg-surface);
-		box-shadow:
-			inset 0 1px 0 var(--amb-color-highlight),
-			var(--amb-elevation-1);
-		color: var(--amb-color-fg-default);
-		font-weight: var(--amb-font-weight-semibold);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		:host :global(::slotted(li)) {
-			transition: none;
-		}
-
-		:host :global(::slotted(li:not([data-amb-current]):active)) {
-			scale: 1;
-		}
-	}
-
-	@media (forced-colors: active) {
-		:host :global(::slotted(li[data-amb-current])) {
-			border-color: CanvasText;
-			background: Canvas;
-			color: CanvasText;
-		}
-	}
-</style>

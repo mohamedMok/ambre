@@ -18,11 +18,17 @@
 				constructor() {
 					super();
 					this.attachedInternals = this.attachInternals();
+					adopt(this.shadowRoot, styles);
 				}
 			};
 		}
 	}}
 />
+
+<script module lang="ts">
+	import { adopt } from '../styles/adopt';
+	import styles from '../styles/components/text-area.scss?inline';
+</script>
 
 <script lang="ts">
 	interface Props {
@@ -84,11 +90,12 @@
 	});
 </script>
 
-<label part="field">
-	<span part="label"><slot /></span>
+<label part="field" class="c-text-area">
+	<span part="label" class="c-text-area__label"><slot /></span>
 	<textarea
 		bind:this={input}
 		part="control"
+		class="c-text-area__control"
 		{name}
 		{rows}
 		style:--_rows={rows}
@@ -100,132 +107,6 @@
 		oninvalid={onInvalid}
 	></textarea>
 	{#if showMessage && message}
-		<p part="message">{message}</p>
+		<p part="message" class="c-text-area__message">{message}</p>
 	{/if}
 </label>
-
-<style>
-	:host {
-		display: block;
-		color: var(--amb-color-fg-default);
-		font-family: var(--amb-font-family-sans);
-		font-size: var(--amb-font-size-300);
-		font-weight: var(--amb-font-weight-regular);
-		line-height: var(--amb-font-line-height-body);
-	}
-
-	label {
-		display: grid;
-		gap: var(--amb-space-200);
-	}
-
-	span {
-		font-weight: var(--amb-font-weight-semibold);
-		line-height: var(--amb-font-line-height-tight);
-	}
-
-	textarea {
-		box-sizing: border-box;
-		width: 100%;
-		min-height: var(--amb-size-control-md);
-		margin: 0;
-		padding: var(--amb-space-300);
-		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
-		border-radius: var(--amb-radius-md);
-		background: var(--amb-color-bg-surface);
-		/* The same sunken well as the text field. */
-		box-shadow: var(--amb-elevation-inset);
-		color: inherit;
-		font: inherit;
-		resize: vertical;
-		transition:
-			border-color var(--amb-duration-fast) var(--amb-easing-standard),
-			box-shadow var(--amb-duration-fast) var(--amb-easing-standard);
-	}
-
-	/* Auto-grow with the text where supported. `rows` still sets the resting height,
-	   because field-sizing ignores the rows attribute. */
-	@supports (field-sizing: content) {
-		textarea {
-			field-sizing: content;
-			min-block-size: max(
-				var(--amb-size-control-md),
-				calc(
-					var(--_rows, 4) * 1lh + var(--amb-space-300) * 2 + var(--amb-border-width-default) * 2
-				)
-			);
-		}
-	}
-
-	textarea::placeholder {
-		color: var(--amb-color-fg-muted);
-	}
-
-	@media (hover: hover) {
-		textarea:hover:not(:disabled):not(:focus-visible) {
-			border-color: var(--amb-color-border-strong);
-		}
-	}
-
-	textarea:focus {
-		outline: none;
-	}
-
-	textarea:focus-visible {
-		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
-		outline-offset: var(--amb-focus-ring-offset);
-		border-color: var(--amb-color-focus-ring);
-		box-shadow:
-			var(--amb-elevation-inset),
-			0 0 0 calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
-				var(--amb-color-focus-halo);
-	}
-
-	textarea:disabled {
-		background: var(--amb-color-bg-disabled);
-		border-color: var(--amb-color-border-disabled);
-		box-shadow: none;
-		color: var(--amb-color-fg-disabled);
-		resize: none;
-	}
-
-	textarea:user-invalid {
-		border-color: var(--amb-color-status-danger-fg);
-	}
-
-	p {
-		margin: 0;
-		color: var(--amb-color-status-danger-fg);
-		font-size: var(--amb-font-size-200);
-		transition:
-			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
-			translate var(--amb-duration-moderate) var(--amb-easing-spring);
-	}
-
-	/* The message arrives: it settles down into place from just above. */
-	@starting-style {
-		p {
-			opacity: 0;
-			translate: 0 calc(var(--amb-space-100) * -1);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		textarea,
-		p {
-			transition: none;
-		}
-	}
-
-	@media (forced-colors: active) {
-		textarea {
-			border: var(--amb-border-width-default) solid ButtonText;
-			background: Field;
-			color: FieldText;
-		}
-
-		p {
-			color: CanvasText;
-		}
-	}
-</style>

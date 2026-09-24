@@ -1,0 +1,99 @@
+////
+/// Component — Tooltip (`amb-tooltip`).
+/// Block `.c-tooltip` (the hover and focus wrapper), element `__tip` (the `role="tooltip"` chip).
+/// Modifiers `--top`, `--bottom` follow the computed placement. The chip closes through `[hidden]`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		position: relative;
+		display: inline-block;
+	}
+
+	.c-tooltip {
+		display: inline-block;
+		font-family: token(font-family-sans);
+
+		// An inverse floating chip. It sizes to its text (so it never collapses to one word per line
+		// inside the narrow host) and wraps only past 16rem. `--_rise` is the small approach distance.
+		&__tip {
+			--_rise: #{token(space-100)};
+			@include depth(floating);
+			position: absolute;
+			z-index: 1;
+			left: 50%;
+			display: block;
+			width: max-content;
+			max-inline-size: 16rem;
+			padding: token(space-200) token(space-300);
+			border-radius: token(radius-lg);
+			background: token(color-bg-inverse);
+			color: token(color-fg-inverse);
+			font-size: token(font-size-200);
+			font-weight: token(font-weight-regular);
+			line-height: token(font-line-height-body);
+			text-align: start;
+			text-wrap: pretty;
+			white-space: normal;
+			overflow-wrap: break-word;
+			opacity: 1;
+			// Centering, not motion: it holds under reduced motion too.
+			translate: -50% 0;
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring),
+					scale token(duration-moderate) token(easing-spring),
+					display token(duration-moderate) allow-discrete;
+			}
+
+			&[hidden] {
+				display: none;
+				opacity: 0;
+
+				@include motion {
+					scale: 0.96;
+					transition:
+						opacity token(duration-fast) token(easing-exit),
+						scale token(duration-fast) token(easing-exit),
+						display token(duration-fast) allow-discrete;
+				}
+			}
+		}
+
+		&--top &__tip {
+			bottom: calc(100% + #{token(space-200)});
+			transform-origin: bottom center;
+		}
+
+		&--bottom &__tip {
+			--_rise: calc(#{token(space-100)} * -1);
+			top: calc(100% + #{token(space-200)});
+			transform-origin: top center;
+		}
+	}
+
+	// Arrival: the chip rises toward the control from its placement side and springs to size.
+	@include motion {
+		@starting-style {
+			.c-tooltip__tip:not([hidden]) {
+				opacity: 0;
+				translate: -50% var(--_rise);
+				scale: 0.96;
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-tooltip__tip {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			color: CanvasText;
+			box-shadow: none;
+		}
+	}
+}

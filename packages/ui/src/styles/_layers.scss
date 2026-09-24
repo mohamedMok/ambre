@@ -1,0 +1,9 @@
+////
+/// Declares the ITCSS cascade layers. Must be the first CSS a shadow root sees:
+/// a layer's rank is fixed where it is first named.
+////
+
+@use 'sass:list';
+@use 'settings';
+
+@layer #{list.join(settings.$layers, (), comma)};

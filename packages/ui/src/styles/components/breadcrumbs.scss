@@ -1,0 +1,53 @@
+////
+/// Component — Breadcrumbs (`amb-breadcrumbs`).
+/// Block `.c-breadcrumbs` (the nav), element `__list` (the ordered list).
+/// Slotted `li` items are styled through `::slotted`; the last one carries `aria-current='page'`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-breadcrumbs {
+		color: token(color-fg-muted);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-200);
+		line-height: token(font-line-height-body);
+
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: token(space-100) token(space-200);
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+
+	::slotted(li) {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	// The page you are on rests in a soft neutral pill: you-are-here, without looking clickable.
+	::slotted(li[aria-current='page']) {
+		padding-inline: token(space-200);
+		border-radius: token(radius-full);
+		background: token(color-bg-subtle);
+		color: token(color-fg-default);
+		font-weight: token(font-weight-semibold);
+	}
+
+	@include forced-colors {
+		::slotted(li[aria-current='page']) {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			color: CanvasText;
+		}
+	}
+}

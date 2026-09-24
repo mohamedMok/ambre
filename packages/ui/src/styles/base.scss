@@ -1,0 +1,19 @@
+/*
+ * Ambre base sheet. Adopted once by every shadow root, before the component sheet.
+ *
+ * ITCSS, lowest priority first:
+ *   settings   configuration                  (no output)
+ *   tools      functions and mixins           (no output)
+ *   generic    resets inside the shadow root
+ *   objects    undecorated layout patterns    .o-*
+ *   components one sheet per element          .c-*   (components/*.scss)
+ *   utilities  single-purpose overrides       .u-*
+ *
+ * `layers` comes first: it names the cascade layers, which fixes their order
+ * whatever order the sheets load in.
+ */
+
+@use 'layers';
+@use 'generic/reset';
+@use 'objects/control';
+@use 'utilities/visually-hidden';

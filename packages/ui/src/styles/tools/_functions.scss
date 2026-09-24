@@ -1,0 +1,98 @@
+////
+/// Tools — functions. This layer outputs no CSS.
+/// @group tools
+////
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../settings/config';
+@use 'tokens' as compiled;
+
+/// Every public token the tokens package compiles, keyed by its variable name.
+/// Components may only read these (system tokens); reference tokens are never emitted.
+$_known: meta.module-variables('compiled');
+
+/// Reads a system token as a CSS custom property, so the value follows the theme and the brand.
+/// Fails the build on a name the tokens package does not emit.
+/// @param {String} $name - Kebab-case token name without the prefix, e.g. `color-accent-bg`.
+/// @return {String} `var(--amb-<name>)`
+/// @example scss
+///   color: token(color-fg-default); // var(--amb-color-fg-default)
+@function token($name) {
+	$key: '#{config.$prefix}-#{$name}';
+	@if not map.has-key($_known, $key) {
+		@error 'Unknown Ambre token `#{$name}`. Use a system token from @ambre/tokens.';
+	}
+	@return var(--#{$key});
+}
+
+/// Mixes a foreground into a ground, for tinted fills that keep their text contrast.
+/// Tints above 14% are not covered by the contrast pairs.
+/// @param {String} $ink - A foreground token, e.g. `token(color-accent-fg)`.
+/// @param {Number} $amount [12%]
+/// @param {String} $ground [token(color-bg-surface)]
+@function tint($ink, $amount: 12%, $ground: token(color-bg-surface)) {
+	@if $amount > 14% {
+		@error 'tint() above 14% is not covered by the contrast pairs.';
+	}
+	@return string.unquote('color-mix(in oklab, #{$ink} #{$amount}, #{$ground})');
+}
+
+/// A decorative edge made from a color: a darker rim on a fill, or a soft outline on a tint.
+/// @param {String} $color
+/// @param {Number} $amount [28%]
+/// @param {String} $with [transparent]
+@function rim($color, $amount: 28%, $with: transparent) {
+	@return string.unquote('color-mix(in oklab, #{$color} #{$amount}, #{$with})');
+}
+
+/// The shadow stack of a layer.
+/// - `flat`: nothing
+/// - `raised`: resting control (top-edge light + elevation 1)
+/// - `lifted`: hovered control (top-edge light + elevation 2)
+/// - `sunken`: a well (inset shadow)
+/// - `floating`: menus, popovers, tooltips
+/// - `overlay`: dialogs
+/// @param {String} $kind
+@function depth($kind) {
+	$highlight: inset 0 1px 0 token(color-highlight);
+	$stacks: (
+		flat: 0 0 0 0 transparent,
+		raised: ($highlight, token(elevation-1)),
+		lifted: ($highlight, token(elevation-2)),
+		sunken: token(elevation-inset),
+		floating: ($highlight, token(elevation-2)),
+		overlay: ($highlight, token(elevation-3))
+	);
+	@if not map.has-key($stacks, $kind) {
+		@error 'Unknown depth `#{$kind}`. Use one of #{map.keys($stacks)}.';
+	}
+	@return map.get($stacks, $kind);
+}
+
+/// The soft glow outside the focus ring.
+@function halo() {
+	$reach: string.unquote(
+		'calc(#{token(focus-ring-offset)} + #{token(focus-ring-width)} + #{token(focus-halo-width)})'
+	);
+	@return 0 0 0 $reach token(color-focus-halo);
+}
+
+/// Properties that move rather than repaint. They get the moderate duration and the spring.
+$motion-properties: (translate, scale, rotate, transform, inset-inline-start);
+
+/// Builds a transition list: repaints are fast and standard, movements are moderate and springy.
+/// @param {List} $properties
+@function transitions($properties...) {
+	$list: ();
+	@each $property in $properties {
+		@if list.index($motion-properties, $property) {
+			$list: list.append($list, $property token(duration-moderate) token(easing-spring), comma);
+		} @else {
+			$list: list.append($list, $property token(duration-fast) token(easing-standard), comma);
+		}
+	}
+	@return $list;
+}

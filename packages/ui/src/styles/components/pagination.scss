@@ -1,0 +1,84 @@
+////
+/// Component — Pagination (`amb-pagination`).
+/// Block `.c-pagination` (the nav), element `__list` (the ordered list).
+/// Slotted `li` pages are styled through `::slotted`. The current page is marked by the component
+/// with `data-amb-current` on the light-DOM `li` (shadow CSS cannot see an `aria-current` link inside it).
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-pagination {
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: token(space-200);
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+
+	// Each page is a quiet button: no chrome at rest, a soft fill under the pointer,
+	// a springy press. The current page rises off the row as a RAISED control.
+	// `::slotted()` takes one compound selector, so states go inside its argument
+	// (`::slotted(li):hover` is invalid) and the `hover` / `active` mixins cannot be used here.
+	::slotted(li) {
+		box-sizing: border-box;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-inline-size: token(size-control-md);
+		min-block-size: token(size-control-md);
+		padding-inline: token(space-200);
+		border: token(border-width-default) solid transparent;
+		border-radius: token(radius-action);
+		background: transparent;
+		font-variant-numeric: tabular-nums;
+
+		@include motion {
+			@include transition(background-color, border-color, box-shadow, translate, scale);
+		}
+	}
+
+	@media (hover: hover) {
+		::slotted(li:not([data-amb-current]):hover) {
+			background: token(color-bg-subtle);
+		}
+	}
+
+	::slotted(li:not([data-amb-current]):active) {
+		background: token(color-bg-muted);
+
+		@include motion {
+			scale: 0.96;
+		}
+	}
+
+	::slotted(li[data-amb-current]) {
+		@include depth(raised);
+		border-color: token(color-border-default);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-weight: token(font-weight-semibold);
+	}
+
+	@include forced-colors {
+		::slotted(li[data-amb-current]) {
+			border-color: CanvasText;
+			background: Canvas;
+			color: CanvasText;
+		}
+	}
+}

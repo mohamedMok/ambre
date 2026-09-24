@@ -1,0 +1,131 @@
+////
+/// Component — Tabs (`amb-tabs`).
+/// Block `.c-tabs` (a `display: contents` root that carries the type), element `__list` (the tablist track).
+/// Tabs and panels are light-DOM children styled through `::slotted()`; their states come from
+/// `[aria-selected='true']`, `:disabled` and `[role='tabpanel']`, which the element sets.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-tabs {
+		display: contents;
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+
+		// SUNKEN TRACK: the tab list is a well on the subtle fill; the selected tab rises out of it.
+		// Outer radius = tab radius + track padding, so the corners stay concentric.
+		&__list {
+			@include depth(sunken);
+			display: flex;
+			flex-wrap: wrap;
+			gap: token(space-100);
+			inline-size: fit-content;
+			max-inline-size: 100%;
+			padding: token(space-100);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-subtle);
+		}
+	}
+
+	// Tab text is fg-default everywhere on the track (the checked pair on the subtle fill);
+	// selection reads through the raised surface, not a dimmer label.
+	::slotted(button) {
+		@include depth(flat);
+		box-sizing: border-box;
+		min-height: token(size-control-md);
+		margin: 0;
+		padding-inline: token(space-400);
+		border: token(border-width-default) solid transparent;
+		border-radius: token(radius-sm);
+		background: transparent;
+		color: token(color-fg-default);
+		font: inherit;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+
+		@include motion {
+			@include transition(background-color, border-color, box-shadow, translate, scale);
+		}
+	}
+
+	// Hover is the surface mixed halfway into the track fill.
+	@media (hover: hover) {
+		::slotted(button:hover:not(:disabled):not([aria-selected='true'])) {
+			border-color: token(color-border-default);
+			background: rim(token(color-bg-surface), 55%, token(color-bg-subtle));
+		}
+	}
+
+	// RAISED segment: surface fill, top-edge highlight, elevation-1.
+	::slotted([aria-selected='true']) {
+		--_depth: #{depth(raised)};
+		border-color: token(color-border-default);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+	}
+
+	::slotted(button:active:not(:disabled)) {
+		@include motion {
+			scale: 0.98;
+		}
+	}
+
+	::slotted(button:focus) {
+		outline: none;
+	}
+
+	::slotted(button:focus-visible) {
+		@include focus-ring;
+	}
+
+	// A disabled tab sits on its own disabled fill, the checked pair for disabled text.
+	::slotted(button:disabled) {
+		--_depth: #{depth(flat)};
+		border-color: transparent;
+		background: token(color-bg-disabled);
+		color: token(color-fg-disabled);
+		cursor: not-allowed;
+	}
+
+	::slotted([role='tabpanel']) {
+		padding-block: token(space-400);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+	}
+
+	// Shadows and fills vanish in forced colors, so the selected tab takes the system highlight.
+	@include forced-colors {
+		.c-tabs__list {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			box-shadow: none;
+		}
+
+		::slotted(button) {
+			border: token(border-width-default) solid transparent;
+			background: ButtonFace;
+			box-shadow: none;
+			color: ButtonText;
+		}
+
+		::slotted([aria-selected='true']) {
+			border-color: Highlight;
+			background: Highlight;
+			color: HighlightText;
+		}
+
+		::slotted(button:disabled) {
+			color: GrayText;
+		}
+	}
+}

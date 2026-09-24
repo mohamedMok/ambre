@@ -17,6 +17,7 @@ Hard rules:
 
 - Element prefix is `amb-`. Package scope is `@ambre`. CSS variables use `--amb-`.
 - Reference tokens stay out of component CSS. System tokens are the theme API.
+- Component styles live in `packages/*/src/styles`, in Sass, organised by ITCSS and named with BEM. No `<style>` in a component.
 - A component token is allowed when a second component needs the same decision.
 - The contract is the API. Svelte, Storybook, and docs implement it.
 - Author text goes in slots. Headings, paragraphs, and links on the docs site stay native HTML.

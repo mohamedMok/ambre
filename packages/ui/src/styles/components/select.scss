@@ -1,0 +1,230 @@
+////
+/// Component — Select (`amb-select`).
+/// Block `.c-select` (the label), elements `__label`, `__control` (the native select), `__option`
+/// (each option cloned into the select by script), `__message`.
+/// States come from the native elements: `:focus-visible`, `:disabled`, `:user-invalid`, `:open`, `:checked`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-select {
+		display: grid;
+		gap: token(space-200);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+
+		&__label {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		// The same sunken well as the text field.
+		&__control {
+			@include depth(sunken);
+			width: 100%;
+			min-height: token(size-control-md);
+			padding-inline: token(space-300);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-surface);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(border-color, box-shadow);
+			}
+
+			@media (hover: hover) {
+				&:hover:not(:disabled, :focus-visible) {
+					border-color: token(color-border-strong);
+				}
+			}
+
+			@include focus-visible {
+				border-color: token(color-focus-ring);
+			}
+
+			&:disabled {
+				@include depth(flat);
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+			}
+
+			&:user-invalid {
+				border-color: token(color-status-danger-fg);
+			}
+		}
+
+		&__message {
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring);
+			}
+		}
+	}
+
+	// Customizable select: the native element stays, and where the browser supports
+	// base-select the picker becomes a floating Ambre surface. Other browsers keep
+	// the native look above. Options are cloned in by script, which gives them `__option`.
+	// Vendor-new pseudo-elements get their own rules: an unsupported one would drop a whole list.
+	@supports (appearance: base-select) {
+		.c-select {
+			&__control {
+				display: flex;
+				align-items: center;
+				gap: token(space-200);
+
+				&,
+				&::picker(select) {
+					appearance: base-select;
+				}
+
+				&::picker-icon {
+					color: token(color-fg-muted);
+
+					@include motion {
+						@include transition(rotate);
+					}
+				}
+
+				// The flipped chevron tells the picker is open, so it stays under reduced motion;
+				// only its transition is motion.
+				&:open::picker-icon {
+					rotate: 180deg;
+				}
+
+				&:disabled::picker-icon {
+					color: token(color-fg-disabled);
+				}
+
+				// The generic reset does not reach this pseudo-element.
+				&::picker(select) {
+					box-sizing: border-box;
+					margin-block: token(space-100);
+					padding: token(space-100);
+					border: token(border-width-default) solid token(color-border-default);
+					border-radius: token(radius-lg);
+					background: token(color-bg-surface);
+					box-shadow: depth(floating);
+					color: token(color-fg-default);
+					opacity: 0;
+					transform-origin: top center;
+
+					@include motion {
+						scale: 0.96;
+						transition:
+							opacity token(duration-moderate) token(easing-enter),
+							scale token(duration-moderate) token(easing-spring),
+							display token(duration-moderate) allow-discrete,
+							overlay token(duration-moderate) allow-discrete;
+					}
+				}
+
+				&:open::picker(select) {
+					opacity: 1;
+
+					@include motion {
+						scale: 1;
+					}
+				}
+			}
+
+			&__option {
+				display: flex;
+				align-items: center;
+				gap: token(space-200);
+				min-height: token(size-control-md);
+				padding-inline: token(space-300);
+				border-radius: token(radius-sm);
+				background: transparent;
+				color: token(color-fg-default);
+				cursor: pointer;
+
+				@include motion {
+					@include transition(background-color);
+				}
+
+				&:hover,
+				&:focus-visible {
+					background: token(color-bg-subtle);
+				}
+
+				&:focus-visible {
+					outline: token(focus-ring-width) solid token(color-focus-ring);
+					outline-offset: calc(#{token(focus-ring-width)} * -1);
+				}
+
+				&:checked {
+					background: tint(token(color-accent-fg), 12%);
+					color: token(color-accent-fg);
+					font-weight: token(font-weight-semibold);
+				}
+
+				&:disabled {
+					color: token(color-fg-disabled);
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+
+	// The picker arrives: it scales up from its anchor with a small spring.
+	// The message arrives: it settles down into place from just above.
+	@include motion {
+		@starting-style {
+			.c-select__control:open::picker(select) {
+				opacity: 0;
+				scale: 0.96;
+			}
+
+			.c-select__message {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	// The light-DOM options only feed the clones; they never render in the slot.
+	::slotted(option),
+	::slotted(optgroup) {
+		display: none;
+	}
+
+	@include forced-colors {
+		.c-select__control {
+			border: token(border-width-default) solid ButtonText;
+			background: Field;
+			color: FieldText;
+
+			&::picker(select) {
+				border: token(border-width-default) solid CanvasText;
+				background: Canvas;
+				color: CanvasText;
+			}
+		}
+
+		.c-select__option:checked {
+			background: Highlight;
+			color: HighlightText;
+			forced-color-adjust: none;
+		}
+
+		.c-select__message {
+			color: CanvasText;
+		}
+	}
+}

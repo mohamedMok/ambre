@@ -1,0 +1,229 @@
+////
+/// Component — Menu (`amb-menu`).
+/// Block `.c-menu` (a `display: contents` root that carries the type), elements `__trigger`
+/// (the native button) and `__panel` (the `role="menu"` list). State `.is-open` mirrors `open`.
+/// Items are light-DOM buttons styled through `::slotted()`; the panel closes through `[hidden]`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	// The host is the positioning box the panel hangs from.
+	:host {
+		position: relative;
+		display: inline-block;
+	}
+
+	.c-menu {
+		display: contents;
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+
+		// The trigger is a RAISED secondary control; `--_depth` is its resting shadow, focus adds the halo.
+		&__trigger {
+			@include depth(raised);
+			display: inline-flex;
+			align-items: center;
+			gap: token(space-300);
+			min-height: token(size-control-md);
+			padding-inline: token(space-400);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-surface);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, border-color, box-shadow, translate, scale);
+			}
+
+			// A small chevron drawn from two borders; it flips with a spring when the list opens.
+			// Its offset and rotation are its shape, not motion, so they hold under reduced motion.
+			&::after {
+				content: '';
+				flex: none;
+				width: token(space-200);
+				height: token(space-200);
+				border-right: token(border-width-strong) solid currentColor;
+				border-bottom: token(border-width-strong) solid currentColor;
+				translate: 0 -2px;
+				rotate: 45deg;
+
+				@include motion {
+					@include transition(translate, rotate);
+				}
+			}
+
+			@include hover {
+				--_depth: #{depth(lifted)};
+				border-color: token(color-border-strong);
+				background: token(color-bg-subtle);
+
+				@include motion {
+					translate: 0 -1px;
+				}
+			}
+
+			@include active {
+				--_depth: #{depth(sunken)};
+				background: token(color-bg-muted);
+
+				@include motion {
+					translate: 0 0;
+					scale: 0.98;
+				}
+			}
+
+			@include focus-visible;
+
+			&:disabled {
+				--_depth: #{depth(flat)};
+				border-color: transparent;
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+			}
+		}
+
+		// While the list is open the trigger stays pressed in, over hover and press.
+		&.is-open &__trigger {
+			&:not(:disabled) {
+				--_depth: #{depth(sunken)};
+				background: token(color-bg-subtle);
+
+				@include motion {
+					translate: 0 0;
+				}
+			}
+
+			&::after {
+				translate: 0 2px;
+				rotate: 225deg;
+			}
+		}
+
+		// FLOATING SURFACE: large radius, elevation-2 and the top-edge highlight. It grows out of the
+		// trigger's corner with a spring, and fades out with allow-discrete so the exit is seen too.
+		&__panel {
+			@include depth(floating);
+			position: absolute;
+			z-index: 2;
+			top: calc(100% + #{token(space-200)});
+			left: 0;
+			display: grid;
+			gap: token(space-100);
+			min-width: 12rem;
+			padding: token(space-100);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-lg);
+			background: token(color-bg-surface);
+			transform-origin: top left;
+			opacity: 1;
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring),
+					scale token(duration-moderate) token(easing-spring),
+					display token(duration-moderate) allow-discrete;
+				transition-behavior: allow-discrete;
+			}
+
+			&[hidden] {
+				display: none;
+				opacity: 0;
+
+				@include motion {
+					translate: 0 calc(#{token(space-100)} * -1);
+					scale: 0.96;
+					transition:
+						opacity token(duration-fast) token(easing-exit),
+						translate token(duration-fast) token(easing-exit),
+						scale token(duration-fast) token(easing-exit),
+						display token(duration-fast) allow-discrete;
+					transition-behavior: allow-discrete;
+				}
+			}
+		}
+	}
+
+	@include motion {
+		@starting-style {
+			.c-menu__panel:not([hidden]) {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+				scale: 0.96;
+			}
+		}
+	}
+
+	// Items: light-DOM buttons. The flat depth keeps the panel's inherited `--_depth` off the focus ring.
+	::slotted(button) {
+		--_depth: #{depth(flat)};
+		box-sizing: border-box;
+		min-height: token(size-control-md);
+		padding-inline: token(space-300);
+		border: 0;
+		border-radius: token(radius-md);
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+		text-align: start;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+
+		@include motion {
+			@include transition(background-color, color, box-shadow);
+		}
+	}
+
+	// Neutral tint on hover; the accent tint marks a checked or current item.
+	@media (hover: hover) {
+		::slotted(button:hover) {
+			background: token(color-bg-subtle);
+			color: token(color-fg-default);
+		}
+	}
+
+	::slotted(button:active) {
+		background: token(color-bg-muted);
+		color: token(color-fg-default);
+	}
+
+	::slotted([aria-checked='true']),
+	::slotted([aria-current]:not([aria-current='false'])) {
+		background: tint(token(color-accent-fg), 12%);
+		color: token(color-accent-fg);
+		font-weight: token(font-weight-semibold);
+	}
+
+	::slotted(button:focus) {
+		outline: none;
+	}
+
+	::slotted(button:focus-visible) {
+		@include focus-ring;
+	}
+
+	@include forced-colors {
+		.c-menu__trigger,
+		.c-menu__panel,
+		::slotted(button) {
+			border: token(border-width-default) solid ButtonText;
+			background: Canvas;
+			color: CanvasText;
+			box-shadow: none;
+		}
+
+		::slotted([aria-checked='true']),
+		::slotted([aria-current]:not([aria-current='false'])) {
+			background: Highlight;
+			color: HighlightText;
+		}
+	}
+}

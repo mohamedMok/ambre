@@ -1,0 +1,242 @@
+////
+/// Component — Range (`amb-range`).
+/// Block `.c-range` (the label), elements `__label`, `__control` (the native range input).
+/// States: `.is-disabled` on the block (the label text dims); the slider reads the native
+/// `:hover`, `:active`, `:focus-visible`, `:disabled`.
+/// `--_fill` (how far the value sits along the track) is set from markup.
+/// @group components
+////
+
+@use 'tools' as *;
+
+/// The sunken rail both engines draw. The generic reset does not reach vendor pseudo-elements.
+@mixin _track {
+	box-sizing: border-box;
+	height: var(--_track);
+	border: token(border-width-default) solid token(color-border-default);
+	border-radius: token(radius-full);
+	box-shadow: token(elevation-inset);
+
+	@include motion {
+		@include transition(border-color);
+	}
+}
+
+/// The raised bead both engines draw.
+@mixin _thumb {
+	box-sizing: border-box;
+	width: var(--_thumb);
+	height: var(--_thumb);
+	border: token(border-width-strong) solid token(color-accent-bg);
+	border-radius: token(radius-full);
+	background: token(color-bg-surface);
+	box-shadow: var(--_thumb-depth);
+
+	@include motion {
+		@include transition(background-color, border-color, box-shadow, scale);
+	}
+}
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-range {
+		display: grid;
+		gap: token(space-200);
+		min-height: token(size-control-md);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+
+		&.is-disabled {
+			color: token(color-fg-disabled);
+		}
+
+		&__label {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		// The track is a sunken well filled with accent up to the value (`--_fill`, set from
+		// script); the thumb is a raised bead. Vendor pseudo-elements need separate rules,
+		// because one unknown selector in a list drops the whole rule.
+		&__control {
+			--_track: #{token(space-200)};
+			--_thumb: #{token(size-icon-lg)};
+			--_thumb-depth: #{depth(raised)};
+			--_halo: #{halo()};
+			--_fill-color: #{token(color-accent-bg)};
+			--_rail: #{token(color-bg-subtle)};
+
+			appearance: none;
+			display: block;
+			width: 100%;
+			height: var(--_thumb);
+			border-radius: token(radius-full);
+			background: transparent;
+			accent-color: token(color-accent-bg);
+			cursor: pointer;
+
+			&::-webkit-slider-runnable-track {
+				@include _track;
+				background: linear-gradient(
+					to right,
+					var(--_fill-color) 0 var(--_fill, 0%),
+					var(--_rail) var(--_fill, 0%) 100%
+				);
+			}
+
+			&::-moz-range-track {
+				@include _track;
+				background: var(--_rail);
+			}
+
+			&::-moz-range-progress {
+				height: var(--_track);
+				border-radius: token(radius-full);
+				background: var(--_fill-color);
+			}
+
+			&::-webkit-slider-thumb {
+				@include _thumb;
+				appearance: none;
+				margin-top: calc((var(--_track) - var(--_thumb)) / 2 - #{token(border-width-default)});
+			}
+
+			&::-moz-range-thumb {
+				@include _thumb;
+			}
+
+			@media (hover: hover) {
+				&:hover:not(:disabled) {
+					--_thumb-depth: #{depth(lifted)};
+					--_fill-color: #{token(color-accent-bg-hover)};
+				}
+
+				&:hover:not(:disabled)::-webkit-slider-runnable-track {
+					border-color: token(color-border-strong);
+				}
+
+				&:hover:not(:disabled)::-moz-range-track {
+					border-color: token(color-border-strong);
+				}
+
+				@include motion {
+					&:hover:not(:disabled)::-webkit-slider-thumb {
+						scale: 1.08;
+					}
+
+					&:hover:not(:disabled)::-moz-range-thumb {
+						scale: 1.08;
+					}
+				}
+			}
+
+			&:active:not(:disabled) {
+				--_thumb-depth: #{depth(sunken)};
+			}
+
+			@include motion {
+				&:active:not(:disabled)::-webkit-slider-thumb {
+					scale: 0.96;
+				}
+
+				&:active:not(:disabled)::-moz-range-thumb {
+					scale: 0.96;
+				}
+			}
+
+			// The ring goes around the whole slider; the halo only around the thumb,
+			// so `focus-visible` (which puts the halo on the element) is not used here.
+			&:focus {
+				outline: none;
+			}
+
+			&:focus-visible {
+				outline: token(focus-ring-width) solid token(color-focus-ring);
+				outline-offset: token(focus-ring-offset);
+			}
+
+			&:focus-visible::-webkit-slider-thumb {
+				box-shadow: var(--_thumb-depth), var(--_halo);
+			}
+
+			&:focus-visible::-moz-range-thumb {
+				box-shadow: var(--_thumb-depth), var(--_halo);
+			}
+
+			&:disabled {
+				--_fill-color: #{token(color-fg-disabled)};
+				--_rail: #{token(color-bg-disabled)};
+				--_thumb-depth: #{depth(flat)};
+				cursor: not-allowed;
+			}
+
+			&:disabled::-webkit-slider-runnable-track {
+				border-color: token(color-border-disabled);
+				box-shadow: none;
+			}
+
+			&:disabled::-moz-range-track {
+				border-color: token(color-border-disabled);
+				box-shadow: none;
+			}
+
+			&:disabled::-webkit-slider-thumb {
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+			}
+
+			&:disabled::-moz-range-thumb {
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-range__control {
+			--_fill-color: Highlight;
+			--_rail: Canvas;
+			accent-color: auto;
+
+			&::-webkit-slider-runnable-track {
+				border-color: ButtonText;
+				box-shadow: none;
+			}
+
+			&::-moz-range-track {
+				border-color: ButtonText;
+				box-shadow: none;
+			}
+
+			&::-webkit-slider-thumb {
+				border-color: ButtonText;
+				background: ButtonFace;
+				box-shadow: none;
+			}
+
+			&::-moz-range-thumb {
+				border-color: ButtonText;
+				background: ButtonFace;
+				box-shadow: none;
+			}
+
+			&:disabled {
+				--_fill-color: GrayText;
+			}
+
+			&:disabled::-webkit-slider-thumb {
+				border-color: GrayText;
+			}
+
+			&:disabled::-moz-range-thumb {
+				border-color: GrayText;
+			}
+		}
+	}
+}

@@ -1,0 +1,117 @@
+////
+/// Component — Text area (`amb-text-area`).
+/// Block `.c-text-area` (the label), elements `__label`, `__control` (the native textarea), `__message`.
+/// States come from the native textarea: `:focus-visible`, `:disabled`, `:user-invalid`.
+/// `--_rows` is set from markup, from the `rows` prop.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-text-area {
+		display: grid;
+		gap: token(space-200);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+
+		&__label {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		// The same sunken well as the text field.
+		&__control {
+			@include depth(sunken);
+			width: 100%;
+			min-height: token(size-control-md);
+			padding: token(space-300);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-surface);
+			resize: vertical;
+
+			@include motion {
+				@include transition(border-color, box-shadow);
+			}
+
+			// Auto-grow with the text where supported. `rows` still sets the resting height,
+			// because field-sizing ignores the rows attribute.
+			@supports (field-sizing: content) {
+				field-sizing: content;
+				min-block-size: max(
+					#{token(size-control-md)},
+					calc(
+						var(--_rows, 4) * 1lh + #{token(space-300)} * 2 + #{token(border-width-default)} * 2
+					)
+				);
+			}
+
+			&::placeholder {
+				color: token(color-fg-muted);
+			}
+
+			@media (hover: hover) {
+				&:hover:not(:disabled, :focus-visible) {
+					border-color: token(color-border-strong);
+				}
+			}
+
+			@include focus-visible {
+				border-color: token(color-focus-ring);
+			}
+
+			&:disabled {
+				@include depth(flat);
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+				resize: none;
+			}
+
+			&:user-invalid {
+				border-color: token(color-status-danger-fg);
+			}
+		}
+
+		&__message {
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring);
+			}
+		}
+	}
+
+	// The message arrives: it settles down into place from just above.
+	@include motion {
+		@starting-style {
+			.c-text-area__message {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-text-area__control {
+			border: token(border-width-default) solid ButtonText;
+			background: Field;
+			color: FieldText;
+		}
+
+		.c-text-area__message {
+			color: CanvasText;
+		}
+	}
+}

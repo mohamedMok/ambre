@@ -1,0 +1,12 @@
+////
+/// Utilities — single-purpose overrides. Highest layer.
+/// @group utilities
+////
+
+@use '../tools' as *;
+
+@layer utilities {
+	.u-visually-hidden {
+		@include visually-hidden;
+	}
+}

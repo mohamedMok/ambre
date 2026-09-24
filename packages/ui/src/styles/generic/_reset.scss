@@ -1,0 +1,25 @@
+////
+/// Generic — resets inside every shadow root. Low specificity (`:where`) so any layer above wins.
+/// @group generic
+////
+
+@layer generic {
+	:where(*, *::before, *::after) {
+		box-sizing: border-box;
+	}
+
+	:where(button, input, select, textarea) {
+		margin: 0;
+		color: inherit;
+		font: inherit;
+		letter-spacing: inherit;
+	}
+
+	:where(button) {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	:where(p, h1, h2, h3, h4, ol, ul) {
+		margin: 0;
+	}
+}
