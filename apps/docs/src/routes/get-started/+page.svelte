@@ -10,14 +10,16 @@
 		status = 'Submitted. The form read both fields and the checkbox.';
 	}
 
+	const installCode = `npm install @ambre-ds/tokens @ambre-ds/ui
+npm install @fontsource/source-sans-3 @fontsource/source-code-pro
+
+# Shop compositions, only if the product needs them
+npm install @ambre-ds/commerce`;
+
 	const cloneCode = `git clone ${repoUrl}.git
 cd ambre
 pnpm install
 pnpm build`;
-
-	const addCode = `pnpm add ../ambre/packages/tokens ../ambre/packages/ui
-pnpm add ../ambre/packages/commerce
-pnpm add @fontsource/source-sans-3 @fontsource/source-code-pro`;
 
 	const loadCode = `// 1. Fonts: the faces the theme names
 import '@fontsource/source-sans-3/400.css';
@@ -128,8 +130,8 @@ export class CheckoutComponent {}`;
 	<p class="eyebrow">Get started</p>
 	<h1>Install</h1>
 	<p class="lede">
-		Ambre is a set of web components and the tokens that theme them. The packages are not on npm yet. Build them
-		from the repository and point the product at the build.
+		Ambre is a set of web components and the tokens that theme them. Install the packages from npm, load the theme,
+		and write the tags.
 	</p>
 </header>
 
@@ -168,8 +170,7 @@ export class CheckoutComponent {}`;
 
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-	<li><strong>Node 22</strong> and <strong>pnpm 12</strong> to build the workspace.</li>
-	<li>Read access to <a href={repoUrl} target="_blank" rel="external noreferrer">the repository</a>, or a mirror of it on your own Git host.</li>
+	<li>Any package manager: npm, pnpm, or Yarn.</li>
 	<li>A bundler that resolves package <code>exports</code> and imports CSS, such as Vite or webpack.</li>
 	<li>
 		Current Chrome, Edge, Firefox, or Safari. The elements use custom elements, open shadow roots, and
@@ -177,20 +178,19 @@ export class CheckoutComponent {}`;
 	</li>
 </ul>
 
-<h2 id="build">Build from source</h2>
-<p>Clone the repository, install, and build every package. The output lands in each package's <code>dist</code> folder.</p>
-<CodeBlock code={cloneCode} lang="html" title="Terminal" />
+<h2 id="install">Install from npm</h2>
 <p>
-	Pin a commit. The packages stay at version <code>0.0.0</code> until the first release, so the commit is the
-	version. Mirror the repository internally if your build machines cannot reach GitHub.
+	Add the tokens and the library, with the fonts the default brand names. The three packages share one version, and
+	each release is published from CI with npm provenance.
 </p>
+<CodeBlock code={installCode} lang="bash" title="Terminal" />
 
-<h3>Add the build to the product</h3>
+<h3>Build from source</h3>
 <p>
-	Run these from the product repository, next to the Ambre checkout. Add the built packages by path, and the fonts from
-	npm. Skip <code>@ambre-ds/commerce</code> unless the product needs shop compositions.
+	To contribute, or to try an unreleased change, clone the repository and build every package. The output lands in
+	each package's <code>dist</code> folder. You need Node 22 and pnpm 12.
 </p>
-<CodeBlock code={addCode} lang="bash" title="Terminal" />
+<CodeBlock code={cloneCode} lang="bash" title="Terminal" />
 
 <h2 id="load-order">Load order</h2>
 <p>

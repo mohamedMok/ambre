@@ -24,6 +24,12 @@ pnpm docs
 pnpm storybook
 ```
 
+Install from npm:
+
+```sh
+npm install @ambre-ds/tokens @ambre-ds/ui
+```
+
 Load the theme once, then the library:
 
 ```js

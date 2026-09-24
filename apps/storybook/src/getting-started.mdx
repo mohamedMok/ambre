@@ -35,22 +35,27 @@ Ambre is a set of accessible web components and the tokens that theme them. The 
 
 Most products need the first two.
 
-## 1. Build from source
+## 1. Install
 
-The packages are not published to npm yet. You need Node 22 and pnpm 12.
+Add the tokens and the library from npm, with the fonts the default brand names:
+
+```bash
+npm install @ambre-ds/tokens @ambre-ds/ui
+npm install @fontsource/source-sans-3 @fontsource/source-code-pro
+
+# Shop compositions, only if the product needs them
+npm install @ambre-ds/commerce
+```
+
+The three packages share one version. Each release is published from CI with npm provenance.
+
+To contribute or try an unreleased change, build from source with Node 22 and pnpm 12:
 
 ```bash
 git clone https://github.com/mohamedMok/ambre.git
 cd ambre
 pnpm install
 pnpm build
-```
-
-Then add the built packages to your product, with the fonts the theme names:
-
-```bash
-pnpm add ../ambre/packages/tokens ../ambre/packages/ui
-pnpm add @fontsource/source-sans-3 @fontsource/source-code-pro
 ```
 
 ## 2. Load in this order
