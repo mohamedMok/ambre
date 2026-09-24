@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@ambre/commerce';
+import '@ambre-ds/commerce';
 
 const meta = {
   title: 'Commerce/Quantity',

@@ -5,7 +5,7 @@ description: Decides whether an Ambre part belongs in core, a later domain pack,
 
 # Inclusion
 
-A part enters `@ambre/ui` when it is a primitive, or when a second product needs it. A finished design is not a reason.
+A part enters `@ambre-ds/ui` when it is a primitive, or when a second product needs it. A finished design is not a reason.
 
 ## Decide
 

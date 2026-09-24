@@ -7,7 +7,7 @@ Read the skill that owns the change. Do not do another skill's job in the same e
 | `ambre-inclusion` | Whether a part belongs in core, a later domain pack, or stays in a product |
 | `ambre-tokens` | DTCG sources, tiers, names, contrast pairs |
 | `ambre-contract` | `contracts/*.yaml` and the manifest |
-| `ambre-component` | Svelte 5 custom elements in `@ambre/ui` |
+| `ambre-component` | Svelte 5 custom elements in `@ambre-ds/ui` |
 | `ambre-a11y` | WCAG 2.2 AA and the APG pattern for the component |
 | `ambre-docs` | The SvelteKit documentation site |
 | `ambre-storybook` | Stories for every variant and state |
@@ -15,7 +15,7 @@ Read the skill that owns the change. Do not do another skill's job in the same e
 
 Hard rules:
 
-- Element prefix is `amb-`. Package scope is `@ambre`. CSS variables use `--amb-`.
+- Element prefix is `amb-`. Package scope is `@ambre-ds`. CSS variables use `--amb-`.
 - Reference tokens stay out of component CSS. System tokens are the theme API.
 - Component styles live in `packages/*/src/styles`, in Sass, organised by ITCSS and named with BEM. No `<style>` in a component.
 - A component token is allowed when a second component needs the same decision.

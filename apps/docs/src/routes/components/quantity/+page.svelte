@@ -56,7 +56,7 @@
 		dont: [
 			'Don’t use the control to remove a line. Keep <code>min="1"</code> and add a separate <strong>Remove</strong> button.',
 			'Don’t use it for a number that is not a count of items, such as a price or a weight. Use a text field.',
-			'Don’t build the cart or the checkout into it. Those stay in the product, outside <code>@ambre/commerce</code>.'
+			'Don’t build the cart or the checkout into it. Those stay in the product, outside <code>@ambre-ds/commerce</code>.'
 		]
 	}}
 >

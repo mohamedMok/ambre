@@ -28,7 +28,7 @@ Styles never live in the `.svelte` file. See `src/styles/README.md`.
 
 ## Check
 
-`pnpm --filter @ambre/ui test` after the manifest is generated. It fails if the source drifts from the contract, if a `.svelte` file has a `<style>` block, or if a sheet is missing, has no `.c-<id>` block, or contains a hex color, a raw `var(--amb-…)` or `!important`.
+`pnpm --filter @ambre-ds/ui test` after the manifest is generated. It fails if the source drifts from the contract, if a `.svelte` file has a `<style>` block, or if a sheet is missing, has no `.c-<id>` block, or contains a hex color, a raw `var(--amb-…)` or `!important`.
 
 ## Refuse
 

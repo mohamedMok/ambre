@@ -194,7 +194,7 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 	},
 	{
 		title: 'Commerce',
-		summary: 'Shop compositions. They live in @ambre/commerce, outside the core library.',
+		summary: 'Shop compositions. They live in @ambre-ds/commerce, outside the core library.',
 		items: [
 			{
 				href: '/components/quantity',

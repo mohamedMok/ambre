@@ -1,4 +1,4 @@
-import data from '@ambre/tokens/json';
+import data from '@ambre-ds/tokens/json';
 
 export interface TokenRecord {
 	path: string;

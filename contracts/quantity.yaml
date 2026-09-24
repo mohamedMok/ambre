@@ -67,7 +67,7 @@ events:
     description: Fired after the quantity changes. detail.value is the next number.
 a11y:
   role: spinbutton
-  name: Slotted label text. Decrease and Increase name the buttons.
+  name: Slotted label text. The − and + buttons are named Decrease and Increase with aria-label.
   keyboard:
     - Tab reaches Decrease, the number, then Increase.
     - Arrow keys change the number by one step.
@@ -107,6 +107,7 @@ tokens:
   - elevation.inset
   - radius.sm
   - space.100
+  - size.icon.md
   - duration.fast
   - duration.moderate
   - easing.standard

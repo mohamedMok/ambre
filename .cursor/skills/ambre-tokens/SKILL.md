@@ -24,7 +24,7 @@ Names are the object path. The CSS prefix `amb` is applied by the build.
 ## After an edit
 
 1. Add or update a pair in `src/contrast-pairs.json` when a color is used for text (4.5) or a UI boundary (3).
-2. Run `pnpm --filter @ambre/tokens test`.
+2. Run `pnpm --filter @ambre-ds/tokens test`.
 3. Do not put a raw hex in a component.
 
 ## Refuse

@@ -6,7 +6,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // Commerce shares the core ITCSS layers: `@use 'tools'` resolves to @ambre/ui's src/styles.
+        // Commerce shares the core ITCSS layers: `@use 'tools'` resolves to @ambre-ds/ui's src/styles.
         loadPaths: [resolve('../ui/src/styles'), resolve('../tokens/dist/scss')],
       },
     },

@@ -121,9 +121,6 @@
 					<amb-button>Save changes</amb-button>
 				</div>
 			</div>
-			<div class="app-toast">
-				<amb-banner variant="success">Single sign-on is on for 72 members.</amb-banner>
-			</div>
 		</div>
 
 		<p class="theater-caption" aria-live="polite">
@@ -372,7 +369,7 @@
 
 	.theater-canvas {
 		position: relative;
-		padding: clamp(24px, 4vw, 44px) clamp(20px, 4vw, 44px) 76px;
+		padding: clamp(24px, 4vw, 44px);
 		background-color: var(--amb-color-bg-canvas);
 		background-image: radial-gradient(
 			color-mix(in oklab, var(--amb-color-border-default) 26%, transparent) 1px,
@@ -441,14 +438,6 @@
 
 	.spacer {
 		flex: 1;
-	}
-
-	.app-toast {
-		position: absolute;
-		left: clamp(12px, 3vw, 28px);
-		bottom: 18px;
-		width: min(360px, calc(100% - 24px));
-		filter: drop-shadow(0 10px 18px color-mix(in oklab, var(--amb-color-bg-inverse) 18%, transparent));
 	}
 
 	.theater-caption {
@@ -730,16 +719,6 @@
 
 		.pillars {
 			grid-template-columns: 1fr;
-		}
-
-		.app-toast {
-			position: static;
-			width: auto;
-			margin-top: var(--amb-space-400);
-		}
-
-		.theater-canvas {
-			padding-bottom: clamp(24px, 4vw, 44px);
 		}
 	}
 </style>

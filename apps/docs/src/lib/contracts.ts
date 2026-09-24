@@ -43,7 +43,7 @@ export function contract(id: string): Contract {
 }
 
 export function packageFor(id: string) {
-	return id === 'quantity' ? '@ambre/commerce' : '@ambre/ui';
+	return id === 'quantity' ? '@ambre-ds/commerce' : '@ambre-ds/ui';
 }
 
 export function sourcePath(c: Contract) {

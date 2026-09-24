@@ -67,9 +67,16 @@
 			font: inherit;
 		}
 
+		// Square steps: as wide as the well is tall, inside its padding and border.
 		&__step {
 			@include depth(raised);
-			padding-inline: token(space-300);
+			display: inline-grid;
+			place-items: center;
+			flex: none;
+			inline-size: calc(
+				#{token(size-control-md)} - 2 * #{token(space-100)} - 2 * #{token(border-width-default)}
+			);
+			padding: 0;
 			border: token(border-width-default) solid token(color-border-default);
 			border-radius: token(radius-sm);
 			background: token(color-bg-surface);
@@ -113,6 +120,17 @@
 					scale: 1;
 				}
 			}
+		}
+
+		// The − and + marks: drawn in the text colour, so they follow the brand and forced colours.
+		&__glyph {
+			inline-size: token(size-icon-md);
+			block-size: token(size-icon-md);
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 2;
+			stroke-linecap: round;
+			pointer-events: none;
 		}
 
 		&__value {

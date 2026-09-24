@@ -123,7 +123,18 @@
 <div part="field" class={['c-quantity', disabled && 'is-disabled']}>
 	<span id={labelId} part="label" class="c-quantity__label"><slot /></span>
 	<div part="stepper" class="c-quantity__stepper">
-		<button part="decrease" type="button" class="c-quantity__step" disabled={atMin} onclick={() => bump(-1)}>Decrease</button>
+		<button
+			part="decrease"
+			type="button"
+			class="c-quantity__step"
+			aria-label="Decrease"
+			disabled={atMin}
+			onclick={() => bump(-1)}
+		>
+			<svg class="c-quantity__glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path d="M5 12h14" />
+			</svg>
+		</button>
 		<input
 			bind:this={input}
 			part="value"
@@ -138,6 +149,17 @@
 			oninput={onInput}
 			onchange={onCommit}
 		/>
-		<button part="increase" type="button" class="c-quantity__step" disabled={atMax} onclick={() => bump(1)}>Increase</button>
+		<button
+			part="increase"
+			type="button"
+			class="c-quantity__step"
+			aria-label="Increase"
+			disabled={atMax}
+			onclick={() => bump(1)}
+		>
+			<svg class="c-quantity__glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path d="M5 12h14M12 5v14" />
+			</svg>
+		</button>
 	</div>
 </div>

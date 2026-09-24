@@ -15,7 +15,7 @@ The site is the public, crawlable surface. Storybook is the workshop.
 4. Short imperative guidance. A do list and a don't list for components.
 5. Semantic tokens only. No raw hex in CSS.
 
-Headings, links, and landmarks are native HTML. Custom elements are imported from `@ambre/ui` on the client. Slotted text is in the server HTML.
+Headings, links, and landmarks are native HTML. Custom elements are imported from `@ambre-ds/ui` on the client. Slotted text is in the server HTML.
 
 Each page is a real route under `src/routes`. Color swatches copy the CSS variable, not the reference hex, for semantic tokens.
 

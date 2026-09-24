@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html, svg } from 'lit';
-import '@ambre/ui';
+import '@ambre-ds/ui';
 
 const plus = svg`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z"></path></svg>`;
 

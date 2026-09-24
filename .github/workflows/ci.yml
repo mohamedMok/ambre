@@ -16,10 +16,10 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm test
-      - run: pnpm --filter @ambre/ui build
-      - run: pnpm --filter @ambre/storybook build
+      - run: pnpm --filter @ambre-ds/ui build
+      - run: pnpm --filter @ambre-ds/storybook build
       - run: mkdir -p apps/docs/static && rm -rf apps/docs/static/storybook && cp -R apps/storybook/storybook-static apps/docs/static/storybook
-      - run: pnpm --filter @ambre/docs build
+      - run: pnpm --filter @ambre-ds/docs build
       - uses: actions/upload-artifact@v4
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:

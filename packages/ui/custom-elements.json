@@ -2140,6 +2140,10 @@
               "description": "space.100"
             },
             {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
               "name": "--amb-duration-fast",
               "description": "duration.fast"
             },

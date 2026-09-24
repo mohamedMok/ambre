@@ -29,9 +29,9 @@ Ambre is a set of accessible web components and the tokens that theme them. The 
 
 | Package | Carries | Entry points |
 | --- | --- | --- |
-| `@ambre/tokens` | Every `--amb-` variable for light and dark, and the brand presets | `@ambre/tokens/css`, `@ambre/tokens/css/presets`, `@ambre/tokens/scss`, `@ambre/tokens/json` |
-| `@ambre/ui` | The core elements: actions, forms, feedback, navigation | `@ambre/ui`, or one element at a time: `@ambre/ui/button` |
-| `@ambre/commerce` | Shop compositions built on the core, starting with quantity | `@ambre/commerce` |
+| `@ambre-ds/tokens` | Every `--amb-` variable for light and dark, and the brand presets | `@ambre-ds/tokens/css`, `@ambre-ds/tokens/css/presets`, `@ambre-ds/tokens/scss`, `@ambre-ds/tokens/json` |
+| `@ambre-ds/ui` | The core elements: actions, forms, feedback, navigation | `@ambre-ds/ui`, or one element at a time: `@ambre-ds/ui/button` |
+| `@ambre-ds/commerce` | Shop compositions built on the core, starting with quantity | `@ambre-ds/commerce` |
 
 Most products need the first two.
 
@@ -64,13 +64,13 @@ import '@fontsource/source-sans-3/600.css';
 import '@fontsource/source-code-pro/400.css';
 
 // 2. Tokens: every --amb- variable, light and dark
-import '@ambre/tokens/css';
+import '@ambre-ds/tokens/css';
 
 // 3. Presets: only when the product uses data-brand
-import '@ambre/tokens/css/presets';
+import '@ambre-ds/tokens/css/presets';
 
 // 4. The library: registers the amb- elements
-import '@ambre/ui';
+import '@ambre-ds/ui';
 ```
 
 Load `Material Symbols Outlined` too if you use `amb-icon` with a `name`.
@@ -135,7 +135,7 @@ Check every overridden text colour against its background: 4.5:1 for text, 3:1 f
 - **React 19**: use the tags directly. React passes properties and events to custom elements.
 - **Vue**: tell the compiler that `amb-` tags are custom elements: `compilerOptions: { isCustomElement: (tag) => tag.startsWith('amb-') }`.
 - **Angular**: add `CUSTOM_ELEMENTS_SCHEMA` to the component that uses them.
-- **SvelteKit and other SSR frameworks**: import `@ambre/ui` in `onMount` (or any client-only hook). `customElements` does not exist on the server. Keep the tags and their text in the markup, so the HTML is already there before the elements upgrade.
+- **SvelteKit and other SSR frameworks**: import `@ambre-ds/ui` in `onMount` (or any client-only hook). `customElements` does not exist on the server. Keep the tags and their text in the markup, so the HTML is already there before the elements upgrade.
 
 ## How the components are built
 

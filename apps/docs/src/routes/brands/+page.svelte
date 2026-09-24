@@ -69,7 +69,7 @@
   }
 }`;
 
-	const buildCode = `pnpm --filter @ambre/tokens test`;
+	const buildCode = `pnpm --filter @ambre-ds/tokens test`;
 
 	const applyCode = `<html data-brand="harbor" data-theme="light">`;
 
@@ -120,7 +120,7 @@
 <h2 id="how-it-works">How a brand works</h2>
 <p>
 	Each file in <code>packages/tokens/src/preset/&lt;id&gt;.json</code> is a brand. The file name is the id. The build
-	turns each file into two rule sets in <code>@ambre/tokens/css/presets</code>, one per theme, under
+	turns each file into two rule sets in <code>@ambre-ds/tokens/css/presets</code>, one per theme, under
 	<code>data-brand</code>.
 </p>
 <CodeBlock code={compiledCode} lang="html" title="presets.css" />

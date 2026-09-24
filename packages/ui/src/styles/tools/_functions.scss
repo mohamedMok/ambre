@@ -23,7 +23,7 @@ $_known: meta.module-variables('compiled');
 @function token($name) {
 	$key: '#{config.$prefix}-#{$name}';
 	@if not map.has-key($_known, $key) {
-		@error 'Unknown Ambre token `#{$name}`. Use a system token from @ambre/tokens.';
+		@error 'Unknown Ambre token `#{$name}`. Use a system token from @ambre-ds/tokens.';
 	}
 	@return var(--#{$key});
 }

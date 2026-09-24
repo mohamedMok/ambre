@@ -1,5 +1,5 @@
 <script lang="ts">
-	import data from '@ambre/tokens/json';
+	import data from '@ambre-ds/tokens/json';
 	import Stage from '$lib/Stage.svelte';
 	import { brands } from '$lib/brands';
 	import { preview } from '$lib/preview.svelte';

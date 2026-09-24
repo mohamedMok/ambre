@@ -5,7 +5,7 @@ description: Writes Ambre Storybook stories for web components. Use when adding 
 
 # Storybook
 
-Stories live in `apps/storybook/src`. Import `@ambre/ui` so the element registers. Import `@ambre/tokens/css` from preview, which already does.
+Stories live in `apps/storybook/src`. Import `@ambre-ds/ui` so the element registers. Import `@ambre-ds/tokens/css` from preview, which already does.
 
 ## Each component
 

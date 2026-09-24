@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import tokens from '@ambre/tokens/json';
+import tokens from '@ambre-ds/tokens/json';
 import { html } from 'lit';
 
 const meta = {

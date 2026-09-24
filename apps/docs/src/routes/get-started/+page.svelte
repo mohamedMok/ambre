@@ -26,14 +26,14 @@ import '@fontsource/source-sans-3/600.css';
 import '@fontsource/source-code-pro/400.css';
 
 // 2. Tokens: every --amb- variable, light and dark
-import '@ambre/tokens/css';
+import '@ambre-ds/tokens/css';
 
 // 3. Presets: only when the product uses data-brand
-import '@ambre/tokens/css/presets';
+import '@ambre-ds/tokens/css/presets';
 
 // 4. The library: registers the amb- elements
-import '@ambre/ui';
-import '@ambre/commerce';`;
+import '@ambre-ds/ui';
+import '@ambre-ds/commerce';`;
 
 	const exampleCode = `<form action="/sign-in" method="post">
   <amb-text-field name="email" type="email" autocomplete="email" required>Email</amb-text-field>
@@ -45,16 +45,16 @@ import '@ambre/commerce';`;
 
 	const svelteCode = `<script>
   import { onMount } from 'svelte';
-  import '@ambre/tokens/css';
+  import '@ambre-ds/tokens/css';
 
   onMount(async () => {
-    await import('@ambre/ui');
+    await import('@ambre-ds/ui');
   });
 <\/script>
 
 <amb-button type="submit">Save changes</amb-button>`;
 
-	const themeCode = `/* Load after @ambre/tokens/css. Same selectors, so the later rule wins. */
+	const themeCode = `/* Load after @ambre-ds/tokens/css. Same selectors, so the later rule wins. */
 :root {
   --amb-color-accent-bg: #0b5cad;
   --amb-color-accent-bg-hover: #094a8c;
@@ -81,7 +81,7 @@ import '@ambre/commerce';`;
   <amb-button>Subscribe</amb-button>
 </section>`;
 
-	const reactCode = `import '@ambre/ui';
+	const reactCode = `import '@ambre-ds/ui';
 
 export function Checkout() {
   return (
@@ -105,7 +105,7 @@ export default {
 };`;
 
 	const angularCode = `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@ambre/ui';
+import '@ambre-ds/ui';
 
 @Component({
   selector: 'app-checkout',
@@ -146,21 +146,21 @@ export class CheckoutComponent {}`;
 		</thead>
 		<tbody>
 			<tr>
-				<th scope="row"><code>@ambre/tokens</code></th>
+				<th scope="row"><code>@ambre-ds/tokens</code></th>
 				<td>Every <code>--amb-</code> variable for light and dark, and the brand presets.</td>
 				<td>
-					<span class="values"><code>@ambre/tokens/css</code><code>@ambre/tokens/css/presets</code></span>
+					<span class="values"><code>@ambre-ds/tokens/css</code><code>@ambre-ds/tokens/css/presets</code></span>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row"><code>@ambre/ui</code></th>
+				<th scope="row"><code>@ambre-ds/ui</code></th>
 				<td>The core elements: actions, forms, feedback, and navigation.</td>
-				<td><code>@ambre/ui</code></td>
+				<td><code>@ambre-ds/ui</code></td>
 			</tr>
 			<tr>
-				<th scope="row"><code>@ambre/commerce</code></th>
+				<th scope="row"><code>@ambre-ds/commerce</code></th>
 				<td>Shop compositions such as quantity. Checkout logic stays in the product.</td>
-				<td><code>@ambre/commerce</code></td>
+				<td><code>@ambre-ds/commerce</code></td>
 			</tr>
 		</tbody>
 	</table>
@@ -188,7 +188,7 @@ export class CheckoutComponent {}`;
 <h3>Add the build to the product</h3>
 <p>
 	Run these from the product repository, next to the Ambre checkout. Add the built packages by path, and the fonts from
-	npm. Skip <code>@ambre/commerce</code> unless the product needs shop compositions.
+	npm. Skip <code>@ambre-ds/commerce</code> unless the product needs shop compositions.
 </p>
 <CodeBlock code={addCode} lang="bash" title="Terminal" />
 
@@ -225,7 +225,7 @@ export class CheckoutComponent {}`;
 
 <h2 id="sveltekit">SvelteKit and server rendering</h2>
 <p>
-	Import <code>@ambre/ui</code> in <code>onMount</code>. <code>customElements</code> does not exist on the server. Keep the
+	Import <code>@ambre-ds/ui</code> in <code>onMount</code>. <code>customElements</code> does not exist on the server. Keep the
 	tags and their text in the markup, so the server HTML already carries every label.
 </p>
 <CodeBlock code={svelteCode} lang="svelte" title="+layout.svelte" />

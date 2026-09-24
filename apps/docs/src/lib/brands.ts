@@ -1,4 +1,4 @@
-import { presetList } from '@ambre/tokens';
+import { presetList } from '@ambre-ds/tokens';
 
 export interface Brand {
 	id: string;

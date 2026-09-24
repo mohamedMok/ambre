@@ -1,14 +1,30 @@
 {
-  "name": "@ambre/commerce",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Ambre commerce compositions. Built from core components and the same tokens.",
-  "type": "module",
+  "name": "@ambre-ds/commerce",
+  "version": "0.1.0",
+  "description": "Ambre commerce compositions, such as amb-quantity. Built from the core components and the same tokens.",
+  "keywords": [
+    "design-system",
+    "web-components",
+    "ecommerce",
+    "ambre"
+  ],
+  "homepage": "https://mohamedmok-ambre.surge.sh/components/quantity",
+  "bugs": "https://github.com/mohamedMok/ambre/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedMok/ambre.git",
+    "directory": "packages/commerce"
+  },
   "license": "MIT",
+  "type": "module",
   "files": [
     "dist",
     "types"
   ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "sideEffects": [
     "./dist/*.js"
   ],
@@ -21,13 +37,14 @@
     "./quantity": {
       "types": "./types/index.d.ts",
       "import": "./dist/quantity.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "vite build"
   },
   "dependencies": {
-    "@ambre/tokens": "workspace:*"
+    "@ambre-ds/tokens": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.0",

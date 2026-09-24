@@ -2,13 +2,13 @@
 
 Open-source design system. One library of web components, built with Svelte 5.
 
-Custom elements use the `amb-` prefix. Packages use the `@ambre` scope.
+Custom elements use the `amb-` prefix. Packages use the `@ambre-ds` scope.
 
 ## Packages
 
-- `@ambre/tokens` — design tokens in the [DTCG 2025.10](https://www.designtokens.org/TR/2025.10/format/) format, compiled with Style Dictionary to CSS variables, Sass variables, and JSON.
-- `@ambre/ui` — the component library. Basics, forms, feedback, and navigation. Icons use a Material Symbols ligature or a slotted SVG.
-- `@ambre/commerce` — shop compositions built from the core library. Quantity is the first. Checkout stays in the product.
+- `@ambre-ds/tokens` — design tokens in the [DTCG 2025.10](https://www.designtokens.org/TR/2025.10/format/) format, compiled with Style Dictionary to CSS variables, Sass variables, and JSON.
+- `@ambre-ds/ui` — the component library. Basics, forms, feedback, and navigation. Icons use a Material Symbols ligature or a slotted SVG.
+- `@ambre-ds/commerce` — shop compositions built from the core library. Quantity is the first. Checkout stays in the product.
 
 Documentation is a SvelteKit site. Storybook is the workshop.
 
@@ -27,10 +27,10 @@ pnpm storybook
 Load the theme once, then the library:
 
 ```js
-import '@ambre/tokens/css';
-import '@ambre/tokens/css/presets';
-import '@ambre/ui';
-import '@ambre/commerce';
+import '@ambre-ds/tokens/css';
+import '@ambre-ds/tokens/css/presets';
+import '@ambre-ds/ui';
+import '@ambre-ds/commerce';
 ```
 
 ```html

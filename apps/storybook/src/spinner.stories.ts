@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '@ambre/ui';
+import '@ambre-ds/ui';
 
 const meta = {
   title: 'Feedback/Spinner',

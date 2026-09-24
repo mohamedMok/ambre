@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import data from '@ambre/tokens/json';
+	import data from '@ambre-ds/tokens/json';
 	import CodeBlock from '$lib/CodeBlock.svelte';
 	import Stage from '$lib/Stage.svelte';
 	import { brands } from '$lib/brands';

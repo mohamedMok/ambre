@@ -2,8 +2,8 @@
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import '@ambre/tokens/css';
-	import '@ambre/tokens/css/presets';
+	import '@ambre-ds/tokens/css';
+	import '@ambre-ds/tokens/css/presets';
 	import '@fontsource/source-sans-3/400.css';
 	import '@fontsource/source-sans-3/500.css';
 	import '@fontsource/source-sans-3/600.css';
@@ -35,8 +35,8 @@
 	onMount(async () => {
 		theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 		hydratePreview();
-		await import('@ambre/ui');
-		await import('@ambre/commerce');
+		await import('@ambre-ds/ui');
+		await import('@ambre-ds/commerce');
 	});
 
 	afterNavigate(() => (navOpen = false));
@@ -99,10 +99,10 @@
 				<span class="search-text">Search</span>
 				<kbd>⌘K</kbd>
 			</button>
-			<a class="icon-button" href={storybookUrl} target="_blank" rel="external noreferrer">
-				<Glyph name="blocks" label="Storybook" />
+			<a class="icon-button" href={storybookUrl} target="_blank" rel="external noreferrer" title="Storybook">
+				<Glyph name="storybook" label="Storybook" />
 			</a>
-			<a class="icon-button" href={repoUrl} target="_blank" rel="external noreferrer">
+			<a class="icon-button" href={repoUrl} target="_blank" rel="external noreferrer" title="GitHub">
 				<Glyph name="github" label="Source on GitHub" />
 			</a>
 			<button class="icon-button" type="button" onclick={toggleTheme}>

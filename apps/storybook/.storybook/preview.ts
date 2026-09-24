@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/web-components-vite';
-import { presetList } from '@ambre/tokens';
-import '@ambre/tokens/css';
-import '@ambre/tokens/css/presets';
+import { presetList } from '@ambre-ds/tokens';
+import '@ambre-ds/tokens/css';
+import '@ambre-ds/tokens/css/presets';
 import '@fontsource/source-sans-3/400.css';
 import '@fontsource/source-sans-3/600.css';
 import '@fontsource/nunito-sans/400.css';
@@ -12,8 +12,8 @@ import '@fontsource/source-serif-4/600.css';
 import '@fontsource/source-serif-4/700.css';
 import '@fontsource/material-symbols-outlined/latin-400.css';
 // Register every element once, so docs pages render them as well as stories.
-import '@ambre/ui';
-import '@ambre/commerce';
+import '@ambre-ds/ui';
+import '@ambre-ds/commerce';
 
 const preview: Preview = {
   globalTypes: {
