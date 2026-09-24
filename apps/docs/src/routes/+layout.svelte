@@ -31,6 +31,8 @@
 	let navOpen = $state(false);
 	let palette = $state<CommandPalette>();
 	const isHome = $derived($page.url.pathname === '/');
+	// Full-width tools: no docs sidebar or outline.
+	const isBare = $derived(isHome || $page.url.pathname.startsWith('/builder'));
 
 	onMount(async () => {
 		theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
@@ -112,7 +114,7 @@
 	</div>
 </header>
 
-{#if isHome}
+{#if isBare}
 	<main id="content" class="home">
 		{@render children()}
 	</main>

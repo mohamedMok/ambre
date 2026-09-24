@@ -286,6 +286,12 @@
 
 <h2 id="create">Create your own</h2>
 <p>A new brand is a new file. No component changes.</p>
+<p>
+	The fastest way is the <a href="/builder">preset builder</a>: start from any brand, roll one at random or edit every
+	token, watch the foundations and every component change live, and export the file. The steps below do the same by
+	hand.
+</p>
+<p><a class="btn btn-primary" href="/builder">Open the preset builder</a></p>
 
 <h3>1. Copy a preset</h3>
 <p>

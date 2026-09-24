@@ -8,7 +8,8 @@ export const header = [
 	{ href: '/get-started', label: 'Get started' },
 	{ href: '/foundations', label: 'Foundations' },
 	{ href: '/components', label: 'Components' },
-	{ href: '/brands', label: 'Brands' }
+	{ href: '/brands', label: 'Brands' },
+	{ href: '/builder', label: 'Builder' }
 ];
 
 export const gettingStarted: DocLink[] = [
@@ -21,6 +22,11 @@ export const gettingStarted: DocLink[] = [
 		href: '/brands',
 		label: 'Brands',
 		summary: 'Five presets on the same tokens. A brand is one file.'
+	},
+	{
+		href: '/builder',
+		label: 'Preset builder',
+		summary: 'Edit every token or roll a brand at random, preview it live, and export the preset.'
 	}
 ];
 
