@@ -43,6 +43,13 @@
 
 	afterNavigate(() => (navOpen = false));
 
+	function onKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && navOpen) {
+			navOpen = false;
+			document.querySelector<HTMLElement>('.nav-toggle')?.focus();
+		}
+	}
+
 	function toggleTheme() {
 		theme = theme === 'dark' ? 'light' : 'dark';
 		const apply = () => {
@@ -59,6 +66,8 @@
 		}
 	}
 </script>
+
+<svelte:window onkeydown={onKeydown} />
 
 <a class="skip" href="#content">Skip to content</a>
 
@@ -114,15 +123,42 @@
 	</div>
 </header>
 
+{#snippet drawer()}
+	<aside id="site-sidebar" class="docs-sidebar">
+		<!-- On small screens the header links fold into the drawer. -->
+		<nav class="drawer-primary" aria-label="Sections">
+			<ul>
+				{#each header as link}
+					<li>
+						<a
+							href={link.href}
+							aria-current={inSection($page.url.pathname, link.href) ? 'page' : undefined}
+							onclick={() => (navOpen = false)}
+						>
+							{link.label}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
+		<Sidebar onnavigate={() => (navOpen = false)} />
+	</aside>
+	{#if navOpen}
+		<button class="nav-scrim" type="button" tabindex="-1" aria-hidden="true" onclick={() => (navOpen = false)}></button>
+	{/if}
+{/snippet}
+
 {#if isBare}
+	<!-- Full-width pages keep the drawer for small screens only. -->
+	<div class="drawer-only" data-nav-open={navOpen}>
+		{@render drawer()}
+	</div>
 	<main id="content" class="home">
 		{@render children()}
 	</main>
 {:else}
 	<div class="docs" data-nav-open={navOpen}>
-		<aside id="site-sidebar" class="docs-sidebar">
-			<Sidebar onnavigate={() => (navOpen = false)} />
-		</aside>
+		{@render drawer()}
 		<main id="content" class="docs-main">
 			<article class="doc">
 				{@render children()}

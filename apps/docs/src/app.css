@@ -284,6 +284,45 @@ svg {
 
 /* ---------- Docs layout ---------- */
 
+/* The drawer's section links only appear on small screens, where the header links fold away. */
+.drawer-primary {
+	display: none;
+}
+
+.drawer-primary ul {
+	display: grid;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.drawer-primary a {
+	display: block;
+	padding: 10px 12px;
+	border-radius: var(--amb-radius-md);
+	color: var(--amb-color-fg-default);
+	font-size: 17px;
+	font-weight: var(--amb-font-weight-semibold);
+	text-decoration: none;
+}
+
+.drawer-primary a:hover,
+.drawer-primary a[aria-current] {
+	background: var(--amb-color-bg-subtle);
+}
+
+/* Full-width pages (home, builder) carry the drawer for small screens only. */
+.drawer-only > .docs-sidebar {
+	display: none;
+}
+
+@media (max-width: 960px) {
+	.drawer-only > .docs-sidebar {
+		display: block;
+	}
+}
+
 .docs {
 	display: grid;
 	grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--toc-w);
@@ -1272,10 +1311,26 @@ table.api .note {
 			visibility 0s linear var(--amb-duration-moderate);
 	}
 
-	.docs[data-nav-open='true'] .docs-sidebar {
+	[data-nav-open='true'] > .docs-sidebar {
 		translate: 0 0;
 		visibility: visible;
 		transition: translate var(--amb-duration-moderate) var(--amb-easing-enter);
+	}
+
+	.drawer-primary {
+		display: block;
+		margin: 0 0 20px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.nav-scrim {
+		position: fixed;
+		inset: var(--header-h) 0 0 0;
+		z-index: 14;
+		border: 0;
+		background: color-mix(in oklab, var(--amb-color-bg-inverse) 32%, transparent);
+		cursor: default;
 	}
 
 	.docs-main {
