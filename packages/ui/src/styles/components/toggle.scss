@@ -35,12 +35,22 @@
 		// The track is a sunken well; the thumb is a raised bead that springs across it.
 		// `--_depth` is the track's resting shadow, on or off; focus adds the halo on top.
 		&__control {
+			// Every measure derives from the track height, so the thumb stays centred
+			// with an even gap in every brand, whatever its border width.
+			--_height: #{token(size-icon-lg)};
+			--_width: calc(var(--_height) * 1.8);
+			--_border: #{token(border-width-default)};
+			--_gap: calc(#{token(space-100)} / 2);
+			--_thumb: calc(var(--_height) - 2 * var(--_border) - 2 * var(--_gap));
+			--_travel: calc(var(--_width) - 2 * var(--_border) - 2 * var(--_gap) - var(--_thumb));
+
 			@include depth(sunken);
 			appearance: none;
 			position: relative;
-			width: calc(#{token(size-icon-sm)} * 2);
-			height: token(size-icon-sm);
-			border: token(border-width-default) solid token(color-border-default);
+			flex: none;
+			width: var(--_width);
+			height: var(--_height);
+			border: var(--_border) solid token(color-border-default);
 			border-radius: token(radius-full);
 			background: token(color-bg-subtle);
 			cursor: pointer;
@@ -52,10 +62,11 @@
 			&::after {
 				content: '';
 				position: absolute;
-				top: token(space-100);
-				left: token(space-100);
-				width: calc(#{token(size-icon-sm)} - #{token(space-100)} * 2);
-				height: calc(#{token(size-icon-sm)} - #{token(space-100)} * 2);
+				inset-block: 0;
+				left: var(--_gap);
+				width: var(--_thumb);
+				height: var(--_thumb);
+				margin-block: auto;
 				border-radius: token(radius-full);
 				background: token(color-fg-default);
 				box-shadow: depth(raised);
@@ -73,7 +84,7 @@
 			// The thumb's position is the on state itself, so it stays under reduced motion;
 			// only the slide is motion.
 			&:checked::after {
-				translate: calc(#{token(size-icon-sm)}) 0;
+				translate: var(--_travel) 0;
 				background: token(color-fg-on-accent);
 			}
 

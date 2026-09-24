@@ -11,6 +11,9 @@ import '@fontsource/source-serif-4/400.css';
 import '@fontsource/source-serif-4/600.css';
 import '@fontsource/source-serif-4/700.css';
 import '@fontsource/material-symbols-outlined/latin-400.css';
+// Register every element once, so docs pages render them as well as stories.
+import '@ambre/ui';
+import '@ambre/commerce';
 
 const preview: Preview = {
   globalTypes: {
@@ -56,6 +59,11 @@ const preview: Preview = {
   parameters: {
     backgrounds: { disable: true },
     controls: { expanded: true },
+    options: {
+      storySort: {
+        order: ['Get started', 'Foundations', 'Basics', 'Forms', 'Feedback', 'Navigation', 'Commerce'],
+      },
+    },
   },
 };
 

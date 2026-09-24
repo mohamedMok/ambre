@@ -10,8 +10,7 @@
     "types"
   ],
   "sideEffects": [
-    "./dist/index.js",
-    "./dist/quantity.js"
+    "./dist/*.js"
   ],
   "types": "./types/index.d.ts",
   "exports": {

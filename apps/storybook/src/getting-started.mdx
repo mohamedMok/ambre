@@ -1,0 +1,150 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Get started/Install and use" />
+
+# Install and use Ambre
+
+Ambre is a set of accessible web components and the tokens that theme them. The components are standard custom elements, so the same tags work in any framework or in plain HTML. A brand is one preset file; the markup never changes.
+
+<div
+  style={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '12px',
+    margin: '24px 0',
+    padding: '32px',
+    border: '1px solid var(--amb-color-border-disabled)',
+    borderRadius: '16px',
+    background: 'var(--amb-color-bg-canvas)',
+  }}
+>
+  <amb-button>Save changes</amb-button>
+  <amb-button variant="secondary">Cancel</amb-button>
+  <amb-toggle name="sso" checked>Require single sign-on</amb-toggle>
+  <amb-badge variant="success">Paid</amb-badge>
+</div>
+
+## Packages
+
+| Package | Carries | Entry points |
+| --- | --- | --- |
+| `@ambre/tokens` | Every `--amb-` variable for light and dark, and the brand presets | `@ambre/tokens/css`, `@ambre/tokens/css/presets`, `@ambre/tokens/scss`, `@ambre/tokens/json` |
+| `@ambre/ui` | The core elements: actions, forms, feedback, navigation | `@ambre/ui`, or one element at a time: `@ambre/ui/button` |
+| `@ambre/commerce` | Shop compositions built on the core, starting with quantity | `@ambre/commerce` |
+
+Most products need the first two.
+
+## 1. Build from source
+
+The packages are not published to npm yet. You need Node 22 and pnpm 12.
+
+```bash
+git clone https://github.com/mohamedMok/ambre.git
+cd ambre
+pnpm install
+pnpm build
+```
+
+Then add the built packages to your product, with the fonts the theme names:
+
+```bash
+pnpm add ../ambre/packages/tokens ../ambre/packages/ui
+pnpm add @fontsource/source-sans-3 @fontsource/source-code-pro
+```
+
+## 2. Load in this order
+
+Fonts, then tokens, then presets, then the library. The tokens must exist before the first element renders.
+
+```js
+// 1. Fonts: the faces the theme names
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/600.css';
+import '@fontsource/source-code-pro/400.css';
+
+// 2. Tokens: every --amb- variable, light and dark
+import '@ambre/tokens/css';
+
+// 3. Presets: only when the product uses data-brand
+import '@ambre/tokens/css/presets';
+
+// 4. The library: registers the amb- elements
+import '@ambre/ui';
+```
+
+Load `Material Symbols Outlined` too if you use `amb-icon` with a `name`.
+
+## 3. Use the elements
+
+Put the visible label in the default slot. It is the accessible name. Form controls join the nearest `<form>` like native ones.
+
+```html
+<form action="/sign-in" method="post">
+  <amb-text-field name="email" type="email" autocomplete="email" required>Email</amb-text-field>
+  <amb-checkbox name="remember">Keep me signed in on this device</amb-checkbox>
+  <amb-button type="submit">Sign in</amb-button>
+  <amb-link href="/reset">Reset your password</amb-link>
+</form>
+```
+
+- Use a button to start an action and a link to go somewhere.
+- Listen for native events (`click`, `input`, `change`) on the element. No prop starts with `on`.
+- Reach inside a component only through its documented `::part()` names. The internal classes are not an API.
+
+## 4. Theme and brand
+
+Switch to the dark decisions with `data-theme="dark"` on any ancestor. Pick a brand with `data-brand` on the same element:
+
+```html
+<!-- The whole product -->
+<html data-brand="atlas" data-theme="light">
+
+<!-- One region in another brand and theme -->
+<section data-brand="verdant" data-theme="dark">
+  <amb-button>Book an appointment</amb-button>
+</section>
+```
+
+| Brand | `data-brand` | For |
+| --- | --- | --- |
+| Ambre | none | Default: warm paper and amber, tactile layers |
+| Atlas | `atlas` | Enterprise and data: dense, 36px controls, ink blue |
+| Verdant | `verdant` | Public services and health: 18px text, 52px controls, AAA text |
+| Noir | `noir` | Luxury and retail: monochrome ink, pill actions, slow motion |
+| Press | `press` | Editorial and media: serif, square corners, printed rules |
+
+Use the **Brand** and **Theme** menus in the toolbar above to preview every story in each brand and theme.
+
+To carry your own colours, override semantic variables after the tokens. Never paint a component with a raw colour, and never use a reference token:
+
+```css
+:root {
+  --amb-color-accent-bg: #0b5cad;
+  --amb-color-accent-bg-hover: #094a8c;
+  --amb-color-accent-bg-active: #073a6e;
+  --amb-color-accent-fg: #0b5cad;
+  --amb-color-focus-ring: #0b5cad;
+}
+```
+
+Check every overridden text colour against its background: 4.5:1 for text, 3:1 for borders and the focus ring.
+
+## 5. Frameworks
+
+- **React 19**: use the tags directly. React passes properties and events to custom elements.
+- **Vue**: tell the compiler that `amb-` tags are custom elements: `compilerOptions: { isCustomElement: (tag) => tag.startsWith('amb-') }`.
+- **Angular**: add `CUSTOM_ELEMENTS_SCHEMA` to the component that uses them.
+- **SvelteKit and other SSR frameworks**: import `@ambre/ui` in `onMount` (or any client-only hook). `customElements` does not exist on the server. Keep the tags and their text in the markup, so the HTML is already there before the elements upgrade.
+
+## How the components are built
+
+- Svelte 5 custom elements with open shadow roots and `ElementInternals` for forms.
+- Styles are Sass, organised by ITCSS and named with BEM, compiled once per element into a shared constructable stylesheet.
+- Every component has a contract (`contracts/<id>.yaml`): its props, slots, events, accessibility and tokens. CI fails when code and contract drift apart, and checks 40 contrast pairs in every brand and theme.
+
+## Next
+
+- Browse the components in the sidebar. Each story shows its variants, and the **Accessibility** panel runs axe on it.
+- Read the full documentation site: [mohamedmok-ambre.surge.sh](https://mohamedmok-ambre.surge.sh).
+- Source and decisions: [github.com/mohamedMok/ambre](https://github.com/mohamedMok/ambre).

@@ -78,7 +78,7 @@ tokens:
   - border.width.default
   - space.100
   - space.300
-  - size.icon.sm
+  - size.icon.lg
   - size.control.md
   - focus.ring.width
   - focus.ring.offset

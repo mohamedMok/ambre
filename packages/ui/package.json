@@ -11,30 +11,7 @@
     "custom-elements.json"
   ],
   "sideEffects": [
-    "./dist/index.js",
-    "./dist/badge.js",
-    "./dist/banner.js",
-    "./dist/breadcrumbs.js",
-    "./dist/button.js",
-    "./dist/checkbox.js",
-    "./dist/dialog.js",
-    "./dist/disclosure.js",
-    "./dist/icon.js",
-    "./dist/link.js",
-    "./dist/menu.js",
-    "./dist/pagination.js",
-    "./dist/progress.js",
-    "./dist/radio.js",
-    "./dist/range.js",
-    "./dist/select.js",
-    "./dist/skeleton.js",
-    "./dist/spinner.js",
-    "./dist/tabs.js",
-    "./dist/tag.js",
-    "./dist/text-area.js",
-    "./dist/text-field.js",
-    "./dist/toggle.js",
-    "./dist/tooltip.js"
+    "./dist/*.js"
   ],
   "types": "./types/index.d.ts",
   "exports": {

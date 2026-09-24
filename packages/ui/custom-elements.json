@@ -3910,8 +3910,8 @@
               "description": "space.300"
             },
             {
-              "name": "--amb-size-icon-sm",
-              "description": "size.icon.sm"
+              "name": "--amb-size-icon-lg",
+              "description": "size.icon.lg"
             },
             {
               "name": "--amb-size-control-md",
