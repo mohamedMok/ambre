@@ -88,7 +88,8 @@
     "easing": {
       "standard": { "$type": "cubicBezier", "$value": [0, 0, 1, 1], "$description": "Linear. No easing." },
       "enter": { "$type": "cubicBezier", "$value": [0, 0, 1, 1], "$description": "Linear. No easing." },
-      "exit": { "$type": "cubicBezier", "$value": [0, 0, 1, 1], "$description": "Linear. No easing." }
+      "exit": { "$type": "cubicBezier", "$value": [0, 0, 1, 1], "$description": "Linear. No easing." },
+      "spring": { "$type": "cubicBezier", "$value": [0, 0, 1, 1], "$description": "Linear. Press does not overshoot." }
     }
   },
   "light": {
@@ -121,8 +122,10 @@
         "fg": { "$type": "color", "$value": "#8c1d18", "$description": "Accent text, including links and ghost controls." }
       },
       "focus": {
-        "ring": { "$type": "color", "$value": "#8c1d18", "$description": "Focus ring. Meets 3:1 against the canvas and surfaces." }
+        "ring": { "$type": "color", "$value": "#8c1d18", "$description": "Focus ring. Meets 3:1 against the canvas and surfaces." },
+        "halo": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [0.549, 0.1137, 0.0941], "alpha": 0, "hex": "#8c1d18" }, "$description": "No glow. Press keeps the printed ring." }
       },
+      "highlight": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "alpha": 0, "hex": "#ffffff" }, "$description": "No top-edge light. Press is flat." },
       "status": {
         "danger": {
           "fg": { "$type": "color", "$value": "#8c1d18", "$description": "Danger text on the canvas." },
@@ -137,6 +140,7 @@
       }
     },
     "elevation": {
+      "inset": { "$type": "shadow", "$value": "inset 0 0 0 0 #141210", "$description": "No sunken well. Press is flat." },
       "1": { "$type": "shadow", "$value": "2px 2px 0 0 #141210", "$description": "Raised control." },
       "2": { "$type": "shadow", "$value": "4px 4px 0 0 #141210", "$description": "Dropdown and popover." },
       "3": { "$type": "shadow", "$value": "8px 8px 0 0 #141210", "$description": "Dialog and overlay." }
@@ -172,8 +176,10 @@
         "fg": { "$type": "color", "$value": "#ffb4a8", "$description": "Accent text, including links and ghost controls." }
       },
       "focus": {
-        "ring": { "$type": "color", "$value": "#ffb4a8", "$description": "Focus ring. Meets 3:1 against the canvas and surfaces." }
+        "ring": { "$type": "color", "$value": "#ffb4a8", "$description": "Focus ring. Meets 3:1 against the canvas and surfaces." },
+        "halo": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 0.7059, 0.6588], "alpha": 0, "hex": "#ffb4a8" }, "$description": "No glow. Press keeps the printed ring." }
       },
+      "highlight": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "alpha": 0, "hex": "#ffffff" }, "$description": "No top-edge light. Press is flat." },
       "status": {
         "danger": {
           "fg": { "$type": "color", "$value": "#ffb4a8", "$description": "Danger text on the canvas." },
@@ -188,6 +194,7 @@
       }
     },
     "elevation": {
+      "inset": { "$type": "shadow", "$value": "inset 0 0 0 0 #000000", "$description": "No sunken well. Press is flat." },
       "1": { "$type": "shadow", "$value": "2px 2px 0 0 #000000", "$description": "Raised control." },
       "2": { "$type": "shadow", "$value": "4px 4px 0 0 #000000", "$description": "Dropdown and popover." },
       "3": { "$type": "shadow", "$value": "8px 8px 0 0 #000000", "$description": "Dialog and overlay." }

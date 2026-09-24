@@ -30,3 +30,17 @@ tokens:
   - font.size.300
   - font.lineHeight.body
   - space.200
+  - size.control.md
+  - border.width.default
+  - color.border.default
+  - radius.action
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.muted
+  - color.highlight
+  - elevation.1
+  - font.weight.semibold
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

@@ -40,3 +40,12 @@ tokens:
   - elevation.2
   - duration.fast
   - easing.enter
+  - color.bg.inverse
+  - color.fg.inverse
+  - color.highlight
+  - font.weight.regular
+  - radius.lg
+  - border.width.default
+  - duration.moderate
+  - easing.spring
+  - easing.exit

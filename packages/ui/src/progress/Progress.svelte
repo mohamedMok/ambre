@@ -38,17 +38,25 @@
 		display: block;
 	}
 
+	/* A sunken groove with a raised, lit accent bar riding inside it. */
 	div[part='track'] {
+		box-sizing: border-box;
 		height: var(--amb-size-icon-sm);
 		overflow: hidden;
 		border-radius: var(--amb-radius-full);
 		background: var(--amb-color-bg-subtle);
+		box-shadow: var(--amb-elevation-inset);
 	}
 
 	div[part='fill'] {
 		height: 100%;
+		border-radius: inherit;
 		background: var(--amb-color-accent-bg);
-		transition: width var(--amb-duration-moderate) var(--amb-easing-enter);
+		box-shadow: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+		/* Width is layout, not a transform, so it takes the standard curve, not the spring. */
+		transition:
+			width var(--amb-duration-moderate) var(--amb-easing-standard),
+			background-color var(--amb-duration-fast) var(--amb-easing-standard);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

@@ -1,5 +1,22 @@
 {
   "elevation": {
+    "inset": {
+      "$type": "shadow",
+      "$description": "Sunken well on a light surface: fields, tracks, and tab lists.",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [0.1098, 0.0941, 0.0784],
+          "hex": "#1c1814",
+          "alpha": 0.08
+        },
+        "offsetX": { "value": 0, "unit": "px" },
+        "offsetY": { "value": 1, "unit": "px" },
+        "blur": { "value": 2, "unit": "px" },
+        "spread": { "value": 0, "unit": "px" },
+        "inset": true
+      }
+    },
     "1": {
       "$type": "shadow",
       "$description": "Raised control on a light surface.",

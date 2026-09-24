@@ -118,7 +118,14 @@
 		cursor: pointer;
 	}
 
+	/* The track is a sunken well; the thumb is a raised bead that springs across it.
+	   --_depth is the track's resting shadow; focus adds the halo on top. */
 	input {
+		--_depth: var(--amb-elevation-inset);
+		--_halo: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
+
 		appearance: none;
 		position: relative;
 		width: calc(var(--amb-size-icon-sm) * 2);
@@ -127,8 +134,12 @@
 		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
 		border-radius: var(--amb-radius-full);
 		background: var(--amb-color-bg-subtle);
+		box-shadow: var(--_depth);
 		cursor: pointer;
-		transition: background var(--amb-duration-fast) var(--amb-easing-enter);
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			border-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard);
 	}
 
 	input::after {
@@ -140,17 +151,39 @@
 		height: calc(var(--amb-size-icon-sm) - var(--amb-space-100) * 2);
 		border-radius: var(--amb-radius-full);
 		background: var(--amb-color-fg-default);
-		transition: translate var(--amb-duration-fast) var(--amb-easing-enter);
+		box-shadow:
+			inset 0 1px 0 var(--amb-color-highlight),
+			var(--amb-elevation-1);
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring);
 	}
 
 	input:checked {
+		--_depth: var(--amb-elevation-inset);
 		background: var(--amb-color-accent-bg);
-		border-color: transparent;
+		border-color: color-mix(in oklab, var(--amb-color-accent-bg-active) 55%, var(--amb-color-accent-bg));
 	}
 
 	input:checked::after {
 		translate: calc(var(--amb-size-icon-sm)) 0;
 		background: var(--amb-color-fg-on-accent);
+	}
+
+	@media (hover: hover) {
+		label:hover input:not(:disabled):not(:checked) {
+			border-color: var(--amb-color-border-strong);
+		}
+
+		label:hover input:checked:not(:disabled) {
+			background: var(--amb-color-accent-bg-hover);
+		}
+	}
+
+	/* Pressing squeezes the bead a little, like a physical switch. */
+	label:active input:not(:disabled)::after {
+		scale: 0.9;
 	}
 
 	input:focus {
@@ -160,11 +193,24 @@
 	input:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: var(--_depth), var(--_halo);
 	}
 
-	input:disabled {
+	input:user-invalid:not(:checked) {
+		border-color: var(--amb-color-status-danger-fg);
+	}
+
+	input:disabled,
+	input:disabled:checked {
+		--_depth: 0 0 0 0 transparent;
 		background: var(--amb-color-bg-disabled);
+		border-color: var(--amb-color-border-disabled);
 		cursor: not-allowed;
+	}
+
+	input:disabled::after {
+		background: var(--amb-color-fg-disabled);
+		box-shadow: none;
 	}
 
 	:host([disabled]) {
@@ -177,12 +223,28 @@
 		margin: 0;
 		color: var(--amb-color-status-danger-fg);
 		font-size: var(--amb-font-size-200);
+		transition:
+			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring);
+	}
+
+	/* The message arrives: it settles down into place from just above. */
+	@starting-style {
+		p {
+			opacity: 0;
+			translate: 0 calc(var(--amb-space-100) * -1);
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		input,
-		input::after {
+		input::after,
+		p {
 			transition: none;
+		}
+
+		label:active input:not(:disabled)::after {
+			scale: 1;
 		}
 	}
 
@@ -190,11 +252,22 @@
 		input {
 			border: var(--amb-border-width-default) solid ButtonText;
 			background: Canvas;
+			box-shadow: none;
 		}
 
 		input::after,
 		input:checked::after {
 			background: ButtonText;
+			box-shadow: none;
+		}
+
+		input:disabled {
+			border-color: GrayText;
+		}
+
+		input:disabled::after,
+		input:disabled:checked::after {
+			background: GrayText;
 		}
 
 		p {

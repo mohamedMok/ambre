@@ -38,20 +38,42 @@
 		line-height: var(--amb-font-line-height-body);
 	}
 
+	/* A refined underline: a thin, softened line that sits a little below the text,
+	   then tightens, thickens and takes full colour when the pointer arrives. */
 	a {
+		border-radius: var(--amb-radius-sm);
 		color: var(--amb-color-accent-fg);
 		text-decoration-line: underline;
 		text-decoration-thickness: var(--amb-border-width-default);
-		transition: color var(--amb-duration-fast) var(--amb-easing-standard);
+		text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+		text-underline-offset: var(--amb-space-100);
+		text-decoration-skip-ink: auto;
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+		-webkit-tap-highlight-color: transparent;
+		transition:
+			color var(--amb-duration-fast) var(--amb-easing-standard),
+			text-decoration-color var(--amb-duration-fast) var(--amb-easing-standard),
+			text-decoration-thickness var(--amb-duration-fast) var(--amb-easing-standard),
+			text-underline-offset var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard);
 	}
 
+	/* Quiet keeps the underline line so it can fade in instead of popping. */
 	:host([variant='quiet']) a {
 		color: var(--amb-color-fg-muted);
-		text-decoration-line: none;
+		text-decoration-color: transparent;
+	}
+
+	a:hover {
+		text-decoration-color: currentColor;
+		text-decoration-thickness: var(--amb-border-width-strong);
+		text-underline-offset: calc(var(--amb-space-100) / 2);
 	}
 
 	:host([variant='quiet']) a:hover {
-		text-decoration-line: underline;
+		color: var(--amb-color-fg-default);
+		text-decoration-color: currentColor;
 	}
 
 	a:focus {
@@ -61,6 +83,9 @@
 	a:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
@@ -70,9 +95,11 @@
 	}
 
 	@media (forced-colors: active) {
-		a {
+		a,
+		:host([variant='quiet']) a {
 			color: LinkText;
 			text-decoration: underline;
+			text-decoration-color: LinkText;
 		}
 	}
 </style>

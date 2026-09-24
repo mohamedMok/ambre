@@ -196,11 +196,68 @@
 		cursor: pointer;
 	}
 
+	/* The native input stays (semantics, arrow keys, forms); only its skin changes.
+	   Unchecked it is a round sunken well; checked it fills with accent and the dot pops in.
+	   --_depth is the resting shadow; focus adds the halo on top. */
 	input {
+		--_depth: var(--amb-elevation-inset);
+		--_halo: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
+
+		appearance: none;
+		box-sizing: border-box;
+		display: grid;
+		place-content: center;
 		width: var(--amb-size-icon-lg);
 		height: var(--amb-size-icon-lg);
 		margin: 0;
+		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
+		border-radius: var(--amb-radius-full);
+		background: var(--amb-color-bg-surface);
+		box-shadow: var(--_depth);
 		accent-color: var(--amb-color-accent-bg);
+		cursor: inherit;
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			border-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring);
+	}
+
+	/* The dot: an on-accent disc, hidden until checked. */
+	input::before {
+		content: '';
+		width: calc(var(--amb-size-icon-lg) * 0.4);
+		height: calc(var(--amb-size-icon-lg) * 0.4);
+		border-radius: var(--amb-radius-full);
+		background: var(--amb-color-fg-on-accent);
+		scale: 0;
+		transition: scale var(--amb-duration-moderate) var(--amb-easing-spring);
+	}
+
+	input:checked {
+		--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+		border-color: color-mix(in oklab, var(--amb-color-accent-bg-active) 55%, var(--amb-color-accent-bg));
+		background: var(--amb-color-accent-bg);
+	}
+
+	input:checked::before {
+		scale: 1;
+	}
+
+	@media (hover: hover) {
+		label:hover input:not(:disabled):not(:checked) {
+			border-color: var(--amb-color-border-strong);
+		}
+
+		label:hover input:checked:not(:disabled) {
+			background: var(--amb-color-accent-bg-hover);
+		}
+	}
+
+	label:active input:not(:disabled) {
+		scale: 0.92;
 	}
 
 	input:focus {
@@ -210,6 +267,18 @@
 	input:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: var(--_depth), var(--_halo);
+	}
+
+	input:disabled,
+	input:disabled:checked {
+		--_depth: 0 0 0 0 transparent;
+		background: var(--amb-color-bg-disabled);
+		border-color: var(--amb-color-border-disabled);
+	}
+
+	input:disabled::before {
+		background: var(--amb-color-fg-disabled);
 	}
 
 	:host([disabled]) {
@@ -222,12 +291,47 @@
 		margin: 0;
 		color: var(--amb-color-status-danger-fg);
 		font-size: var(--amb-font-size-200);
+		transition:
+			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring);
+	}
+
+	/* The message arrives: it settles down into place from just above. */
+	@starting-style {
+		p {
+			opacity: 0;
+			translate: 0 calc(var(--amb-space-100) * -1);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		input,
+		input::before,
+		p {
+			transition: none;
+		}
+
+		label:active input:not(:disabled) {
+			scale: 1;
+		}
 	}
 
 	@media (forced-colors: active) {
+		/* Hand the circle back to the system so it draws with system colors. */
 		input {
+			appearance: auto;
 			accent-color: auto;
+			border: none;
+			box-shadow: none;
 			outline: var(--amb-border-width-default) solid ButtonText;
+		}
+
+		input::before {
+			content: none;
+		}
+
+		input:focus-visible {
+			outline: var(--amb-focus-ring-width) solid Highlight;
 		}
 
 		p {

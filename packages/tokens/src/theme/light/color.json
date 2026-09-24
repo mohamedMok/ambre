@@ -108,7 +108,27 @@
         "$type": "color",
         "$value": "{color.amber.700}",
         "$description": "Focus ring. Meets 3:1 against the canvas and surfaces."
+      },
+      "halo": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.651, 0.3686, 0.0392],
+          "alpha": 0.24,
+          "hex": "#a65e0a"
+        },
+        "$description": "Soft glow outside the focus ring. Decoration only, never the sole focus cue."
       }
+    },
+    "highlight": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [1, 1, 1],
+        "alpha": 0.4,
+        "hex": "#ffffff"
+      },
+      "$description": "Top-edge light on raised controls, drawn as a 1px inset line. Never under text."
     },
     "status": {
       "danger": {

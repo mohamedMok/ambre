@@ -77,3 +77,23 @@ tokens:
   - space.300
   - size.control.md
   - size.icon.lg
+  - color.fg.on-accent
+  - color.bg.surface
+  - color.bg.disabled
+  - color.border.default
+  - color.border.strong
+  - color.border.disabled
+  - color.accent.bg-hover
+  - color.accent.bg-active
+  - color.highlight
+  - color.focus.halo
+  - focus.halo.width
+  - elevation.inset
+  - elevation.1
+  - radius.sm
+  - border.width.default
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.enter
+  - easing.spring

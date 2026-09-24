@@ -17,10 +17,12 @@ a11y:
   keyboard: []
   notes:
     - Put the real name on the content that replaces the skeleton.
-    - Reduced motion stops the pulse.
+    - Reduced motion stops the shimmer and leaves a flat block.
 tokens:
   - color.bg.subtle
   - radius.sm
   - size.control.sm
   - duration.loop
   - easing.standard
+  - color.bg.muted
+  - border.width.default

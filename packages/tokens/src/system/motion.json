@@ -51,6 +51,16 @@
         1
       ],
       "$description": "Elements leaving."
+    },
+    "spring": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.34,
+        1.56,
+        0.64,
+        1
+      ],
+      "$description": "A small overshoot. Thumbs, checkmarks, and a control settling after a press. Transforms only, never color."
     }
   }
 }

@@ -155,14 +155,39 @@
 		line-height: var(--amb-font-line-height-tight);
 	}
 
+	/* One sunken well holds the number; the two steppers rise out of it. */
 	div[part='stepper'] {
+		--_halo: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
+
+		box-sizing: border-box;
 		display: inline-flex;
 		align-items: stretch;
+		gap: var(--amb-space-100);
 		min-height: var(--amb-size-control-md);
-		overflow: hidden;
+		padding: var(--amb-space-100);
 		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
 		border-radius: var(--amb-radius-md);
-		background: var(--amb-color-bg-surface);
+		background: var(--amb-color-bg-subtle);
+		box-shadow: var(--amb-elevation-inset);
+		transition:
+			border-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard);
+	}
+
+	@media (hover: hover) {
+		:host(:not([disabled])) div[part='stepper']:hover:not(:has(input:focus-visible)) {
+			border-color: var(--amb-color-border-strong);
+		}
+	}
+
+	/* Typing in the number focuses the whole well, like a text field. */
+	div[part='stepper']:has(input:focus-visible) {
+		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
+		outline-offset: var(--amb-focus-ring-offset);
+		border-color: var(--amb-color-focus-ring);
+		box-shadow: var(--amb-elevation-inset), var(--_halo);
 	}
 
 	button,
@@ -176,12 +201,35 @@
 	}
 
 	button {
+		--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+
 		padding-inline: var(--amb-space-300);
+		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
+		border-radius: var(--amb-radius-sm);
+		background: var(--amb-color-bg-surface);
+		box-shadow: var(--_depth);
+		font-weight: var(--amb-font-weight-semibold);
 		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring);
 	}
 
-	button:hover:not(:disabled) {
-		background: var(--amb-color-bg-subtle);
+	@media (hover: hover) {
+		button:hover:not(:disabled) {
+			--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-2);
+			translate: 0 -1px;
+		}
+	}
+
+	button:active:not(:disabled) {
+		--_depth: var(--amb-elevation-inset);
+		background: var(--amb-color-bg-muted);
+		translate: 0 0;
+		scale: 0.96;
 	}
 
 	button:focus,
@@ -189,21 +237,26 @@
 		outline: none;
 	}
 
-	button:focus-visible,
-	input:focus-visible {
+	button:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
-		outline-offset: calc(var(--amb-focus-ring-offset) * -1);
+		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: var(--_depth), var(--_halo);
 	}
 
 	button:disabled {
+		--_depth: 0 0 0 0 transparent;
+		border-color: transparent;
 		background: var(--amb-color-bg-disabled);
 		color: var(--amb-color-fg-disabled);
+		translate: 0 0;
+		scale: 1;
 		cursor: not-allowed;
 	}
 
 	input {
 		width: calc(var(--amb-size-control-md) * 1.5);
-		border-inline: var(--amb-border-width-default) solid var(--amb-color-border-default);
+		font-weight: var(--amb-font-weight-semibold);
+		font-variant-numeric: tabular-nums;
 		text-align: center;
 		appearance: textfield;
 	}
@@ -218,13 +271,46 @@
 		color: var(--amb-color-fg-disabled);
 	}
 
-	@media (forced-colors: active) {
+	:host([disabled]) div[part='stepper'] {
+		border-color: var(--amb-color-border-disabled);
+		background: var(--amb-color-bg-disabled);
+		box-shadow: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
 		div[part='stepper'],
-		button,
-		input {
+		button {
+			transition: none;
+		}
+
+		button:hover:not(:disabled),
+		button:active:not(:disabled) {
+			translate: 0 0;
+			scale: 1;
+		}
+	}
+
+	@media (forced-colors: active) {
+		div[part='stepper'] {
 			border: var(--amb-border-width-default) solid ButtonText;
 			background: Canvas;
 			color: CanvasText;
+		}
+
+		button {
+			border: var(--amb-border-width-default) solid ButtonText;
+			background: ButtonFace;
+			color: ButtonText;
+		}
+
+		button:disabled {
+			border-color: GrayText;
+			color: GrayText;
+		}
+
+		input {
+			background: Field;
+			color: FieldText;
 		}
 	}
 </style>

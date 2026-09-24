@@ -84,3 +84,16 @@ tokens:
   - focus.ring.offset
   - duration.fast
   - easing.enter
+  - color.bg.disabled
+  - color.border.strong
+  - color.border.disabled
+  - color.accent.bg-hover
+  - color.accent.bg-active
+  - color.highlight
+  - color.focus.halo
+  - focus.halo.width
+  - elevation.inset
+  - elevation.1
+  - duration.moderate
+  - easing.standard
+  - easing.spring

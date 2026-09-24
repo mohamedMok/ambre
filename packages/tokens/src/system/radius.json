@@ -7,13 +7,19 @@
     },
     "sm": {
       "$type": "dimension",
-      "$value": "{dimension.100}",
-      "$description": "Tight corner. 4px."
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      },
+      "$description": "Tight corner. Checkbox, tag, and small marks. 6px."
     },
     "md": {
       "$type": "dimension",
-      "$value": "{dimension.200}",
-      "$description": "Default control corner. 8px."
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      },
+      "$description": "Default control corner. Fields, disclosure, and quiet surfaces. 10px."
     },
     "action": {
       "$type": "dimension",
@@ -22,8 +28,8 @@
     },
     "lg": {
       "$type": "dimension",
-      "$value": "{dimension.300}",
-      "$description": "Large surface corner. 12px."
+      "$value": "{dimension.400}",
+      "$description": "Large surface corner. Menus, banners, and dialogs. 16px."
     },
     "full": {
       "$type": "dimension",

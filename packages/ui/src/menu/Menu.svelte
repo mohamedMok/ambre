@@ -150,22 +150,76 @@
 		line-height: var(--amb-font-line-height-tight);
 	}
 
+	/* The trigger is a RAISED secondary control; --_depth is its resting shadow, focus adds the halo. */
 	button {
+		--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+		--_halo: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
+
 		box-sizing: border-box;
 		display: inline-flex;
 		align-items: center;
+		gap: var(--amb-space-300);
 		min-height: var(--amb-size-control-md);
 		padding-inline: var(--amb-space-400);
 		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
 		border-radius: var(--amb-radius-md);
 		background: var(--amb-color-bg-surface);
+		box-shadow: var(--_depth);
 		color: inherit;
 		font: inherit;
 		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			border-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring);
 	}
 
-	button:hover:not(:disabled) {
+	/* A small chevron drawn from two borders; it flips with a spring when the list opens. */
+	button::after {
+		content: '';
+		flex: none;
+		width: var(--amb-space-200);
+		height: var(--amb-space-200);
+		border-right: var(--amb-border-width-strong) solid currentColor;
+		border-bottom: var(--amb-border-width-strong) solid currentColor;
+		translate: 0 -2px;
+		rotate: 45deg;
+		transition:
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			rotate var(--amb-duration-moderate) var(--amb-easing-spring);
+	}
+
+	:host([open]) button::after {
+		translate: 0 2px;
+		rotate: 225deg;
+	}
+
+	@media (hover: hover) {
+		button:hover:not(:disabled) {
+			--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-2);
+			background: var(--amb-color-bg-subtle);
+			border-color: var(--amb-color-border-strong);
+			translate: 0 -1px;
+		}
+	}
+
+	/* While the list is open the trigger stays pressed in. */
+	:host([open]) button:not(:disabled) {
+		--_depth: var(--amb-elevation-inset);
 		background: var(--amb-color-bg-subtle);
+		translate: 0 0;
+	}
+
+	button:active:not(:disabled) {
+		--_depth: var(--amb-elevation-inset);
+		background: var(--amb-color-bg-muted);
+		translate: 0 0;
+		scale: 0.98;
 	}
 
 	button:focus {
@@ -175,34 +229,62 @@
 	button:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: var(--_depth), var(--_halo);
 	}
 
 	button:disabled {
+		--_depth: 0 0 0 0 transparent;
 		background: var(--amb-color-bg-disabled);
 		color: var(--amb-color-fg-disabled);
+		border-color: transparent;
+		translate: 0 0;
+		scale: 1;
 		cursor: not-allowed;
 	}
 
+	/* FLOATING SURFACE: large radius, elevation-2 and the top-edge highlight. It grows out of the
+	   trigger's corner with a spring, and fades out with allow-discrete so the exit is seen too. */
 	div {
 		position: absolute;
 		z-index: 2;
-		top: calc(100% + var(--amb-space-100));
+		top: calc(100% + var(--amb-space-200));
 		left: 0;
 		display: grid;
+		gap: var(--amb-space-100);
 		min-width: 12rem;
 		padding: var(--amb-space-100);
 		border: var(--amb-border-width-default) solid var(--amb-color-border-default);
-		border-radius: var(--amb-radius-md);
+		border-radius: var(--amb-radius-lg);
 		background: var(--amb-color-bg-surface);
-		box-shadow: var(--amb-elevation-2);
-		animation: amb-arrive var(--amb-duration-fast) var(--amb-easing-enter) both;
+		box-shadow:
+			inset 0 1px 0 var(--amb-color-highlight),
+			var(--amb-elevation-2);
+		transform-origin: top left;
+		opacity: 1;
+		translate: 0 0;
+		scale: 1;
+		transition:
+			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring),
+			display var(--amb-duration-moderate) allow-discrete;
+		transition-behavior: allow-discrete;
 	}
 
 	div[hidden] {
 		display: none;
+		opacity: 0;
+		translate: 0 calc(var(--amb-space-100) * -1);
+		scale: 0.96;
+		transition:
+			opacity var(--amb-duration-fast) var(--amb-easing-exit),
+			translate var(--amb-duration-fast) var(--amb-easing-exit),
+			scale var(--amb-duration-fast) var(--amb-easing-exit),
+			display var(--amb-duration-fast) allow-discrete;
+		transition-behavior: allow-discrete;
 	}
 
-	:host ::slotted(button) {
+	:host :global(::slotted(button)) {
 		box-sizing: border-box;
 		min-height: var(--amb-size-control-md);
 		padding-inline: var(--amb-space-300);
@@ -215,41 +297,85 @@
 		line-height: var(--amb-font-line-height-body);
 		text-align: start;
 		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard);
 	}
 
-	:host ::slotted(button:hover) {
-		background: var(--amb-color-bg-subtle);
+	/* Neutral tint on hover; the accent tint marks a checked or current item. */
+	@media (hover: hover) {
+		:host :global(::slotted(button:hover)) {
+			background: var(--amb-color-bg-subtle);
+			color: var(--amb-color-fg-default);
+		}
 	}
 
-	:host ::slotted(button:focus) {
+	:host :global(::slotted(button:active)) {
+		background: var(--amb-color-bg-muted);
+		color: var(--amb-color-fg-default);
+	}
+
+	:host :global(::slotted([aria-checked='true'])),
+	:host :global(::slotted([aria-current]:not([aria-current='false']))) {
+		background: color-mix(in oklab, var(--amb-color-accent-fg) 12%, var(--amb-color-bg-surface));
+		color: var(--amb-color-accent-fg);
+		font-weight: var(--amb-font-weight-semibold);
+	}
+
+	:host :global(::slotted(button:focus)) {
 		outline: none;
 	}
 
-	:host ::slotted(button:focus-visible) {
+	:host :global(::slotted(button:focus-visible)) {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
 	}
 
-	@keyframes amb-arrive {
-		from {
+	@starting-style {
+		div:not([hidden]) {
 			opacity: 0;
 			translate: 0 calc(var(--amb-space-100) * -1);
+			scale: 0.96;
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		div {
-			animation: none;
+		button,
+		button::after,
+		div,
+		div[hidden],
+		:host :global(::slotted(button)) {
+			transition: none;
+		}
+
+		button:hover:not(:disabled),
+		button:active:not(:disabled),
+		div,
+		div[hidden] {
+			translate: 0 0;
+			scale: 1;
 		}
 	}
 
 	@media (forced-colors: active) {
 		button,
 		div,
-		:host ::slotted(button) {
+		:host :global(::slotted(button)) {
 			border: var(--amb-border-width-default) solid ButtonText;
 			background: Canvas;
 			color: CanvasText;
+			box-shadow: none;
+		}
+
+		:host :global(::slotted([aria-checked='true'])),
+		:host :global(::slotted([aria-current]:not([aria-current='false']))) {
+			background: Highlight;
+			color: HighlightText;
 		}
 	}
 </style>

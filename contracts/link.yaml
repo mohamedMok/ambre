@@ -55,3 +55,9 @@ tokens:
   - border.width.default
   - duration.fast
   - easing.standard
+  - color.fg.default
+  - color.focus.halo
+  - focus.halo.width
+  - border.width.strong
+  - radius.sm
+  - space.100

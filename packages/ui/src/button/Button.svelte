@@ -61,7 +61,14 @@
 		line-height: var(--amb-font-line-height-tight);
 	}
 
+	/* Tactile layers: a 1px top-edge highlight, a soft drop, and a darker rim.
+	   --_depth is the resting shadow of each variant; focus adds the halo on top. */
 	button {
+		--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+		--_halo: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
+
 		box-sizing: border-box;
 		display: inline-flex;
 		align-items: center;
@@ -70,13 +77,21 @@
 		min-height: var(--amb-size-control-md);
 		margin: 0;
 		padding-inline: var(--amb-space-400);
-		border: var(--amb-border-width-default) solid transparent;
+		border: var(--amb-border-width-default) solid
+			color-mix(in oklab, var(--amb-color-accent-bg-active) 55%, var(--amb-color-accent-bg));
 		border-radius: var(--amb-radius-action);
 		background: var(--amb-color-accent-bg);
+		box-shadow: var(--_depth);
 		color: inherit;
 		font: inherit;
+		white-space: nowrap;
 		cursor: pointer;
-		transition: background-color var(--amb-duration-fast) var(--amb-easing-standard);
+		-webkit-tap-highlight-color: transparent;
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring);
 	}
 
 	:host([size='sm']) {
@@ -97,12 +112,20 @@
 		padding-inline: var(--amb-space-500);
 	}
 
-	button:hover:not(:disabled) {
-		background: var(--amb-color-accent-bg-hover);
+	/* Lift only where a pointer can hover, so touch never sticks in the raised state. */
+	@media (hover: hover) {
+		button:hover:not(:disabled) {
+			--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-2);
+			background: var(--amb-color-accent-bg-hover);
+			translate: 0 -1px;
+		}
 	}
 
 	button:active:not(:disabled) {
+		--_depth: var(--amb-elevation-inset);
 		background: var(--amb-color-accent-bg-active);
+		translate: 0 0;
+		scale: 0.98;
 	}
 
 	:host([variant='secondary']) {
@@ -114,8 +137,10 @@
 		border-color: var(--amb-color-border-default);
 	}
 
-	:host([variant='secondary']) button:hover:not(:disabled) {
-		background: var(--amb-color-bg-subtle);
+	@media (hover: hover) {
+		:host([variant='secondary']) button:hover:not(:disabled) {
+			background: var(--amb-color-bg-subtle);
+		}
 	}
 
 	:host([variant='secondary']) button:active:not(:disabled) {
@@ -126,12 +151,18 @@
 		color: var(--amb-color-accent-fg);
 	}
 
-	:host([variant='ghost']) button {
+	:host([variant='ghost']) button,
+	:host([variant='ghost']) button:hover:not(:disabled) {
+		--_depth: 0 0 0 0 transparent;
 		background: transparent;
+		border-color: transparent;
+		translate: 0 0;
 	}
 
-	:host([variant='ghost']) button:hover:not(:disabled) {
-		background: var(--amb-color-bg-subtle);
+	@media (hover: hover) {
+		:host([variant='ghost']) button:hover:not(:disabled) {
+			background: var(--amb-color-bg-subtle);
+		}
 	}
 
 	:host([variant='ghost']) button:active:not(:disabled) {
@@ -140,9 +171,12 @@
 
 	:host([disabled]) button,
 	button:disabled {
+		--_depth: 0 0 0 0 transparent;
 		background: var(--amb-color-bg-disabled);
 		color: var(--amb-color-fg-disabled);
 		border-color: transparent;
+		translate: 0 0;
+		scale: 1;
 		cursor: not-allowed;
 	}
 
@@ -153,11 +187,18 @@
 	button:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
+		box-shadow: var(--_depth), var(--_halo);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		button {
 			transition: none;
+		}
+
+		button:hover:not(:disabled),
+		button:active:not(:disabled) {
+			translate: 0 0;
+			scale: 1;
 		}
 	}
 

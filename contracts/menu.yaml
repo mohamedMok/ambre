@@ -70,3 +70,18 @@ tokens:
   - focus.ring.offset
   - duration.fast
   - easing.enter
+  - color.highlight
+  - color.focus.halo
+  - focus.halo.width
+  - elevation.1
+  - elevation.inset
+  - color.bg.muted
+  - color.border.strong
+  - color.accent.fg
+  - radius.lg
+  - border.width.strong
+  - space.200
+  - duration.moderate
+  - easing.standard
+  - easing.spring
+  - easing.exit

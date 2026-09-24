@@ -76,3 +76,20 @@ tokens:
   - space.200
   - space.300
   - size.control.md
+  - color.fg.muted
+  - color.bg.subtle
+  - color.border.strong
+  - color.border.disabled
+  - color.accent.fg
+  - color.highlight
+  - color.focus.halo
+  - focus.halo.width
+  - elevation.inset
+  - elevation.2
+  - radius.sm
+  - radius.lg
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.enter
+  - easing.spring

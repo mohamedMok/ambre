@@ -93,6 +93,30 @@
             {
               "name": "--amb-space-200",
               "description": "space.200"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-status-success-fg",
+              "description": "color.status.success.fg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
             }
           ]
         }
@@ -191,6 +215,46 @@
             {
               "name": "--amb-space-400",
               "description": "space.400"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-status-success-fg",
+              "description": "color.status.success.fg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -249,6 +313,30 @@
             {
               "name": "--amb-space-200",
               "description": "space.200"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
             }
           ]
         }
@@ -375,12 +463,36 @@
               "description": "color.focus.ring"
             },
             {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
               "name": "--amb-focus-ring-width",
               "description": "focus.ring.width"
             },
             {
               "name": "--amb-focus-ring-offset",
               "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
             },
             {
               "name": "--amb-font-family-sans",
@@ -447,8 +559,16 @@
               "description": "duration.fast"
             },
             {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
               "name": "--amb-easing-standard",
               "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -600,6 +720,86 @@
             {
               "name": "--amb-size-icon-lg",
               "description": "size.icon.lg"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -766,6 +966,66 @@
             {
               "name": "--amb-easing-enter",
               "description": "easing.enter"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-opacity-scrim",
+              "description": "opacity.scrim"
+            },
+            {
+              "name": "--amb-radius-action",
+              "description": "radius.action"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            },
+            {
+              "name": "--amb-easing-exit",
+              "description": "easing.exit"
             }
           ]
         }
@@ -936,6 +1196,54 @@
             {
               "name": "--amb-easing-standard",
               "description": "easing.standard"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-exit",
+              "description": "easing.exit"
             }
           ]
         }
@@ -1125,6 +1433,30 @@
             {
               "name": "--amb-easing-standard",
               "description": "easing.standard"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
             }
           ]
         }
@@ -1287,6 +1619,66 @@
             {
               "name": "--amb-easing-enter",
               "description": "easing.enter"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            },
+            {
+              "name": "--amb-easing-exit",
+              "description": "easing.exit"
             }
           ]
         }
@@ -1353,6 +1745,62 @@
             {
               "name": "--amb-space-200",
               "description": "space.200"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-radius-action",
+              "description": "radius.action"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -1436,6 +1884,30 @@
             {
               "name": "--amb-easing-enter",
               "description": "easing.enter"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
             }
           ]
         }
@@ -1622,6 +2094,66 @@
             {
               "name": "--amb-focus-ring-offset",
               "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -1773,6 +2305,86 @@
             {
               "name": "--amb-size-icon-lg",
               "description": "size.icon.lg"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -1918,6 +2530,90 @@
             {
               "name": "--amb-color-focus-ring",
               "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-size-icon-lg",
+              "description": "size.icon.lg"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -2086,6 +2782,74 @@
             {
               "name": "--amb-size-control-md",
               "description": "size.control.md"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -2144,6 +2908,14 @@
             {
               "name": "--amb-easing-standard",
               "description": "easing.standard"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
             }
           ]
         }
@@ -2344,6 +3116,58 @@
             {
               "name": "--amb-easing-enter",
               "description": "easing.enter"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -2442,6 +3266,18 @@
             {
               "name": "--amb-space-300",
               "description": "space.300"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
             }
           ]
         }
@@ -2630,6 +3466,50 @@
             {
               "name": "--amb-focus-ring-offset",
               "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
             }
           ]
         }
@@ -2768,6 +3648,14 @@
               "description": "color.border.default"
             },
             {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
               "name": "--amb-color-status-danger-fg",
               "description": "color.status.danger.fg"
             },
@@ -2776,12 +3664,44 @@
               "description": "color.focus.ring"
             },
             {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
               "name": "--amb-focus-ring-width",
               "description": "focus.ring.width"
             },
             {
               "name": "--amb-focus-ring-offset",
               "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             },
             {
               "name": "--amb-font-family-sans",
@@ -3012,6 +3932,58 @@
             {
               "name": "--amb-easing-enter",
               "description": "easing.enter"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
             }
           ]
         }
@@ -3106,6 +4078,42 @@
             {
               "name": "--amb-easing-enter",
               "description": "easing.enter"
+            },
+            {
+              "name": "--amb-color-bg-inverse",
+              "description": "color.bg.inverse"
+            },
+            {
+              "name": "--amb-color-fg-inverse",
+              "description": "color.fg.inverse"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            },
+            {
+              "name": "--amb-easing-exit",
+              "description": "easing.exit"
             }
           ]
         }

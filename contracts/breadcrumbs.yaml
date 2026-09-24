@@ -24,3 +24,9 @@ tokens:
   - font.size.200
   - font.lineHeight.body
   - space.200
+  - space.100
+  - color.fg.default
+  - color.bg.subtle
+  - font.weight.semibold
+  - radius.full
+  - border.width.default

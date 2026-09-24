@@ -87,10 +87,20 @@ tokens:
   - color.bg.surface
   - color.bg.disabled
   - color.border.default
+  - color.border.strong
+  - color.border.disabled
   - color.status.danger.fg
   - color.focus.ring
+  - color.focus.halo
   - focus.ring.width
   - focus.ring.offset
+  - focus.halo.width
+  - elevation.inset
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.enter
+  - easing.spring
   - font.family.sans
   - font.size.200
   - font.size.300

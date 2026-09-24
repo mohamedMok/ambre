@@ -90,33 +90,115 @@
 		border-radius: var(--amb-radius-lg);
 		background: var(--amb-color-bg-surface);
 		color: inherit;
-		box-shadow: var(--amb-elevation-3);
+		/* FLOATING SURFACE at the highest level: top-edge highlight over elevation-3. */
+		box-shadow:
+			inset 0 1px 0 var(--amb-color-highlight),
+			var(--amb-elevation-3);
+		/* Closed values double as the exit target; overlay + display keep it in the top layer
+		   until the fade finishes. */
+		opacity: 0;
+		translate: 0 var(--amb-space-200);
+		scale: 0.96;
+		transition:
+			opacity var(--amb-duration-fast) var(--amb-easing-exit),
+			translate var(--amb-duration-fast) var(--amb-easing-exit),
+			scale var(--amb-duration-fast) var(--amb-easing-exit),
+			overlay var(--amb-duration-fast) allow-discrete,
+			display var(--amb-duration-fast) allow-discrete;
 	}
 
 	dialog[open] {
-		animation: amb-arrive var(--amb-duration-moderate) var(--amb-easing-enter) both;
+		opacity: 1;
+		translate: 0 0;
+		scale: 1;
+		transition:
+			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring),
+			overlay var(--amb-duration-moderate) allow-discrete,
+			display var(--amb-duration-moderate) allow-discrete;
 	}
 
+	/* The scrim dims with the system scrim opacity; where supported it also softens the page. */
 	dialog::backdrop {
 		background: var(--amb-color-fg-default);
-		opacity: 0.4;
+		opacity: 0;
+		transition:
+			opacity var(--amb-duration-fast) var(--amb-easing-exit),
+			overlay var(--amb-duration-fast) allow-discrete,
+			display var(--amb-duration-fast) allow-discrete;
+	}
+
+	dialog[open]::backdrop {
+		opacity: var(--amb-opacity-scrim);
+		transition:
+			opacity var(--amb-duration-moderate) var(--amb-easing-enter),
+			overlay var(--amb-duration-moderate) allow-discrete,
+			display var(--amb-duration-moderate) allow-discrete;
+	}
+
+	@supports (backdrop-filter: blur(1px)) {
+		dialog::backdrop {
+			backdrop-filter: blur(var(--amb-space-100));
+		}
+	}
+
+	@starting-style {
+		dialog[open] {
+			opacity: 0;
+			translate: 0 var(--amb-space-200);
+			scale: 0.96;
+		}
+
+		dialog[open]::backdrop {
+			opacity: 0;
+		}
 	}
 
 	div {
 		margin-bottom: var(--amb-space-400);
 	}
 
+	/* The close control uses the RAISED primary recipe from amb-button. */
 	button {
+		--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+		--_halo: 0 0 0
+			calc(var(--amb-focus-ring-offset) + var(--amb-focus-ring-width) + var(--amb-focus-halo-width))
+			var(--amb-color-focus-halo);
+
 		box-sizing: border-box;
 		min-height: var(--amb-size-control-md);
 		padding-inline: var(--amb-space-400);
-		border: 0;
-		border-radius: var(--amb-radius-md);
+		border: var(--amb-border-width-default) solid
+			color-mix(in oklab, var(--amb-color-accent-bg-active) 55%, var(--amb-color-accent-bg));
+		border-radius: var(--amb-radius-action);
 		background: var(--amb-color-accent-bg);
+		box-shadow: var(--_depth);
 		color: var(--amb-color-fg-on-accent);
 		font: inherit;
 		font-weight: var(--amb-font-weight-semibold);
 		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition:
+			background-color var(--amb-duration-fast) var(--amb-easing-standard),
+			box-shadow var(--amb-duration-fast) var(--amb-easing-standard),
+			translate var(--amb-duration-moderate) var(--amb-easing-spring),
+			scale var(--amb-duration-moderate) var(--amb-easing-spring);
+	}
+
+	@media (hover: hover) {
+		button:hover {
+			--_depth: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-2);
+			background: var(--amb-color-accent-bg-hover);
+			translate: 0 -1px;
+		}
+	}
+
+	button:active {
+		--_depth: var(--amb-elevation-inset);
+		background: var(--amb-color-accent-bg-active);
+		translate: 0 0;
+		scale: 0.98;
 	}
 
 	button:focus {
@@ -126,18 +208,24 @@
 	button:focus-visible {
 		outline: var(--amb-focus-ring-width) solid var(--amb-color-focus-ring);
 		outline-offset: var(--amb-focus-ring-offset);
-	}
-
-	@keyframes amb-arrive {
-		from {
-			opacity: 0;
-			translate: 0 var(--amb-space-200);
-		}
+		box-shadow: var(--_depth), var(--_halo);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		dialog[open] {
-			animation: none;
+		dialog,
+		dialog[open],
+		dialog::backdrop,
+		dialog[open]::backdrop,
+		button {
+			transition: none;
+		}
+
+		dialog,
+		dialog[open],
+		button:hover,
+		button:active {
+			translate: 0 0;
+			scale: 1;
 		}
 	}
 
@@ -152,6 +240,7 @@
 			border: var(--amb-border-width-default) solid ButtonText;
 			background: ButtonFace;
 			color: ButtonText;
+			box-shadow: none;
 		}
 	}
 </style>

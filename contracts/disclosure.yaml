@@ -70,3 +70,15 @@ tokens:
   - size.control.md
   - duration.fast
   - easing.standard
+  - color.highlight
+  - color.focus.halo
+  - focus.halo.width
+  - color.border.strong
+  - color.border.disabled
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - duration.moderate
+  - easing.spring
+  - easing.enter
+  - easing.exit

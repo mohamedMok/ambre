@@ -96,3 +96,18 @@ tokens:
   - size.control.md
   - focus.ring.width
   - focus.ring.offset
+  - color.bg.muted
+  - color.border.strong
+  - color.border.disabled
+  - color.focus.halo
+  - color.highlight
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - radius.sm
+  - space.100
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

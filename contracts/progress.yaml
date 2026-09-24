@@ -43,3 +43,9 @@ tokens:
   - size.icon.sm
   - duration.moderate
   - easing.enter
+  - elevation.inset
+  - elevation.1
+  - color.highlight
+  - duration.fast
+  - easing.standard
+  - border.width.default

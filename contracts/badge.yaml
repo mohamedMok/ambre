@@ -40,3 +40,9 @@ tokens:
   - radius.sm
   - space.100
   - space.200
+  - color.bg.surface
+  - color.accent.fg
+  - color.status.success.fg
+  - color.status.danger.fg
+  - radius.full
+  - border.width.default

@@ -53,3 +53,16 @@ tokens:
   - focus.ring.offset
   - duration.fast
   - easing.enter
+  - color.bg.subtle
+  - color.bg.surface
+  - color.bg.disabled
+  - color.highlight
+  - color.focus.halo
+  - focus.halo.width
+  - elevation.1
+  - elevation.inset
+  - radius.sm
+  - radius.md
+  - duration.moderate
+  - easing.standard
+  - easing.spring

@@ -28,28 +28,36 @@
 		line-height: var(--amb-font-line-height-tight);
 	}
 
+	/* Tinted pill: the text color drives a faint wash and a fine rim.
+	   --_ink is the -fg color of the variant; the fill never exceeds 12% of it. */
 	span {
+		--_ink: var(--amb-color-fg-default);
+
+		box-sizing: border-box;
 		display: inline-flex;
 		align-items: center;
+		gap: var(--amb-space-100);
 		padding: var(--amb-space-100) var(--amb-space-200);
-		border-radius: var(--amb-radius-sm);
+		border: var(--amb-border-width-default) solid color-mix(in oklab, var(--_ink) 28%, transparent);
+		border-radius: var(--amb-radius-full);
 		background: var(--amb-color-bg-subtle);
-		color: var(--amb-color-fg-default);
+		color: var(--_ink);
+		white-space: nowrap;
 	}
 
 	span[data-variant='accent'] {
-		background: var(--amb-color-accent-bg);
-		color: var(--amb-color-fg-on-accent);
+		--_ink: var(--amb-color-accent-fg);
+		background: color-mix(in oklab, var(--_ink) 12%, var(--amb-color-bg-surface));
 	}
 
 	span[data-variant='success'] {
-		background: var(--amb-color-status-success-bg);
-		color: var(--amb-color-status-success-on);
+		--_ink: var(--amb-color-status-success-fg);
+		background: color-mix(in oklab, var(--_ink) 12%, var(--amb-color-bg-surface));
 	}
 
 	span[data-variant='danger'] {
-		background: var(--amb-color-status-danger-bg);
-		color: var(--amb-color-status-danger-on);
+		--_ink: var(--amb-color-status-danger-fg);
+		background: color-mix(in oklab, var(--_ink) 12%, var(--amb-color-bg-surface));
 	}
 
 	@media (forced-colors: active) {

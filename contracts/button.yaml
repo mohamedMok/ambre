@@ -66,8 +66,14 @@ tokens:
   - color.accent.fg
   - color.border.default
   - color.focus.ring
+  - color.focus.halo
+  - color.highlight
   - focus.ring.width
   - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
   - font.family.sans
   - font.size.200
   - font.size.300
@@ -84,4 +90,6 @@ tokens:
   - size.control.md
   - size.control.lg
   - duration.fast
+  - duration.moderate
   - easing.standard
+  - easing.spring

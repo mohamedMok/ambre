@@ -38,3 +38,13 @@ tokens:
   - radius.md
   - space.300
   - space.400
+  - space.100
+  - color.bg.surface
+  - color.status.success.fg
+  - color.status.danger.fg
+  - color.highlight
+  - radius.lg
+  - border.width.default
+  - duration.moderate
+  - easing.enter
+  - easing.spring

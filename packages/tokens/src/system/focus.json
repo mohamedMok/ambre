@@ -17,6 +17,16 @@
         },
         "$description": "Space between the control and the focus ring."
       }
+    },
+    "halo": {
+      "width": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4,
+          "unit": "px"
+        },
+        "$description": "Soft glow outside the focus ring. Decoration only; the solid ring carries the 3:1 contrast."
+      }
     }
   }
 }
