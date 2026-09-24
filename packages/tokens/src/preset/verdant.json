@@ -1,0 +1,206 @@
+{
+  "name": "Verdant",
+  "description": "Accessibility first, for public services and health. Nunito Sans at 18px, 52px controls, 2px borders, pill actions, AAA text, and a high-visibility yellow focus halo. Success is teal so it never relies on a red and green told apart by hue. Load Nunito Sans in the product.",
+  "shared": {
+    "font": {
+      "family": {
+        "sans": {
+          "$type": "fontFamily",
+          "$value": ["Nunito Sans", "Segoe UI", "sans-serif"],
+          "$description": "UI text. Nunito Sans is an open-license humanist face with open counters. Load it in the product."
+        },
+        "mono": {
+          "$type": "fontFamily",
+          "$value": ["Source Code Pro", "ui-monospace", "monospace"],
+          "$description": "Reference numbers and codes."
+        }
+      },
+      "weight": {
+        "regular": { "$type": "fontWeight", "$value": 400, "$description": "Body text." },
+        "medium": { "$type": "fontWeight", "$value": 600, "$description": "Emphasis inside body text." },
+        "semibold": { "$type": "fontWeight", "$value": 700, "$description": "Controls and headings." }
+      },
+      "lineHeight": {
+        "tight": { "$type": "number", "$value": 1.25, "$description": "Controls and headings." },
+        "body": { "$type": "number", "$value": 1.6, "$description": "Paragraphs." },
+        "loose": { "$type": "number", "$value": 1.75, "$description": "Long reading text." }
+      },
+      "size": {
+        "100": { "$type": "dimension", "$value": { "value": 14, "unit": "px" }, "$description": "Caption. Never smaller." },
+        "200": { "$type": "dimension", "$value": { "value": 16, "unit": "px" }, "$description": "Compact control." },
+        "300": { "$type": "dimension", "$value": { "value": 18, "unit": "px" }, "$description": "Body and default control." },
+        "400": { "$type": "dimension", "$value": { "value": 20, "unit": "px" }, "$description": "Large control and lead-in." },
+        "500": { "$type": "dimension", "$value": { "value": 24, "unit": "px" }, "$description": "Title small." },
+        "600": { "$type": "dimension", "$value": { "value": 28, "unit": "px" }, "$description": "Title." },
+        "700": { "$type": "dimension", "$value": { "value": 34, "unit": "px" }, "$description": "Title large." },
+        "800": { "$type": "dimension", "$value": { "value": 42, "unit": "px" }, "$description": "Display small." },
+        "900": { "$type": "dimension", "$value": { "value": 52, "unit": "px" }, "$description": "Display." }
+      }
+    },
+    "radius": {
+      "sm": { "$type": "dimension", "$value": { "value": 6, "unit": "px" }, "$description": "Tight corner. 6px." },
+      "md": { "$type": "dimension", "$value": { "value": 8, "unit": "px" }, "$description": "Default control corner. 8px." },
+      "lg": { "$type": "dimension", "$value": { "value": 12, "unit": "px" }, "$description": "Large surface corner. 12px." },
+      "action": { "$type": "dimension", "$value": { "value": 9999, "unit": "px" }, "$description": "Action corner. Pill, so an action never reads as a field." }
+    },
+    "border": {
+      "width": {
+        "default": { "$type": "dimension", "$value": { "value": 2, "unit": "px" }, "$description": "Default stroke. Two pixels so every boundary is found at a glance." },
+        "strong": { "$type": "dimension", "$value": { "value": 3, "unit": "px" }, "$description": "Emphasis stroke." }
+      }
+    },
+    "size": {
+      "control": {
+        "sm": { "$type": "dimension", "$value": { "value": 40, "unit": "px" }, "$description": "Compact control height." },
+        "md": { "$type": "dimension", "$value": { "value": 52, "unit": "px" }, "$description": "Default control height. Comfortable for tremor and touch." },
+        "lg": { "$type": "dimension", "$value": { "value": 60, "unit": "px" }, "$description": "Large control height." }
+      },
+      "icon": {
+        "sm": { "$type": "dimension", "$value": { "value": 18, "unit": "px" }, "$description": "Icon in a compact control." },
+        "md": { "$type": "dimension", "$value": { "value": 22, "unit": "px" }, "$description": "Icon in a default control." },
+        "lg": { "$type": "dimension", "$value": { "value": 26, "unit": "px" }, "$description": "Icon in a large control." }
+      }
+    },
+    "space": {
+      "0": { "$type": "dimension", "$value": { "value": 0, "unit": "px" }, "$description": "Space 0." },
+      "100": { "$type": "dimension", "$value": { "value": 4, "unit": "px" }, "$description": "Space 100." },
+      "200": { "$type": "dimension", "$value": { "value": 8, "unit": "px" }, "$description": "Space 200." },
+      "300": { "$type": "dimension", "$value": { "value": 12, "unit": "px" }, "$description": "Space 300." },
+      "400": { "$type": "dimension", "$value": { "value": 16, "unit": "px" }, "$description": "Space 400." },
+      "500": { "$type": "dimension", "$value": { "value": 24, "unit": "px" }, "$description": "Space 500." },
+      "600": { "$type": "dimension", "$value": { "value": 32, "unit": "px" }, "$description": "Space 600." },
+      "700": { "$type": "dimension", "$value": { "value": 48, "unit": "px" }, "$description": "Space 700." },
+      "800": { "$type": "dimension", "$value": { "value": 64, "unit": "px" }, "$description": "Space 800." },
+      "900": { "$type": "dimension", "$value": { "value": 96, "unit": "px" }, "$description": "Space 900." }
+    },
+    "focus": {
+      "ring": {
+        "width": { "$type": "dimension", "$value": { "value": 3, "unit": "px" }, "$description": "Focus ring thickness. Thicker than AA asks." },
+        "offset": { "$type": "dimension", "$value": { "value": 2, "unit": "px" }, "$description": "Space between the control and the focus ring." }
+      },
+      "halo": {
+        "width": { "$type": "dimension", "$value": { "value": 5, "unit": "px" }, "$description": "High-visibility glow outside the focus ring." }
+      }
+    },
+    "duration": {
+      "fast": { "$type": "duration", "$value": "120ms", "$description": "Hover and press." },
+      "moderate": { "$type": "duration", "$value": "200ms", "$description": "Default transition." },
+      "slow": { "$type": "duration", "$value": "280ms", "$description": "Large surface enter and exit." },
+      "loop": { "$type": "duration", "$value": "1000ms", "$description": "One cycle of a repeated motion, such as a spinner. Slow, never frantic." }
+    },
+    "easing": {
+      "standard": { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1], "$description": "Default easing." },
+      "enter": { "$type": "cubicBezier", "$value": [0, 0, 0.2, 1], "$description": "Elements arriving." },
+      "exit": { "$type": "cubicBezier", "$value": [0.4, 0, 1, 1], "$description": "Elements leaving." },
+      "spring": { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1], "$description": "No overshoot. Motion stays predictable." }
+    }
+  },
+  "light": {
+    "color": {
+      "bg": {
+        "canvas": { "$type": "color", "$value": "#f7faf8", "$description": "Page background." },
+        "surface": { "$type": "color", "$value": "#ffffff", "$description": "Cards, fields, and secondary buttons." },
+        "subtle": { "$type": "color", "$value": "#edf3ef", "$description": "Hover fill for quiet controls." },
+        "muted": { "$type": "color", "$value": "#dce7e0", "$description": "Pressed fill for quiet controls." },
+        "inverse": { "$type": "color", "$value": "#0f1f17", "$description": "Inverted surface." },
+        "disabled": { "$type": "color", "$value": "#e3ebe6", "$description": "Disabled control fill." }
+      },
+      "fg": {
+        "default": { "$type": "color", "$value": "#0f1f17", "$description": "Default text. AAA on every surface." },
+        "muted": { "$type": "color", "$value": "#2d3e35", "$description": "Secondary text. AAA on the canvas." },
+        "subtle": { "$type": "color", "$value": "#3f5147", "$description": "Tertiary text. AAA on the canvas." },
+        "inverse": { "$type": "color", "$value": "#f7faf8", "$description": "Text on an inverted surface." },
+        "on-accent": { "$type": "color", "$value": "#ffffff", "$description": "Text on an accent fill." },
+        "disabled": { "$type": "color", "$value": "#4f6157", "$description": "Disabled control text. Exempt from WCAG contrast, kept readable." }
+      },
+      "border": {
+        "default": { "$type": "color", "$value": "#5f7268", "$description": "UI boundary. Meets 4.5:1 against the canvas." },
+        "strong": { "$type": "color", "$value": "#0f1f17", "$description": "Emphasis boundary." },
+        "disabled": { "$type": "color", "$value": "#b9c7bf", "$description": "Disabled control boundary." }
+      },
+      "accent": {
+        "bg": { "$type": "color", "$value": "#0b6b46", "$description": "Primary action fill. Deep green." },
+        "bg-hover": { "$type": "color", "$value": "#095a3b", "$description": "Primary action hover fill." },
+        "bg-active": { "$type": "color", "$value": "#074a31", "$description": "Primary action pressed fill." },
+        "fg": { "$type": "color", "$value": "#0a5f3e", "$description": "Accent text, including links. AAA on the canvas." }
+      },
+      "focus": {
+        "ring": { "$type": "color", "$value": "#0f1f17", "$description": "Focus ring. Ink, the highest contrast on every surface." },
+        "halo": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 0.749, 0.2784], "alpha": 0.85, "hex": "#ffbf47" }, "$description": "High-visibility yellow glow outside the ink ring." }
+      },
+      "highlight": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "alpha": 0.2, "hex": "#ffffff" }, "$description": "Top-edge light on raised controls." },
+      "status": {
+        "danger": {
+          "fg": { "$type": "color", "$value": "#b3261e", "$description": "Danger text on the canvas. Always with words." },
+          "bg": { "$type": "color", "$value": "#b3261e", "$description": "Danger fill." },
+          "on": { "$type": "color", "$value": "#ffffff", "$description": "Text on a danger fill." }
+        },
+        "success": {
+          "fg": { "$type": "color", "$value": "#005f73", "$description": "Success text on the canvas. Teal, off the red-green axis." },
+          "bg": { "$type": "color", "$value": "#005f73", "$description": "Success fill." },
+          "on": { "$type": "color", "$value": "#ffffff", "$description": "Text on a success fill." }
+        }
+      }
+    },
+    "elevation": {
+      "inset": { "$type": "shadow", "$value": "inset 0 1px 2px 0 rgba(15, 31, 23, 0.06)", "$description": "Sunken well." },
+      "1": { "$type": "shadow", "$value": "0 1px 2px 0 rgba(15, 31, 23, 0.1)", "$description": "Raised control." },
+      "2": { "$type": "shadow", "$value": "0 6px 16px -4px rgba(15, 31, 23, 0.16)", "$description": "Dropdown and popover." },
+      "3": { "$type": "shadow", "$value": "0 20px 44px -12px rgba(15, 31, 23, 0.24)", "$description": "Dialog." }
+    }
+  },
+  "dark": {
+    "color": {
+      "bg": {
+        "canvas": { "$type": "color", "$value": "#0c1410", "$description": "Page background." },
+        "surface": { "$type": "color", "$value": "#132019", "$description": "Cards, fields, and secondary buttons." },
+        "subtle": { "$type": "color", "$value": "#1c2b23", "$description": "Hover fill for quiet controls." },
+        "muted": { "$type": "color", "$value": "#27392f", "$description": "Pressed fill for quiet controls." },
+        "inverse": { "$type": "color", "$value": "#f2f7f4", "$description": "Inverted surface." },
+        "disabled": { "$type": "color", "$value": "#1c2b23", "$description": "Disabled control fill." }
+      },
+      "fg": {
+        "default": { "$type": "color", "$value": "#f2f7f4", "$description": "Default text." },
+        "muted": { "$type": "color", "$value": "#cfdcd4", "$description": "Secondary text." },
+        "subtle": { "$type": "color", "$value": "#a9bcb1", "$description": "Tertiary text. AAA on the canvas." },
+        "inverse": { "$type": "color", "$value": "#0f1f17", "$description": "Text on an inverted surface." },
+        "on-accent": { "$type": "color", "$value": "#0c1410", "$description": "Text on an accent fill." },
+        "disabled": { "$type": "color", "$value": "#8a9d92", "$description": "Disabled control text. Exempt from WCAG contrast, kept readable." }
+      },
+      "border": {
+        "default": { "$type": "color", "$value": "#7d9186", "$description": "UI boundary. Meets 4.5:1 against the canvas." },
+        "strong": { "$type": "color", "$value": "#cfdcd4", "$description": "Emphasis boundary." },
+        "disabled": { "$type": "color", "$value": "#33463b", "$description": "Disabled control boundary." }
+      },
+      "accent": {
+        "bg": { "$type": "color", "$value": "#5fd4a0", "$description": "Primary action fill." },
+        "bg-hover": { "$type": "color", "$value": "#86e2b9", "$description": "Primary action hover fill." },
+        "bg-active": { "$type": "color", "$value": "#3fbf88", "$description": "Primary action pressed fill." },
+        "fg": { "$type": "color", "$value": "#7fdcb2", "$description": "Accent text, including links." }
+      },
+      "focus": {
+        "ring": { "$type": "color", "$value": "#ffd166", "$description": "Focus ring. High-visibility yellow on dark." },
+        "halo": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 0.8196, 0.4], "alpha": 0.35, "hex": "#ffd166" }, "$description": "Yellow glow outside the focus ring." }
+      },
+      "highlight": { "$type": "color", "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "alpha": 0.1, "hex": "#ffffff" }, "$description": "Top-edge light on raised controls." },
+      "status": {
+        "danger": {
+          "fg": { "$type": "color", "$value": "#ffab9e", "$description": "Danger text on the canvas." },
+          "bg": { "$type": "color", "$value": "#b3261e", "$description": "Danger fill." },
+          "on": { "$type": "color", "$value": "#ffffff", "$description": "Text on a danger fill." }
+        },
+        "success": {
+          "fg": { "$type": "color", "$value": "#7fd3e6", "$description": "Success text on the canvas." },
+          "bg": { "$type": "color", "$value": "#005f73", "$description": "Success fill." },
+          "on": { "$type": "color", "$value": "#ffffff", "$description": "Text on a success fill." }
+        }
+      }
+    },
+    "elevation": {
+      "inset": { "$type": "shadow", "$value": "inset 0 1px 2px 0 rgba(0, 0, 0, 0.45)", "$description": "Sunken well." },
+      "1": { "$type": "shadow", "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.45)", "$description": "Raised control." },
+      "2": { "$type": "shadow", "$value": "0 8px 20px -4px rgba(0, 0, 0, 0.55)", "$description": "Dropdown and popover." },
+      "3": { "$type": "shadow", "$value": "0 24px 56px -12px rgba(0, 0, 0, 0.65)", "$description": "Dialog." }
+    }
+  }
+}

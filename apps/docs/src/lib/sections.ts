@@ -5,31 +5,50 @@ export type DocLink = {
 };
 
 export const header = [
-	{ href: '/get-started', label: 'Install' },
+	{ href: '/get-started', label: 'Get started' },
 	{ href: '/foundations', label: 'Foundations' },
-	{ href: '/components', label: 'Components' }
+	{ href: '/components', label: 'Components' },
+	{ href: '/brands', label: 'Brands' }
+];
+
+export const gettingStarted: DocLink[] = [
+	{
+		href: '/get-started',
+		label: 'Install',
+		summary: 'Build the packages, load the theme, and use the elements.'
+	},
+	{
+		href: '/brands',
+		label: 'Brands',
+		summary: 'Five presets on the same tokens. A brand is one file.'
+	}
 ];
 
 export const foundations: DocLink[] = [
 	{
 		href: '/foundations/color',
 		label: 'Color',
-		summary: 'Override the theme. Leave the palette alone.'
+		summary: 'Semantic decisions for two themes. The palette stays in the token files.'
 	},
 	{
 		href: '/foundations/typography',
-		label: 'Type',
+		label: 'Typography',
 		summary: 'The face, the scale, and the weight. A preset replaces them.'
 	},
 	{
 		href: '/foundations/space',
-		label: 'Space',
-		summary: 'Rhythm, corners, and the height of a control. A preset replaces them.'
+		label: 'Space and shape',
+		summary: 'Rhythm, corners, control heights, and elevation.'
 	},
 	{
 		href: '/foundations/motion',
 		label: 'Motion',
-		summary: 'How something arrives, leaves, and repeats. A preset replaces the timing.'
+		summary: 'How something arrives, leaves, settles, and repeats.'
+	},
+	{
+		href: '/foundations/accessibility',
+		label: 'Accessibility',
+		summary: 'WCAG 2.2 AA as the floor, and the contrast pairs every brand must pass.'
 	}
 ];
 
@@ -187,6 +206,19 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 ];
 
 export const components = componentGroups.flatMap((group) => group.items);
+
+/** The sidebar: every documentation page, grouped. */
+export const sidebar: { title: string; items: DocLink[] }[] = [
+	{ title: 'Get started', items: gettingStarted },
+	{ title: 'Foundations', items: foundations },
+	...componentGroups.map((group) => ({ title: group.title, items: group.items }))
+];
+
+/** Everything the search palette can reach. */
+export const searchable: (DocLink & { group: string })[] = [
+	{ href: '/', label: 'Home', summary: 'One library. Any brand.', group: 'Ambre' },
+	...sidebar.flatMap((section) => section.items.map((item) => ({ ...item, group: section.title })))
+];
 
 export function inSection(pathname: string, href: string) {
 	return pathname === href || pathname.startsWith(`${href}/`);

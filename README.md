@@ -41,7 +41,14 @@ Theme a product by overriding semantic variables such as `--amb-color-accent-bg`
 
 Set `data-theme="dark"` on an ancestor to switch the dark decisions.
 
-A brand is one file in `packages/tokens/src/preset`. The build writes every file onto the same variables: color, type, radius, border width, space, control size, focus, and motion. Set `data-brand="apple"`, `data-brand="airbnb"`, or `data-brand="press"` on an ancestor. Omit it for Ambre. The product loads the font the preset names.
+A brand is one file in `packages/tokens/src/preset`. The build writes every file onto the same variables: color, type, radius, border width, space, control size, focus, motion, and elevation. Set `data-brand` and `data-theme` on an ancestor. Omit `data-brand` for Ambre. The product loads the font the preset names.
+
+| Preset | For | Character |
+| --- | --- | --- |
+| `atlas` | Enterprise and data | System face at 14px, 36px controls, ink-blue actions |
+| `verdant` | Public services and health | 18px Nunito Sans, 52px controls, AAA text, yellow focus halo |
+| `noir` | Luxury and retail | Monochrome ink, square fields, pill actions, slow motion |
+| `press` | Editorial and media | Source Serif 4, square corners, hard offset shadows |
 
 ## Layout
 

@@ -6,6 +6,8 @@
 />
 
 <script lang="ts">
+	import { untrack } from 'svelte';
+
 	let tabs = $state<HTMLButtonElement[]>([]);
 	let panels = $state<HTMLElement[]>([]);
 	let selected = $state(0);
@@ -71,7 +73,8 @@
 		const root = host.shadowRoot;
 		const tabSlot = root?.querySelector('slot[name="tab"]') ?? null;
 		const panelSlot = root?.querySelector('slot[name="panel"]') ?? null;
-		const sync = () => read(tabSlot, panelSlot);
+		// read() writes tabs, panels and selected; untrack keeps the effect from re-running on its own writes.
+		const sync = () => untrack(() => read(tabSlot, panelSlot));
 		sync();
 		tabSlot?.addEventListener('slotchange', sync);
 		panelSlot?.addEventListener('slotchange', sync);

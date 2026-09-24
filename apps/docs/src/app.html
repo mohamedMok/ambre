@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Ambre is an open-source design system. A warm theme, semantic tokens, and one library of Svelte web components."
+      content="Ambre is an open-source design system: one library of accessible web components, semantic tokens, and brand presets."
     />
     <script>
       (function () {
@@ -15,8 +15,6 @@
             stored ||
             (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
           document.documentElement.dataset.theme = theme;
-          var brand = localStorage.getItem('amb-brand');
-          if (brand && brand !== 'ambre') document.documentElement.dataset.brand = brand;
         } catch (error) {
           document.documentElement.dataset.theme = 'light';
         }

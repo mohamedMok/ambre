@@ -1,115 +1,353 @@
 <script lang="ts">
-	import { storybookUrl } from '$lib/site';
+	import CodeBlock from '$lib/CodeBlock.svelte';
+	import Stage from '$lib/Stage.svelte';
+	import { repoUrl, storybookUrl } from '$lib/site';
+
+	let status = $state('Not submitted.');
+
+	function onSubmit(event: SubmitEvent) {
+		event.preventDefault();
+		status = 'Submitted. The form read both fields and the checkbox.';
+	}
+
+	const cloneCode = `git clone ${repoUrl}.git
+cd ambre
+pnpm install
+pnpm build`;
+
+	const addCode = `pnpm add ../ambre/packages/tokens ../ambre/packages/ui
+pnpm add ../ambre/packages/commerce
+pnpm add @fontsource/source-sans-3 @fontsource/source-code-pro`;
+
+	const loadCode = `// 1. Fonts: the faces the theme names
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/500.css';
+import '@fontsource/source-sans-3/600.css';
+import '@fontsource/source-code-pro/400.css';
+
+// 2. Tokens: every --amb- variable, light and dark
+import '@ambre/tokens/css';
+
+// 3. Presets: only when the product uses data-brand
+import '@ambre/tokens/css/presets';
+
+// 4. The library: registers the amb- elements
+import '@ambre/ui';
+import '@ambre/commerce';`;
+
+	const exampleCode = `<form action="/sign-in" method="post">
+  <amb-text-field name="email" type="email" autocomplete="email" required>Email</amb-text-field>
+  <amb-text-field name="password" type="password" autocomplete="current-password" required>Password</amb-text-field>
+  <amb-checkbox name="remember">Keep me signed in on this device</amb-checkbox>
+  <amb-button type="submit">Sign in</amb-button>
+  <amb-link href="/reset">Reset your password</amb-link>
+</form>`;
+
+	const svelteCode = `<script>
+  import { onMount } from 'svelte';
+  import '@ambre/tokens/css';
+
+  onMount(async () => {
+    await import('@ambre/ui');
+  });
+<\/script>
+
+<amb-button type="submit">Save changes</amb-button>`;
+
+	const themeCode = `/* Load after @ambre/tokens/css. Same selectors, so the later rule wins. */
+:root {
+  --amb-color-accent-bg: #0b5cad;
+  --amb-color-accent-bg-hover: #094a8c;
+  --amb-color-accent-bg-active: #073a6e;
+  --amb-color-accent-fg: #0b5cad;
+  --amb-color-focus-ring: #0b5cad;
+}
+
+[data-theme="dark"] {
+  --amb-color-accent-bg: #8cbcf0;
+  --amb-color-accent-bg-hover: #b0d2f5;
+  --amb-color-accent-bg-active: #6aa4e6;
+  --amb-color-accent-fg: #a6cbf3;
+  --amb-color-focus-ring: #a6cbf3;
+}`;
+
+	const darkCode = `<html data-theme="dark">`;
+
+	const brandCode = `<!-- The whole product in one brand -->
+<html data-brand="atlas" data-theme="light">
+
+<!-- One region in another brand and theme -->
+<section data-brand="press" data-theme="dark">
+  <amb-button>Subscribe</amb-button>
+</section>`;
+
+	const reactCode = `import '@ambre/ui';
+
+export function Checkout() {
+  return (
+    <form method="post">
+      <amb-text-field name="email" type="email">Email</amb-text-field>
+      <amb-button type="submit">Place order</amb-button>
+    </form>
+  );
+}`;
+
+	const vueCode = `import vue from '@vitejs/plugin-vue';
+
+export default {
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: { isCustomElement: (tag) => tag.startsWith('amb-') }
+      }
+    })
+  ]
+};`;
+
+	const angularCode = `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import '@ambre/ui';
+
+@Component({
+  selector: 'app-checkout',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './checkout.html'
+})
+export class CheckoutComponent {}`;
 </script>
 
 <svelte:head>
 	<title>Install — Ambre</title>
 	<meta
 		name="description"
-		content="Install Ambre from the repository, load the theme, and use the web components."
+		content="Build Ambre from source, load the fonts, tokens, presets, and library in order, and use the web components in any framework."
 	/>
 </svelte:head>
 
-<p class="eyebrow">Get started</p>
-<h1>Install</h1>
+<header class="doc-header">
+	<p class="eyebrow">Get started</p>
+	<h1>Install</h1>
+	<p class="lede">
+		Ambre is a set of web components and the tokens that theme them. The packages are not on npm yet. Build them
+		from the repository and point the product at the build.
+	</p>
+</header>
 
-<div class="stage-card">
-	<p class="stage-label">The basics</p>
-	<div class="row">
-		<amb-button>Save changes</amb-button>
-		<amb-link href="/components/link">Read the guide</amb-link>
-		<amb-icon label="Add">
-			<svg viewBox="0 0 24 24" aria-hidden="true">
-				<path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" />
-			</svg>
-		</amb-icon>
-	</div>
-	<amb-disclosure open>
-		Shipping
-		<p slot="panel">Arrives in two days. The panel is the named slot.</p>
-	</amb-disclosure>
+<h2 id="packages">Packages</h2>
+<p class="section-lede">Three packages. Most products need the first two.</p>
+<div class="table-wrap">
+	<table class="api">
+		<thead>
+			<tr>
+				<th scope="col">Package</th>
+				<th scope="col">Carries</th>
+				<th scope="col">Entry points</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row"><code>@ambre/tokens</code></th>
+				<td>Every <code>--amb-</code> variable for light and dark, and the brand presets.</td>
+				<td>
+					<span class="values"><code>@ambre/tokens/css</code><code>@ambre/tokens/css/presets</code></span>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><code>@ambre/ui</code></th>
+				<td>The core elements: actions, forms, feedback, and navigation.</td>
+				<td><code>@ambre/ui</code></td>
+			</tr>
+			<tr>
+				<th scope="row"><code>@ambre/commerce</code></th>
+				<td>Shop compositions such as quantity. Checkout logic stays in the product.</td>
+				<td><code>@ambre/commerce</code></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
-<p class="lede">
-	<code>@ambre/tokens</code> carries the theme. <code>@ambre/ui</code> carries the components.
-	<code>@ambre/commerce</code> carries shop compositions such as quantity. Checkout stays in the product.
-	The packages are not on npm yet. Build them from this repository.
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+	<li><strong>Node 22</strong> and <strong>pnpm 12</strong> to build the workspace.</li>
+	<li>Read access to <a href={repoUrl} target="_blank" rel="external noreferrer">the repository</a>, or a mirror of it on your own Git host.</li>
+	<li>A bundler that resolves package <code>exports</code> and imports CSS, such as Vite or webpack.</li>
+	<li>
+		Current Chrome, Edge, Firefox, or Safari. The elements use custom elements, open shadow roots, and
+		<code>ElementInternals</code>.
+	</li>
+</ul>
+
+<h2 id="build">Build from source</h2>
+<p>Clone the repository, install, and build every package. The output lands in each package's <code>dist</code> folder.</p>
+<CodeBlock code={cloneCode} lang="html" title="Terminal" />
+<p>
+	Pin a commit. The packages stay at version <code>0.0.0</code> until the first release, so the commit is the
+	version. Mirror the repository internally if your build machines cannot reach GitHub.
 </p>
 
-<h2>Get the source</h2>
-<div class="snippets">
-	<pre><code>git clone https://github.com/mohamedMok/ambre.git
-cd ambre
-pnpm install
-pnpm build</code></pre>
-	<pre><code>Node 22
-pnpm 12</code></pre>
-</div>
+<h3>Add the build to the product</h3>
+<p>
+	Run these from the product repository, next to the Ambre checkout. Add the built packages by path, and the fonts from
+	npm. Skip <code>@ambre/commerce</code> unless the product needs shop compositions.
+</p>
+<CodeBlock code={addCode} lang="bash" title="Terminal" />
 
-<h2>Point a product at the build</h2>
-<p class="lede">From the product, add the built packages. Then load the fonts, the theme, and the library, in that order.</p>
-<pre><code>pnpm add ../ambre/packages/tokens ../ambre/packages/ui
-pnpm add @fontsource/source-sans-3 @fontsource/source-code-pro</code></pre>
-<pre><code>import '@fontsource/source-sans-3/400.css';
-import '@fontsource/source-sans-3/600.css';
-import '@fontsource/source-code-pro/400.css';
-import '@ambre/tokens/css';
-import '@ambre/ui';
-import '@ambre/commerce';</code></pre>
-<pre><code>&lt;amb-button type="submit"&gt;Save changes&lt;/amb-button&gt;
-&lt;amb-link href="/account"&gt;Account&lt;/amb-link&gt;</code></pre>
+<h2 id="load-order">Load order</h2>
+<p>
+	Load four things, in this order: <strong>fonts</strong>, <strong>tokens</strong>, <strong>presets</strong>, then the
+	<strong>library</strong>. The theme is in place before the first element upgrades, so nothing restyles on load.
+</p>
+<CodeBlock code={loadCode} lang="html" title="main.js" />
+<ul>
+	<li>Load the faces the active brand names. Ambre uses Source Sans 3 and Source Code Pro.</li>
+	<li>
+		Load <code>@fontsource/material-symbols-outlined</code> where <code>amb-icon</code> takes a <code>name</code>. An icon
+		with a slotted SVG needs no font.
+	</li>
+	<li>Skip the presets file when the product uses only the default brand.</li>
+</ul>
 
-<h2>In SvelteKit</h2>
-<p class="lede">
-	Import <code>@ambre/ui</code> in <code>onMount</code>. <code>customElements</code> does not exist while the page is rendered on the server. Keep the tags and their text in the markup so the HTML is already there.
+<h2 id="first-example">A first example</h2>
+<p>
+	Write the tags in plain HTML. The slotted text is the label. The form controls are form-associated, so the form
+	submits their values like native fields.
+</p>
+<Stage code={exampleCode} label="Sign in">
+	<form class="example-form" onsubmit={onSubmit}>
+		<amb-text-field name="email" type="email" autocomplete="email" required>Email</amb-text-field>
+		<amb-text-field name="password" type="password" autocomplete="current-password" required>Password</amb-text-field>
+		<amb-checkbox name="remember">Keep me signed in on this device</amb-checkbox>
+		<amb-button type="submit">Sign in</amb-button>
+		<amb-link href="/get-started#first-example">Reset your password</amb-link>
+		<p class="example-status" aria-live="polite">{status}</p>
+	</form>
+</Stage>
+
+<h2 id="sveltekit">SvelteKit and server rendering</h2>
+<p>
+	Import <code>@ambre/ui</code> in <code>onMount</code>. <code>customElements</code> does not exist on the server. Keep the
+	tags and their text in the markup, so the server HTML already carries every label.
+</p>
+<CodeBlock code={svelteCode} lang="svelte" title="+layout.svelte" />
+<p>
+	The same rule holds in Next.js, Nuxt, and Astro: render the tags on the server, register the elements on the
+	client.
 </p>
 
-<h2>Theme it</h2>
-<p class="lede">
-	Override a semantic variable. Leave the reference palette in the token files. Set <code>data-theme="dark"</code> on an ancestor for the dark decisions.
+<h2 id="theming">Theme it</h2>
+<p>
+	Override semantic variables, such as <code>--amb-color-accent-bg</code>. Leave the reference palette in the token
+	files. Components read only semantic variables, so every element follows.
 </p>
-<pre><code>:root &#123;
-  --amb-color-accent-bg: var(--amb-color-accent-bg-hover);
-&#125;
-
-&lt;html data-theme="dark"&gt;</code></pre>
-
-<h2>Use a brand</h2>
-<p class="lede">
-	A brand is one file in <code>packages/tokens/src/preset</code>. The build compiles every file there onto the same variables, under <code>data-brand</code>. Ambre stays the default when the attribute is absent. Load the preset CSS after the theme.
+<CodeBlock code={themeCode} lang="html" title="theme.css" />
+<p>Set <code>data-theme="dark"</code> on an ancestor for the dark decisions.</p>
+<CodeBlock code={darkCode} lang="html" />
+<p>
+	Check every pair you change against the <a href="/foundations/accessibility">contrast pairs</a>. Overrides on
+	<code>:root</code> lose to a brand preset. To change a brand, edit its preset.
 </p>
-<pre><code>import '@ambre/tokens/css';
-import '@ambre/tokens/css/presets';
 
-&lt;html data-brand="apple"&gt;
-&lt;html data-brand="airbnb"&gt;
-&lt;html data-brand="press"&gt;</code></pre>
-<p class="lede">
-	The same file sets type, radius, border width, space, control size, focus, and motion. The product loads the font the preset names. Apple uses the system font. Airbnb uses Nunito Sans. Press uses Source Serif 4. No brand file ships a proprietary face.
+<h2 id="brands">Use a brand</h2>
+<p>
+	A brand is one preset file. The build compiles each one onto the same variables, under <code>data-brand</code>. Ambre
+	is the default when the attribute is absent. The ids are <code>atlas</code>, <code>verdant</code>, <code>noir</code>,
+	and <code>press</code>.
 </p>
-<div class="do-grid">
-	<section class="note">
-		<h2>Do</h2>
+<CodeBlock code={brandCode} lang="html" />
+<p>
+	Put <code>data-brand</code> and <code>data-theme</code> on the same ancestor. The dark rules of a preset match only when
+	both attributes sit on one element. The product loads the face the preset names. No preset ships a font file.
+	<a href="/brands">Compare the brands</a>.
+</p>
+
+<h2 id="frameworks">Framework notes</h2>
+<p>
+	The elements are standard web components. They work in any framework, and in plain HTML. Use the tags directly.
+	No wrapper package is needed.
+</p>
+
+<h3>React 19</h3>
+<p>
+	React 19 passes props to custom elements as properties, so strings and booleans work as written. For TypeScript,
+	declare the tags in <code>JSX.IntrinsicElements</code>. Import the library once, on the client, in the entry module.
+</p>
+<CodeBlock code={reactCode} lang="js" title="Checkout.jsx" />
+
+<h3>Vue</h3>
+<p>Tell the compiler that <code>amb-</code> tags are custom elements, so it does not try to resolve them as components.</p>
+<CodeBlock code={vueCode} lang="js" title="vite.config.js" />
+
+<h3>Angular</h3>
+<p>Add <code>CUSTOM_ELEMENTS_SCHEMA</code> to each component that uses the tags.</p>
+<CodeBlock code={angularCode} lang="js" title="checkout.component.ts" />
+
+<h2 id="rules">Rules of use</h2>
+<div class="guidance">
+	<section class="guidance-card" data-kind="do">
+		<h3>Do</h3>
 		<ul>
 			<li>Load the token CSS before the components.</li>
-			<li>Load Material Symbols Outlined where <code>amb-icon</code> uses a name.</li>
-			<li>Switch brand by editing its preset file, then set <code>data-brand</code>.</li>
 			<li>Put the visible label in the slot.</li>
 			<li>Use a link to go somewhere and a button to start an action.</li>
-			<li>Keep headings as native HTML.</li>
+			<li>Keep headings as native HTML. Type is a token.</li>
+			<li>Change a brand in its preset file, then set <code>data-brand</code>.</li>
 		</ul>
 	</section>
-	<section class="note">
-		<h2>Don't</h2>
+	<section class="guidance-card" data-kind="dont">
+		<h3>Don’t</h3>
 		<ul>
-			<li>Don't paint a component with a raw hex color.</li>
-			<li>Don't restyle a component to imitate a brand.</li>
-			<li>Don't import the library during server rendering.</li>
-			<li>Don't look for a heading component. Type is a token.</li>
+			<li>Don’t paint a component with a raw color. Override the semantic variable.</li>
+			<li>Don’t restyle a component to imitate a brand. Write a preset.</li>
+			<li>Don’t import the library during server rendering.</li>
+			<li>Don’t look for a heading component. There is none.</li>
 		</ul>
 	</section>
 </div>
 
-<p class="lede">
-	<a href={storybookUrl} target="_blank" rel="external noreferrer">Open Storybook</a> to inspect every variant and both themes.
-</p>
+<h2 id="next-steps">Next steps</h2>
+<ul class="card-grid">
+	<li>
+		<a class="card-link" href="/foundations">
+			<strong>Foundations</strong>
+			<span>Color, type, space, motion, and the contrast floor.</span>
+		</a>
+	</li>
+	<li>
+		<a class="card-link" href="/components">
+			<strong>Components</strong>
+			<span>Every element, with usage, API, and accessibility notes.</span>
+		</a>
+	</li>
+	<li>
+		<a class="card-link" href="/brands">
+			<strong>Brands</strong>
+			<span>Five presets on the same tokens, and how to write your own.</span>
+		</a>
+	</li>
+	<li>
+		<a class="card-link" href={storybookUrl} target="_blank" rel="external noreferrer">
+			<strong>Storybook</strong>
+			<span>Every variant and state, in both themes.</span>
+		</a>
+	</li>
+</ul>
+
+<style>
+	.example-form {
+		display: grid;
+		gap: var(--amb-space-400);
+		width: 100%;
+		max-width: 24rem;
+		justify-items: start;
+	}
+
+	.example-form amb-text-field {
+		justify-self: stretch;
+	}
+
+	.example-status {
+		margin: 0;
+		color: var(--amb-color-fg-muted);
+		font-size: var(--amb-font-size-200);
+	}
+</style>
