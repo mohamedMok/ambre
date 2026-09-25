@@ -212,6 +212,32 @@ export interface AmbLayoutProps {
 
 export interface AmbLayoutElement extends HTMLElement, AmbLayoutProps {}
 
+/*
+ * Events. Every Ambre event bubbles, is composed, and carries its data in `detail`.
+ * `input` and `click` are the browser's own events, retargeted to the element.
+ */
+
+/** `change` on amb-checkbox, amb-toggle, and amb-checkbox-card. */
+export type AmbCheckedChangeEvent = CustomEvent<{ checked: boolean; value: string }>;
+
+/** `change` on amb-radio, amb-radio-card, amb-select, amb-text-field, amb-text-area, and amb-date-picker. */
+export type AmbValueChangeEvent = CustomEvent<{ value: string }>;
+
+/** `change` on amb-range and amb-quantity. */
+export type AmbNumberChangeEvent = CustomEvent<{ value: number }>;
+
+/** `change` on amb-tabs. */
+export type AmbTabsChangeEvent = CustomEvent<{ index: number }>;
+
+/** `toggle` on amb-disclosure and amb-menu. */
+export type AmbToggleEvent = CustomEvent<{ open: boolean }>;
+
+/** `select` on amb-menu. */
+export type AmbMenuSelectEvent = CustomEvent<{ item: HTMLButtonElement; value: string }>;
+
+/** `close` on amb-dialog. */
+export type AmbCloseEvent = CustomEvent<Record<string, never>>;
+
 declare global {
 	interface HTMLElementTagNameMap {
 		'amb-badge': AmbBadgeElement;

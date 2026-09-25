@@ -50,7 +50,8 @@ slots:
     description: Accessible name. Keep this text visible.
 events:
   - name: change
-    description: Fired when this radio becomes checked.
+    detail: "{ value: string }"
+    description: Fired on the radio that becomes checked, by a click or by the arrow keys. The group has one listener if it sits on the fieldset.
 a11y:
   role: radio
   name: Slotted text. Group the radios in a fieldset with a legend.

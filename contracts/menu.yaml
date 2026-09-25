@@ -31,7 +31,11 @@ slots:
     description: Native buttons, one action each. Each receives the menuitem role.
 events:
   - name: toggle
-    description: Fired after the open state changes. detail.open is the next state.
+    detail: "{ open: boolean }"
+    description: Fired after the list opens or closes.
+  - name: select
+    detail: "{ item: HTMLButtonElement; value: string }"
+    description: Fired when a person picks an item. value is the button's value, or its text. The item's own click fires too.
 a11y:
   role: menu
   name: The button is named by its slotted text. Each action is named by its own text.

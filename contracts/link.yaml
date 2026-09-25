@@ -33,7 +33,8 @@ slots:
     description: Accessible name. Keep this text visible.
 events:
   - name: click
-    description: Native click from the inner link.
+    native: true
+    description: Native click from the inner link. Call preventDefault() to handle the navigation in a client router.
 a11y:
   role: link
   name: Slotted text. An empty slot has no accessible name.

@@ -19,6 +19,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/menu.scss?inline';
 </script>
 
@@ -38,13 +39,7 @@
 		if (disabled) return;
 		host.open = next;
 		markItems(next);
-		host.dispatchEvent(
-			new CustomEvent('toggle', {
-				bubbles: true,
-				composed: true,
-				detail: { open: next }
-			})
-		);
+		emit(host, 'toggle', { open: next });
 	}
 
 	function actions() {
@@ -115,7 +110,11 @@
 		if (!open) return;
 		const path = event.composedPath();
 		if (trigger && path.includes(trigger)) return;
-		if (actions().some((action) => path.includes(action))) setOpen(false);
+		const item = actions().find((action) => path.includes(action));
+		if (!item) return;
+		setOpen(false);
+		// One listener on the menu instead of one per item.
+		emit(host, 'select', { item, value: item.value || item.textContent?.trim() || '' });
 	}
 
 	$effect(() => {

@@ -27,6 +27,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/text-area.scss?inline';
 </script>
 
@@ -72,6 +73,12 @@
 		publish();
 	}
 
+	// `input` is composed and reaches the host on its own; `change` is re-dispatched on commit.
+	function onChange() {
+		if (!input) return;
+		emit(host, 'change', { value: input.value });
+	}
+
 	function onInvalid() {
 		showMessage = true;
 		publish();
@@ -104,6 +111,7 @@
 		readOnly={readOnly}
 		placeholder={placeholder || undefined}
 		oninput={onInput}
+		onchange={onChange}
 		oninvalid={onInvalid}
 	></textarea>
 	{#if showMessage && message}

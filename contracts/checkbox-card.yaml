@@ -61,7 +61,8 @@ slots:
     description: An amb-icon, decorative.
 events:
   - name: change
-    description: Fired when the checked state changes.
+    detail: "{ checked: boolean; value: string }"
+    description: Fired when a person checks or unchecks the card.
 a11y:
   role: checkbox
   name: The slotted label. The description slot is the accessible description.

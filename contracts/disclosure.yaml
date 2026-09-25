@@ -32,7 +32,8 @@ slots:
     description: Content that is shown while the disclosure is open.
 events:
   - name: toggle
-    description: Fired after the open state changes. detail.open is the next state.
+    detail: "{ open: boolean }"
+    description: Fired after a person opens or closes the panel.
 a11y:
   role: button
   name: Slotted text on the button. The panel is labeled by that button.

@@ -72,6 +72,7 @@ for (const file of files) {
         events: contract.events.map((event) => ({
           name: event.name,
           description: event.description,
+          type: { text: event.detail ? `CustomEvent<${event.detail}>` : 'Event' },
         })),
         cssParts: contract.anatomy
           .filter((part) => part.part)

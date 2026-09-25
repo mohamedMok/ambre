@@ -50,7 +50,10 @@ props:
 slots:
   - name: default
     description: Visible label. It names the switch.
-events: []
+events:
+  - name: change
+    detail: "{ checked: boolean; value: string }"
+    description: Fired when a person switches it on or off.
 a11y:
   role: switch
   name: Slotted label text.

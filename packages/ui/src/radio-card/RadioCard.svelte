@@ -25,11 +25,14 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import { slotted } from '../internal/slots';
 	import styles from '../styles/components/radio-card.scss?inline';
 </script>
 
 <script lang="ts">
+	import { untrack } from 'svelte';
+
 	interface RadioCardElement extends HTMLElement {
 		checked: boolean;
 		disabled: boolean;
@@ -117,13 +120,13 @@
 			control.checked = true;
 			control.focus();
 		}
-		target.dispatchEvent(new Event('change', { bubbles: true }));
+		emit(target, 'change', { value: target.value });
 	}
 
 	function onChange() {
 		if (!input?.checked) return;
 		host.checked = true;
-		host.dispatchEvent(new Event('change', { bubbles: true }));
+		emit(host, 'change', { value });
 	}
 
 	function onInvalid() {
@@ -158,7 +161,10 @@
 		host.addEventListener('invalid', onHostInvalid);
 		root.addEventListener('amb-radio-card-group', onGroup);
 		input.checked = checked;
-		publish();
+		// Re-run for this card's own props only. publish() reads the peers' `checked`; tracked, a peer
+		// that was still checked would re-run first and uncheck the card that was just picked.
+		void [name, value, required];
+		untrack(publish);
 		return () => {
 			host.removeEventListener('invalid', onHostInvalid);
 			root.removeEventListener('amb-radio-card-group', onGroup);

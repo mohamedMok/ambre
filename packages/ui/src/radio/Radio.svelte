@@ -25,10 +25,13 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/radio.scss?inline';
 </script>
 
 <script lang="ts">
+	import { untrack } from 'svelte';
+
 	interface RadioElement extends HTMLElement {
 		checked: boolean;
 		disabled: boolean;
@@ -117,6 +120,7 @@
 	function onChange() {
 		if (!input) return;
 		host.checked = input.checked;
+		if (input.checked) emit(host, 'change', { value });
 	}
 
 	function onInvalid() {
@@ -139,7 +143,7 @@
 			control.checked = true;
 			control.focus();
 		}
-		next.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+		emit(next, 'change', { value: next.value });
 	}
 
 	$effect(() => {
@@ -157,7 +161,10 @@
 		host.addEventListener('invalid', onHostInvalid);
 		root.addEventListener('amb-radio-group', onGroup);
 		input.checked = checked;
-		publish();
+		// Re-run for this radio's own props only. publish() reads the peers' `checked`; tracked, a peer
+		// that was still checked would re-run first and uncheck the radio that was just picked.
+		void [name, value, required];
+		untrack(publish);
 		return () => {
 			host.removeEventListener('invalid', onHostInvalid);
 			root.removeEventListener('amb-radio-group', onGroup);

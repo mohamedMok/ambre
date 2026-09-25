@@ -67,9 +67,11 @@ slots:
     description: Accessible name. Keep this text visible.
 events:
   - name: input
-    description: Fired when the value changes.
+    native: true
+    description: Fired on every keystroke. Read event.target.value.
   - name: change
-    description: Fired when the field commits a value.
+    detail: "{ value: string }"
+    description: Fired when the field loses focus with a new value, or on Enter.
 a11y:
   role: textbox
   name: Slotted text. The placeholder is not the accessible name.

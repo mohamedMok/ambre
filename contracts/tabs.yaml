@@ -20,7 +20,8 @@ slots:
     description: The region shown when the matching tab is selected.
 events:
   - name: change
-    description: Fired when the selected tab changes. detail.index is the new index.
+    detail: "{ index: number }"
+    description: Fired when a person selects another tab, by a click or by the arrow keys. index counts from 0.
 a11y:
   role: tablist
   name: Each tab is named by its button text. Each panel is named by its tab.

@@ -42,7 +42,8 @@ slots:
     description: Accessible name. Keep this text visible. Child option elements are the choices, not the name.
 events:
   - name: change
-    description: Fired when the selected option changes.
+    detail: "{ value: string }"
+    description: Fired when a person picks another option.
 a11y:
   role: combobox
   name: Slotted text. Each option keeps its own text.

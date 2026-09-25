@@ -41,7 +41,8 @@ slots:
     description: Accessible name. Keep this text visible.
 events:
   - name: click
-    description: Native click from the inner button, including Enter and Space.
+    native: true
+    description: Native click from the inner button, including Enter and Space. A submit or reset button also acts on the nearest form.
 a11y:
   role: button
   name: Slotted text. An empty slot has no accessible name.

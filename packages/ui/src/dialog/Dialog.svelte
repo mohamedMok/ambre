@@ -19,6 +19,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/dialog.scss?inline';
 </script>
 
@@ -40,7 +41,7 @@
 		if (!wasOpen) return;
 		announcing = true;
 		if (host.open) host.open = false;
-		host.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
+		emit(host, 'close', {});
 		queueMicrotask(() => {
 			announcing = false;
 		});

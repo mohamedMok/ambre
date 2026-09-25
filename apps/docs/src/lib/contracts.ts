@@ -19,7 +19,7 @@ export interface Contract {
 	anatomy: { id: string; element?: string; part?: string; slot?: string }[];
 	props: ContractProp[];
 	slots: { name: string; description: string }[];
-	events: { name: string; description: string }[];
+	events: { name: string; description: string; detail?: string; native?: boolean; cancelable?: boolean }[];
 	a11y: { role: string; name: string; keyboard: string[]; notes: string[] };
 	tokens: string[];
 }

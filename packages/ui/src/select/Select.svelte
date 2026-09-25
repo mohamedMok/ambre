@@ -36,6 +36,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/select.scss?inline';
 </script>
 
@@ -92,6 +93,7 @@
 		if (!select) return;
 		host.value = select.value;
 		publish();
+		emit(host, 'change', { value: select.value });
 	}
 
 	function onInvalid() {

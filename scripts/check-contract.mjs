@@ -28,6 +28,20 @@ for (const file of fs.readdirSync(contractsDir).filter((entry) => entry.endsWith
   }
   if (/#[0-9a-fA-F]{3,8}\b/.test(source)) failures.push(`${contract.id}: raw hex color`);
 
+  // Every custom event in the contract is emitted through emit(), so it bubbles, is composed,
+  // and carries its detail. Native events come from the inner control and need no code.
+  for (const event of contract.events) {
+    if (event.native) continue;
+    if (!new RegExp(`emit\\([^,]+, '${event.name}'`).test(source)) {
+      failures.push(`${contract.id}: event ${event.name} is in the contract but never emitted`);
+    }
+    if (!event.detail) failures.push(`${contract.id}: event ${event.name} has no detail shape`);
+  }
+  // Internal coordination events (a radio group telling its peers) are prefixed amb- and are not an API.
+  if (/new (Custom)?Event\('(?!amb-)/.test(source)) {
+    failures.push(`${contract.id}: dispatch events with emit() from internal/events`);
+  }
+
   // Styles live outside the component, in the package's ITCSS components layer.
   if (/<style[\s>]/.test(source)) failures.push(`${contract.id}: <style> block in the component; move it to styles/components/${contract.id}.scss`);
   const sheetPath = path.join(sourceDir, '..', 'styles', 'components', `${contract.id}.scss`);

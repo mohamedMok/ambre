@@ -25,6 +25,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import { slotted } from '../internal/slots';
 	import styles from '../styles/components/checkbox-card.scss?inline';
 </script>
@@ -67,8 +68,7 @@
 		if (!input) return;
 		host.checked = input.checked;
 		publish();
-		// A native change event stops at the shadow root.
-		host.dispatchEvent(new Event('change', { bubbles: true }));
+		emit(host, 'change', { checked: input.checked, value });
 	}
 
 	function onInvalid() {

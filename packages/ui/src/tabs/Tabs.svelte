@@ -15,6 +15,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/tabs.scss?inline';
 </script>
 
@@ -53,13 +54,7 @@
 	function choose(index: number) {
 		selected = index;
 		wire();
-		host.dispatchEvent(
-			new CustomEvent('change', {
-				bubbles: true,
-				composed: true,
-				detail: { index }
-			})
-		);
+		emit(host, 'change', { index });
 	}
 
 	function enabled(from: number, step: number) {

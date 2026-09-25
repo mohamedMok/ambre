@@ -60,8 +60,12 @@ slots:
   - name: default
     description: Accessible name. Keep this text visible.
 events:
+  - name: input
+    native: true
+    description: Fired while a date is typed, part by part.
   - name: change
-    description: Fired when the date changes, typed or picked.
+    detail: "{ value: string }"
+    description: Fired when the date changes, typed or picked in the calendar. value is YYYY-MM-DD, or empty.
 a11y:
   role: textbox (a native date input), with a button that opens a dialog holding a grid
   name: Slotted label. The calendar dialog is named by the visible month.

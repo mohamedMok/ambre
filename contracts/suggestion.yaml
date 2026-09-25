@@ -26,7 +26,8 @@ slots:
     description: An amb-icon in place of the default spark. It is decorative.
 events:
   - name: click
-    description: The native click. Send the label text, or fill the prompt with it.
+    native: true
+    description: The native click, including Enter and Space. Send the label text, or fill the prompt with it.
 a11y:
   role: button
   name: Slotted text.

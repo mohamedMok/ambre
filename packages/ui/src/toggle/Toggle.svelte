@@ -25,6 +25,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/toggle.scss?inline';
 </script>
 
@@ -64,6 +65,7 @@
 		if (!input) return;
 		host.checked = input.checked;
 		publish();
+		emit(host, 'change', { checked: input.checked, value });
 	}
 
 	function onInvalid() {

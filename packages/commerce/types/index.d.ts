@@ -9,6 +9,9 @@ export interface AmbQuantityProps {
 
 export interface AmbQuantityElement extends HTMLElement, AmbQuantityProps {}
 
+/** `change` on amb-quantity, after the value is clamped to the bounds. */
+export type AmbQuantityChangeEvent = CustomEvent<{ value: number }>;
+
 declare global {
 	interface HTMLElementTagNameMap {
 		'amb-quantity': AmbQuantityElement;

@@ -19,6 +19,11 @@ export const gettingStarted: DocLink[] = [
 		summary: 'Build the packages, load the theme, and use the elements.'
 	},
 	{
+		href: '/get-started/events',
+		label: 'Events',
+		summary: 'What each element reports, the detail it carries, and how to listen in any framework.'
+	},
+	{
 		href: '/brands',
 		label: 'Brands',
 		summary: 'Five presets on the same tokens. A brand is one file.'

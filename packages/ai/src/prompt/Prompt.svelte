@@ -25,6 +25,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../../../ui/src/styles/adopt';
+	import { emit } from '../../../ui/src/internal/events';
 	import { slotted } from '../../../ui/src/internal/slots';
 	import styles from '../styles/components/prompt.scss?inline';
 </script>
@@ -71,9 +72,8 @@
 	function send() {
 		if (disabled || busy || empty) return;
 		const text = String(value).trim();
-		const event = new CustomEvent('send', { bubbles: true, composed: true, cancelable: true, detail: { value: text } });
 		// A cancelled send keeps the text, for example when the product has to validate it first.
-		if (!host.dispatchEvent(event)) return;
+		if (!emit(host, 'send', { value: text }, { cancelable: true })) return;
 		host.value = '';
 		if (field) field.value = '';
 		attachedInternals?.setFormValue('');
@@ -82,7 +82,7 @@
 	}
 
 	function stop() {
-		host.dispatchEvent(new CustomEvent('stop', { bubbles: true, composed: true }));
+		emit(host, 'stop', {});
 	}
 
 	function onKeydown(event: KeyboardEvent) {

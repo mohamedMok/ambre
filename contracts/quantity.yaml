@@ -64,7 +64,8 @@ slots:
     description: Visible name of the product being counted.
 events:
   - name: change
-    description: Fired after the quantity changes. detail.value is the next number.
+    detail: "{ value: number }"
+    description: Fired after the quantity changes, by a step button or a typed number, once it is clamped to the bounds.
 a11y:
   role: spinbutton
   name: Slotted label text. The − and + buttons are named Decrease and Increase with aria-label.

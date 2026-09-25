@@ -34,7 +34,8 @@ slots:
     description: Visible name of the button that dismisses the dialog.
 events:
   - name: close
-    description: Fired after the dialog closes, including Escape and the backdrop.
+    detail: "{}"
+    description: Fired once after the dialog closes, by the close button, Escape, the backdrop, or the open property.
 a11y:
   role: dialog
   name: The label prop.

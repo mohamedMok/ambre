@@ -26,6 +26,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../../../ui/src/styles/adopt';
+	import { emit } from '../../../ui/src/internal/events';
 	import styles from '../styles/components/quantity.scss?inline';
 </script>
 
@@ -85,15 +86,7 @@
 		host.value = clamped;
 		if (input) input.value = String(clamped);
 		publish(clamped);
-		if (notify && changed) {
-			host.dispatchEvent(
-				new CustomEvent('change', {
-					bubbles: true,
-					composed: true,
-					detail: { value: clamped }
-				})
-			);
-		}
+		if (notify && changed) emit(host, 'change', { value: clamped });
 	}
 
 	function bump(direction: number) {

@@ -16,6 +16,16 @@ Implement the contract. Do not add a prop, token, or part the contract does not 
 - Reflect enum and boolean props. Default `type` on a button is `button`. The inner button stays `type="button"`; submit and reset go through the associated form.
 - Internal Svelte components do not get a tag.
 
+## Events
+
+Every event in the contract is dispatched with `emit(host, name, detail)` from `src/internal/events.ts`. It bubbles and is composed. See ADR 0007.
+
+- A native `change` stops at the shadow root. Re-dispatch it with the value in `detail`: `{ value }`, or `{ checked, value }` for a checkbox.
+- `input` and `click` are composed already. Mark them `native: true` in the contract and add nothing.
+- Fire for what a person did, never when a property is set from code.
+- Use the platform name when one fits (`change`, `input`, `toggle`, `close`). A new name is a verb for what happened (`select`, `send`).
+- Never `new Event()` or `new CustomEvent()` in a component. The check fails on it, and on a contract event that is never emitted or has no `detail`.
+
 ## Styles
 
 Styles never live in the `.svelte` file. See `src/styles/README.md`.

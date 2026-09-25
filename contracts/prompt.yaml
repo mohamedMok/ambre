@@ -55,9 +55,15 @@ slots:
   - name: actions
     description: Buttons at the start of the bar, such as attach a file.
 events:
+  - name: input
+    native: true
+    description: Fired on every keystroke. Read event.target.value.
   - name: send
-    description: Fired on Enter or the send button with detail.value, the trimmed text. Cancel it to keep the text in the field.
+    detail: "{ value: string }"
+    cancelable: true
+    description: Fired on Enter or the send button with the trimmed text. The field empties, unless a listener calls preventDefault().
   - name: stop
+    detail: "{}"
     description: Fired when the stop button is pressed while busy.
 a11y:
   role: textbox (a native multi-line textarea)

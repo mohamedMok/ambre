@@ -26,6 +26,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/range.scss?inline';
 </script>
 
@@ -69,6 +70,12 @@
 		publish();
 	}
 
+	// `input` is composed and reaches the host on its own; `change` is re-dispatched when the thumb is let go.
+	function onChange() {
+		if (!input) return;
+		emit(host, 'change', { value: input.valueAsNumber });
+	}
+
 	$effect(() => {
 		if (!input) return;
 		if (input.valueAsNumber !== value) input.value = String(value);
@@ -90,5 +97,6 @@
 		{disabled}
 		style:--_fill="{fill}%"
 		oninput={onInput}
+		onchange={onChange}
 	/>
 </label>

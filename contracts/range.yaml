@@ -53,7 +53,13 @@ props:
 slots:
   - name: default
     description: Visible label. It names the range.
-events: []
+events:
+  - name: input
+    native: true
+    description: Fired on every step while the thumb moves. Read event.target.value.
+  - name: change
+    detail: "{ value: number }"
+    description: Fired when the thumb is let go, or after a key press.
 a11y:
   role: slider
   name: Slotted label text. The range input is native.

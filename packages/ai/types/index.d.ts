@@ -27,8 +27,11 @@ export interface AmbSuggestionProps {
 
 export interface AmbSuggestionElement extends HTMLElement, AmbSuggestionProps {}
 
-/** Fired by amb-prompt when the prompt is sent. Cancel it to keep the text in the field. */
+/** `send` on amb-prompt. Call preventDefault() to keep the text in the field. */
 export type AmbPromptSendEvent = CustomEvent<{ value: string }>;
+
+/** `stop` on amb-prompt, while busy. */
+export type AmbPromptStopEvent = CustomEvent<Record<string, never>>;
 
 declare global {
 	interface HTMLElementTagNameMap {

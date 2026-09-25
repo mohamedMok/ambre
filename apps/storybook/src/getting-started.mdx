@@ -32,6 +32,7 @@ Ambre is a set of accessible web components and the tokens that theme them. The 
 | `@ambre-ds/tokens` | Every `--amb-` variable for light and dark, and the brand presets | `@ambre-ds/tokens/css`, `@ambre-ds/tokens/css/presets`, `@ambre-ds/tokens/scss`, `@ambre-ds/tokens/json` |
 | `@ambre-ds/ui` | The core elements: actions, forms, feedback, navigation | `@ambre-ds/ui`, or one element at a time: `@ambre-ds/ui/button` |
 | `@ambre-ds/commerce` | Shop compositions built on the core, starting with quantity | `@ambre-ds/commerce` |
+| `@ambre-ds/ai` | Conversation compositions: prompt, message, thinking, suggestion | `@ambre-ds/ai` |
 
 Most products need the first two.
 
@@ -47,7 +48,7 @@ npm install @fontsource/source-sans-3 @fontsource/source-code-pro
 npm install @ambre-ds/commerce
 ```
 
-The three packages share one version. Each release is published from CI with npm provenance.
+The packages share one version. Each release is published from CI with npm provenance.
 
 To contribute or try an unreleased change, build from source with Node 22 and pnpm 12:
 
@@ -94,8 +95,33 @@ Put the visible label in the default slot. It is the accessible name. Form contr
 ```
 
 - Use a button to start an action and a link to go somewhere.
-- Listen for native events (`click`, `input`, `change`) on the element. No prop starts with `on`.
 - Reach inside a component only through its documented `::part()` names. The internal classes are not an API.
+
+## Events
+
+Every element reports what people do with a DOM event. Listen on the element, or on any ancestor: every event bubbles and crosses the shadow root. The data is in `event.detail`.
+
+```js
+document.querySelector('amb-checkbox').addEventListener('change', (event) => {
+  console.log(event.detail.checked, event.detail.value);
+});
+```
+
+| Event | Fired by | `event.detail` |
+| --- | --- | --- |
+| `change` | checkbox, toggle, checkbox card | `{ checked, value }` |
+| `change` | radio, radio card, select, text field, text area, date picker | `{ value }` |
+| `change` | range, quantity | `{ value }`, a number |
+| `change` | tabs | `{ index }` |
+| `toggle` | disclosure, menu | `{ open }` |
+| `select` | menu | `{ item, value }` |
+| `close` | dialog | `{}` |
+| `send`, `stop` | prompt | `{ value }` for send, which is cancelable |
+| `input`, `click` | text fields, range, date picker, prompt; button, link, suggestion | native: read `event.target` |
+
+Setting a property from code does not fire an event, as with native elements. No prop starts with `on`.
+
+**Watch them here:** open the **Actions** panel under any story. Every event the component's contract declares is logged as `<tag> <event>`, with its detail.
 
 ## 4. Theme and brand
 
@@ -137,7 +163,8 @@ Check every overridden text colour against its background: 4.5:1 for text, 3:1 f
 
 ## 5. Frameworks
 
-- **React 19**: use the tags directly. React passes properties and events to custom elements.
+- **React**: use the tags directly. Attach listeners on a ref with `addEventListener`, which works for every event in React 18 and 19.
+- **Vue** and **Angular** listen with `@change` and `(change)`. **Svelte 5** with `onchange`.
 - **Vue**: tell the compiler that `amb-` tags are custom elements: `compilerOptions: { isCustomElement: (tag) => tag.startsWith('amb-') }`.
 - **Angular**: add `CUSTOM_ELEMENTS_SCHEMA` to the component that uses them.
 - **SvelteKit and other SSR frameworks**: import `@ambre-ds/ui` in `onMount` (or any client-only hook). `customElements` does not exist on the server. Keep the tags and their text in the markup, so the HTML is already there before the elements upgrade.

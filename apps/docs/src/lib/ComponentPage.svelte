@@ -33,6 +33,15 @@
 	const colorRows = $derived(tokenRows.filter((row) => row.type === 'color'));
 	const otherRows = $derived(tokenRows.filter((row) => row.type !== 'color'));
 	const parts = $derived(c.anatomy.filter((part) => part.part));
+	// A listener for the component's first custom event, or its first native one.
+	const listenLine = $derived.by(() => {
+		const event = c.events.find((e) => !e.native) ?? c.events[0];
+		if (!event) return '';
+		const read = event.detail && event.detail !== '{}' ? `event.detail` : 'event.target';
+		return `document.querySelector('${c.tag}').addEventListener('${event.name}', (event) => {
+  console.log(${read});
+});`;
+	});
 	const importLine = $derived(
 		pkg === '@ambre-ds/commerce' ? `import '@ambre-ds/commerce';` : `import '${pkg}/${id}';`
 	);
@@ -149,16 +158,31 @@
 
 {#if c.events.length}
 	<h3>Events</h3>
+	<p class="section-lede">
+		Every event bubbles and crosses the shadow root. <a href="/get-started/events">Listen to events</a> in plain
+		JavaScript or in a framework.
+	</p>
 	<div class="table-wrap">
 		<table class="api">
-			<thead><tr><th scope="col">Name</th><th scope="col">Description</th></tr></thead>
+			<thead>
+				<tr><th scope="col">Name</th><th scope="col"><code>event.detail</code></th><th scope="col">Description</th></tr>
+			</thead>
 			<tbody>
 				{#each c.events as event}
-					<tr><th scope="row"><code>{event.name}</code></th><td>{event.description}</td></tr>
+					<tr>
+						<th scope="row">
+							<code>{event.name}</code>
+							{#if event.native}<span class="note">native</span>{/if}
+							{#if event.cancelable}<span class="note">cancelable</span>{/if}
+						</th>
+						<td>{#if event.detail}<code>{event.detail}</code>{:else}<span class="muted">—</span>{/if}</td>
+						<td>{event.description}</td>
+					</tr>
 				{/each}
 			</tbody>
 		</table>
 	</div>
+	<CodeBlock title="Listen" lang="js" code={listenLine} />
 {/if}
 
 {#if parts.length}

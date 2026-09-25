@@ -62,7 +62,13 @@ props:
 slots:
   - name: default
     description: Visible label. It names the field.
-events: []
+events:
+  - name: input
+    native: true
+    description: Fired on every keystroke. Read event.target.value.
+  - name: change
+    detail: "{ value: string }"
+    description: Fired when the field loses focus with a new value.
 a11y:
   role: textbox
   name: Slotted label text. The textarea is native.

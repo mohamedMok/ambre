@@ -19,6 +19,7 @@
 
 <script module lang="ts">
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/disclosure.scss?inline';
 </script>
 
@@ -35,13 +36,7 @@
 		if (disabled) return;
 		const next = !open;
 		host.open = next;
-		host.dispatchEvent(
-			new CustomEvent('toggle', {
-				bubbles: true,
-				composed: true,
-				detail: { open: next }
-			})
-		);
+		emit(host, 'toggle', { open: next });
 	}
 </script>
 

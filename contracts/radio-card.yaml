@@ -61,7 +61,8 @@ slots:
     description: An amb-icon, decorative.
 events:
   - name: change
-    description: Fired when this card becomes checked.
+    detail: "{ value: string }"
+    description: Fired on the card that becomes checked, by a click or by the arrow keys. The group has one listener if it sits on the fieldset.
 a11y:
   role: radio
   name: The slotted label. The description slot is the accessible description.

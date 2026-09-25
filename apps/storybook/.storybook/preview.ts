@@ -15,6 +15,7 @@ import '@fontsource/material-symbols-outlined/latin-400.css';
 import '@ambre-ds/ui';
 import '@ambre-ds/commerce';
 import '@ambre-ds/ai';
+import { withAmbreEvents } from './events';
 
 const preview: Preview = {
   globalTypes: {
@@ -46,6 +47,7 @@ const preview: Preview = {
     },
   },
   decorators: [
+    withAmbreEvents,
     (story, context) => {
       const brand = context.globals.brand;
       if (!brand || brand === 'ambre') delete document.documentElement.dataset.brand;

@@ -61,8 +61,20 @@
         "additionalProperties": false,
         "required": ["name", "description"],
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" }
+          "name": { "type": "string", "pattern": "^[a-z]+(?:-[a-z]+)*$" },
+          "description": { "type": "string" },
+          "detail": {
+            "type": "string",
+            "description": "TypeScript shape of event.detail, such as { value: string }. Omit for a native event."
+          },
+          "native": {
+            "type": "boolean",
+            "description": "The browser fires it from the inner control and it is composed, so the element adds nothing."
+          },
+          "cancelable": {
+            "type": "boolean",
+            "description": "Calling preventDefault() stops the default outcome."
+          }
         }
       }
     },

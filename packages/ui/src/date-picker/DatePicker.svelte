@@ -27,6 +27,7 @@
 <script module lang="ts">
 	import { tick } from 'svelte';
 	import { adopt } from '../styles/adopt';
+	import { emit } from '../internal/events';
 	import styles from '../styles/components/date-picker.scss?inline';
 
 	const DAY = 86_400_000;
@@ -150,8 +151,9 @@
 		if (input.validity.valid) showMessage = false;
 	}
 
+	// `input` from the native field is composed and reaches the host on its own.
 	function notify() {
-		host.dispatchEvent(new Event('change', { bubbles: true }));
+		emit(host, 'change', { value: input?.value ?? '' });
 	}
 
 	function onInput() {

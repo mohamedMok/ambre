@@ -400,7 +400,10 @@
           "events": [
             {
               "name": "click",
-              "description": "Native click from the inner button, including Enter and Space."
+              "description": "Native click from the inner button, including Enter and Space. A submit or reset button also acts on the nearest form.",
+              "type": {
+                "text": "Event"
+              }
             }
           ],
           "cssParts": [
@@ -844,7 +847,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired when the checked state changes."
+              "description": "Fired when a person checks or unchecks the card.",
+              "type": {
+                "text": "CustomEvent<{ checked: boolean; value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -1115,7 +1121,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired when the checked state changes."
+              "description": "Fired when a person checks or unchecks it.",
+              "type": {
+                "text": "CustomEvent<{ checked: boolean; value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -1352,8 +1361,18 @@
           ],
           "events": [
             {
+              "name": "input",
+              "description": "Fired while a date is typed, part by part.",
+              "type": {
+                "text": "Event"
+              }
+            },
+            {
               "name": "change",
-              "description": "Fired when the date changes, typed or picked."
+              "description": "Fired when the date changes, typed or picked in the calendar. value is YYYY-MM-DD, or empty.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -1631,7 +1650,10 @@
           "events": [
             {
               "name": "close",
-              "description": "Fired after the dialog closes, including Escape and the backdrop."
+              "description": "Fired once after the dialog closes, by the close button, Escape, the backdrop, or the open property.",
+              "type": {
+                "text": "CustomEvent<{}>"
+              }
             }
           ],
           "cssParts": [
@@ -1857,7 +1879,10 @@
           "events": [
             {
               "name": "toggle",
-              "description": "Fired after the open state changes. detail.open is the next state."
+              "description": "Fired after a person opens or closes the panel.",
+              "type": {
+                "text": "CustomEvent<{ open: boolean }>"
+              }
             }
           ],
           "cssParts": [
@@ -2323,7 +2348,10 @@
           "events": [
             {
               "name": "click",
-              "description": "Native click from the inner link."
+              "description": "Native click from the inner link. Call preventDefault() to handle the navigation in a client router.",
+              "type": {
+                "text": "Event"
+              }
             }
           ],
           "cssParts": [
@@ -2453,7 +2481,17 @@
           "events": [
             {
               "name": "toggle",
-              "description": "Fired after the open state changes. detail.open is the next state."
+              "description": "Fired after the list opens or closes.",
+              "type": {
+                "text": "CustomEvent<{ open: boolean }>"
+              }
+            },
+            {
+              "name": "select",
+              "description": "Fired when a person picks an item. value is the button's value, or its text. The item's own click fires too.",
+              "type": {
+                "text": "CustomEvent<{ item: HTMLButtonElement; value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -3129,12 +3167,25 @@
           ],
           "events": [
             {
+              "name": "input",
+              "description": "Fired on every keystroke. Read event.target.value.",
+              "type": {
+                "text": "Event"
+              }
+            },
+            {
               "name": "send",
-              "description": "Fired on Enter or the send button with detail.value, the trimmed text. Cancel it to keep the text in the field."
+              "description": "Fired on Enter or the send button with the trimmed text. The field empties, unless a listener calls preventDefault().",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
             },
             {
               "name": "stop",
-              "description": "Fired when the stop button is pressed while busy."
+              "description": "Fired when the stop button is pressed while busy.",
+              "type": {
+                "text": "CustomEvent<{}>"
+              }
             }
           ],
           "cssParts": [
@@ -3380,7 +3431,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired after the quantity changes. detail.value is the next number."
+              "description": "Fired after the quantity changes, by a step button or a typed number, once it is clamped to the bounds.",
+              "type": {
+                "text": "CustomEvent<{ value: number }>"
+              }
             }
           ],
           "cssParts": [
@@ -3631,7 +3685,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired when this card becomes checked."
+              "description": "Fired on the card that becomes checked, by a click or by the arrow keys. The group has one listener if it sits on the fieldset.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -3902,7 +3959,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired when this radio becomes checked."
+              "description": "Fired on the radio that becomes checked, by a click or by the arrow keys. The group has one listener if it sits on the fieldset.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -4137,7 +4197,22 @@
               "description": "Visible label. It names the range."
             }
           ],
-          "events": [],
+          "events": [
+            {
+              "name": "input",
+              "description": "Fired on every step while the thumb moves. Read event.target.value.",
+              "type": {
+                "text": "Event"
+              }
+            },
+            {
+              "name": "change",
+              "description": "Fired when the thumb is let go, or after a key press.",
+              "type": {
+                "text": "CustomEvent<{ value: number }>"
+              }
+            }
+          ],
           "cssParts": [
             {
               "name": "field",
@@ -4355,7 +4430,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired when the selected option changes."
+              "description": "Fired when a person picks another option.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -4886,7 +4964,10 @@
           "events": [
             {
               "name": "click",
-              "description": "The native click. Send the label text, or fill the prompt with it."
+              "description": "The native click, including Enter and Space. Send the label text, or fill the prompt with it.",
+              "type": {
+                "text": "Event"
+              }
             }
           ],
           "cssParts": [
@@ -5057,7 +5138,10 @@
           "events": [
             {
               "name": "change",
-              "description": "Fired when the selected tab changes. detail.index is the new index."
+              "description": "Fired when a person selects another tab, by a click or by the arrow keys. index counts from 0.",
+              "type": {
+                "text": "CustomEvent<{ index: number }>"
+              }
             }
           ],
           "cssParts": [
@@ -5393,7 +5477,22 @@
               "description": "Visible label. It names the field."
             }
           ],
-          "events": [],
+          "events": [
+            {
+              "name": "input",
+              "description": "Fired on every keystroke. Read event.target.value.",
+              "type": {
+                "text": "Event"
+              }
+            },
+            {
+              "name": "change",
+              "description": "Fired when the field loses focus with a new value.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
+            }
+          ],
           "cssParts": [
             {
               "name": "field",
@@ -5635,11 +5734,17 @@
           "events": [
             {
               "name": "input",
-              "description": "Fired when the value changes."
+              "description": "Fired on every keystroke. Read event.target.value.",
+              "type": {
+                "text": "Event"
+              }
             },
             {
               "name": "change",
-              "description": "Fired when the field commits a value."
+              "description": "Fired when the field loses focus with a new value, or on Enter.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
             }
           ],
           "cssParts": [
@@ -6169,7 +6274,15 @@
               "description": "Visible label. It names the switch."
             }
           ],
-          "events": [],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when a person switches it on or off.",
+              "type": {
+                "text": "CustomEvent<{ checked: boolean; value: string }>"
+              }
+            }
+          ],
           "cssParts": [
             {
               "name": "field",
