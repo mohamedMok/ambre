@@ -1,6 +1,6 @@
 {
   "name": "@ambre-ds/commerce",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ambre commerce compositions, such as amb-quantity. Built from the core components and the same tokens.",
   "keywords": [
     "design-system",
