@@ -1,0 +1,89 @@
+id: tile
+tag: amb-tile
+status: draft
+summary: A compact entry point in a grid. An icon, a short title, and a line of description. With an href, the whole tile is a link named by its title.
+anatomy:
+  - id: surface
+    element: div
+    part: surface
+  - id: icon
+    slot: icon
+    part: icon
+  - id: meta
+    slot: meta
+    part: meta
+  - id: title
+    slot: default
+    part: title
+  - id: link
+    element: a
+  - id: description
+    slot: description
+    part: description
+props:
+  - name: href
+    type: string
+    default: ""
+    attribute: href
+    reflect: true
+    description: Makes the whole tile a link to this destination. The title is the link text.
+  - name: tone
+    type: enum
+    values: [neutral, accent]
+    default: neutral
+    attribute: tone
+    reflect: true
+    description: Color of the icon well. Use accent for the one tile to start with.
+slots:
+  - name: default
+    description: The title, in a few words. It names the link when href is set.
+  - name: icon
+    description: An amb-icon. It is decorative, so give it no label.
+  - name: description
+    description: One short line under the title.
+  - name: meta
+    description: A count or a badge in the top corner.
+events: []
+a11y:
+  role: none (with href, the title is a link)
+  name: The slotted title, when href is set.
+  keyboard:
+    - Tab reaches the tile link.
+  notes:
+    - The arrow and the icon are decorative and hidden from assistive technology.
+    - Put tiles in a list, so the count is announced.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.subtle
+  - color.accent.fg
+  - color.border.default
+  - color.highlight
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - radius.md
+  - radius.lg
+  - border.width.default
+  - size.control.md
+  - size.icon.md
+  - space.200
+  - space.300
+  - space.400
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.semibold
+  - font.lineHeight.body
+  - font.lineHeight.tight
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

@@ -1,0 +1,107 @@
+////
+/// Component — Checkbox card (`amb-checkbox-card`).
+/// Block `.c-checkbox-card` (the label), elements `__icon`, `__text`, `__label`, `__description`,
+/// `__control` (the native input), `__message`. States `.is-checked` and `.is-disabled` mirror the props.
+/// The frame comes from the `choice-card` mixin; this sheet draws the box.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-checkbox-card {
+		@include choice-card;
+
+		// The same box as `amb-checkbox`: a sunken well that fills with accent and pops a check.
+		&__control {
+			@include depth(sunken);
+			appearance: none;
+			position: relative;
+			display: grid;
+			place-content: center;
+			width: token(size-icon-md);
+			height: token(size-icon-md);
+			margin: 0;
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-sm);
+			background: token(color-bg-surface);
+			cursor: inherit;
+
+			@include motion {
+				@include transition(background-color, border-color, box-shadow);
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				inset: 19%;
+				background: token(color-fg-on-accent);
+				clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0, 43% 62%);
+				scale: 0;
+
+				@include motion {
+					@include transition(scale);
+				}
+			}
+
+			&:checked {
+				--_depth: #{depth(raised)};
+				border-color: rim(token(color-accent-bg-active), 55%, token(color-accent-bg));
+				background: token(color-accent-bg);
+			}
+
+			&:checked::before {
+				scale: 1;
+			}
+
+			// The card draws the focus ring.
+			&:focus {
+				outline: none;
+			}
+
+			&:user-invalid:not(:checked) {
+				border-color: token(color-status-danger-fg);
+			}
+
+			&:disabled,
+			&:disabled:checked {
+				--_depth: #{depth(flat)};
+				border-color: token(color-border-disabled);
+				background: token(color-bg-disabled);
+			}
+
+			&:disabled::before {
+				background: token(color-fg-disabled);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-checkbox-card {
+			border: token(border-width-default) solid CanvasText;
+			box-shadow: none;
+
+			&.is-checked {
+				outline: token(border-width-strong) solid Highlight;
+			}
+		}
+
+		.c-checkbox-card__control {
+			appearance: auto;
+			border: none;
+			box-shadow: none;
+
+			&::before {
+				content: none;
+			}
+		}
+
+		.c-checkbox-card__message {
+			color: CanvasText;
+		}
+	}
+}

@@ -169,29 +169,79 @@ export interface AmbMenuProps {
 
 export interface AmbMenuElement extends HTMLElement, AmbMenuProps {}
 
+export interface AmbDatePickerProps {
+	name?: string;
+	value?: string;
+	min?: string;
+	max?: string;
+	disabled?: boolean;
+	required?: boolean;
+}
+
+export interface AmbDatePickerElement extends HTMLElement, AmbDatePickerProps {}
+
+export interface AmbCheckboxCardElement extends HTMLElement, AmbCheckboxProps {}
+
+export interface AmbRadioCardElement extends HTMLElement, AmbRadioProps {}
+
+export interface AmbCardProps {
+	variant?: 'raised' | 'outlined' | 'filled';
+	href?: string;
+}
+
+export interface AmbCardElement extends HTMLElement, AmbCardProps {}
+
+export interface AmbTileProps {
+	href?: string;
+	tone?: 'neutral' | 'accent';
+}
+
+export interface AmbTileElement extends HTMLElement, AmbTileProps {}
+
+export interface AmbStatTileProps {
+	trend?: 'none' | 'up' | 'down';
+	sentiment?: 'neutral' | 'positive' | 'negative';
+}
+
+export interface AmbStatTileElement extends HTMLElement, AmbStatTileProps {}
+
+export interface AmbLayoutProps {
+	variant?: 'sidebar' | 'split' | 'stacked';
+	label?: string;
+}
+
+export interface AmbLayoutElement extends HTMLElement, AmbLayoutProps {}
+
 declare global {
 	interface HTMLElementTagNameMap {
 		'amb-badge': AmbBadgeElement;
 		'amb-banner': AmbBannerElement;
 		'amb-breadcrumbs': AmbBreadcrumbsElement;
 		'amb-button': AmbButtonElement;
+		'amb-card': AmbCardElement;
 		'amb-checkbox': AmbCheckboxElement;
+		'amb-checkbox-card': AmbCheckboxCardElement;
+		'amb-date-picker': AmbDatePickerElement;
 		'amb-dialog': AmbDialogElement;
 		'amb-disclosure': AmbDisclosureElement;
 		'amb-icon': AmbIconElement;
+		'amb-layout': AmbLayoutElement;
 		'amb-link': AmbLinkElement;
 		'amb-menu': AmbMenuElement;
 		'amb-pagination': AmbPaginationElement;
 		'amb-progress': AmbProgressElement;
 		'amb-radio': AmbRadioElement;
+		'amb-radio-card': AmbRadioCardElement;
 		'amb-range': AmbRangeElement;
 		'amb-select': AmbSelectElement;
 		'amb-skeleton': AmbSkeletonElement;
 		'amb-spinner': AmbSpinnerElement;
+		'amb-stat-tile': AmbStatTileElement;
 		'amb-tabs': AmbTabsElement;
 		'amb-tag': AmbTagElement;
 		'amb-text-area': AmbTextAreaElement;
 		'amb-text-field': AmbTextFieldElement;
+		'amb-tile': AmbTileElement;
 		'amb-toggle': AmbToggleElement;
 		'amb-tooltip': AmbTooltipElement;
 	}

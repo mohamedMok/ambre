@@ -123,6 +123,53 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 				href: '/components/range',
 				label: 'Range',
 				summary: 'A number between two ends.'
+			},
+			{
+				href: '/components/date-picker',
+				label: 'Date picker',
+				summary: 'A date typed in the local format, or picked from a calendar.'
+			},
+			{
+				href: '/components/checkbox-card',
+				label: 'Checkbox card',
+				summary: 'A checkbox with room to explain. The whole card toggles.'
+			},
+			{
+				href: '/components/radio-card',
+				label: 'Radio card',
+				summary: 'One choice in a group, with the facts people compare.'
+			}
+		]
+	},
+	{
+		title: 'Content',
+		summary: 'Group a subject, open a destination, or show a figure.',
+		items: [
+			{
+				href: '/components/card',
+				label: 'Card',
+				summary: 'One subject on a surface. With an href, the heading is the link.'
+			},
+			{
+				href: '/components/tile',
+				label: 'Tile',
+				summary: 'A compact entry point in a grid, with an icon.'
+			},
+			{
+				href: '/components/stat-tile',
+				label: 'Stat tile',
+				summary: 'A key figure, its change, and a line of context.'
+			}
+		]
+	},
+	{
+		title: 'Layout',
+		summary: 'The frame of a page. Three layouts, one set of landmarks.',
+		items: [
+			{
+				href: '/components/layout',
+				label: 'Layout',
+				summary: 'Sidebar, split, or stacked. It answers the width it is given.'
 			}
 		]
 	},
@@ -206,6 +253,32 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 				href: '/components/quantity',
 				label: 'Quantity',
 				summary: 'How many. Decrease and increase stay within the bounds.'
+			}
+		]
+	},
+	{
+		title: 'AI',
+		summary: 'Conversation compositions. They live in @ambre-ds/ai, outside the core library.',
+		items: [
+			{
+				href: '/components/prompt',
+				label: 'Prompt',
+				summary: 'The composer. Enter sends, and a stop button replaces send while busy.'
+			},
+			{
+				href: '/components/message',
+				label: 'Message',
+				summary: 'One turn of the conversation: complete, streaming, or failed.'
+			},
+			{
+				href: '/components/thinking',
+				label: 'Thinking',
+				summary: 'The assistant is working. The label names the step.'
+			},
+			{
+				href: '/components/suggestion',
+				label: 'Suggestion',
+				summary: 'A prompt people can send in one press.'
 			}
 		]
 	}

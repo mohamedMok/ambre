@@ -1,0 +1,109 @@
+id: prompt
+tag: amb-prompt
+status: draft
+summary: The composer of a conversation. A field that grows with the text, a send button, and a stop button while an answer is on its way.
+anatomy:
+  - id: field
+    element: div
+    part: field
+  - id: label
+    slot: default
+  - id: control
+    element: textarea
+    part: control
+  - id: actions
+    slot: actions
+    part: actions
+  - id: send
+    element: button
+    part: send
+  - id: stop
+    element: button
+    part: stop
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form field name. The text joins the nearest form.
+  - name: value
+    type: string
+    default: ""
+    description: The text in the field. It empties after a send.
+  - name: placeholder
+    type: string
+    default: ""
+    attribute: placeholder
+    reflect: true
+    description: An example of what to ask. It is not the label.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Blocks typing and sending.
+  - name: busy
+    type: boolean
+    default: false
+    attribute: busy
+    reflect: true
+    description: An answer is on its way. Sending waits, and the send button becomes a stop button.
+slots:
+  - name: default
+    description: Accessible name, such as Message. It is visually hidden, because the composer is recognised by its place.
+  - name: actions
+    description: Buttons at the start of the bar, such as attach a file.
+events:
+  - name: send
+    description: Fired on Enter or the send button with detail.value, the trimmed text. Cancel it to keep the text in the field.
+  - name: stop
+    description: Fired when the stop button is pressed while busy.
+a11y:
+  role: textbox (a native multi-line textarea)
+  name: Slotted label, visually hidden. The send and stop buttons are named Send and Stop.
+  keyboard:
+    - Enter sends the prompt. Shift and Enter add a line.
+    - An input method that is composing keeps Enter for itself.
+    - Tab moves to the actions, then to the send or stop button.
+  notes:
+    - The keyboard hint is the field's accessible description.
+    - Send is disabled while the field is empty, so an empty prompt is never sent.
+    - Announce the answer through the conversation log, not through the prompt.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.disabled
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.disabled
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.accent.bg-hover
+  - color.accent.bg-active
+  - color.border.default
+  - color.border.disabled
+  - color.highlight
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - radius.lg
+  - radius.full
+  - border.width.default
+  - size.control.sm
+  - size.icon.md
+  - space.100
+  - space.200
+  - space.300
+  - font.family.sans
+  - font.size.300
+  - font.lineHeight.body
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

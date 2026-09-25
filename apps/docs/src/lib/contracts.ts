@@ -42,8 +42,17 @@ export function contract(id: string): Contract {
 	return found;
 }
 
+/** Components that live in a domain pack rather than in the core library. */
+const packs: Record<string, 'commerce' | 'ai'> = {
+	quantity: 'commerce',
+	prompt: 'ai',
+	message: 'ai',
+	thinking: 'ai',
+	suggestion: 'ai'
+};
+
 export function packageFor(id: string) {
-	return id === 'quantity' ? '@ambre-ds/commerce' : '@ambre-ds/ui';
+	return `@ambre-ds/${packs[id] ?? 'ui'}`;
 }
 
 export function sourcePath(c: Contract) {
@@ -52,9 +61,7 @@ export function sourcePath(c: Contract) {
 		.split('-')
 		.map((part) => part[0].toUpperCase() + part.slice(1))
 		.join('');
-	return c.id === 'quantity'
-		? `packages/commerce/src/quantity/${name}.svelte`
-		: `packages/ui/src/${c.id}/${name}.svelte`;
+	return `packages/${packs[c.id] ?? 'ui'}/src/${c.id}/${name}.svelte`;
 }
 
 const system = new Map(tokens.system.map((token) => [token.path, token]));

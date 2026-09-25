@@ -1,0 +1,105 @@
+////
+/// Component — Stat tile (`amb-stat-tile`).
+/// Block `.c-stat-tile` (the surface), elements `__label`, `__value`, `__delta`, `__trend`, `__description`.
+/// Modifiers: `--neutral` (default), `--positive`, `--negative` color the delta; `__trend--up` and
+/// `__trend--down` point the arrow. The direction and the sentiment are separate: a cost going up is bad.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-stat-tile {
+		--_ink: #{token(color-fg-muted)};
+
+		@include depth(raised);
+		display: grid;
+		align-content: start;
+		gap: token(space-100);
+		height: 100%;
+		padding: token(space-400) token(space-500);
+		border: token(border-width-default) solid rim(token(color-border-default), 40%);
+		border-radius: token(radius-lg);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+
+		&--positive {
+			--_ink: #{token(color-status-success-fg)};
+		}
+
+		&--negative {
+			--_ink: #{token(color-status-danger-fg)};
+		}
+
+		&__label {
+			color: token(color-fg-muted);
+			font-size: token(font-size-200);
+			font-weight: token(font-weight-semibold);
+		}
+
+		// The figure: large, tight, and with tabular digits so a row of tiles lines up.
+		&__value {
+			color: token(color-fg-default);
+			font-size: token(font-size-700);
+			font-weight: token(font-weight-semibold);
+			font-variant-numeric: tabular-nums;
+			letter-spacing: -0.01em;
+			line-height: token(font-line-height-tight);
+		}
+
+		// The change: a tinted pill in the sentiment color.
+		&__delta {
+			display: inline-flex;
+			align-items: center;
+			justify-self: start;
+			gap: token(space-100);
+			margin-top: token(space-100);
+			padding: 0 token(space-200);
+			border-radius: token(radius-full);
+			background: tint(var(--_ink), 12%);
+			color: var(--_ink);
+			font-size: token(font-size-200);
+			font-weight: token(font-weight-semibold);
+			font-variant-numeric: tabular-nums;
+		}
+
+		&__trend {
+			width: token(size-icon-sm);
+			height: token(size-icon-sm);
+			fill: none;
+			stroke: currentColor;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2.5;
+
+			&--down {
+				rotate: 180deg;
+			}
+		}
+
+		&__description {
+			color: token(color-fg-subtle);
+			font-size: token(font-size-200);
+		}
+	}
+
+	@include forced-colors {
+		.c-stat-tile {
+			border: token(border-width-default) solid CanvasText;
+			box-shadow: none;
+		}
+
+		.c-stat-tile__delta {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			color: CanvasText;
+		}
+	}
+}

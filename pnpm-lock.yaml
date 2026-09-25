@@ -178,6 +178,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@ambre-ds/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
       '@ambre-ds/commerce':
         specifier: workspace:*
         version: link:../../packages/commerce
@@ -224,6 +227,9 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@ambre-ds/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
       '@ambre-ds/commerce':
         specifier: workspace:*
         version: link:../../packages/commerce
@@ -264,6 +270,28 @@ importers:
       storybook:
         specifier: ^10.6.0
         version: 10.6.0(@types/react@19.3.0)(prettier@3.9.8)(react@19.3.0)
+
+  packages/ai:
+    dependencies:
+      '@ambre-ds/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^7.3.0
+        version: 7.3.0(svelte@5.57.1)(vite@8.3.0(esbuild@0.28.2)(sass-embedded@1.105.0)(sass@1.105.0)(yaml@2.9.1))
+      sass-embedded:
+        specifier: ^1.105.0
+        version: 1.105.0
+      svelte:
+        specifier: ^5.57.1
+        version: 5.57.1
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.3
+      vite:
+        specifier: ^8.3.0
+        version: 8.3.0(esbuild@0.28.2)(sass-embedded@1.105.0)(sass@1.105.0)(yaml@2.9.1)
 
   packages/commerce:
     dependencies:

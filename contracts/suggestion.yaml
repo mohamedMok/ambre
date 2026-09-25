@@ -1,0 +1,67 @@
+id: suggestion
+tag: amb-suggestion
+status: draft
+summary: A prompt people can send in one press, offered before the conversation starts or after an answer.
+anatomy:
+  - id: control
+    element: button
+    part: control
+  - id: icon
+    slot: icon
+    part: icon
+  - id: label
+    slot: default
+    part: label
+props:
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Blocks the suggestion, for example while an answer is on its way.
+slots:
+  - name: default
+    description: The prompt, written as people would type it. It is the accessible name.
+  - name: icon
+    description: An amb-icon in place of the default spark. It is decorative.
+events:
+  - name: click
+    description: The native click. Send the label text, or fill the prompt with it.
+a11y:
+  role: button
+  name: Slotted text.
+  keyboard:
+    - Enter or Space activates the suggestion.
+  notes:
+    - The inner button is native. The icon is hidden from assistive technology.
+    - Group suggestions in a list with a heading or a label, such as Try asking.
+tokens:
+  - color.bg.surface
+  - color.bg.disabled
+  - color.fg.default
+  - color.fg.disabled
+  - color.accent.fg
+  - color.border.default
+  - color.highlight
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - radius.full
+  - border.width.default
+  - size.control.sm
+  - size.icon.sm
+  - space.200
+  - space.300
+  - font.family.sans
+  - font.size.200
+  - font.weight.medium
+  - font.lineHeight.tight
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

@@ -39,6 +39,7 @@
 		hydratePreview();
 		await import('@ambre-ds/ui');
 		await import('@ambre-ds/commerce');
+		await import('@ambre-ds/ai');
 	});
 
 	afterNavigate(() => (navOpen = false));

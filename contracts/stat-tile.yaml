@@ -1,0 +1,77 @@
+id: stat-tile
+tag: amb-stat-tile
+status: draft
+summary: One key figure with its label, the change since the last period, and a line of context.
+anatomy:
+  - id: surface
+    element: div
+    part: surface
+  - id: label
+    slot: default
+    part: label
+  - id: value
+    slot: value
+    part: value
+  - id: delta
+    slot: delta
+    part: delta
+  - id: description
+    slot: description
+    part: description
+props:
+  - name: trend
+    type: enum
+    values: [none, up, down]
+    default: none
+    attribute: trend
+    reflect: true
+    description: Direction of the change. Draws an arrow next to the delta.
+  - name: sentiment
+    type: enum
+    values: [neutral, positive, negative]
+    default: neutral
+    attribute: sentiment
+    reflect: true
+    description: Whether the change is good or bad news. It colors the delta, separately from the direction.
+slots:
+  - name: default
+    description: What the figure measures, such as Monthly revenue.
+  - name: value
+    description: The figure, formatted for the reader, such as 48,210 euros.
+  - name: delta
+    description: The change in words and numbers, such as 12% more than last month.
+  - name: description
+    description: One line of context, such as the period.
+events: []
+a11y:
+  role: none
+  name: Not applicable. The label, value, and delta are read in order.
+  keyboard: []
+  notes:
+    - The arrow is decorative. Say the direction in the delta text, because color and arrows alone do not carry meaning.
+    - Put a row of stat tiles in a list.
+tokens:
+  - color.bg.surface
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.subtle
+  - color.status.success.fg
+  - color.status.danger.fg
+  - color.border.default
+  - color.highlight
+  - elevation.1
+  - radius.lg
+  - radius.full
+  - border.width.default
+  - size.icon.sm
+  - space.100
+  - space.200
+  - space.400
+  - space.500
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.size.700
+  - font.weight.semibold
+  - font.lineHeight.body
+  - font.lineHeight.tight

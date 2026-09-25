@@ -1,0 +1,75 @@
+id: layout
+tag: amb-layout
+status: draft
+summary: The page frame. Places a header, navigation, main content, an aside, and a footer in one of three layouts, each a landmark, and adapts to the width it is given.
+anatomy:
+  - id: header
+    element: header
+    part: header
+  - id: nav
+    element: nav
+    part: nav
+  - id: main
+    element: main
+    part: main
+  - id: aside
+    element: aside
+    part: aside
+  - id: footer
+    element: footer
+    part: footer
+props:
+  - name: variant
+    type: enum
+    values: [sidebar, split, stacked]
+    default: sidebar
+    attribute: variant
+    reflect: true
+    description: Sidebar puts the navigation in a column that stays in view. Split sets a list pane beside a detail pane. Stacked centres one reading column under the header.
+  - name: label
+    type: string
+    default: Primary
+    attribute: label
+    reflect: true
+    description: Accessible name of the navigation landmark.
+slots:
+  - name: default
+    description: The main content. It is the main landmark, so use one layout per page.
+  - name: header
+    description: The top bar, such as the product name, search, and account menu.
+  - name: nav
+    description: Navigation links in a list, or the list pane in the split layout.
+  - name: aside
+    description: Related content, such as filters, details, or an outline.
+  - name: footer
+    description: Legal links and secondary information.
+events: []
+a11y:
+  role: none (the regions are the header, navigation, main, complementary, and contentinfo landmarks)
+  name: The navigation landmark is named by the label attribute.
+  keyboard: []
+  notes:
+    - Reading order follows the source order, header, nav, main, aside, footer, at every width.
+    - Add a skip link to the main content before the layout on long navigations.
+    - The layout answers its own width through a container query, so it also works inside a panel.
+tokens:
+  - color.bg.canvas
+  - color.bg.surface
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.subtle
+  - color.border.default
+  - color.highlight
+  - elevation.1
+  - radius.lg
+  - border.width.default
+  - size.control.lg
+  - space.200
+  - space.300
+  - space.400
+  - space.500
+  - space.600
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.lineHeight.body

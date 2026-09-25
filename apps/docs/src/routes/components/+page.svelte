@@ -23,7 +23,7 @@
 	<title>Components — Ambre</title>
 	<meta
 		name="description"
-		content="Every Ambre component: basics, forms, feedback, navigation, and commerce compositions, each with a live preview."
+		content="Every Ambre component: basics, forms, content, layout, feedback, navigation, and the commerce and AI compositions, each with a live preview."
 	/>
 </svelte:head>
 
@@ -137,6 +137,62 @@
 		</div>
 	{:else if id === 'quantity'}
 		<amb-quantity value={2} min={1} max={8}>Linen sheet</amb-quantity>
+	{:else if id === 'date-picker'}
+		<div class="fill">
+			<amb-date-picker value="2026-10-14">Delivery date</amb-date-picker>
+		</div>
+	{:else if id === 'checkbox-card'}
+		<div class="fill">
+			<amb-checkbox-card checked>
+				Daily backups
+				<span slot="description">30 days of snapshots.</span>
+			</amb-checkbox-card>
+		</div>
+	{:else if id === 'radio-card'}
+		<div class="pair">
+			<amb-radio-card name="preview-tier" value="team" checked>Team<span slot="description">8 € a month</span></amb-radio-card>
+			<amb-radio-card name="preview-tier" value="pro">Pro<span slot="description">16 € a month</span></amb-radio-card>
+		</div>
+	{:else if id === 'card'}
+		<div class="fill">
+			<amb-card>
+				<p slot="heading">Autumn linen</p>
+				<p>Six colors, woven in Portugal.</p>
+			</amb-card>
+		</div>
+	{:else if id === 'tile'}
+		<div class="pair">
+			<amb-tile href="/components/tile" tone="accent"><amb-icon slot="icon" name="rocket_launch"></amb-icon>Start</amb-tile>
+			<amb-tile href="/components/tile"><amb-icon slot="icon" name="group"></amb-icon>Members</amb-tile>
+		</div>
+	{:else if id === 'stat-tile'}
+		<div class="fill">
+			<amb-stat-tile trend="up" sentiment="positive">
+				Revenue
+				<span slot="value">48,210 €</span>
+				<span slot="delta">12% up</span>
+			</amb-stat-tile>
+		</div>
+	{:else if id === 'layout'}
+		<div class="mini-layout">
+			<span class="mini-header"></span>
+			<span class="mini-nav"></span>
+			<span class="mini-main"></span>
+		</div>
+	{:else if id === 'prompt'}
+		<div class="fill">
+			<amb-prompt placeholder="Ask anything" value="Which invoices are overdue?">Message</amb-prompt>
+		</div>
+	{:else if id === 'message'}
+		<div class="fill stack">
+			<amb-message from="user">Which invoices are overdue?</amb-message>
+			<amb-message status="streaming">Three, for 4,210 euros</amb-message>
+		</div>
+	{:else if id === 'thinking'}
+		<amb-thinking label="Reading the invoices"></amb-thinking>
+	{:else if id === 'suggestion'}
+		<amb-suggestion>Draft a reminder</amb-suggestion>
+		<amb-suggestion>Compare months</amb-suggestion>
 	{/if}
 {/snippet}
 
@@ -144,8 +200,8 @@
 	<p class="eyebrow">Components</p>
 	<h1>Components</h1>
 	<p class="lede">
-		{components.length} elements in five groups. Each one is a web component with a contract, a Storybook story, and
-		tokens that follow the brand. The previews render in the brand chosen in any example.
+		{components.length} elements in {componentGroups.length} groups. Each one is a web component with a contract, a
+		Storybook story, and tokens that follow the brand. The previews render in the brand chosen in any example.
 	</p>
 </header>
 
@@ -230,6 +286,37 @@
 		display: flex;
 		justify-content: flex-end;
 		gap: var(--amb-space-200);
+	}
+
+	.pair {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--amb-space-200);
+		width: 100%;
+	}
+
+	/* A drawing of the sidebar layout: the element itself needs a page to live in. */
+	.mini-layout {
+		display: grid;
+		grid-template-columns: 30% 1fr;
+		grid-template-rows: 18px 1fr;
+		gap: 6px;
+		width: 100%;
+		height: 100%;
+	}
+
+	.mini-layout span {
+		border-radius: var(--amb-radius-sm);
+		background: var(--amb-color-bg-surface);
+		box-shadow: var(--amb-elevation-1);
+	}
+
+	.mini-layout .mini-header {
+		grid-column: 1 / -1;
+	}
+
+	.mini-layout .mini-main {
+		background: color-mix(in oklab, var(--amb-color-accent-fg) 12%, var(--amb-color-bg-surface));
 	}
 
 	.dialog-sample {

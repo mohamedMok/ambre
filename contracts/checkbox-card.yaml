@@ -1,0 +1,118 @@
+id: checkbox-card
+tag: amb-checkbox-card
+status: draft
+summary: A checkbox with room to explain. The whole card toggles the choice, and the value joins the nearest form while checked.
+anatomy:
+  - id: field
+    element: label
+    part: field
+  - id: icon
+    slot: icon
+    part: icon
+  - id: label
+    slot: default
+    part: label
+  - id: description
+    slot: description
+    part: description
+  - id: control
+    element: input
+    part: control
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form field name.
+  - name: value
+    type: string
+    default: "on"
+    attribute: value
+    reflect: true
+    description: Value submitted while checked.
+  - name: checked
+    type: boolean
+    default: false
+    attribute: checked
+    reflect: true
+    description: Whether the choice is selected.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Removes the card from the tab order and blocks changes.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The form cannot submit until this card is checked.
+slots:
+  - name: default
+    description: Accessible name, in a few words.
+  - name: description
+    description: One or two lines that help people choose. It is read as the description.
+  - name: icon
+    description: An amb-icon, decorative.
+events:
+  - name: change
+    description: Fired when the checked state changes.
+a11y:
+  role: checkbox
+  name: The slotted label. The description slot is the accessible description.
+  keyboard:
+    - Space toggles the choice.
+    - Tab moves to the next card.
+  notes:
+    - The inner input is native, so the role and states are not re-authored with ARIA.
+    - The whole card is the pointer target, and the card draws the focus ring.
+    - Group cards in a fieldset with a legend that asks the question.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.disabled
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.disabled
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.accent.bg-active
+  - color.accent.fg
+  - color.border.default
+  - color.border.strong
+  - color.border.disabled
+  - color.status.danger.fg
+  - color.highlight
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - radius.sm
+  - radius.md
+  - radius.lg
+  - border.width.default
+  - size.control.sm
+  - size.icon.md
+  - space.100
+  - space.200
+  - space.300
+  - space.400
+  - font.family.sans
+  - font.size.200
+  - font.size.300
+  - font.weight.semibold
+  - font.lineHeight.body
+  - font.lineHeight.tight
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

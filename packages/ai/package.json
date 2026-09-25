@@ -1,0 +1,69 @@
+{
+  "name": "@ambre-ds/ai",
+  "version": "0.1.0",
+  "description": "Ambre AI compositions: a prompt field, chat messages, a thinking indicator, and suggestions. Built from the core components and the same tokens.",
+  "keywords": [
+    "design-system",
+    "web-components",
+    "ai",
+    "chat",
+    "ambre"
+  ],
+  "homepage": "https://mohamedmok-ambre.surge.sh/components/prompt",
+  "bugs": "https://github.com/mohamedMok/ambre/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedMok/ambre.git",
+    "directory": "packages/ai"
+  },
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": [
+    "./dist/*.js"
+  ],
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./message": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/message.js"
+    },
+    "./prompt": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/prompt.js"
+    },
+    "./suggestion": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/suggestion.js"
+    },
+    "./thinking": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/thinking.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@ambre-ds/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "sass-embedded": "^1.105.0",
+    "svelte": "^5.57.1",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.0"
+  }
+}

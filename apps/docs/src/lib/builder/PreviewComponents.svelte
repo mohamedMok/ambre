@@ -95,6 +95,78 @@
 		<amb-quantity name="linen" value="2" min="1" max="8">Linen sheet</amb-quantity>
 	</div>
 
+	<div class="pc-card pc-wide">
+		<h3 class="pc-title">Content</h3>
+		<div class="pc-tiles">
+			<amb-stat-tile trend="up" sentiment="positive">
+				Revenue <span slot="value">48,210 €</span> <span slot="delta">12% up on August</span>
+			</amb-stat-tile>
+			<amb-stat-tile trend="up" sentiment="negative">
+				Refunds <span slot="value">1,904 €</span> <span slot="delta">4% up</span>
+			</amb-stat-tile>
+			<amb-tile href="#builder-preview" tone="accent">
+				<amb-icon slot="icon" name="rocket_launch"></amb-icon>
+				Get started
+				<span slot="description">Install in five minutes.</span>
+			</amb-tile>
+			<amb-tile href="#builder-preview">
+				<amb-icon slot="icon" name="group"></amb-icon>
+				<amb-badge slot="meta">12</amb-badge>
+				Members
+				<span slot="description">Invite people and set roles.</span>
+			</amb-tile>
+		</div>
+		<div class="pc-tiles">
+			<amb-card href="#builder-preview">
+				<h4 slot="heading">Autumn linen</h4>
+				<p>Six colors, woven in Portugal.</p>
+				<amb-badge slot="footer" variant="accent">New</amb-badge>
+			</amb-card>
+			<amb-card variant="outlined">
+				<h4 slot="heading">Stoneware</h4>
+				<p>A set of four bowls, glazed by hand.</p>
+				<amb-button slot="footer" size="sm" variant="secondary">Save</amb-button>
+			</amb-card>
+			<amb-card variant="filled">
+				<h4 slot="heading">Wool throw</h4>
+				<p>Warm, light, and made to last.</p>
+			</amb-card>
+		</div>
+	</div>
+
+	<div class="pc-card">
+		<h3 class="pc-title">Choice cards and dates</h3>
+		<fieldset class="pc-fieldset">
+			<legend>Plan</legend>
+			<div class="pc-choices">
+				<amb-radio-card name="builder-plan" value="team" checked>Team<span slot="description">8 € a person</span></amb-radio-card>
+				<amb-radio-card name="builder-plan" value="business">Business<span slot="description">16 € a person</span></amb-radio-card>
+			</div>
+		</fieldset>
+		<amb-checkbox-card name="builder-addon" checked>
+			<amb-icon slot="icon" name="backup"></amb-icon>
+			Daily backups
+			<span slot="description">Keep 30 days of snapshots.</span>
+		</amb-checkbox-card>
+		<amb-date-picker name="builder-date" value="2026-10-14">Start date</amb-date-picker>
+	</div>
+
+	<div class="pc-card">
+		<h3 class="pc-title">AI</h3>
+		<amb-message from="user">Which invoices are overdue?</amb-message>
+		<amb-message status="streaming">
+			<span slot="avatar">A</span>
+			<span slot="author">Assistant</span>
+			Three, for 4,210 euros in total
+		</amb-message>
+		<amb-thinking label="Reading the invoices"></amb-thinking>
+		<div class="pc-row">
+			<amb-suggestion>Draft a reminder</amb-suggestion>
+			<amb-suggestion>Compare months</amb-suggestion>
+		</div>
+		<amb-prompt placeholder="Ask about your invoices">Message</amb-prompt>
+	</div>
+
 	<div class="pc-card">
 		<h3 class="pc-title">Feedback</h3>
 		<div class="pc-row">
@@ -238,6 +310,22 @@
 	.pc-fieldset legend {
 		margin-bottom: var(--amb-space-200);
 		font-weight: var(--amb-font-weight-semibold);
+	}
+
+	.pc-tiles {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: var(--amb-space-300);
+	}
+
+	.pc-choices {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--amb-space-200);
+	}
+
+	.pc-card h4 {
+		margin: 0;
 	}
 
 	.pc-skeleton {

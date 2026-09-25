@@ -1,0 +1,196 @@
+////
+/// Component — Layout (`amb-layout`).
+/// Block `.c-layout` (the grid), elements `__header`, `__nav`, `__main`, `__aside`, `__footer`
+/// (the landmarks). Modifiers: `--sidebar` (default), `--split`, `--stacked`. States `.has-nav` and
+/// `.has-aside` say which optional regions are filled, so the grid only reserves what is used.
+/// The host is a size container: the layout answers the space it is given, not the viewport.
+/// @group components
+////
+
+@use 'tools' as *;
+
+/// Where the columns open up: two columns, then a third for the aside.
+$two-columns: 34rem;
+$three-columns: 60rem;
+
+@layer components {
+	// A size container has no intrinsic width, so inside a flex or grid parent it would be measured
+	// at zero width and come out far too tall. An explicit width keeps it the width it is given.
+	:host {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+		min-height: 100dvh;
+		container-type: inline-size;
+	}
+
+	.c-layout {
+		--_gutter: #{token(space-500)};
+		--_rule: #{rim(token(color-border-default), 40%)};
+
+		display: grid;
+		grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas: 'header' 'nav' 'main' 'aside' 'footer';
+		min-height: inherit;
+		background: token(color-bg-canvas);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+
+		// The regions. Rules between them are soft; the header is a raised bar.
+		&__header {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			flex-wrap: wrap;
+			grid-area: header;
+			align-items: center;
+			gap: token(space-300);
+			min-height: token(size-control-lg);
+			padding: token(space-300) var(--_gutter);
+			border-bottom: token(border-width-default) solid var(--_rule);
+			background: token(color-bg-surface);
+			box-shadow: token(elevation-1);
+		}
+
+		&__nav {
+			grid-area: nav;
+			padding: token(space-400) var(--_gutter);
+			border-bottom: token(border-width-default) solid var(--_rule);
+			background: token(color-bg-surface);
+		}
+
+		&__main {
+			grid-area: main;
+			min-width: 0;
+			padding: token(space-600) var(--_gutter);
+		}
+
+		&__aside {
+			grid-area: aside;
+			padding: token(space-500) var(--_gutter);
+			border-top: token(border-width-default) solid var(--_rule);
+			color: token(color-fg-muted);
+		}
+
+		&__footer {
+			grid-area: footer;
+			padding: token(space-400) var(--_gutter);
+			border-top: token(border-width-default) solid var(--_rule);
+			color: token(color-fg-subtle);
+			font-size: token(font-size-200);
+		}
+
+		// STACKED: one centered column. The bars run full bleed, their content lines up with the text.
+		&--stacked {
+			--_gutter: max(#{token(space-500)}, calc((100% - 64rem) / 2));
+		}
+
+		&--stacked &__nav {
+			padding-block: token(space-200);
+		}
+	}
+
+	@container (min-width: #{$two-columns}) {
+		.c-layout {
+			--_gutter: #{token(space-600)};
+		}
+
+		// SIDEBAR: a vertical nav beside the content, which stays in view while the page scrolls.
+		.c-layout--sidebar.has-nav,
+		.c-layout--split.has-nav {
+			grid-template-rows: auto minmax(0, 1fr) auto auto;
+			grid-template-columns: minmax(11rem, 16rem) minmax(0, 1fr);
+			grid-template-areas:
+				'header header'
+				'nav main'
+				'nav aside'
+				'footer footer';
+		}
+
+		.c-layout--sidebar .c-layout__nav {
+			position: sticky;
+			top: 0;
+			align-self: start;
+			max-height: 100dvh;
+			overflow: auto;
+			padding-inline: token(space-400);
+			border-right: token(border-width-default) solid var(--_rule);
+			border-bottom: 0;
+			background: transparent;
+		}
+
+		// SPLIT: a list pane and a detail pane of real weight, both on the surface.
+		.c-layout--split.has-nav {
+			grid-template-columns: minmax(13rem, 1fr) minmax(0, 2fr);
+		}
+
+		.c-layout--split .c-layout__nav {
+			padding: token(space-300);
+			border-right: token(border-width-default) solid var(--_rule);
+			border-bottom: 0;
+			background: token(color-bg-surface);
+		}
+
+		.c-layout--split .c-layout__main {
+			margin: token(space-400);
+			padding: token(space-600);
+			border: token(border-width-default) solid var(--_rule);
+			border-radius: token(radius-lg);
+			background: token(color-bg-surface);
+			box-shadow:
+				inset 0 1px 0 token(color-highlight),
+				token(elevation-1);
+		}
+
+		.c-layout--stacked {
+			--_gutter: max(#{token(space-600)}, calc((100% - 64rem) / 2));
+		}
+	}
+
+	@container (min-width: #{$three-columns}) {
+		// The aside becomes a third column beside the main content.
+		.c-layout--sidebar.has-nav.has-aside,
+		.c-layout--split.has-nav.has-aside {
+			grid-template-rows: auto minmax(0, 1fr) auto;
+			grid-template-areas:
+				'header header header'
+				'nav main aside'
+				'footer footer footer';
+		}
+
+		.c-layout--sidebar.has-nav.has-aside {
+			grid-template-columns: minmax(11rem, 16rem) minmax(0, 1fr) minmax(14rem, 18rem);
+		}
+
+		.c-layout--split.has-nav.has-aside {
+			grid-template-columns: minmax(13rem, 1fr) minmax(0, 2fr) minmax(14rem, 1fr);
+		}
+
+		.c-layout--sidebar.has-aside .c-layout__aside,
+		.c-layout--split.has-aside .c-layout__aside {
+			position: sticky;
+			top: 0;
+			align-self: start;
+			border-top: 0;
+			border-left: token(border-width-default) solid var(--_rule);
+		}
+
+		.c-layout--split.has-aside .c-layout__main {
+			margin-inline-end: 0;
+		}
+	}
+
+	@include forced-colors {
+		.c-layout__header,
+		.c-layout__nav,
+		.c-layout__aside,
+		.c-layout__footer,
+		.c-layout--split .c-layout__main {
+			border-color: CanvasText;
+			box-shadow: none;
+		}
+	}
+}

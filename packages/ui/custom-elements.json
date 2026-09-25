@@ -586,6 +586,482 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/card/Card.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Card",
+          "description": "Groups one subject on a surface. A heading, a body, optional media on top, and actions in the footer. With an href, the whole card is a link named by its heading.",
+          "tagName": "amb-card",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": "raised | outlined | filled",
+              "default": "raised",
+              "description": "Surface treatment. Raised floats on the canvas, outlined draws a boundary, filled sits flat on a tint.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "href",
+              "type": "string",
+              "default": "",
+              "description": "Makes the whole card a link to this destination. The heading is the link text.",
+              "fieldName": "href"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Body text."
+            },
+            {
+              "name": "heading",
+              "description": "The title, usually an h2 or h3. Required when href is set, because it names the link."
+            },
+            {
+              "name": "media",
+              "description": "An image or video shown full bleed at the top. Give an image its alt text, or an empty alt when decorative."
+            },
+            {
+              "name": "footer",
+              "description": "Actions or metadata. Buttons here stay clickable on a link card."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "surface",
+              "description": "surface"
+            },
+            {
+              "name": "media",
+              "description": "media"
+            },
+            {
+              "name": "heading",
+              "description": "heading"
+            },
+            {
+              "name": "body",
+              "description": "body"
+            },
+            {
+              "name": "footer",
+              "description": "footer"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-500",
+              "description": "space.500"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-size-400",
+              "description": "font.size.400"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/card/Card.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/checkbox-card/CheckboxCard.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CheckboxCard",
+          "description": "A checkbox with room to explain. The whole card toggles the choice, and the value joins the nearest form while checked.",
+          "tagName": "amb-checkbox-card",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form field name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "on",
+              "description": "Value submitted while checked.",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether the choice is selected.",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the card from the tab order and blocks changes.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit until this card is checked.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name, in a few words."
+            },
+            {
+              "name": "description",
+              "description": "One or two lines that help people choose. It is read as the description."
+            },
+            {
+              "name": "icon",
+              "description": "An amb-icon, decorative."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when the checked state changes."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "icon",
+              "description": "icon"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "description",
+              "description": "description"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-checkbox-card",
+          "declaration": {
+            "name": "CheckboxCard",
+            "module": "src/checkbox-card/CheckboxCard.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/checkbox/Checkbox.svelte",
       "declarations": [
         {
@@ -811,6 +1287,308 @@
           "declaration": {
             "name": "Checkbox",
             "module": "src/checkbox/Checkbox.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/date-picker/DatePicker.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DatePicker",
+          "description": "A date typed in the locale's own format, or picked from a calendar. The value is an ISO date, such as 2026-09-24, and joins the nearest form.",
+          "tagName": "amb-date-picker",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form field name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "The date as YYYY-MM-DD, or empty.",
+              "fieldName": "value"
+            },
+            {
+              "name": "min",
+              "type": "string",
+              "default": "",
+              "description": "Earliest date people can pick, as YYYY-MM-DD. Earlier days are struck out in the calendar.",
+              "fieldName": "min"
+            },
+            {
+              "name": "max",
+              "type": "string",
+              "default": "",
+              "description": "Latest date people can pick, as YYYY-MM-DD.",
+              "fieldName": "max"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Blocks typing and the calendar.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit without a date.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name. Keep this text visible."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when the date changes, typed or picked."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "toggle",
+              "description": "toggle"
+            },
+            {
+              "name": "panel",
+              "description": "panel"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-muted",
+              "description": "color.bg.muted"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-subtle",
+              "description": "color.fg.subtle"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-100",
+              "description": "font.size.100"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-regular",
+              "description": "font.weight.regular"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-exit",
+              "description": "easing.exit"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-date-picker",
+          "declaration": {
+            "name": "DatePicker",
+            "module": "src/date-picker/DatePicker.svelte"
           }
         }
       ]
@@ -1341,6 +2119,171 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/layout/Layout.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Layout",
+          "description": "The page frame. Places a header, navigation, main content, an aside, and a footer in one of three layouts, each a landmark, and adapts to the width it is given.",
+          "tagName": "amb-layout",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": "sidebar | split | stacked",
+              "default": "sidebar",
+              "description": "Sidebar puts the navigation in a column that stays in view. Split sets a list pane beside a detail pane. Stacked centres one reading column under the header.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "label",
+              "type": "string",
+              "default": "Primary",
+              "description": "Accessible name of the navigation landmark.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The main content. It is the main landmark, so use one layout per page."
+            },
+            {
+              "name": "header",
+              "description": "The top bar, such as the product name, search, and account menu."
+            },
+            {
+              "name": "nav",
+              "description": "Navigation links in a list, or the list pane in the split layout."
+            },
+            {
+              "name": "aside",
+              "description": "Related content, such as filters, details, or an outline."
+            },
+            {
+              "name": "footer",
+              "description": "Legal links and secondary information."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "header",
+              "description": "header"
+            },
+            {
+              "name": "nav",
+              "description": "nav"
+            },
+            {
+              "name": "main",
+              "description": "main"
+            },
+            {
+              "name": "aside",
+              "description": "aside"
+            },
+            {
+              "name": "footer",
+              "description": "footer"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-canvas",
+              "description": "color.bg.canvas"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-subtle",
+              "description": "color.fg.subtle"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-lg",
+              "description": "size.control.lg"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-space-500",
+              "description": "space.500"
+            },
+            {
+              "name": "--amb-space-600",
+              "description": "space.600"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-layout",
+          "declaration": {
+            "name": "Layout",
+            "module": "src/layout/Layout.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/link/Link.svelte",
       "declarations": [
         {
@@ -1696,6 +2639,211 @@
     },
     {
       "kind": "javascript-module",
+      "path": "../ai/src/message/Message.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Message",
+          "description": "One turn of a conversation with an assistant. The user's turn is a bubble, the assistant's is open text with an avatar, and a streaming or failed answer shows its state.",
+          "tagName": "amb-message",
+          "attributes": [
+            {
+              "name": "from",
+              "type": "user | assistant",
+              "default": "assistant",
+              "description": "Who speaks. It sets the side, the shape, and the tint.",
+              "fieldName": "from"
+            },
+            {
+              "name": "status",
+              "type": "complete | streaming | error",
+              "default": "complete",
+              "description": "Streaming shows a caret and marks the turn busy. Error shows the error line under the text.",
+              "fieldName": "status"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The text of the turn. Paragraphs, lists, and code blocks are spaced for reading."
+            },
+            {
+              "name": "author",
+              "description": "Who speaks, such as You or Assistant. It names the turn."
+            },
+            {
+              "name": "avatar",
+              "description": "An initial, an image, or an amb-icon. It is decorative."
+            },
+            {
+              "name": "error",
+              "description": "What went wrong, when status is error. A default sentence is used otherwise."
+            },
+            {
+              "name": "actions",
+              "description": "Buttons under the turn, such as copy, retry, or rate."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "message",
+              "description": "message"
+            },
+            {
+              "name": "avatar",
+              "description": "avatar"
+            },
+            {
+              "name": "author",
+              "description": "author"
+            },
+            {
+              "name": "bubble",
+              "description": "bubble"
+            },
+            {
+              "name": "error",
+              "description": "error"
+            },
+            {
+              "name": "actions",
+              "description": "actions"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-family-mono",
+              "description": "font.family.mono"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-loose",
+              "description": "font.lineHeight.loose"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-duration-loop",
+              "description": "duration.loop"
+            },
+            {
+              "name": "--amb-easing-enter",
+              "description": "easing.enter"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-message",
+          "declaration": {
+            "name": "Message",
+            "module": "../ai/src/message/Message.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/pagination/Pagination.svelte",
       "declarations": [
         {
@@ -1919,6 +3067,253 @@
           "declaration": {
             "name": "Progress",
             "module": "src/progress/Progress.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "../ai/src/prompt/Prompt.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Prompt",
+          "description": "The composer of a conversation. A field that grows with the text, a send button, and a stop button while an answer is on its way.",
+          "tagName": "amb-prompt",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Form field name. The text joins the nearest form.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "The text in the field. It empties after a send.",
+              "fieldName": "value"
+            },
+            {
+              "name": "placeholder",
+              "type": "string",
+              "default": "",
+              "description": "An example of what to ask. It is not the label.",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Blocks typing and sending.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "busy",
+              "type": "boolean",
+              "default": "false",
+              "description": "An answer is on its way. Sending waits, and the send button becomes a stop button.",
+              "fieldName": "busy"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name, such as Message. It is visually hidden, because the composer is recognised by its place."
+            },
+            {
+              "name": "actions",
+              "description": "Buttons at the start of the bar, such as attach a file."
+            }
+          ],
+          "events": [
+            {
+              "name": "send",
+              "description": "Fired on Enter or the send button with detail.value, the trimmed text. Cancel it to keep the text in the field."
+            },
+            {
+              "name": "stop",
+              "description": "Fired when the stop button is pressed while busy."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "actions",
+              "description": "actions"
+            },
+            {
+              "name": "send",
+              "description": "send"
+            },
+            {
+              "name": "stop",
+              "description": "stop"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-accent-bg-hover",
+              "description": "color.accent.bg-hover"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-prompt",
+          "declaration": {
+            "name": "Prompt",
+            "module": "../ai/src/prompt/Prompt.svelte"
           }
         }
       ]
@@ -2169,6 +3564,285 @@
           "declaration": {
             "name": "Quantity",
             "module": "../commerce/src/quantity/Quantity.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/radio-card/RadioCard.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "RadioCard",
+          "description": "One choice in a named group, with room to explain. The whole card selects it, and the checked card joins the nearest form.",
+          "tagName": "amb-radio-card",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "string",
+              "default": "",
+              "description": "Group name. Cards that share a name in one form submit a single value.",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": "string",
+              "default": "",
+              "description": "Value submitted while this card is checked.",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": "boolean",
+              "default": "false",
+              "description": "Whether this choice is selected.",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Removes the card from the group's keyboard order and blocks selection.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": "boolean",
+              "default": "false",
+              "description": "The form cannot submit until one card in the group is checked.",
+              "fieldName": "required"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Accessible name, in a few words."
+            },
+            {
+              "name": "description",
+              "description": "The facts people compare, such as the price or the delay. It is read as the description."
+            },
+            {
+              "name": "icon",
+              "description": "An amb-icon, decorative."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Fired when this card becomes checked."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "field",
+              "description": "field"
+            },
+            {
+              "name": "icon",
+              "description": "icon"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "description",
+              "description": "description"
+            },
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "message",
+              "description": "message"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-on-accent",
+              "description": "color.fg.on-accent"
+            },
+            {
+              "name": "--amb-color-accent-bg",
+              "description": "color.accent.bg"
+            },
+            {
+              "name": "--amb-color-accent-bg-active",
+              "description": "color.accent.bg-active"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-border-strong",
+              "description": "color.border.strong"
+            },
+            {
+              "name": "--amb-color-border-disabled",
+              "description": "color.border.disabled"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-radio-card",
+          "declaration": {
+            "name": "RadioCard",
+            "module": "src/radio-card/RadioCard.svelte"
           }
         }
       ]
@@ -3006,6 +4680,362 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/stat-tile/StatTile.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "StatTile",
+          "description": "One key figure with its label, the change since the last period, and a line of context.",
+          "tagName": "amb-stat-tile",
+          "attributes": [
+            {
+              "name": "trend",
+              "type": "none | up | down",
+              "default": "none",
+              "description": "Direction of the change. Draws an arrow next to the delta.",
+              "fieldName": "trend"
+            },
+            {
+              "name": "sentiment",
+              "type": "neutral | positive | negative",
+              "default": "neutral",
+              "description": "Whether the change is good or bad news. It colors the delta, separately from the direction.",
+              "fieldName": "sentiment"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "What the figure measures, such as Monthly revenue."
+            },
+            {
+              "name": "value",
+              "description": "The figure, formatted for the reader, such as 48,210 euros."
+            },
+            {
+              "name": "delta",
+              "description": "The change in words and numbers, such as 12% more than last month."
+            },
+            {
+              "name": "description",
+              "description": "One line of context, such as the period."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "surface",
+              "description": "surface"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            },
+            {
+              "name": "value",
+              "description": "value"
+            },
+            {
+              "name": "delta",
+              "description": "delta"
+            },
+            {
+              "name": "description",
+              "description": "description"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-subtle",
+              "description": "color.fg.subtle"
+            },
+            {
+              "name": "--amb-color-status-success-fg",
+              "description": "color.status.success.fg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-space-500",
+              "description": "space.500"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-size-700",
+              "description": "font.size.700"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-stat-tile",
+          "declaration": {
+            "name": "StatTile",
+            "module": "src/stat-tile/StatTile.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "../ai/src/suggestion/Suggestion.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Suggestion",
+          "description": "A prompt people can send in one press, offered before the conversation starts or after an answer.",
+          "tagName": "amb-suggestion",
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "description": "Blocks the suggestion, for example while an answer is on its way.",
+              "fieldName": "disabled"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The prompt, written as people would type it. It is the accessible name."
+            },
+            {
+              "name": "icon",
+              "description": "An amb-icon in place of the default spark. It is decorative."
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "description": "The native click. Send the label text, or fill the prompt with it."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "icon",
+              "description": "icon"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-disabled",
+              "description": "color.bg.disabled"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-disabled",
+              "description": "color.fg.disabled"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-weight-medium",
+              "description": "font.weight.medium"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-suggestion",
+          "declaration": {
+            "name": "Suggestion",
+            "module": "../ai/src/suggestion/Suggestion.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/tabs/Tabs.svelte",
       "declarations": [
         {
@@ -3769,6 +5799,320 @@
           "declaration": {
             "name": "TextField",
             "module": "src/text-field/TextField.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "../ai/src/thinking/Thinking.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Thinking",
+          "description": "Says the assistant is working before the first words arrive. The label names the step, such as Reading the invoices.",
+          "tagName": "amb-thinking",
+          "attributes": [
+            {
+              "name": "label",
+              "type": "string",
+              "default": "Thinking",
+              "description": "What the assistant is doing, in a few words. It is announced politely when it changes.",
+              "fieldName": "label"
+            }
+          ],
+          "slots": [],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "status",
+              "description": "status"
+            },
+            {
+              "name": "orb",
+              "description": "orb"
+            },
+            {
+              "name": "label",
+              "description": "label"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-loop",
+              "description": "duration.loop"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-thinking",
+          "declaration": {
+            "name": "Thinking",
+            "module": "../ai/src/thinking/Thinking.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/tile/Tile.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "Tile",
+          "description": "A compact entry point in a grid. An icon, a short title, and a line of description. With an href, the whole tile is a link named by its title.",
+          "tagName": "amb-tile",
+          "attributes": [
+            {
+              "name": "href",
+              "type": "string",
+              "default": "",
+              "description": "Makes the whole tile a link to this destination. The title is the link text.",
+              "fieldName": "href"
+            },
+            {
+              "name": "tone",
+              "type": "neutral | accent",
+              "default": "neutral",
+              "description": "Color of the icon well. Use accent for the one tile to start with.",
+              "fieldName": "tone"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The title, in a few words. It names the link when href is set."
+            },
+            {
+              "name": "icon",
+              "description": "An amb-icon. It is decorative, so give it no label."
+            },
+            {
+              "name": "description",
+              "description": "One short line under the title."
+            },
+            {
+              "name": "meta",
+              "description": "A count or a badge in the top corner."
+            }
+          ],
+          "events": [],
+          "cssParts": [
+            {
+              "name": "surface",
+              "description": "surface"
+            },
+            {
+              "name": "icon",
+              "description": "icon"
+            },
+            {
+              "name": "meta",
+              "description": "meta"
+            },
+            {
+              "name": "title",
+              "description": "title"
+            },
+            {
+              "name": "description",
+              "description": "description"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-subtle",
+              "description": "color.fg.subtle"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-highlight",
+              "description": "color.highlight"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-1",
+              "description": "elevation.1"
+            },
+            {
+              "name": "--amb-elevation-2",
+              "description": "elevation.2"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-lg",
+              "description": "radius.lg"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-md",
+              "description": "size.control.md"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-size-300",
+              "description": "font.size.300"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-font-line-height-tight",
+              "description": "font.lineHeight.tight"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-tile",
+          "declaration": {
+            "name": "Tile",
+            "module": "src/tile/Tile.svelte"
           }
         }
       ]

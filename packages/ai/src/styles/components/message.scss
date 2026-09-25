@@ -1,0 +1,177 @@
+////
+/// Component — Message (`amb-message`).
+/// Block `.c-message` (the turn), elements `__avatar`, `__main`, `__author`, `__bubble`, `__caret`,
+/// `__error`, `__glyph`, `__actions`.
+/// Modifiers: `--assistant` (default) reads as open text beside an avatar; `--user` is a tinted
+/// bubble at the end of the line. States `.is-complete`, `.is-streaming`, `.is-error` mirror `status`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-message {
+		display: flex;
+		align-items: flex-start;
+		gap: token(space-300);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-loose);
+
+		@include motion {
+			transition:
+				opacity token(duration-moderate) token(easing-enter),
+				translate token(duration-moderate) token(easing-spring);
+		}
+
+		&__avatar {
+			display: inline-grid;
+			flex: none;
+			place-items: center;
+			width: token(size-control-sm);
+			height: token(size-control-sm);
+			overflow: hidden;
+			border-radius: token(radius-full);
+			background: tint(token(color-accent-fg), 12%);
+			box-shadow: inset 0 0 0 token(border-width-default) rim(token(color-accent-fg), 28%);
+			color: token(color-accent-fg);
+			font-size: token(font-size-200);
+			font-weight: token(font-weight-semibold);
+		}
+
+		&__main {
+			display: grid;
+			flex: 1;
+			gap: token(space-100);
+			min-width: 0;
+		}
+
+		&__author {
+			color: token(color-fg-muted);
+			font-size: token(font-size-200);
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		&__bubble {
+			overflow-wrap: anywhere;
+		}
+
+		// The user's turn: a tinted bubble on the end side, as wide as its text needs.
+		&--user {
+			flex-direction: row-reverse;
+		}
+
+		&--user &__main {
+			justify-items: end;
+		}
+
+		&--user &__bubble {
+			max-width: min(100%, 36rem);
+			padding: token(space-200) token(space-400);
+			border-radius: token(radius-lg);
+			border-end-end-radius: token(radius-sm);
+			background: tint(token(color-accent-fg), 12%);
+			line-height: token(font-line-height-body);
+		}
+
+		// Streaming: a soft block caret at the end of the text, blinking while tokens arrive.
+		&__caret {
+			display: inline-block;
+			width: 0.5em;
+			height: 1.1em;
+			margin-inline-start: 2px;
+			border-radius: 2px;
+			background: token(color-accent-fg);
+			vertical-align: text-bottom;
+
+			@include motion {
+				animation: amb-message-caret token(duration-loop) steps(2, jump-none) infinite;
+			}
+		}
+
+		&__error {
+			display: flex;
+			align-items: center;
+			gap: token(space-200);
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+			line-height: token(font-line-height-tight);
+		}
+
+		&__glyph {
+			flex: none;
+			width: token(size-icon-sm);
+			height: token(size-icon-sm);
+			fill: none;
+			stroke: currentColor;
+			stroke-linecap: round;
+			stroke-width: 2;
+		}
+
+		&.is-error &__bubble {
+			color: token(color-fg-muted);
+		}
+
+		&__actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: token(space-100);
+			margin-top: token(space-100);
+		}
+	}
+
+	::slotted(p),
+	::slotted(ul),
+	::slotted(ol) {
+		margin: 0 0 token(space-300);
+	}
+
+	::slotted(:last-child) {
+		margin-bottom: 0;
+	}
+
+	::slotted(pre) {
+		overflow-x: auto;
+		padding: token(space-300);
+		border-radius: token(radius-md);
+		background: token(color-bg-subtle);
+		font-family: token(font-family-mono);
+		font-size: token(font-size-200);
+	}
+
+	@keyframes amb-message-caret {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	// A new turn settles into place from just below.
+	@include motion {
+		@starting-style {
+			.c-message {
+				opacity: 0;
+				translate: 0 token(space-200);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-message--user .c-message__bubble {
+			border: token(border-width-default) solid CanvasText;
+		}
+
+		.c-message__caret {
+			background: CanvasText;
+		}
+
+		.c-message__error {
+			color: CanvasText;
+		}
+	}
+}

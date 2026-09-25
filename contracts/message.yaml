@@ -1,0 +1,88 @@
+id: message
+tag: amb-message
+status: draft
+summary: One turn of a conversation with an assistant. The user's turn is a bubble, the assistant's is open text with an avatar, and a streaming or failed answer shows its state.
+anatomy:
+  - id: message
+    element: article
+    part: message
+  - id: avatar
+    slot: avatar
+    part: avatar
+  - id: author
+    slot: author
+    part: author
+  - id: bubble
+    slot: default
+    part: bubble
+  - id: error
+    slot: error
+    part: error
+  - id: actions
+    slot: actions
+    part: actions
+props:
+  - name: from
+    type: enum
+    values: [user, assistant]
+    default: assistant
+    attribute: from
+    reflect: true
+    description: Who speaks. It sets the side, the shape, and the tint.
+  - name: status
+    type: enum
+    values: [complete, streaming, error]
+    default: complete
+    attribute: status
+    reflect: true
+    description: Streaming shows a caret and marks the turn busy. Error shows the error line under the text.
+slots:
+  - name: default
+    description: The text of the turn. Paragraphs, lists, and code blocks are spaced for reading.
+  - name: author
+    description: Who speaks, such as You or Assistant. It names the turn.
+  - name: avatar
+    description: An initial, an image, or an amb-icon. It is decorative.
+  - name: error
+    description: What went wrong, when status is error. A default sentence is used otherwise.
+  - name: actions
+    description: Buttons under the turn, such as copy, retry, or rate.
+events: []
+a11y:
+  role: article
+  name: The slotted author, when there is one.
+  keyboard: []
+  notes:
+    - Put the turns in a container with role log and a label, so new turns are announced in order.
+    - A streaming turn has aria-busy, so screen readers wait for the full answer.
+    - The caret and the avatar are hidden from assistive technology.
+tokens:
+  - color.fg.default
+  - color.fg.muted
+  - color.accent.fg
+  - color.bg.subtle
+  - color.bg.surface
+  - color.status.danger.fg
+  - radius.sm
+  - radius.md
+  - radius.lg
+  - radius.full
+  - border.width.default
+  - size.control.sm
+  - size.icon.sm
+  - space.100
+  - space.200
+  - space.300
+  - space.400
+  - font.family.sans
+  - font.family.mono
+  - font.size.200
+  - font.size.300
+  - font.weight.semibold
+  - font.lineHeight.body
+  - font.lineHeight.loose
+  - font.lineHeight.tight
+  - duration.moderate
+  - duration.loop
+  - easing.enter
+  - easing.spring

@@ -34,7 +34,7 @@
 	const otherRows = $derived(tokenRows.filter((row) => row.type !== 'color'));
 	const parts = $derived(c.anatomy.filter((part) => part.part));
 	const importLine = $derived(
-		pkg === '@ambre-ds/commerce' ? `import '@ambre-ds/commerce';` : `import '@ambre-ds/ui/${id}';`
+		pkg === '@ambre-ds/commerce' ? `import '@ambre-ds/commerce';` : `import '${pkg}/${id}';`
 	);
 </script>
 

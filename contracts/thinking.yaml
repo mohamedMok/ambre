@@ -1,0 +1,44 @@
+id: thinking
+tag: amb-thinking
+status: draft
+summary: Says the assistant is working before the first words arrive. The label names the step, such as Reading the invoices.
+anatomy:
+  - id: status
+    element: span
+    part: status
+  - id: orb
+    element: span
+    part: orb
+  - id: label
+    element: span
+    part: label
+props:
+  - name: label
+    type: string
+    default: Thinking
+    attribute: label
+    reflect: true
+    description: What the assistant is doing, in a few words. It is announced politely when it changes.
+slots: []
+events: []
+a11y:
+  role: status
+  name: The label.
+  keyboard: []
+  notes:
+    - The status role announces the label without moving focus. Change the label as the steps change.
+    - Under reduced motion the dots and the sweep hold still.
+    - Remove the element when the answer starts, and mark the streaming message instead.
+tokens:
+  - color.fg.default
+  - color.fg.muted
+  - color.accent.fg
+  - color.bg.surface
+  - radius.full
+  - size.control.sm
+  - space.200
+  - font.family.sans
+  - font.size.300
+  - font.lineHeight.tight
+  - duration.loop
+  - easing.standard

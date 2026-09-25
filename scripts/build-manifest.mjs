@@ -29,7 +29,7 @@ for (const file of files) {
     process.exit(1);
   }
 
-  const located = ['ui', 'commerce']
+  const located = ['ui', 'commerce', 'ai']
     .map((pkg) => {
       const dir = path.join(root, 'packages', pkg, 'src', contract.id);
       if (!fs.existsSync(dir)) return null;
@@ -38,7 +38,7 @@ for (const file of files) {
       const modulePath =
         pkg === 'ui'
           ? `src/${contract.id}/${svelteFile}`
-          : `../commerce/src/${contract.id}/${svelteFile}`;
+          : `../${pkg}/src/${contract.id}/${svelteFile}`;
       return { svelteFile, modulePath };
     })
     .find(Boolean);

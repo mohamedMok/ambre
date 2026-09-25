@@ -1,0 +1,179 @@
+////
+/// Component — Prompt (`amb-prompt`).
+/// Block `.c-prompt` (the composer), elements `__label` (visually hidden), `__control` (the native
+/// textarea), `__bar`, `__actions`, `__send` (with `--stop` while busy), `__glyph`.
+/// States `.is-busy` and `.is-disabled` mirror the props.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	// A floating composer: the whole box is the field, and it glows when focused.
+	.c-prompt {
+		@include depth(raised);
+		display: grid;
+		gap: token(space-200);
+		padding: token(space-300);
+		border: token(border-width-default) solid rim(token(color-border-default), 55%);
+		border-radius: calc(#{token(radius-lg)} + #{token(space-100)});
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+		cursor: text;
+
+		@include motion {
+			@include transition(border-color, box-shadow);
+		}
+
+		@media (hover: hover) {
+			&:hover:not(.is-disabled, :focus-within) {
+				border-color: token(color-border-default);
+			}
+		}
+
+		&:has(.c-prompt__control:focus-visible) {
+			--_depth: #{depth(lifted)};
+			@include focus-ring;
+			border-color: token(color-focus-ring);
+		}
+
+		&__control {
+			width: 100%;
+			min-height: calc(1em * #{token(font-line-height-body)});
+			max-height: 12rem;
+			padding: token(space-100) token(space-200);
+			overflow-y: auto;
+			border: 0;
+			background: transparent;
+			resize: none;
+
+			&::placeholder {
+				color: token(color-fg-muted);
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		&__bar {
+			display: flex;
+			align-items: center;
+			gap: token(space-200);
+		}
+
+		&__actions {
+			display: flex;
+			flex: 1;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: token(space-100);
+		}
+
+		// Send: a round accent button at the end of the bar.
+		&__send {
+			@include depth(raised);
+			display: inline-grid;
+			place-items: center;
+			width: token(size-control-sm);
+			height: token(size-control-sm);
+			margin-inline-start: auto;
+			padding: 0;
+			border: token(border-width-default) solid rim(token(color-accent-bg-active), 55%, token(color-accent-bg));
+			border-radius: token(radius-full);
+			background: token(color-accent-bg);
+			color: token(color-fg-on-accent);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, box-shadow, scale, translate);
+			}
+
+			@include hover {
+				--_depth: #{depth(lifted)};
+				background: token(color-accent-bg-hover);
+
+				@include motion {
+					translate: 0 -1px;
+				}
+			}
+
+			@include active {
+				--_depth: #{depth(sunken)};
+				background: token(color-accent-bg-active);
+
+				@include motion {
+					translate: 0 0;
+					scale: 0.92;
+				}
+			}
+
+			@include focus-visible;
+
+			&:disabled {
+				--_depth: #{depth(flat)};
+				border-color: transparent;
+				background: token(color-bg-disabled);
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+			}
+
+			// Stop is quiet: the answer is on its way, and this only interrupts it.
+			&--stop {
+				border-color: token(color-border-default);
+				background: token(color-bg-surface);
+				color: token(color-fg-default);
+
+				@include hover {
+					background: token(color-bg-subtle);
+				}
+			}
+		}
+
+		&__glyph {
+			width: token(size-icon-md);
+			height: token(size-icon-md);
+			fill: none;
+			stroke: currentColor;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2.2;
+		}
+
+		&__send--stop &__glyph {
+			fill: currentColor;
+			stroke-width: 0;
+		}
+
+		&.is-disabled {
+			--_depth: #{depth(flat)};
+			border-color: token(color-border-disabled);
+			background: token(color-bg-disabled);
+			color: token(color-fg-disabled);
+			cursor: not-allowed;
+		}
+	}
+
+	::slotted([slot='actions']) {
+		flex: none;
+	}
+
+	@include forced-colors {
+		.c-prompt,
+		.c-prompt__send {
+			border: token(border-width-default) solid ButtonText;
+			box-shadow: none;
+		}
+
+		.c-prompt:has(.c-prompt__control:focus-visible) {
+			outline: token(focus-ring-width) solid Highlight;
+		}
+	}
+}

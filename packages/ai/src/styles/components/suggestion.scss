@@ -1,0 +1,107 @@
+////
+/// Component — Suggestion (`amb-suggestion`).
+/// Block `.c-suggestion` (the native button, on the `o-control--sm` frame), elements `__icon`,
+/// `__spark` (the default mark), `__label`. A raised pill: it lifts toward the pointer and the spark
+/// turns a little, then it presses in.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: inline-block;
+		max-width: 100%;
+	}
+
+	.c-suggestion {
+		@include depth(raised);
+		gap: token(space-200);
+		max-width: 100%;
+		border: token(border-width-default) solid rim(token(color-border-default), 55%);
+		border-radius: token(radius-full);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-200);
+		font-weight: token(font-weight-medium);
+		line-height: token(font-line-height-tight);
+
+		@include motion {
+			@include transition(background-color, border-color, box-shadow, translate, scale);
+		}
+
+		&__icon {
+			display: inline-grid;
+			flex: none;
+			place-items: center;
+			color: token(color-accent-fg);
+		}
+
+		&__spark {
+			width: token(size-icon-sm);
+			height: token(size-icon-sm);
+			fill: currentColor;
+
+			@include motion {
+				@include transition(rotate, scale);
+			}
+		}
+
+		&__label {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		@include hover {
+			--_depth: #{depth(lifted)};
+			border-color: rim(token(color-accent-fg), 55%);
+			background: tint(token(color-accent-fg), 6%);
+
+			@include motion {
+				translate: 0 -1px;
+
+				.c-suggestion__spark {
+					rotate: 20deg;
+					scale: 1.1;
+				}
+			}
+		}
+
+		@include active {
+			--_depth: #{depth(sunken)};
+			background: tint(token(color-accent-fg), 12%);
+
+			@include motion {
+				translate: 0 0;
+				scale: 0.97;
+			}
+		}
+
+		@include focus-visible;
+
+		&:disabled {
+			--_depth: #{depth(flat)};
+			border-color: transparent;
+			background: token(color-bg-disabled);
+			color: token(color-fg-disabled);
+
+			.c-suggestion__icon {
+				color: token(color-fg-disabled);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-suggestion {
+			border: token(border-width-default) solid ButtonText;
+			background: ButtonFace;
+			color: ButtonText;
+			box-shadow: none;
+		}
+
+		.c-suggestion__icon {
+			color: ButtonText;
+		}
+	}
+}

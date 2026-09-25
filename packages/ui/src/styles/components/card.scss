@@ -1,0 +1,154 @@
+////
+/// Component — Card (`amb-card`).
+/// Block `.c-card` (the surface), elements `__media`, `__content`, `__heading`, `__link`, `__body`, `__footer`.
+/// Modifiers: `--raised` (default), `--outlined`, `--filled`. State `.is-link` when `href` is set:
+/// the heading link stretches over the whole card, and the footer stays clickable above it.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-card {
+		@include depth(raised);
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		overflow: hidden;
+		border: token(border-width-default) solid rim(token(color-border-default), 40%);
+		border-radius: token(radius-lg);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+
+		@include motion {
+			@include transition(border-color, box-shadow, translate);
+		}
+
+		&--outlined {
+			--_depth: #{depth(flat)};
+			border-color: token(color-border-default);
+		}
+
+		&--filled {
+			--_depth: #{depth(flat)};
+			border-color: transparent;
+			background: token(color-bg-subtle);
+		}
+
+		// Media is full bleed: images fill the top edge and keep their crop.
+		&__media {
+			overflow: hidden;
+			background: token(color-bg-muted);
+		}
+
+		&__content {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			gap: token(space-200);
+			padding: token(space-500);
+		}
+
+		&__heading {
+			color: token(color-fg-default);
+			font-size: token(font-size-400);
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		&__link {
+			color: inherit;
+			text-decoration: none;
+
+			&:focus {
+				outline: none;
+			}
+
+			// The whole card is the target; the link keeps the heading as its name.
+			&::after {
+				content: '';
+				position: absolute;
+				z-index: 1;
+				inset: 0;
+				border-radius: inherit;
+			}
+		}
+
+		&__body {
+			flex: 1;
+			color: token(color-fg-muted);
+		}
+
+		// Footer actions sit above the stretched link, so a button inside still works.
+		&__footer {
+			position: relative;
+			z-index: 2;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: token(space-300);
+			margin-top: token(space-200);
+		}
+
+		// A link card lifts on hover and presses in, like a raised control.
+		&.is-link {
+			@include hover {
+				--_depth: #{depth(lifted)};
+				border-color: token(color-border-default);
+
+				@include motion {
+					translate: 0 -2px;
+				}
+			}
+
+			&:active {
+				--_depth: #{depth(raised)};
+
+				@include motion {
+					translate: 0 0;
+				}
+			}
+
+			&:has(.c-card__link:focus-visible) {
+				@include focus-ring;
+			}
+		}
+	}
+
+	::slotted(img),
+	::slotted(picture),
+	::slotted(video) {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
+	::slotted([slot='heading']) {
+		margin: 0;
+		font: inherit;
+	}
+
+	::slotted(p) {
+		margin: 0;
+	}
+
+	@include forced-colors {
+		.c-card {
+			border: token(border-width-default) solid CanvasText;
+			box-shadow: none;
+		}
+
+		.c-card.is-link:has(.c-card__link:focus-visible) {
+			outline: token(focus-ring-width) solid Highlight;
+		}
+	}
+}

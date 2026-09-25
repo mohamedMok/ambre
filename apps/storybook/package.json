@@ -10,6 +10,7 @@
     "build": "storybook build"
   },
   "dependencies": {
+    "@ambre-ds/ai": "workspace:*",
     "@ambre-ds/commerce": "workspace:*",
     "@ambre-ds/tokens": "workspace:*",
     "@ambre-ds/ui": "workspace:*",

@@ -12,7 +12,7 @@ const failures = [];
 
 for (const file of fs.readdirSync(contractsDir).filter((entry) => entry.endsWith('.yaml'))) {
   const contract = parse(fs.readFileSync(path.join(contractsDir, file), 'utf8'));
-  const sourceDir = ['ui', 'commerce']
+  const sourceDir = ['ui', 'commerce', 'ai']
     .map((pkg) => path.join(root, 'packages', pkg, 'src', contract.id))
     .find((dir) => fs.existsSync(dir));
   if (!sourceDir) {

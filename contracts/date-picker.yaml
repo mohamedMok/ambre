@@ -1,0 +1,127 @@
+id: date-picker
+tag: amb-date-picker
+status: draft
+summary: A date typed in the locale's own format, or picked from a calendar. The value is an ISO date, such as 2026-09-24, and joins the nearest form.
+anatomy:
+  - id: field
+    element: div
+    part: field
+  - id: label
+    element: label
+    part: label
+  - id: control
+    element: input
+    part: control
+  - id: toggle
+    element: button
+    part: toggle
+  - id: panel
+    element: div
+    part: panel
+  - id: message
+    element: p
+    part: message
+props:
+  - name: name
+    type: string
+    default: ""
+    attribute: name
+    reflect: true
+    description: Form field name.
+  - name: value
+    type: string
+    default: ""
+    description: The date as YYYY-MM-DD, or empty.
+  - name: min
+    type: string
+    default: ""
+    attribute: min
+    reflect: true
+    description: Earliest date people can pick, as YYYY-MM-DD. Earlier days are struck out in the calendar.
+  - name: max
+    type: string
+    default: ""
+    attribute: max
+    reflect: true
+    description: Latest date people can pick, as YYYY-MM-DD.
+  - name: disabled
+    type: boolean
+    default: false
+    attribute: disabled
+    reflect: true
+    description: Blocks typing and the calendar.
+  - name: required
+    type: boolean
+    default: false
+    attribute: required
+    reflect: true
+    description: The form cannot submit without a date.
+slots:
+  - name: default
+    description: Accessible name. Keep this text visible.
+events:
+  - name: change
+    description: Fired when the date changes, typed or picked.
+a11y:
+  role: textbox (a native date input), with a button that opens a dialog holding a grid
+  name: Slotted label. The calendar dialog is named by the visible month.
+  keyboard:
+    - Type the date in the field, part by part, in the locale's order.
+    - The calendar button opens the calendar and moves focus to the selected day, or today.
+    - Arrow keys move by day and week. Home and End go to the start and end of the week.
+    - Page Up and Page Down change the month. With Shift they change the year.
+    - Enter or Space picks the focused day. Escape closes the calendar and returns focus to the button.
+  notes:
+    - The field is a native date input, so typing, validation, and the value format come from the browser.
+    - The week starts on the locale's first day, and the month and day names are in the page language.
+    - Today is marked with aria-current, the selected day with aria-selected, and days outside min and max with aria-disabled.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.muted
+  - color.bg.disabled
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.subtle
+  - color.fg.disabled
+  - color.fg.on-accent
+  - color.accent.bg
+  - color.accent.fg
+  - color.border.default
+  - color.border.strong
+  - color.border.disabled
+  - color.status.danger.fg
+  - color.highlight
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - elevation.inset
+  - radius.sm
+  - radius.md
+  - radius.lg
+  - radius.full
+  - border.width.default
+  - size.control.sm
+  - size.control.md
+  - size.icon.md
+  - space.100
+  - space.200
+  - space.300
+  - font.family.sans
+  - font.size.100
+  - font.size.200
+  - font.size.300
+  - font.weight.regular
+  - font.weight.semibold
+  - font.lineHeight.body
+  - font.lineHeight.tight
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.enter
+  - easing.exit
+  - easing.spring

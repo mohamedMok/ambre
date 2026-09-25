@@ -13,8 +13,9 @@
 	const installCode = `npm install @ambre-ds/tokens @ambre-ds/ui
 npm install @fontsource/source-sans-3 @fontsource/source-code-pro
 
-# Shop compositions, only if the product needs them
-npm install @ambre-ds/commerce`;
+# Shop and AI compositions, only if the product needs them
+npm install @ambre-ds/commerce
+npm install @ambre-ds/ai`;
 
 	const cloneCode = `git clone ${repoUrl}.git
 cd ambre
@@ -35,7 +36,8 @@ import '@ambre-ds/tokens/css/presets';
 
 // 4. The library: registers the amb- elements
 import '@ambre-ds/ui';
-import '@ambre-ds/commerce';`;
+import '@ambre-ds/commerce';
+import '@ambre-ds/ai';`;
 
 	const exampleCode = `<form action="/sign-in" method="post">
   <amb-text-field name="email" type="email" autocomplete="email" required>Email</amb-text-field>
@@ -136,7 +138,7 @@ export class CheckoutComponent {}`;
 </header>
 
 <h2 id="packages">Packages</h2>
-<p class="section-lede">Three packages. Most products need the first two.</p>
+<p class="section-lede">Four packages. Most products need the first two.</p>
 <div class="table-wrap">
 	<table class="api">
 		<thead>
@@ -156,13 +158,18 @@ export class CheckoutComponent {}`;
 			</tr>
 			<tr>
 				<th scope="row"><code>@ambre-ds/ui</code></th>
-				<td>The core elements: actions, forms, feedback, and navigation.</td>
+				<td>The core elements: actions, forms, content, layout, feedback, and navigation.</td>
 				<td><code>@ambre-ds/ui</code></td>
 			</tr>
 			<tr>
 				<th scope="row"><code>@ambre-ds/commerce</code></th>
 				<td>Shop compositions such as quantity. Checkout logic stays in the product.</td>
 				<td><code>@ambre-ds/commerce</code></td>
+			</tr>
+			<tr>
+				<th scope="row"><code>@ambre-ds/ai</code></th>
+				<td>Conversation compositions: prompt, message, thinking, and suggestion. The model stays in the product.</td>
+				<td><code>@ambre-ds/ai</code></td>
 			</tr>
 		</tbody>
 	</table>
@@ -180,7 +187,7 @@ export class CheckoutComponent {}`;
 
 <h2 id="install">Install from npm</h2>
 <p>
-	Add the tokens and the library, with the fonts the default brand names. The three packages share one version, and
+	Add the tokens and the library, with the fonts the default brand names. The packages share one version, and
 	each release is published from CI with npm provenance.
 </p>
 <CodeBlock code={installCode} lang="bash" title="Terminal" />

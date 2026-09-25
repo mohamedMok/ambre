@@ -1,0 +1,350 @@
+////
+/// Component — Date picker (`amb-date-picker`).
+/// Block `.c-date-picker`, elements `__label`, `__field`, `__control` (the native date input),
+/// `__toggle`, `__glyph`, `__message`, and the calendar: `__panel`, `__head`, `__nav`, `__month`,
+/// `__grid`, `__weekday`, `__day`, `__blank`, `__foot`, `__action`.
+/// States: `.is-open` on the block; on a day `.is-focused`, `.is-selected`, `.is-today`, `.is-unavailable`.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		position: relative;
+		display: block;
+	}
+
+	.c-date-picker {
+		--_cell: calc(#{token(size-control-md)} - #{token(space-100)});
+
+		display: grid;
+		gap: token(space-200);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		font-weight: token(font-weight-regular);
+		line-height: token(font-line-height-body);
+
+		&__label {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		// The same sunken well as a text field, with the calendar button inside its end.
+		&__field {
+			@include depth(sunken);
+			display: flex;
+			align-items: center;
+			min-height: token(size-control-md);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-md);
+			background: token(color-bg-surface);
+
+			@include motion {
+				@include transition(border-color, box-shadow);
+			}
+
+			@media (hover: hover) {
+				&:hover:not(:focus-within) {
+					border-color: token(color-border-strong);
+				}
+			}
+
+			&:has(.c-date-picker__control:focus-visible) {
+				@include focus-ring;
+				border-color: token(color-focus-ring);
+			}
+
+			&:has(.c-date-picker__control:user-invalid) {
+				border-color: token(color-status-danger-fg);
+			}
+		}
+
+		&__control {
+			flex: 1;
+			min-width: 0;
+			min-height: calc(#{token(size-control-md)} - #{token(border-width-default)} * 2);
+			padding-inline: token(space-300);
+			border: 0;
+			background: transparent;
+			font-variant-numeric: tabular-nums;
+
+			&:focus {
+				outline: none;
+			}
+
+			// The calendar button replaces the browser's own picker.
+			&::-webkit-calendar-picker-indicator {
+				display: none;
+			}
+		}
+
+		&__toggle,
+		&__nav {
+			display: inline-grid;
+			flex: none;
+			place-items: center;
+			width: token(size-control-sm);
+			height: token(size-control-sm);
+			padding: 0;
+			border: 0;
+			border-radius: token(radius-sm);
+			background: transparent;
+			color: token(color-fg-muted);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, color, scale);
+			}
+
+			@include hover {
+				background: token(color-bg-subtle);
+				color: token(color-fg-default);
+			}
+
+			@include active {
+				background: token(color-bg-muted);
+
+				@include motion {
+					scale: 0.94;
+				}
+			}
+
+			@include focus-visible;
+
+			&:disabled {
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+			}
+		}
+
+		&__toggle {
+			margin-inline-end: token(space-100);
+		}
+
+		&.is-open &__toggle {
+			background: tint(token(color-accent-fg), 12%);
+			color: token(color-accent-fg);
+		}
+
+		&__glyph {
+			width: token(size-icon-md);
+			height: token(size-icon-md);
+			fill: none;
+			stroke: currentColor;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 1.8;
+		}
+
+		&.is-disabled &__field {
+			@include depth(flat);
+			border-color: token(color-border-disabled);
+			background: token(color-bg-disabled);
+			color: token(color-fg-disabled);
+		}
+
+		&__message {
+			color: token(color-status-danger-fg);
+			font-size: token(font-size-200);
+
+			@include motion {
+				@include transition(opacity, translate);
+			}
+		}
+
+		// FLOATING SURFACE: the calendar grows out of the field with a spring, like a menu.
+		&__panel {
+			@include depth(floating);
+			position: absolute;
+			z-index: 3;
+			top: calc(100% + #{token(space-200)});
+			left: 0;
+			display: grid;
+			gap: token(space-200);
+			width: max-content;
+			padding: token(space-300);
+			border: token(border-width-default) solid token(color-border-default);
+			border-radius: token(radius-lg);
+			background: token(color-bg-surface);
+			transform-origin: top left;
+
+			@include motion {
+				transition:
+					opacity token(duration-moderate) token(easing-enter),
+					translate token(duration-moderate) token(easing-spring),
+					scale token(duration-moderate) token(easing-spring),
+					display token(duration-moderate) allow-discrete;
+				transition-behavior: allow-discrete;
+			}
+
+			&[hidden] {
+				display: none;
+				opacity: 0;
+
+				@include motion {
+					translate: 0 calc(#{token(space-100)} * -1);
+					scale: 0.96;
+					transition:
+						opacity token(duration-fast) token(easing-exit),
+						display token(duration-fast) allow-discrete;
+				}
+			}
+		}
+
+		&__head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: token(space-200);
+		}
+
+		&__month {
+			font-size: token(font-size-300);
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+			text-transform: capitalize;
+		}
+
+		&__grid {
+			border-collapse: separate;
+			border-spacing: 0 token(space-100);
+		}
+
+		&__weekday {
+			width: var(--_cell);
+			padding-bottom: token(space-100);
+			color: token(color-fg-subtle);
+			font-size: token(font-size-100);
+			font-weight: token(font-weight-semibold);
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		&__day,
+		&__blank {
+			width: var(--_cell);
+			height: var(--_cell);
+			padding: 0;
+		}
+
+		&__day {
+			--_depth: #{depth(flat)};
+			border-radius: token(radius-full);
+			font-variant-numeric: tabular-nums;
+			text-align: center;
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, color, box-shadow, scale);
+			}
+
+			@media (hover: hover) {
+				&:hover:not(.is-selected, .is-unavailable) {
+					background: token(color-bg-subtle);
+				}
+			}
+
+			@include motion {
+				&:active:not(.is-unavailable) {
+					scale: 0.92;
+				}
+			}
+
+			@include focus-visible;
+
+			&.is-today {
+				box-shadow: inset 0 0 0 token(border-width-default) token(color-accent-fg);
+				color: token(color-accent-fg);
+				font-weight: token(font-weight-semibold);
+			}
+
+			// The chosen day is a raised accent disc.
+			&.is-selected {
+				--_depth: #{depth(raised)};
+				background: token(color-accent-bg);
+				box-shadow: var(--_depth);
+				color: token(color-fg-on-accent);
+				font-weight: token(font-weight-semibold);
+			}
+
+			&.is-unavailable {
+				color: token(color-fg-disabled);
+				text-decoration: line-through;
+				cursor: not-allowed;
+			}
+		}
+
+		&__foot {
+			display: flex;
+			justify-content: flex-end;
+			padding-top: token(space-200);
+			border-top: token(border-width-default) solid rim(token(color-border-default), 40%);
+		}
+
+		&__action {
+			min-height: token(size-control-sm);
+			padding-inline: token(space-300);
+			border: 0;
+			border-radius: token(radius-sm);
+			background: transparent;
+			color: token(color-accent-fg);
+			font-weight: token(font-weight-semibold);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color);
+			}
+
+			@include hover {
+				background: tint(token(color-accent-fg), 12%);
+			}
+
+			@include focus-visible;
+
+			&:disabled {
+				color: token(color-fg-disabled);
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	@include motion {
+		@starting-style {
+			.c-date-picker__panel:not([hidden]) {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+				scale: 0.96;
+			}
+
+			.c-date-picker__message {
+				opacity: 0;
+				translate: 0 calc(#{token(space-100)} * -1);
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-date-picker__field,
+		.c-date-picker__panel {
+			border: token(border-width-default) solid ButtonText;
+			background: Field;
+			color: FieldText;
+			box-shadow: none;
+		}
+
+		.c-date-picker__day.is-selected {
+			background: Highlight;
+			color: HighlightText;
+		}
+
+		.c-date-picker__day.is-today {
+			outline: token(border-width-default) solid CanvasText;
+		}
+
+		.c-date-picker__message {
+			color: CanvasText;
+		}
+	}
+}

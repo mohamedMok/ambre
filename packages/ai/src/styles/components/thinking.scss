@@ -1,0 +1,105 @@
+////
+/// Component — Thinking (`amb-thinking`).
+/// Block `.c-thinking` (the status), elements `__orb`, `__dot`, `__label`.
+/// Three dots rise in turn and a light sweeps across the label. Under reduced motion both hold
+/// still and the label alone carries the state.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: inline-block;
+	}
+
+	.c-thinking {
+		display: inline-flex;
+		align-items: center;
+		gap: token(space-200);
+		color: token(color-fg-muted);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-tight);
+
+		&__orb {
+			display: inline-flex;
+			align-items: center;
+			gap: 3px;
+			height: token(size-control-sm);
+			padding-inline: token(space-200);
+			border-radius: token(radius-full);
+			background: tint(token(color-accent-fg), 12%);
+		}
+
+		&__dot {
+			width: 6px;
+			height: 6px;
+			border-radius: token(radius-full);
+			background: token(color-accent-fg);
+
+			@include motion {
+				animation: amb-thinking-dot token(duration-loop) token(easing-standard) infinite;
+
+				&:nth-child(2) {
+					animation-delay: calc(#{token(duration-loop)} / 6);
+				}
+
+				&:nth-child(3) {
+					animation-delay: calc(#{token(duration-loop)} / 3);
+				}
+			}
+		}
+
+		// The sweep: the muted text with a band of the default text color passing through it.
+		&__label {
+			@include motion {
+				background: linear-gradient(
+						90deg,
+						token(color-fg-muted) 35%,
+						token(color-fg-default) 50%,
+						token(color-fg-muted) 65%
+					)
+					0 0 / 250% 100%;
+				background-clip: text;
+				color: transparent;
+				animation: amb-thinking-sweep calc(#{token(duration-loop)} * 2.4) linear infinite;
+			}
+		}
+	}
+
+	@keyframes amb-thinking-dot {
+		0%,
+		60%,
+		100% {
+			opacity: 0.4;
+			translate: 0 0;
+		}
+
+		30% {
+			opacity: 1;
+			translate: 0 -3px;
+		}
+	}
+
+	@keyframes amb-thinking-sweep {
+		from {
+			background-position: 100% 0;
+		}
+
+		to {
+			background-position: 0 0;
+		}
+	}
+
+	@include forced-colors {
+		.c-thinking__dot {
+			background: CanvasText;
+		}
+
+		.c-thinking__label {
+			background: none;
+			color: CanvasText;
+		}
+	}
+}

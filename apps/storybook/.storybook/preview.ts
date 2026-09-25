@@ -14,6 +14,7 @@ import '@fontsource/material-symbols-outlined/latin-400.css';
 // Register every element once, so docs pages render them as well as stories.
 import '@ambre-ds/ui';
 import '@ambre-ds/commerce';
+import '@ambre-ds/ai';
 
 const preview: Preview = {
   globalTypes: {
@@ -61,7 +62,18 @@ const preview: Preview = {
     controls: { expanded: true },
     options: {
       storySort: {
-        order: ['Get started', 'Foundations', 'Basics', 'Forms', 'Feedback', 'Navigation', 'Commerce'],
+        order: [
+          'Get started',
+          'Foundations',
+          'Basics',
+          'Forms',
+          'Content',
+          'Layout',
+          'Feedback',
+          'Navigation',
+          'Commerce',
+          'AI',
+        ],
       },
     },
   },

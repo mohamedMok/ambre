@@ -1,0 +1,85 @@
+id: card
+tag: amb-card
+status: draft
+summary: Groups one subject on a surface. A heading, a body, optional media on top, and actions in the footer. With an href, the whole card is a link named by its heading.
+anatomy:
+  - id: surface
+    element: div
+    part: surface
+  - id: media
+    slot: media
+    part: media
+  - id: heading
+    slot: heading
+    part: heading
+  - id: link
+    element: a
+  - id: body
+    slot: default
+    part: body
+  - id: footer
+    slot: footer
+    part: footer
+props:
+  - name: variant
+    type: enum
+    values: [raised, outlined, filled]
+    default: raised
+    attribute: variant
+    reflect: true
+    description: Surface treatment. Raised floats on the canvas, outlined draws a boundary, filled sits flat on a tint.
+  - name: href
+    type: string
+    default: ""
+    attribute: href
+    reflect: true
+    description: Makes the whole card a link to this destination. The heading is the link text.
+slots:
+  - name: default
+    description: Body text.
+  - name: heading
+    description: The title, usually an h2 or h3. Required when href is set, because it names the link.
+  - name: media
+    description: An image or video shown full bleed at the top. Give an image its alt text, or an empty alt when decorative.
+  - name: footer
+    description: Actions or metadata. Buttons here stay clickable on a link card.
+events: []
+a11y:
+  role: none (the card is a group of content; with href, the heading is a link)
+  name: The slotted heading, when href is set.
+  keyboard:
+    - Tab reaches the heading link on a link card, then any footer action.
+  notes:
+    - Only the heading is the link, so the link name stays short. The rest of the card is a larger pointer target.
+    - Put cards in a list when there are several.
+    - Keep interactive elements out of the body of a link card. Put them in the footer.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.bg.muted
+  - color.fg.default
+  - color.fg.muted
+  - color.border.default
+  - color.highlight
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.1
+  - elevation.2
+  - radius.lg
+  - border.width.default
+  - space.200
+  - space.300
+  - space.500
+  - font.family.sans
+  - font.size.300
+  - font.size.400
+  - font.weight.semibold
+  - font.lineHeight.body
+  - font.lineHeight.tight
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

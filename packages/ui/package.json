@@ -131,6 +131,34 @@
       "types": "./types/index.d.ts",
       "import": "./dist/tooltip.js"
     },
+    "./card": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/card.js"
+    },
+    "./checkbox-card": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/checkbox-card.js"
+    },
+    "./date-picker": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/date-picker.js"
+    },
+    "./layout": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/layout.js"
+    },
+    "./radio-card": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/radio-card.js"
+    },
+    "./stat-tile": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/stat-tile.js"
+    },
+    "./tile": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/tile.js"
+    },
     "./custom-elements.json": "./custom-elements.json",
     "./package.json": "./package.json"
   },

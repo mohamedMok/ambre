@@ -77,6 +77,126 @@
 	transition: transitions($properties...);
 }
 
+/// The frame shared by the choice cards (`amb-checkbox-card`, `amb-radio-card`): a raised surface
+/// with the icon, the text, and the native control in the corner. The component draws the control.
+/// Call it on the block; it expects the elements `__icon`, `__text`, `__label`, `__description`,
+/// `__control`, `__message` and the states `.is-checked`, `.is-disabled`.
+@mixin choice-card {
+	@include depth(raised);
+	position: relative;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: start;
+	column-gap: token(space-300);
+	row-gap: token(space-200);
+	height: 100%;
+	padding: token(space-400);
+	border: token(border-width-default) solid rim(token(color-border-default), 55%);
+	border-radius: token(radius-lg);
+	background: token(color-bg-surface);
+	color: token(color-fg-default);
+	font-family: token(font-family-sans);
+	font-size: token(font-size-300);
+	line-height: token(font-line-height-body);
+	cursor: pointer;
+
+	@include motion {
+		@include transition(background-color, border-color, box-shadow, translate, scale);
+	}
+
+	&__icon {
+		display: inline-grid;
+		place-items: center;
+		width: token(size-control-sm);
+		height: token(size-control-sm);
+		border-radius: token(radius-md);
+		background: token(color-bg-subtle);
+		color: token(color-fg-muted);
+
+		@include motion {
+			@include transition(background-color, color);
+		}
+	}
+
+	// Without an icon the text takes the first column.
+	&__text {
+		display: grid;
+		grid-column: 2;
+		gap: token(space-100);
+		min-width: 0;
+	}
+
+	$block: &;
+
+	&:not(:has(#{$block}__icon)) #{$block}__text {
+		grid-column: 1 / 3;
+	}
+
+	&__label {
+		font-weight: token(font-weight-semibold);
+		line-height: token(font-line-height-tight);
+	}
+
+	&__description {
+		color: token(color-fg-muted);
+		font-size: token(font-size-200);
+	}
+
+	&__control {
+		grid-row: 1;
+		grid-column: 3;
+	}
+
+	&__message {
+		grid-column: 1 / -1;
+		color: token(color-status-danger-fg);
+		font-size: token(font-size-200);
+	}
+
+	@media (hover: hover) {
+		&:hover:not(.is-disabled) {
+			--_depth: #{depth(lifted)};
+			border-color: token(color-border-strong);
+		}
+	}
+
+	@include motion {
+		&:active:not(.is-disabled) {
+			scale: 0.99;
+		}
+	}
+
+	// Selected: an accent edge drawn inside the border, so the size never shifts, on an accent wash.
+	&.is-checked {
+		--_depth: #{depth(raised)}, inset 0 0 0 #{token(border-width-default)} #{token(color-accent-bg)};
+		border-color: token(color-accent-bg);
+		background: tint(token(color-accent-fg), 6%);
+	}
+
+	&.is-checked &__icon {
+		background: tint(token(color-accent-fg), 14%);
+		color: token(color-accent-fg);
+	}
+
+	// The card shows the focus, since the control inside is small.
+	&:has(:focus-visible) {
+		@include focus-ring;
+	}
+
+	&.is-disabled {
+		--_depth: #{depth(flat)};
+		border-color: token(color-border-disabled);
+		background: token(color-bg-disabled);
+		color: token(color-fg-disabled);
+		cursor: not-allowed;
+	}
+
+	&.is-disabled &__description,
+	&.is-disabled &__icon {
+		color: token(color-fg-disabled);
+	}
+}
+
 /// Hides content visually and keeps it for assistive technology.
 @mixin visually-hidden {
 	position: absolute;

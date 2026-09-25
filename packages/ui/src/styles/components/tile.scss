@@ -1,0 +1,163 @@
+////
+/// Component — Tile (`amb-tile`).
+/// Block `.c-tile` (the surface), elements `__top`, `__icon`, `__meta`, `__title`, `__link`,
+/// `__description`, `__arrow`. Modifiers: `--neutral` (default), `--accent` (the icon well).
+/// State `.is-link` when `href` is set: the title link covers the tile and the arrow slides on hover.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+	}
+
+	.c-tile {
+		--_well: #{token(color-bg-subtle)};
+		--_well-ink: #{token(color-fg-default)};
+
+		@include depth(raised);
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: token(space-200);
+		height: 100%;
+		min-height: 8rem;
+		padding: token(space-400);
+		border: token(border-width-default) solid rim(token(color-border-default), 40%);
+		border-radius: token(radius-lg);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-300);
+		line-height: token(font-line-height-body);
+
+		@include motion {
+			@include transition(border-color, box-shadow, translate);
+		}
+
+		&--accent {
+			--_well: #{tint(token(color-accent-fg), 12%)};
+			--_well-ink: #{token(color-accent-fg)};
+		}
+
+		&__top {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: token(space-200);
+			margin-bottom: auto;
+			padding-bottom: token(space-300);
+		}
+
+		// The icon sits in a small sunken well, tinted by the tone.
+		&__icon {
+			display: inline-grid;
+			place-items: center;
+			width: token(size-control-md);
+			height: token(size-control-md);
+			border-radius: token(radius-md);
+			background: var(--_well);
+			box-shadow: token(elevation-inset);
+			color: var(--_well-ink);
+		}
+
+		&__meta {
+			color: token(color-fg-subtle);
+			font-size: token(font-size-200);
+		}
+
+		&__title {
+			font-weight: token(font-weight-semibold);
+			line-height: token(font-line-height-tight);
+		}
+
+		&__link {
+			color: inherit;
+			text-decoration: none;
+
+			&:focus {
+				outline: none;
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+			}
+		}
+
+		&__description {
+			color: token(color-fg-muted);
+			font-size: token(font-size-200);
+		}
+
+		&__arrow {
+			position: absolute;
+			right: token(space-400);
+			bottom: token(space-400);
+			width: token(size-icon-md);
+			height: token(size-icon-md);
+			fill: none;
+			stroke: token(color-fg-subtle);
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2;
+
+			@include motion {
+				@include transition(stroke, translate);
+			}
+		}
+
+		// Keep the title and description clear of the arrow.
+		&.is-link {
+			padding-right: calc(#{token(space-400)} * 2 + #{token(size-icon-md)});
+
+			@include hover {
+				--_depth: #{depth(lifted)};
+				border-color: token(color-border-default);
+
+				@include motion {
+					translate: 0 -2px;
+				}
+
+				.c-tile__arrow {
+					stroke: token(color-accent-fg);
+
+					@include motion {
+						translate: 3px 0;
+					}
+				}
+			}
+
+			&:active {
+				--_depth: #{depth(raised)};
+
+				@include motion {
+					translate: 0 0;
+				}
+			}
+
+			&:has(.c-tile__link:focus-visible) {
+				@include focus-ring;
+			}
+		}
+	}
+
+	@include forced-colors {
+		.c-tile {
+			border: token(border-width-default) solid CanvasText;
+			box-shadow: none;
+		}
+
+		.c-tile__arrow {
+			stroke: CanvasText;
+		}
+
+		.c-tile.is-link:has(.c-tile__link:focus-visible) {
+			outline: token(focus-ring-width) solid Highlight;
+		}
+	}
+}
