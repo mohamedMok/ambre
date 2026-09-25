@@ -1,6 +1,6 @@
 {
   "name": "@ambre-ds/ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Ambre web components: accessible custom elements (amb-*) that work in any framework and follow any brand preset.",
   "keywords": [
     "design-system",

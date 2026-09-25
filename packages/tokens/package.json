@@ -1,6 +1,6 @@
 {
   "name": "@ambre-ds/tokens",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Ambre design tokens: DTCG sources compiled to CSS custom properties, Sass variables, JSON, and brand presets.",
   "keywords": [
     "design-system",
