@@ -1,0 +1,83 @@
+id: code-block
+tag: amb-code-block
+status: draft
+summary: Code in an answer, with its language and a copy button. It reads its text as it streams in, and drops the indent the markup adds.
+anatomy:
+  - id: surface
+    element: figure
+    part: surface
+  - id: language
+    element: span
+    part: language
+  - id: copy
+    element: button
+    part: copy
+  - id: code
+    element: pre
+    part: code
+  - id: source
+    slot: default
+props:
+  - name: language
+    type: string
+    default: ""
+    attribute: language
+    reflect: true
+    description: The language, shown in the bar and in the code's name, such as js or bash. Code is shown when it is empty.
+  - name: wrap
+    type: boolean
+    default: false
+    attribute: wrap
+    reflect: true
+    description: Wraps long lines instead of scrolling them. Use it for prose-like text, not for code where line breaks matter.
+slots:
+  - name: default
+    description: The code, as text. Blank lines around it and the indent shared by every line are removed. It can grow while an answer streams.
+events:
+  - name: copied
+    detail: "{ value: string }"
+    description: Fired after the copy button wrote the code to the clipboard. value is the text. Named copied because the browser's own copy event fires when people copy a selection.
+a11y:
+  role: figure, with a button and a focusable pre
+  name: The language, such as js code. The copy button is named Copy.
+  keyboard:
+    - Tab reaches the copy button, then the code, which scrolls with the arrow keys.
+    - Enter or Space copies.
+  notes:
+    - A successful copy is announced politely, and the button reads Copied for two seconds.
+    - The code is escaped text. The component never renders the slotted content as HTML.
+    - When the clipboard is refused, the button reads Copy failed and no event fires.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.subtle
+  - color.status.success.fg
+  - color.status.danger.fg
+  - color.border.default
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - elevation.inset
+  - radius.sm
+  - radius.md
+  - border.width.default
+  - size.control.sm
+  - size.icon.sm
+  - space.100
+  - space.200
+  - space.300
+  - space.400
+  - font.family.sans
+  - font.family.mono
+  - font.size.100
+  - font.size.200
+  - font.weight.semibold
+  - font.lineHeight.body
+  - duration.fast
+  - duration.moderate
+  - easing.standard
+  - easing.spring

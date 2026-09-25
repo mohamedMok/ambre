@@ -30,5 +30,7 @@ import '@ambre-ds/ai';
 | `amb-message` | One turn of the conversation, from the user or the assistant, complete, streaming, or failed. |
 | `amb-thinking` | A status while the model works. The label is announced politely. |
 | `amb-suggestion` | A prompt people can send in one press. |
+| `amb-tool-call` | A step the agent took: running, done, or failed, with its input and output. Fires `toggle`. |
+| `amb-code-block` | Code with its language and a copy button. Follows a streamed answer. Fires `copied`. |
 
 Documentation: [mohamedmok-ambre.surge.sh/components/prompt](https://mohamedmok-ambre.surge.sh/components/prompt) · MIT license.

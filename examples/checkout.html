@@ -1,0 +1,43 @@
+<!--
+title: Checkout
+summary: A cart line with a quantity, the address, delivery options as radio cards, and a total that follows the quantity.
+tags: commerce, form, events
+-->
+<form action="/checkout" method="post" style="display: grid; gap: var(--amb-space-500); max-width: 36rem;">
+  <h1 style="margin: 0; font-size: var(--amb-font-size-600);">Checkout</h1>
+
+  <amb-card variant="outlined">
+    <h2 slot="heading">Washed linen sheet</h2>
+    <p>Double, sand. 48 euros each.</p>
+    <amb-quantity slot="footer" name="quantity" value="1" min="1" max="8">Quantity</amb-quantity>
+  </amb-card>
+
+  <amb-text-field name="address" autocomplete="street-address" required>Street address</amb-text-field>
+  <amb-text-field name="postcode" autocomplete="postal-code" required>Postcode</amb-text-field>
+
+  <fieldset style="display: grid; gap: var(--amb-space-300); margin: 0; padding: 0; border: 0;">
+    <legend style="margin-bottom: var(--amb-space-300); font-weight: var(--amb-font-weight-semibold);">Delivery</legend>
+    <amb-radio-card name="delivery" value="standard" checked required>
+      <amb-icon slot="icon" name="local_shipping"></amb-icon>
+      Standard
+      <span slot="description">3 to 5 days, free.</span>
+    </amb-radio-card>
+    <amb-radio-card name="delivery" value="express" required>
+      <amb-icon slot="icon" name="bolt"></amb-icon>
+      Express
+      <span slot="description">Next day, 9 euros.</span>
+    </amb-radio-card>
+  </fieldset>
+
+  <amb-banner variant="success">Free returns for 30 days.</amb-banner>
+  <p style="margin: 0; font-size: var(--amb-font-size-500);">Total: <strong id="total">48 €</strong></p>
+  <amb-button type="submit" size="lg">Pay now</amb-button>
+</form>
+
+<script type="module">
+  // Every Ambre event bubbles with its data in event.detail.
+  const total = document.querySelector('#total');
+  document.querySelector('amb-quantity').addEventListener('change', (event) => {
+    total.textContent = `${event.detail.value * 48} €`;
+  });
+</script>

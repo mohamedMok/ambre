@@ -10,8 +10,10 @@
 @use 'tools' as *;
 
 @layer components {
+	// A turn is often a grid or flex item in the log: min-width 0 lets wide content scroll inside it.
 	:host {
 		display: block;
+		min-width: 0;
 	}
 
 	.c-message {

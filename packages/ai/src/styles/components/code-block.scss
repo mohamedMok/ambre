@@ -1,0 +1,130 @@
+////
+/// Component — Code block (`amb-code-block`).
+/// Block `.c-code-block` (the figure), elements `__bar`, `__language`, `__copy`, `__glyph`, `__code`,
+/// `__source` (the hidden light-DOM text it reads). State `.is-wrapped` mirrors `wrap`;
+/// the copy button takes `.is-copied` or `.is-failed` for two seconds.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	// The longest line never widens the page: the block takes the width it is given and scrolls.
+	:host {
+		display: block;
+		contain: inline-size;
+	}
+
+	// A sunken well, like a field: the code sits below the surface of the answer.
+	.c-code-block {
+		overflow: hidden;
+		margin: 0;
+		border: token(border-width-default) solid rim(token(color-border-default), 40%);
+		border-radius: token(radius-md);
+		background: token(color-bg-subtle);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+
+		&__bar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: token(space-200);
+			padding: token(space-100) token(space-100) token(space-100) token(space-300);
+			border-bottom: token(border-width-default) solid rim(token(color-border-default), 30%);
+			background: token(color-bg-surface);
+		}
+
+		&__language {
+			color: token(color-fg-subtle);
+			font-size: token(font-size-100);
+			font-weight: token(font-weight-semibold);
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
+
+		&__copy {
+			display: inline-flex;
+			align-items: center;
+			gap: token(space-100);
+			min-height: token(size-control-sm);
+			padding-inline: token(space-200);
+			border: 0;
+			border-radius: token(radius-sm);
+			background: transparent;
+			color: token(color-fg-muted);
+			font-size: token(font-size-200);
+			font-weight: token(font-weight-semibold);
+			cursor: pointer;
+
+			@include motion {
+				@include transition(background-color, color, scale);
+			}
+
+			@include hover {
+				background: token(color-bg-subtle);
+				color: token(color-fg-default);
+			}
+
+			@include active {
+				@include motion {
+					scale: 0.96;
+				}
+			}
+
+			@include focus-visible;
+
+			&.is-copied {
+				color: token(color-status-success-fg);
+			}
+
+			&.is-failed {
+				color: token(color-status-danger-fg);
+			}
+		}
+
+		&__glyph {
+			width: token(size-icon-sm);
+			height: token(size-icon-sm);
+			fill: none;
+			stroke: currentColor;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2;
+		}
+
+		&__code {
+			margin: 0;
+			padding: token(space-300) token(space-400);
+			overflow-x: auto;
+			box-shadow: token(elevation-inset);
+			font-family: token(font-family-mono);
+			font-size: token(font-size-200);
+			line-height: token(font-line-height-body);
+			tab-size: 2;
+			white-space: pre;
+
+			@include focus-visible;
+		}
+
+		&.is-wrapped &__code {
+			white-space: pre-wrap;
+			overflow-wrap: anywhere;
+		}
+
+		&__source[hidden] {
+			display: none;
+		}
+	}
+
+	@include forced-colors {
+		.c-code-block {
+			border: token(border-width-default) solid CanvasText;
+		}
+
+		.c-code-block__copy.is-copied,
+		.c-code-block__copy.is-failed {
+			color: CanvasText;
+		}
+	}
+}

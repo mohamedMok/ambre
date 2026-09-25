@@ -1,0 +1,32 @@
+<!--
+title: Article page
+summary: The stacked layout for reading, with a header, a row of navigation, a centred article, a related-reading aside, and a footer.
+tags: layout, content, editorial
+-->
+<amb-layout variant="stacked" label="Sections">
+  <div slot="header" style="display: flex; align-items: center; gap: var(--amb-space-300); width: 100%;">
+    <strong>Northwind Journal</strong>
+    <span style="flex: 1;"></span>
+    <amb-button size="sm" variant="secondary">Subscribe</amb-button>
+  </div>
+
+  <ul slot="nav" style="display: flex; gap: var(--amb-space-400); margin: 0; padding: 0; list-style: none;">
+    <li><a href="/design" aria-current="page">Design</a></li>
+    <li><a href="/engineering">Engineering</a></li>
+    <li><a href="/company">Company</a></li>
+  </ul>
+
+  <article>
+    <amb-tag variant="accent">Design systems</amb-tag>
+    <h1 style="margin: var(--amb-space-300) 0; font-size: var(--amb-font-size-800); line-height: var(--amb-font-line-height-tight);">A brand is one file</h1>
+    <p style="color: var(--amb-color-fg-muted);">How semantic tokens let one component library carry five brands without changing a line of markup.</p>
+    <p>Every colour, corner, and duration a component uses is a semantic decision, not a value. A preset answers those decisions for one brand.</p>
+  </article>
+
+  <div slot="aside">
+    <strong>Related</strong>
+    <p><amb-link href="/design/contrast">Checking 40 contrast pairs on every build</amb-link></p>
+  </div>
+
+  <p slot="footer">© 2026 Northwind</p>
+</amb-layout>

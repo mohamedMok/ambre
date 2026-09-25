@@ -1,0 +1,33 @@
+<!--
+title: Onboarding step
+summary: Step two of three, with a progress bar, interests as checkbox cards, and next and back buttons.
+tags: form, onboarding, choice
+-->
+<form action="/onboarding/3" method="post" style="display: grid; gap: var(--amb-space-500); max-width: 40rem;">
+  <amb-progress value="2" max="3" label="Step 2 of 3"></amb-progress>
+  <h1 style="margin: 0; font-size: var(--amb-font-size-600);">What will you use Ambre for?</h1>
+
+  <fieldset style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--amb-space-300); margin: 0; padding: 0; border: 0;">
+    <legend style="margin-bottom: var(--amb-space-300); font-weight: var(--amb-font-weight-semibold);">Pick all that apply</legend>
+    <amb-checkbox-card name="use" value="product" checked>
+      <amb-icon slot="icon" name="web"></amb-icon>
+      A product interface
+      <span slot="description">An app, a dashboard, or a back office.</span>
+    </amb-checkbox-card>
+    <amb-checkbox-card name="use" value="marketing">
+      <amb-icon slot="icon" name="campaign"></amb-icon>
+      A marketing site
+      <span slot="description">Landing pages and forms.</span>
+    </amb-checkbox-card>
+    <amb-checkbox-card name="use" value="assistant">
+      <amb-icon slot="icon" name="smart_toy"></amb-icon>
+      An AI assistant
+      <span slot="description">A chat, with the AI pack.</span>
+    </amb-checkbox-card>
+  </fieldset>
+
+  <div style="display: flex; gap: var(--amb-space-300);">
+    <amb-button type="submit">Next</amb-button>
+    <amb-button variant="ghost">Back</amb-button>
+  </div>
+</form>

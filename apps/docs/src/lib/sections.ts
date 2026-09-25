@@ -8,6 +8,7 @@ export const header = [
 	{ href: '/get-started', label: 'Get started' },
 	{ href: '/foundations', label: 'Foundations' },
 	{ href: '/components', label: 'Components' },
+	{ href: '/examples', label: 'Examples' },
 	{ href: '/brands', label: 'Brands' },
 	{ href: '/builder', label: 'Builder' }
 ];
@@ -22,6 +23,16 @@ export const gettingStarted: DocLink[] = [
 		href: '/get-started/events',
 		label: 'Events',
 		summary: 'What each element reports, the detail it carries, and how to listen in any framework.'
+	},
+	{
+		href: '/get-started/ai',
+		label: 'Use with AI',
+		summary: 'llms.txt, an MCP server that validates markup, a usage skill, and project rules for AI tools.'
+	},
+	{
+		href: '/examples',
+		label: 'Examples',
+		summary: 'Complete screens to copy and adapt, each one valid against the contracts.'
 	},
 	{
 		href: '/brands',
@@ -284,6 +295,16 @@ export const componentGroups: { title: string; summary: string; items: DocLink[]
 				href: '/components/suggestion',
 				label: 'Suggestion',
 				summary: 'A prompt people can send in one press.'
+			},
+			{
+				href: '/components/tool-call',
+				label: 'Tool call',
+				summary: 'A step the agent took: running, done, or failed, with its input and output.'
+			},
+			{
+				href: '/components/code-block',
+				label: 'Code block',
+				summary: 'Code in an answer, with its language and a copy button.'
 			}
 		]
 	}

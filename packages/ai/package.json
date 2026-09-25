@@ -35,6 +35,14 @@
       "types": "./types/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./code-block": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/code-block.js"
+    },
+    "./tool-call": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/tool-call.js"
+    },
     "./message": {
       "types": "./types/index.d.ts",
       "import": "./dist/message.js"

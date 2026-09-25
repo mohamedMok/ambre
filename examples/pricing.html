@@ -1,0 +1,38 @@
+<!--
+title: Choose a plan
+summary: Plans as radio cards with a billing toggle that updates the prices, and a submit button.
+tags: form, commerce, saas, events
+-->
+<form action="/subscribe" method="post" style="display: grid; gap: var(--amb-space-500); max-width: 44rem;">
+  <h1 style="margin: 0; font-size: var(--amb-font-size-600);">Choose a plan</h1>
+  <amb-toggle name="annual" id="annual">Bill yearly and save two months</amb-toggle>
+
+  <fieldset style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--amb-space-300); margin: 0; padding: 0; border: 0;">
+    <legend style="margin-bottom: var(--amb-space-300); font-weight: var(--amb-font-weight-semibold);">Plan</legend>
+    <amb-radio-card name="plan" value="starter" required>
+      Starter
+      <span slot="description" data-price="0">Free, up to 3 people.</span>
+    </amb-radio-card>
+    <amb-radio-card name="plan" value="team" checked required>
+      Team
+      <span slot="description" data-price="8">8 € a person a month.</span>
+    </amb-radio-card>
+    <amb-radio-card name="plan" value="business" required>
+      Business
+      <span slot="description" data-price="16">16 € a person a month, with single sign-on.</span>
+    </amb-radio-card>
+  </fieldset>
+
+  <amb-button type="submit">Continue</amb-button>
+</form>
+
+<script type="module">
+  document.querySelector('#annual').addEventListener('change', (event) => {
+    const yearly = event.detail.checked;
+    for (const price of document.querySelectorAll('[data-price]')) {
+      const monthly = Number(price.dataset.price);
+      if (!monthly) continue;
+      price.textContent = yearly ? `${monthly * 10} € a person a year.` : `${monthly} € a person a month.`;
+    }
+  });
+</script>

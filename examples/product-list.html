@@ -1,0 +1,32 @@
+<!--
+title: Product grid
+summary: Product cards with an image, a badge, and a save action, then pagination. Each card links through its heading.
+tags: commerce, content, cards
+-->
+<section aria-labelledby="new-in" style="display: grid; gap: var(--amb-space-500);">
+  <h1 id="new-in" style="margin: 0; font-size: var(--amb-font-size-600);">New in</h1>
+  <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--amb-space-400); margin: 0; padding: 0; list-style: none;">
+    <li>
+      <amb-card href="/shop/linen-sheet">
+        <img slot="media" src="/images/linen.jpg" alt="A sand linen sheet folded on a bed" />
+        <h2 slot="heading">Washed linen sheet</h2>
+        <p>Six colors, woven in Portugal. 48 euros.</p>
+        <amb-badge slot="footer" variant="accent">New</amb-badge>
+        <amb-button slot="footer" size="sm" variant="secondary">Save</amb-button>
+      </amb-card>
+    </li>
+    <li>
+      <amb-card href="/shop/stoneware">
+        <img slot="media" src="/images/stoneware.jpg" alt="Four grey stoneware bowls" />
+        <h2 slot="heading">Stoneware bowls</h2>
+        <p>A set of four, glazed by hand. 36 euros.</p>
+        <amb-button slot="footer" size="sm" variant="secondary">Save</amb-button>
+      </amb-card>
+    </li>
+  </ul>
+  <amb-pagination label="Products">
+    <li><a href="/shop?page=1" aria-current="page">1</a></li>
+    <li><a href="/shop?page=2">2</a></li>
+    <li><a href="/shop?page=2">Next</a></li>
+  </amb-pagination>
+</section>

@@ -1,0 +1,74 @@
+<!--
+title: Workspace settings
+summary: A sidebar layout with tabs, fields, toggles, and a destructive action confirmed in a dialog.
+tags: layout, form, dialog, saas
+-->
+<amb-layout variant="sidebar" label="Settings">
+  <div slot="header" style="display: flex; align-items: center; gap: var(--amb-space-300); width: 100%;">
+    <strong>Northwind</strong>
+    <span style="flex: 1;"></span>
+    <amb-menu>
+      Ada Lovelace
+      <button slot="panel" type="button" value="profile">Profile</button>
+      <button slot="panel" type="button" value="sign-out">Sign out</button>
+    </amb-menu>
+  </div>
+
+  <ul slot="nav" style="display: grid; gap: 2px; margin: 0; padding: 0; list-style: none;">
+    <li><a href="/settings" aria-current="page">General</a></li>
+    <li><a href="/settings/members">Members</a></li>
+    <li><a href="/settings/billing">Billing</a></li>
+  </ul>
+
+  <amb-breadcrumbs>
+    <li><a href="/">Home</a></li>
+    <li><a href="/settings">Settings</a></li>
+    <li>General</li>
+  </amb-breadcrumbs>
+  <h1 style="margin: var(--amb-space-300) 0 var(--amb-space-500); font-size: var(--amb-font-size-600);">General</h1>
+
+  <amb-tabs>
+    <button slot="tab" type="button">Workspace</button>
+    <button slot="tab" type="button">Security</button>
+    <div slot="panel" style="display: grid; gap: var(--amb-space-400); padding-top: var(--amb-space-400); max-width: 32rem;">
+      <amb-text-field name="workspace" value="Northwind">Workspace name</amb-text-field>
+      <amb-select name="region" value="eu">
+        Data region
+        <option value="eu">Europe (Frankfurt)</option>
+        <option value="us">United States (Virginia)</option>
+      </amb-select>
+      <amb-text-area name="about" rows="3" placeholder="What the workspace is for">Description</amb-text-area>
+      <div style="display: flex; gap: var(--amb-space-300);">
+        <amb-button>Save changes</amb-button>
+        <amb-button variant="secondary">Cancel</amb-button>
+      </div>
+    </div>
+    <div slot="panel" style="display: grid; gap: var(--amb-space-300); padding-top: var(--amb-space-400);">
+      <amb-toggle name="sso" checked>Require single sign-on</amb-toggle>
+      <amb-toggle name="audit">Keep an audit log</amb-toggle>
+      <amb-button variant="ghost" id="delete">Delete the workspace</amb-button>
+    </div>
+  </amb-tabs>
+
+  <amb-dialog id="confirm" label="Delete the workspace">
+    <p>Every project, file, and member goes away. This cannot be undone.</p>
+    <amb-button id="confirm-delete">Delete the workspace</amb-button>
+    <span slot="close">Keep it</span>
+  </amb-dialog>
+
+  <p slot="footer">© 2026 Northwind</p>
+</amb-layout>
+
+<script type="module">
+  const dialog = document.querySelector('#confirm');
+  document.querySelector('#delete').addEventListener('click', () => (dialog.open = true));
+  document.querySelector('#confirm-delete').addEventListener('click', () => (dialog.open = false));
+  dialog.addEventListener('close', () => console.log('dialog closed'));
+
+  document.querySelector('amb-menu').addEventListener('select', (event) => {
+    if (event.detail.value === 'sign-out') location.assign('/sign-out');
+  });
+  document.querySelector('amb-tabs').addEventListener('change', (event) => {
+    console.log('tab', event.detail.index);
+  });
+</script>

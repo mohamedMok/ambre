@@ -1,0 +1,94 @@
+<!--
+title: AI assistant
+summary: A conversation log with the agent's steps, a streaming answer with code, suggestions, and the prompt. The script wires send, stop, and the streaming state.
+tags: ai, chat, events
+-->
+<section style="display: grid; grid-template-rows: 1fr auto; gap: var(--amb-space-400); max-width: 46rem; min-height: 32rem;">
+  <div id="log" role="log" aria-label="Conversation" style="display: grid; align-content: end; gap: var(--amb-space-500);">
+    <amb-message from="user">How do I listen to a checkbox?</amb-message>
+    <amb-message>
+      <span slot="avatar">A</span>
+      <span slot="author">Assistant</span>
+      <amb-tool-call>
+        Read the Events guide
+        <span slot="meta">0.4 s</span>
+        <pre slot="input">read_docs({ page: "events" })</pre>
+        <pre slot="output">change on amb-checkbox carries { checked, value }</pre>
+      </amb-tool-call>
+      <p>Listen to change. The new state is in event.detail:</p>
+      <amb-code-block language="js">
+        document.querySelector('amb-checkbox').addEventListener('change', (event) => {
+          console.log(event.detail.checked);
+        });
+      </amb-code-block>
+      <amb-button slot="actions" size="sm" variant="ghost">Copy answer</amb-button>
+    </amb-message>
+  </div>
+
+  <div style="display: grid; gap: var(--amb-space-300);">
+    <ul aria-label="Try asking" style="display: flex; flex-wrap: wrap; gap: var(--amb-space-200); margin: 0; padding: 0; list-style: none;">
+      <li><amb-suggestion>How do I change the brand?</amb-suggestion></li>
+      <li><amb-suggestion>Is it accessible?</amb-suggestion></li>
+    </ul>
+    <amb-prompt placeholder="Ask about Ambre">Message</amb-prompt>
+  </div>
+</section>
+
+<script type="module">
+  const log = document.querySelector('#log');
+  const prompt = document.querySelector('amb-prompt');
+  let timer;
+
+  function turn(from, text) {
+    const message = document.createElement('amb-message');
+    message.setAttribute('from', from);
+    message.textContent = text;
+    log.append(message);
+    return message;
+  }
+
+  // Replace this with a call to your model. The shape stays the same.
+  function answer(question) {
+    prompt.busy = true;
+    const thinking = document.createElement('amb-thinking');
+    thinking.label = 'Reading the docs';
+    log.append(thinking);
+    const words = 'Set data-brand on any ancestor. Every component follows the preset.'.split(' ');
+    timer = setTimeout(() => {
+      thinking.remove();
+      const message = turn('assistant', '');
+      message.status = 'streaming';
+      let index = 0;
+      const step = () => {
+        message.textContent = words.slice(0, ++index).join(' ');
+        if (index < words.length) timer = setTimeout(step, 60);
+        else finish(message);
+      };
+      step();
+    }, 700);
+  }
+
+  function finish(message) {
+    if (message) message.status = 'complete';
+    prompt.busy = false;
+  }
+
+  prompt.addEventListener('send', (event) => {
+    turn('user', event.detail.value);
+    answer(event.detail.value);
+  });
+
+  prompt.addEventListener('stop', () => {
+    clearTimeout(timer);
+    log.querySelector('amb-thinking')?.remove();
+    finish(log.querySelector('amb-message[status="streaming"]'));
+  });
+
+  for (const suggestion of document.querySelectorAll('amb-suggestion')) {
+    suggestion.addEventListener('click', () => {
+      if (prompt.busy) return;
+      turn('user', suggestion.textContent.trim());
+      answer(suggestion.textContent.trim());
+    });
+  }
+</script>

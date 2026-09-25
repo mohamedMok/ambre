@@ -22,6 +22,8 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve('src/index.ts'),
+        'code-block': resolve('src/code-block/register.ts'),
+        'tool-call': resolve('src/tool-call/register.ts'),
         message: resolve('src/message/register.ts'),
         prompt: resolve('src/prompt/register.ts'),
         suggestion: resolve('src/suggestion/register.ts'),

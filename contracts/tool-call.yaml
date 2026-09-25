@@ -1,0 +1,95 @@
+id: tool-call
+tag: amb-tool-call
+status: draft
+summary: One step an assistant or agent took, such as searching the invoices. It shows whether the step is running, done, or failed, and opens to show what went in and what came out.
+anatomy:
+  - id: control
+    element: button
+    part: control
+  - id: title
+    slot: default
+    part: title
+  - id: meta
+    slot: meta
+    part: meta
+  - id: panel
+    element: div
+    part: panel
+  - id: input
+    slot: input
+    part: input
+  - id: output
+    slot: output
+    part: output
+props:
+  - name: status
+    type: enum
+    values: [running, complete, error]
+    default: complete
+    attribute: status
+    reflect: true
+    description: Running shows a spinner and marks the details busy. Error colours the step and labels the output as the error.
+  - name: open
+    type: boolean
+    default: false
+    attribute: open
+    reflect: true
+    description: Shows the input and the output.
+slots:
+  - name: default
+    description: What the step did, in a few words, such as Searched 214 invoices. It names the button.
+  - name: meta
+    description: A short fact at the end of the row, such as the duration.
+  - name: input
+    description: What the tool received, such as the query or its arguments. A pre element keeps the layout.
+  - name: output
+    description: What the tool returned, or the error message when status is error.
+events:
+  - name: toggle
+    detail: "{ open: boolean }"
+    description: Fired after a person opens or closes the details.
+a11y:
+  role: button (a disclosure), or a plain row when there are no details
+  name: The slotted title, followed by the status word.
+  keyboard:
+    - Enter or Space opens and closes the details.
+  notes:
+    - The status is read as a word after the title (Running, Done, Failed). A change of status is announced politely.
+    - Without an input or an output, the step is a plain row and is not in the tab order.
+    - Put a list of steps in the assistant's message, before the answer, in the order they ran.
+tokens:
+  - color.bg.surface
+  - color.bg.subtle
+  - color.fg.default
+  - color.fg.muted
+  - color.fg.subtle
+  - color.accent.fg
+  - color.status.success.fg
+  - color.status.danger.fg
+  - color.border.default
+  - color.focus.ring
+  - color.focus.halo
+  - focus.ring.width
+  - focus.ring.offset
+  - focus.halo.width
+  - radius.md
+  - radius.full
+  - border.width.default
+  - border.width.strong
+  - size.control.sm
+  - size.icon.sm
+  - size.icon.md
+  - space.100
+  - space.200
+  - space.300
+  - font.family.sans
+  - font.family.mono
+  - font.size.100
+  - font.size.200
+  - font.weight.semibold
+  - font.lineHeight.body
+  - duration.fast
+  - duration.moderate
+  - duration.loop
+  - easing.standard
+  - easing.spring

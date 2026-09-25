@@ -193,6 +193,15 @@
 	{:else if id === 'suggestion'}
 		<amb-suggestion>Draft a reminder</amb-suggestion>
 		<amb-suggestion>Compare months</amb-suggestion>
+	{:else if id === 'tool-call'}
+		<div class="fill stack">
+			<amb-tool-call>Searched 214 invoices <span slot="meta">1.2 s</span></amb-tool-call>
+			<amb-tool-call status="running">Drafting 3 reminders</amb-tool-call>
+		</div>
+	{:else if id === 'code-block'}
+		<div class="fill">
+			<amb-code-block language="bash">npm install @ambre-ds/ai</amb-code-block>
+		</div>
 	{/if}
 {/snippet}
 

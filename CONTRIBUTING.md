@@ -40,7 +40,9 @@ packages/tokens     DTCG sources, the four brand presets, and the contrast pairs
 packages/ui         core components: Svelte 5 custom elements
 packages/commerce   shop compositions
 packages/ai         conversation compositions
+packages/mcp        knowledge for AI tools, built from the contracts and examples
 contracts           one YAML contract per component: the public API
+examples            complete screens; each one must pass the validator
 apps/docs           documentation site, SvelteKit
 apps/storybook      Storybook
 decisions           architecture decision records
@@ -73,6 +75,8 @@ The contract is the API. Write it first, then the code, the stories, and the pag
 7. **Page.** `apps/docs/src/routes/components/<id>/+page.svelte`, and an entry in `apps/docs/src/lib/sections.ts`. The live example comes first, then short *do* and *don't* guidance.
 
 New components start with `status: draft` in their contract.
+
+8. **Example.** When the component changes how a screen is built, add or update a file in `examples/`. Each one starts with a comment holding `title`, `summary`, and `tags`, and `pnpm test` fails if it does not pass the validator in `@ambre-ds/mcp`. The contracts and examples feed the MCP server, `llms.txt`, and the usage skill, so AI tools see your change on the next release.
 
 ### Accessibility is the floor
 

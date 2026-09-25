@@ -48,7 +48,9 @@ const packs: Record<string, 'commerce' | 'ai'> = {
 	prompt: 'ai',
 	message: 'ai',
 	thinking: 'ai',
-	suggestion: 'ai'
+	suggestion: 'ai',
+	'tool-call': 'ai',
+	'code-block': 'ai'
 };
 
 export function packageFor(id: string) {

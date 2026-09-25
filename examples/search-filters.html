@@ -1,0 +1,34 @@
+<!--
+title: Search with filters
+summary: A search field, filters in a disclosure, a price range, and the active filters as tags. One listener on the form reacts to every change.
+tags: form, search, events
+-->
+<form role="search" style="display: grid; gap: var(--amb-space-400); max-width: 28rem;">
+  <amb-text-field name="q" type="search" placeholder="Linen, stoneware, wool">Search the shop</amb-text-field>
+
+  <amb-disclosure open>
+    Filters
+    <div slot="panel" style="display: grid; gap: var(--amb-space-300); padding-top: var(--amb-space-300);">
+      <amb-checkbox name="in-stock" checked>In stock</amb-checkbox>
+      <amb-checkbox name="sale">On sale</amb-checkbox>
+      <amb-range name="price" value="80" min="0" max="200" step="10">Up to 80 euros</amb-range>
+    </div>
+  </amb-disclosure>
+
+  <div aria-label="Active filters" style="display: flex; flex-wrap: wrap; gap: var(--amb-space-200);">
+    <amb-tag>In stock</amb-tag>
+    <amb-tag variant="accent">Up to 80 €</amb-tag>
+  </div>
+  <p id="count" aria-live="polite" style="margin: 0;">24 products</p>
+</form>
+
+<script type="module">
+  // Every Ambre event bubbles, so one listener on the form hears every filter.
+  const form = document.querySelector('form[role="search"]');
+  form.addEventListener('change', (event) => {
+    const field = event.target;
+    console.log(field.name, event.detail);
+    if (field.name === 'price') field.textContent = `Up to ${event.detail.value} euros`;
+  });
+  form.addEventListener('submit', (event) => event.preventDefault());
+</script>

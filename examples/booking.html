@@ -1,0 +1,31 @@
+<!--
+title: Book a stay
+summary: Check-in and check-out date pickers kept in order, a guest count, and a room type.
+tags: form, dates, travel, events
+-->
+<form action="/book" method="post" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--amb-space-400); max-width: 44rem;">
+  <h1 style="grid-column: 1 / -1; margin: 0; font-size: var(--amb-font-size-600);">Book a stay</h1>
+  <amb-date-picker name="check-in" id="check-in" min="2026-10-01" required>Check-in</amb-date-picker>
+  <amb-date-picker name="check-out" id="check-out" min="2026-10-02" required>Check-out</amb-date-picker>
+  <amb-quantity name="guests" value="2" min="1" max="6">Guests</amb-quantity>
+  <amb-select name="room" value="double">
+    Room
+    <option value="double">Double room</option>
+    <option value="suite">Suite with a terrace</option>
+  </amb-select>
+  <div style="grid-column: 1 / -1;">
+    <amb-button type="submit">Search rooms</amb-button>
+  </div>
+</form>
+
+<script type="module">
+  // The check-out can never come before the day after check-in.
+  const checkIn = document.querySelector('#check-in');
+  const checkOut = document.querySelector('#check-out');
+  checkIn.addEventListener('change', (event) => {
+    if (!event.detail.value) return;
+    const next = new Date(`${event.detail.value}T00:00:00Z`);
+    next.setUTCDate(next.getUTCDate() + 1);
+    checkOut.min = next.toISOString().slice(0, 10);
+  });
+</script>

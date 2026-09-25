@@ -35,7 +35,8 @@
 - **Works everywhere.** Standard custom elements with open shadow roots. The same tags run in React, Vue, Svelte, Angular, and plain HTML, and form controls join a native `<form>` through `ElementInternals`.
 - **Accessible by contract.** WCAG 2.2 AA is the floor. Native roles, the APG keyboard patterns, visible focus, reduced motion, and forced colors are built in. 40 contrast pairs are checked in every brand and theme on every build.
 - **An API you can trust.** Every component has a contract: props, slots, events with their `detail`, parts, and tokens. CI fails when the code drifts from it, and the manifest and TypeScript types are generated from it.
-- **Ready for AI products.** `@ambre-ds/ai` ships the composer, streaming messages, a thinking state, and suggestions.
+- **Ready for AI products.** `@ambre-ds/ai` ships the composer, streaming messages, a thinking state, agent steps, code blocks, and suggestions.
+- **Written correctly by AI tools.** An [MCP server](https://mohamedmok-ambre.surge.sh/get-started/ai) (`npx -y @ambre-ds/mcp`) gives Claude, Cursor, and Copilot the exact API of every element and validates the markup they write. The same reference is at [`/llms.txt`](https://mohamedmok-ambre.surge.sh/llms.txt), with a usage skill and [complete examples](https://mohamedmok-ambre.surge.sh/examples).
 
 ## Quick start
 
@@ -80,7 +81,8 @@ Read the full [install guide](https://mohamedmok-ambre.surge.sh/get-started), wi
 | [`@ambre-ds/tokens`](packages/tokens) | DTCG design tokens compiled to CSS variables, Sass, and JSON, with the brand presets |
 | [`@ambre-ds/ui`](packages/ui) | The core components |
 | [`@ambre-ds/commerce`](packages/commerce) | Shop compositions, starting with quantity |
-| [`@ambre-ds/ai`](packages/ai) | Conversation compositions: prompt, message, thinking, suggestion |
+| [`@ambre-ds/ai`](packages/ai) | Conversation compositions: prompt, message, thinking, suggestion, tool call, code block |
+| [`@ambre-ds/mcp`](packages/mcp) | An MCP server for AI agents: component lookup, examples, and a markup validator |
 
 The packages share one version and are published from CI with npm provenance.
 
@@ -95,7 +97,7 @@ The packages share one version and are published from CI with npm provenance.
 | Feedback | Badge, Tag, Banner, Progress, Spinner, Skeleton, Tooltip |
 | Navigation | Breadcrumbs, Pagination, Tabs, Menu, Dialog |
 | Commerce | Quantity |
-| AI | Prompt, Message, Thinking, Suggestion |
+| AI | Prompt, Message, Thinking, Suggestion, Tool call, Code block |
 
 Each has a [documentation page](https://mohamedmok-ambre.surge.sh/components) with a live example, guidance, the API, keyboard and screen reader notes, and its tokens, plus a [Storybook](https://mohamedmok-ambre.surge.sh/storybook/) story for every variant.
 
@@ -135,7 +137,9 @@ packages/tokens     tokens, presets, contrast pairs
 packages/ui         core components
 packages/commerce   shop compositions
 packages/ai         conversation compositions
+packages/mcp        knowledge for AI tools: MCP server, validator, llms.txt, skill
 contracts           the public API of every component
+examples            complete screens, validated in CI
 apps/docs           documentation site
 apps/storybook      Storybook
 decisions           architecture decision records

@@ -9,8 +9,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "pnpm --filter @ambre-ds/tokens build && pnpm --filter @ambre-ds/ui build && pnpm --filter @ambre-ds/commerce build && pnpm --filter @ambre-ds/ai build",
-    "test": "pnpm --filter @ambre-ds/tokens test && pnpm --filter @ambre-ds/ui test",
+    "build": "pnpm --filter @ambre-ds/tokens build && pnpm --filter @ambre-ds/ui build && pnpm --filter @ambre-ds/commerce build && pnpm --filter @ambre-ds/ai build && pnpm --filter @ambre-ds/mcp build",
+    "test": "pnpm --filter @ambre-ds/tokens test && pnpm --filter @ambre-ds/ui test && pnpm --filter @ambre-ds/mcp test",
     "docs": "pnpm --filter @ambre-ds/docs dev",
     "storybook": "pnpm --filter @ambre-ds/storybook dev",
     "check": "pnpm -r --if-present check",

@@ -13,6 +13,7 @@
   "dependencies": {
     "@ambre-ds/ai": "workspace:*",
     "@ambre-ds/commerce": "workspace:*",
+    "@ambre-ds/mcp": "workspace:*",
     "@ambre-ds/tokens": "workspace:*",
     "@ambre-ds/ui": "workspace:*",
     "@fontsource/material-symbols-outlined": "^5.3.7",

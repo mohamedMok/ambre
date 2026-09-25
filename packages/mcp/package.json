@@ -1,0 +1,58 @@
+{
+  "name": "@ambre-ds/mcp",
+  "version": "0.2.0",
+  "description": "The Ambre design system for AI agents: an MCP server that looks up every amb- element, finds the right one for a need, serves complete examples, and validates markup against the component contracts.",
+  "keywords": [
+    "design-system",
+    "web-components",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "llm",
+    "ambre"
+  ],
+  "homepage": "https://mohamedmok-ambre.surge.sh/get-started/ai",
+  "bugs": "https://github.com/mohamedMok/ambre/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedMok/ambre.git",
+    "directory": "packages/mcp"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "ambre-mcp": "./bin/ambre-mcp.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "dist",
+    "guidelines.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./server": "./src/server.js",
+    "./knowledge.json": "./dist/knowledge.json",
+    "./skill": "./dist/skill/SKILL.md",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=20.10"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node build.mjs && node test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "node-html-parser": "^7.0.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "yaml": "^2.9.1"
+  }
+}

@@ -1,0 +1,197 @@
+////
+/// Component — Tool call (`amb-tool-call`).
+/// Block `.c-tool-call`, elements `__header` (a button with `--button` when there are details),
+/// `__status`, `__spinner`, `__glyph`, `__title`, `__meta`, `__chevron`, `__panel`, `__section`,
+/// `__heading`, `__body`. Modifiers `--running`, `--complete`, `--error` mirror `status`; `.is-open` mirrors `open`.
+/// A quiet row in the conversation: the step is context, the answer is the content.
+/// @group components
+////
+
+@use 'tools' as *;
+
+@layer components {
+	:host {
+		display: block;
+		min-width: 0;
+	}
+
+	.c-tool-call {
+		--_ink: #{token(color-status-success-fg)};
+
+		overflow: hidden;
+		border: token(border-width-default) solid rim(token(color-border-default), 40%);
+		border-radius: token(radius-md);
+		background: token(color-bg-surface);
+		color: token(color-fg-default);
+		font-family: token(font-family-sans);
+		font-size: token(font-size-200);
+		line-height: token(font-line-height-body);
+
+		&--running {
+			--_ink: #{token(color-accent-fg)};
+		}
+
+		&--error {
+			--_ink: #{token(color-status-danger-fg)};
+			border-color: rim(token(color-status-danger-fg), 40%);
+		}
+
+		&__header {
+			display: flex;
+			align-items: center;
+			gap: token(space-200);
+			width: 100%;
+			min-height: token(size-control-sm);
+			padding: token(space-100) token(space-300);
+			border: 0;
+			background: transparent;
+			color: inherit;
+			font: inherit;
+			text-align: start;
+
+			&--button {
+				cursor: pointer;
+
+				@include motion {
+					@include transition(background-color);
+				}
+
+				@include hover {
+					background: token(color-bg-subtle);
+				}
+
+				@include focus-visible;
+			}
+		}
+
+		// The status: a small disc in the status colour, with a spinner while running.
+		&__status {
+			display: inline-grid;
+			flex: none;
+			place-items: center;
+			width: token(size-icon-md);
+			height: token(size-icon-md);
+			border-radius: token(radius-full);
+			background: tint(var(--_ink), 12%);
+			color: var(--_ink);
+		}
+
+		&__glyph {
+			width: token(size-icon-sm);
+			height: token(size-icon-sm);
+			fill: none;
+			stroke: currentColor;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2.6;
+		}
+
+		&__spinner {
+			width: 10px;
+			height: 10px;
+			border: 2px solid rim(var(--_ink), 30%);
+			border-top-color: var(--_ink);
+			border-radius: token(radius-full);
+
+			@include motion {
+				animation: amb-tool-call-spin token(duration-loop) linear infinite;
+			}
+		}
+
+		&__title {
+			flex: 1;
+			min-width: 0;
+			font-weight: token(font-weight-semibold);
+		}
+
+		&__meta {
+			flex: none;
+			color: token(color-fg-subtle);
+			font-variant-numeric: tabular-nums;
+		}
+
+		// A chevron drawn from two borders; it turns when the details open.
+		&__chevron {
+			flex: none;
+			width: token(space-200);
+			height: token(space-200);
+			border-right: token(border-width-strong) solid token(color-fg-subtle);
+			border-bottom: token(border-width-strong) solid token(color-fg-subtle);
+			translate: 0 -2px;
+			rotate: 45deg;
+
+			@include motion {
+				@include transition(rotate, translate);
+			}
+		}
+
+		&.is-open &__chevron {
+			translate: 0 2px;
+			rotate: 225deg;
+		}
+
+		&__panel {
+			display: grid;
+			gap: token(space-300);
+			padding: token(space-300);
+			border-top: token(border-width-default) solid rim(token(color-border-default), 30%);
+			background: token(color-bg-subtle);
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		&__section {
+			display: grid;
+			gap: token(space-100);
+			min-width: 0;
+		}
+
+		&__heading {
+			color: token(color-fg-subtle);
+			font-size: token(font-size-100);
+			font-weight: token(font-weight-semibold);
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
+
+		&__body {
+			min-width: 0;
+			overflow-x: auto;
+			color: token(color-fg-muted);
+		}
+	}
+
+	::slotted(pre),
+	::slotted(code) {
+		margin: 0;
+		font-family: token(font-family-mono);
+		font-size: token(font-size-200);
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+	}
+
+	@keyframes amb-tool-call-spin {
+		to {
+			rotate: 360deg;
+		}
+	}
+
+	@include forced-colors {
+		.c-tool-call {
+			border: token(border-width-default) solid CanvasText;
+		}
+
+		.c-tool-call__status {
+			border: token(border-width-default) solid CanvasText;
+			background: Canvas;
+			color: CanvasText;
+		}
+
+		.c-tool-call__spinner {
+			border-color: CanvasText;
+			border-top-color: Highlight;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+<!--
+title: Sign in
+summary: Email and password, a remembered session, and a link to reset the password. The form posts natively.
+tags: form, authentication
+-->
+<form action="/sign-in" method="post" style="display: grid; gap: var(--amb-space-400); max-width: 24rem;">
+  <h1 style="margin: 0; font-size: var(--amb-font-size-600);">Sign in</h1>
+  <amb-text-field name="email" type="email" autocomplete="email" required>Email</amb-text-field>
+  <amb-text-field name="password" type="password" autocomplete="current-password" required>Password</amb-text-field>
+  <amb-checkbox name="remember">Keep me signed in on this device</amb-checkbox>
+  <amb-button type="submit">Sign in</amb-button>
+  <amb-link href="/reset-password">Reset your password</amb-link>
+</form>

@@ -1,0 +1,66 @@
+<!--
+title: Dashboard home
+summary: Key figures with their change, shortcuts as tiles, and a progress bar, in the sidebar layout.
+tags: layout, content, saas, dashboard
+-->
+<amb-layout variant="sidebar" label="Workspace">
+  <strong slot="header">Northwind</strong>
+
+  <ul slot="nav" style="display: grid; gap: 2px; margin: 0; padding: 0; list-style: none;">
+    <li><a href="/" aria-current="page">Overview</a></li>
+    <li><a href="/invoices">Invoices</a></li>
+    <li><a href="/customers">Customers</a></li>
+  </ul>
+
+  <h1 style="margin: 0 0 var(--amb-space-500); font-size: var(--amb-font-size-600);">Overview</h1>
+
+  <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--amb-space-300); margin: 0; padding: 0; list-style: none;">
+    <li>
+      <amb-stat-tile trend="up" sentiment="positive">
+        Revenue
+        <span slot="value">48,210 €</span>
+        <span slot="delta">12% more than August</span>
+        <span slot="description">September 2026</span>
+      </amb-stat-tile>
+    </li>
+    <li>
+      <amb-stat-tile trend="up" sentiment="negative">
+        Refunds
+        <span slot="value">1,904 €</span>
+        <span slot="delta">4% more than August</span>
+      </amb-stat-tile>
+    </li>
+    <li>
+      <amb-stat-tile>
+        Open invoices
+        <span slot="value">14</span>
+        <span slot="description">3 overdue</span>
+      </amb-stat-tile>
+    </li>
+  </ul>
+
+  <h2 style="margin: var(--amb-space-600) 0 var(--amb-space-300); font-size: var(--amb-font-size-500);">Shortcuts</h2>
+  <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--amb-space-300); margin: 0; padding: 0; list-style: none;">
+    <li>
+      <amb-tile href="/invoices/new" tone="accent">
+        <amb-icon slot="icon" name="receipt_long"></amb-icon>
+        New invoice
+        <span slot="description">Bill a customer in a minute.</span>
+      </amb-tile>
+    </li>
+    <li>
+      <amb-tile href="/customers">
+        <amb-icon slot="icon" name="group"></amb-icon>
+        <amb-badge slot="meta">86</amb-badge>
+        Customers
+        <span slot="description">Contacts and their history.</span>
+      </amb-tile>
+    </li>
+  </ul>
+
+  <div slot="aside" style="display: grid; gap: var(--amb-space-300);">
+    <strong>Plan</strong>
+    <amb-progress value="72" max="100" label="Seats used: 72 of 100"></amb-progress>
+    <amb-link href="/billing">Add seats</amb-link>
+  </div>
+</amb-layout>

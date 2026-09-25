@@ -1,0 +1,15 @@
+<!--
+title: Create an account
+summary: Name, email, a new password, and a required agreement. Validation messages come from the browser.
+tags: form, authentication, validation
+-->
+<form action="/sign-up" method="post" style="display: grid; gap: var(--amb-space-400); max-width: 26rem;">
+  <h1 style="margin: 0; font-size: var(--amb-font-size-600);">Create your account</h1>
+  <amb-text-field name="name" autocomplete="name" required>Full name</amb-text-field>
+  <amb-text-field name="email" type="email" autocomplete="email" required>Work email</amb-text-field>
+  <amb-text-field name="password" type="password" autocomplete="new-password" required>Password</amb-text-field>
+  <amb-checkbox name="terms" required>I accept the terms of service</amb-checkbox>
+  <amb-checkbox name="news" value="monthly">Send me the monthly product news</amb-checkbox>
+  <amb-button type="submit">Create account</amb-button>
+  <p style="margin: 0;">Already have an account? <amb-link href="/sign-in">Sign in</amb-link></p>
+</form>

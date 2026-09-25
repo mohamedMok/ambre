@@ -1302,6 +1302,211 @@
     },
     {
       "kind": "javascript-module",
+      "path": "../ai/src/code-block/CodeBlock.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CodeBlock",
+          "description": "Code in an answer, with its language and a copy button. It reads its text as it streams in, and drops the indent the markup adds.",
+          "tagName": "amb-code-block",
+          "attributes": [
+            {
+              "name": "language",
+              "type": "string",
+              "default": "",
+              "description": "The language, shown in the bar and in the code's name, such as js or bash. Code is shown when it is empty.",
+              "fieldName": "language"
+            },
+            {
+              "name": "wrap",
+              "type": "boolean",
+              "default": "false",
+              "description": "Wraps long lines instead of scrolling them. Use it for prose-like text, not for code where line breaks matter.",
+              "fieldName": "wrap"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The code, as text. Blank lines around it and the indent shared by every line are removed. It can grow while an answer streams."
+            }
+          ],
+          "events": [
+            {
+              "name": "copied",
+              "description": "Fired after the copy button wrote the code to the clipboard. value is the text. Named copied because the browser's own copy event fires when people copy a selection.",
+              "type": {
+                "text": "CustomEvent<{ value: string }>"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "surface",
+              "description": "surface"
+            },
+            {
+              "name": "language",
+              "description": "language"
+            },
+            {
+              "name": "copy",
+              "description": "copy"
+            },
+            {
+              "name": "code",
+              "description": "code"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-subtle",
+              "description": "color.fg.subtle"
+            },
+            {
+              "name": "--amb-color-status-success-fg",
+              "description": "color.status.success.fg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-elevation-inset",
+              "description": "elevation.inset"
+            },
+            {
+              "name": "--amb-radius-sm",
+              "description": "radius.sm"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-space-400",
+              "description": "space.400"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-family-mono",
+              "description": "font.family.mono"
+            },
+            {
+              "name": "--amb-font-size-100",
+              "description": "font.size.100"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-code-block",
+          "declaration": {
+            "name": "CodeBlock",
+            "module": "../ai/src/code-block/CodeBlock.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/date-picker/DatePicker.svelte",
       "declarations": [
         {
@@ -6456,6 +6661,239 @@
           "declaration": {
             "name": "Toggle",
             "module": "src/toggle/Toggle.svelte"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "../ai/src/tool-call/ToolCall.svelte",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ToolCall",
+          "description": "One step an assistant or agent took, such as searching the invoices. It shows whether the step is running, done, or failed, and opens to show what went in and what came out.",
+          "tagName": "amb-tool-call",
+          "attributes": [
+            {
+              "name": "status",
+              "type": "running | complete | error",
+              "default": "complete",
+              "description": "Running shows a spinner and marks the details busy. Error colours the step and labels the output as the error.",
+              "fieldName": "status"
+            },
+            {
+              "name": "open",
+              "type": "boolean",
+              "default": "false",
+              "description": "Shows the input and the output.",
+              "fieldName": "open"
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "What the step did, in a few words, such as Searched 214 invoices. It names the button."
+            },
+            {
+              "name": "meta",
+              "description": "A short fact at the end of the row, such as the duration."
+            },
+            {
+              "name": "input",
+              "description": "What the tool received, such as the query or its arguments. A pre element keeps the layout."
+            },
+            {
+              "name": "output",
+              "description": "What the tool returned, or the error message when status is error."
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "description": "Fired after a person opens or closes the details.",
+              "type": {
+                "text": "CustomEvent<{ open: boolean }>"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control",
+              "description": "control"
+            },
+            {
+              "name": "title",
+              "description": "title"
+            },
+            {
+              "name": "meta",
+              "description": "meta"
+            },
+            {
+              "name": "panel",
+              "description": "panel"
+            },
+            {
+              "name": "input",
+              "description": "input"
+            },
+            {
+              "name": "output",
+              "description": "output"
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--amb-color-bg-surface",
+              "description": "color.bg.surface"
+            },
+            {
+              "name": "--amb-color-bg-subtle",
+              "description": "color.bg.subtle"
+            },
+            {
+              "name": "--amb-color-fg-default",
+              "description": "color.fg.default"
+            },
+            {
+              "name": "--amb-color-fg-muted",
+              "description": "color.fg.muted"
+            },
+            {
+              "name": "--amb-color-fg-subtle",
+              "description": "color.fg.subtle"
+            },
+            {
+              "name": "--amb-color-accent-fg",
+              "description": "color.accent.fg"
+            },
+            {
+              "name": "--amb-color-status-success-fg",
+              "description": "color.status.success.fg"
+            },
+            {
+              "name": "--amb-color-status-danger-fg",
+              "description": "color.status.danger.fg"
+            },
+            {
+              "name": "--amb-color-border-default",
+              "description": "color.border.default"
+            },
+            {
+              "name": "--amb-color-focus-ring",
+              "description": "color.focus.ring"
+            },
+            {
+              "name": "--amb-color-focus-halo",
+              "description": "color.focus.halo"
+            },
+            {
+              "name": "--amb-focus-ring-width",
+              "description": "focus.ring.width"
+            },
+            {
+              "name": "--amb-focus-ring-offset",
+              "description": "focus.ring.offset"
+            },
+            {
+              "name": "--amb-focus-halo-width",
+              "description": "focus.halo.width"
+            },
+            {
+              "name": "--amb-radius-md",
+              "description": "radius.md"
+            },
+            {
+              "name": "--amb-radius-full",
+              "description": "radius.full"
+            },
+            {
+              "name": "--amb-border-width-default",
+              "description": "border.width.default"
+            },
+            {
+              "name": "--amb-border-width-strong",
+              "description": "border.width.strong"
+            },
+            {
+              "name": "--amb-size-control-sm",
+              "description": "size.control.sm"
+            },
+            {
+              "name": "--amb-size-icon-sm",
+              "description": "size.icon.sm"
+            },
+            {
+              "name": "--amb-size-icon-md",
+              "description": "size.icon.md"
+            },
+            {
+              "name": "--amb-space-100",
+              "description": "space.100"
+            },
+            {
+              "name": "--amb-space-200",
+              "description": "space.200"
+            },
+            {
+              "name": "--amb-space-300",
+              "description": "space.300"
+            },
+            {
+              "name": "--amb-font-family-sans",
+              "description": "font.family.sans"
+            },
+            {
+              "name": "--amb-font-family-mono",
+              "description": "font.family.mono"
+            },
+            {
+              "name": "--amb-font-size-100",
+              "description": "font.size.100"
+            },
+            {
+              "name": "--amb-font-size-200",
+              "description": "font.size.200"
+            },
+            {
+              "name": "--amb-font-weight-semibold",
+              "description": "font.weight.semibold"
+            },
+            {
+              "name": "--amb-font-line-height-body",
+              "description": "font.lineHeight.body"
+            },
+            {
+              "name": "--amb-duration-fast",
+              "description": "duration.fast"
+            },
+            {
+              "name": "--amb-duration-moderate",
+              "description": "duration.moderate"
+            },
+            {
+              "name": "--amb-duration-loop",
+              "description": "duration.loop"
+            },
+            {
+              "name": "--amb-easing-standard",
+              "description": "easing.standard"
+            },
+            {
+              "name": "--amb-easing-spring",
+              "description": "easing.spring"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "amb-tool-call",
+          "declaration": {
+            "name": "ToolCall",
+            "module": "../ai/src/tool-call/ToolCall.svelte"
           }
         }
       ]
