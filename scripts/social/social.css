@@ -1,0 +1,275 @@
+/*
+ * Social preview images. Rendered to PNG by render.mjs with headless Chrome.
+ * The brand cards read the real tokens and presets, so each card is the preset itself.
+ */
+@import url('../../packages/tokens/dist/css/tokens.css');
+@import url('../../packages/tokens/dist/css/presets.css');
+
+@font-face {
+	font-family: 'Source Sans 3';
+	font-weight: 400;
+	src: url('../../apps/docs/node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Source Sans 3';
+	font-weight: 600;
+	src: url('../../apps/docs/node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Source Sans 3';
+	font-weight: 700;
+	src: url('../../apps/docs/node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Source Serif 4';
+	font-weight: 600;
+	src: url('../../apps/docs/node_modules/@fontsource/source-serif-4/files/source-serif-4-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Nunito Sans';
+	font-weight: 700;
+	src: url('../../apps/docs/node_modules/@fontsource/nunito-sans/files/nunito-sans-latin-700-normal.woff2') format('woff2');
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+/* The page is the image. The 1200 × 630 frame sits centred, so a wider canvas only adds margin. */
+body {
+	display: grid;
+	place-items: center;
+	background:
+		radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--amb-color-fg-default) 9%, transparent) 1px, transparent 0) 0 0 / 22px 22px,
+		radial-gradient(120% 90% at 100% 0%, color-mix(in oklab, var(--amb-color-accent-bg) 16%, var(--amb-color-bg-canvas)), var(--amb-color-bg-canvas) 60%);
+	color: var(--amb-color-fg-default);
+	font-family: 'Source Sans 3', sans-serif;
+}
+
+.frame {
+	position: relative;
+	display: grid;
+	grid-template-columns: 540px 1fr;
+	align-items: center;
+	gap: 40px;
+	width: 1200px;
+	height: 630px;
+	padding: 64px 0 64px 72px;
+}
+
+/* Left: the message. */
+.wordmark {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+.mark {
+	position: relative;
+	width: 44px;
+	height: 44px;
+	border-radius: 13px;
+	background: linear-gradient(145deg, var(--amb-color-accent-bg), var(--amb-color-accent-bg-active));
+	box-shadow:
+		inset 0 1px 0 color-mix(in oklab, white 45%, transparent),
+		0 6px 16px color-mix(in oklab, var(--amb-color-accent-bg-active) 35%, transparent);
+}
+
+.mark::after {
+	content: '';
+	position: absolute;
+	inset: 13px;
+	border-radius: 50%;
+	background: var(--amb-color-bg-inverse);
+	box-shadow: inset 0 2px 3px color-mix(in oklab, black 40%, transparent);
+}
+
+.headline {
+	margin-top: 56px;
+	font-size: 76px;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 0.98;
+}
+
+.headline em {
+	color: var(--amb-color-accent-fg);
+	font-style: normal;
+}
+
+.lede {
+	margin-top: 26px;
+	color: var(--amb-color-fg-muted);
+	font-size: 25px;
+	line-height: 1.4;
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 40px;
+}
+
+.chip {
+	padding: 7px 14px;
+	border: 1px solid color-mix(in oklab, var(--amb-color-border-default) 45%, transparent);
+	border-radius: 999px;
+	background: color-mix(in oklab, var(--amb-color-bg-surface) 80%, transparent);
+	color: var(--amb-color-fg-muted);
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.url {
+	position: absolute;
+	bottom: 34px;
+	left: 72px;
+	color: var(--amb-color-fg-subtle);
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+/* Right: the same interface in several presets. */
+.stack {
+	position: relative;
+	height: 100%;
+}
+
+.shot {
+	position: absolute;
+	width: 330px;
+	padding: 22px;
+	border: var(--amb-border-width-default) solid color-mix(in oklab, var(--amb-color-border-default) 35%, transparent);
+	border-radius: var(--amb-radius-lg);
+	background: var(--amb-color-bg-surface);
+	box-shadow:
+		inset 0 1px 0 var(--amb-color-highlight),
+		0 30px 60px -20px color-mix(in oklab, black 35%, transparent),
+		var(--amb-elevation-3);
+	color: var(--amb-color-fg-default);
+	font-family: var(--amb-font-family-sans);
+	font-size: 15px;
+}
+
+.shot-brand {
+	position: absolute;
+	top: -13px;
+	right: 18px;
+	padding: 3px 11px;
+	border-radius: 999px;
+	background: var(--amb-color-bg-inverse);
+	color: var(--amb-color-fg-inverse);
+	font-family: 'Source Sans 3', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.shot-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 16px;
+}
+
+.shot-title {
+	font-size: 19px;
+	font-weight: var(--amb-font-weight-semibold);
+}
+
+.badge {
+	padding: 2px 10px;
+	border-radius: var(--amb-radius-full);
+	background: color-mix(in oklab, var(--amb-color-status-success-fg) 12%, var(--amb-color-bg-surface));
+	color: var(--amb-color-status-success-fg);
+	font-size: 13px;
+	font-weight: var(--amb-font-weight-semibold);
+}
+
+.label {
+	margin-bottom: 6px;
+	font-size: 13px;
+	font-weight: var(--amb-font-weight-semibold);
+}
+
+.field {
+	display: flex;
+	align-items: center;
+	height: var(--amb-size-control-md);
+	padding-inline: 12px;
+	border: var(--amb-border-width-default) solid var(--amb-color-border-default);
+	border-radius: var(--amb-radius-md);
+	background: var(--amb-color-bg-surface);
+	box-shadow: var(--amb-elevation-inset);
+	color: var(--amb-color-fg-default);
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 16px;
+}
+
+.switch {
+	position: relative;
+	width: 40px;
+	height: 24px;
+	border-radius: var(--amb-radius-full);
+	background: var(--amb-color-accent-bg);
+}
+
+.switch::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: var(--amb-color-fg-on-accent);
+	box-shadow: 0 1px 2px color-mix(in oklab, black 30%, transparent);
+}
+
+.actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 18px;
+}
+
+.btn {
+	display: inline-flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	height: var(--amb-size-control-md);
+	border: var(--amb-border-width-default) solid var(--amb-color-border-default);
+	border-radius: var(--amb-radius-action);
+	background: var(--amb-color-bg-surface);
+	box-shadow: inset 0 1px 0 var(--amb-color-highlight), var(--amb-elevation-1);
+	font-weight: var(--amb-font-weight-semibold);
+}
+
+.btn.primary {
+	border-color: transparent;
+	background: var(--amb-color-accent-bg);
+	color: var(--amb-color-fg-on-accent);
+}

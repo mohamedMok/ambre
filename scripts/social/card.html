@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="social.css" />
+		<style>
+			.a { top: 30px; left: 0; rotate: -6deg; }
+			.b { top: 96px; left: 196px; rotate: 4deg; }
+			.c { top: 262px; left: 50px; rotate: -2deg; }
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<section>
+				<div class="wordmark"><span class="mark"></span>Ambre</div>
+				<h1 class="headline">One library.<br /><em>Any brand.</em></h1>
+				<p class="lede">Accessible web components that follow any brand preset, in any framework.</p>
+				<div class="chips">
+					<span class="chip">Web components</span>
+					<span class="chip">WCAG 2.2 AA</span>
+					<span class="chip">React · Vue · Svelte · HTML</span>
+				</div>
+			</section>
+
+			<section class="stack" aria-hidden="true">
+				<!-- The same markup three times. Only data-brand and data-theme change. -->
+				<div class="shot a" data-brand="noir" data-theme="dark">
+					<span class="shot-brand">Noir</span>
+					<div class="shot-head"><span class="shot-title">Checkout</span><span class="badge">Paid</span></div>
+					<p class="label">Email</p>
+					<div class="field">ada@example.com</div>
+					<div class="row"><span class="switch"></span>Save for next time</div>
+					<div class="actions"><span class="btn">Back</span><span class="btn primary">Pay 48 €</span></div>
+				</div>
+				<div class="shot b" data-brand="atlas" data-theme="light">
+					<span class="shot-brand">Atlas</span>
+					<div class="shot-head"><span class="shot-title">Checkout</span><span class="badge">Paid</span></div>
+					<p class="label">Email</p>
+					<div class="field">ada@example.com</div>
+					<div class="row"><span class="switch"></span>Save for next time</div>
+					<div class="actions"><span class="btn">Back</span><span class="btn primary">Pay 48 €</span></div>
+				</div>
+				<div class="shot c" data-theme="light">
+					<span class="shot-brand">Ambre</span>
+					<div class="shot-head"><span class="shot-title">Checkout</span><span class="badge">Paid</span></div>
+					<p class="label">Email</p>
+					<div class="field">ada@example.com</div>
+					<div class="row"><span class="switch"></span>Save for next time</div>
+					<div class="actions"><span class="btn">Back</span><span class="btn primary">Pay 48 €</span></div>
+				</div>
+			</section>
+
+			<p class="url">mohamedmok-ambre.surge.sh</p>
+		</main>
+	</body>
+</html>

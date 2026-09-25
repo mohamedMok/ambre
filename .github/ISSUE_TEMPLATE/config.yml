@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://mohamedmok-ambre.surge.sh
+    about: Usage, API, events, and accessibility notes for every component.
+  - name: Storybook
+    url: https://mohamedmok-ambre.surge.sh/storybook/
+    about: Every variant and state, in each brand and theme.
+  - name: Security vulnerability
+    url: https://github.com/mohamedMok/ambre/security/advisories/new
+    about: Report it privately. Please do not open a public issue.

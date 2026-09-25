@@ -22,8 +22,8 @@
 	import OnThisPage from '$lib/OnThisPage.svelte';
 	import Sidebar from '$lib/Sidebar.svelte';
 	import { hydratePreview } from '$lib/preview.svelte';
-	import { header, inSection } from '$lib/sections';
-	import { repoUrl, storybookUrl } from '$lib/site';
+	import { header, inSection, searchable } from '$lib/sections';
+	import { repoUrl, siteUrl, storybookUrl } from '$lib/site';
 	import '../app.css';
 
 	let { children } = $props();
@@ -33,6 +33,21 @@
 	const isHome = $derived($page.url.pathname === '/');
 	// Full-width tools: no docs sidebar or outline.
 	const isBare = $derived(isHome || $page.url.pathname.startsWith('/builder'));
+
+	// Social cards: the page's own name and summary, and the builder has its own image.
+	const entry = $derived(searchable.find((item) => item.href === $page.url.pathname));
+	const social = $derived({
+		title: isHome || !entry ? 'Ambre — One library. Any brand.' : `${entry.label} — Ambre`,
+		description:
+			isHome || !entry
+				? 'Accessible web components that follow any brand preset, in any framework. Tokens, five brands, a preset builder, and an AI pack.'
+				: entry.summary,
+		image: `${siteUrl}/social/${$page.url.pathname.startsWith('/builder') ? 'builder' : 'ambre'}.png`,
+		alt: $page.url.pathname.startsWith('/builder')
+			? 'The Ambre preset builder: token swatches and a live preview in the brand being built.'
+			: 'Ambre: the same checkout form in three brand presets, Noir, Atlas, and Ambre.',
+		url: `${siteUrl}${$page.url.pathname}`
+	});
 
 	onMount(async () => {
 		theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
@@ -69,6 +84,25 @@
 </script>
 
 <svelte:window onkeydown={onKeydown} />
+
+<svelte:head>
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<link rel="canonical" href={social.url} />
+	<meta property="og:site_name" content="Ambre" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={social.title} />
+	<meta property="og:description" content={social.description} />
+	<meta property="og:url" content={social.url} />
+	<meta property="og:image" content={social.image} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content={social.alt} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={social.title} />
+	<meta name="twitter:description" content={social.description} />
+	<meta name="twitter:image" content={social.image} />
+</svelte:head>
 
 <a class="skip" href="#content">Skip to content</a>
 

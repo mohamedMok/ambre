@@ -1,0 +1,78 @@
+name: Component or feature proposal
+description: Propose a new component, prop, event, token, or brand capability.
+labels: [proposal]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A part enters the core library when it is a primitive every product needs, or when a second product needs it.
+        One finished design is not a reason. Domain parts go in a pack, such as `@ambre-ds/commerce` or `@ambre-ds/ai`.
+        Please open the proposal before writing code: the contract is agreed first.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What you propose
+      options:
+        - A new component
+        - A prop, slot, part, or event on an existing component
+        - A token or a token tier
+        - A brand or preset capability
+        - Something for the documentation or the builder
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What people cannot do today. Describe the need, not the solution.
+      placeholder: Our products need people to pick a country from about 250, with typing to filter. amb-select is too long to scan.
+    validations:
+      required: true
+
+  - type: textarea
+    id: products
+    attributes:
+      label: Who needs it
+      description: The products or teams, and whether a second one needs the same thing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: api
+    attributes:
+      label: A first idea of the API
+      description: The tag, props, slots, and events, in plain HTML. It does not need to be final.
+      render: html
+      placeholder: |
+        <amb-combobox name="country" placeholder="Search">
+          Country
+          <option value="fr">France</option>
+        </amb-combobox>
+    validations:
+      required: false
+
+  - type: input
+    id: pattern
+    attributes:
+      label: Accessibility pattern
+      description: The APG pattern it follows, if you know it.
+      placeholder: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you use today
+      description: A workaround, or the same component in another system.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to build it, following CONTRIBUTING.md.

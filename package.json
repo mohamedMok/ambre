@@ -14,6 +14,7 @@
     "docs": "pnpm --filter @ambre-ds/docs dev",
     "storybook": "pnpm --filter @ambre-ds/storybook dev",
     "check": "pnpm -r --if-present check",
+    "social": "node scripts/social/render.mjs",
     "changeset": "changeset",
     "version-packages": "changeset version && pnpm install --lockfile-only",
     "release": "pnpm build && pnpm test && changeset publish"

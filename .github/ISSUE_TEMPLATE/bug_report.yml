@@ -1,0 +1,99 @@
+name: Bug report
+description: A component, token, or page does not do what the documentation says.
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. A small snippet that shows the problem is the fastest way to a fix.
+        For an accessibility barrier, use the accessibility form instead.
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - "@ambre-ds/ui"
+        - "@ambre-ds/tokens"
+        - "@ambre-ds/commerce"
+        - "@ambre-ds/ai"
+        - Documentation site
+        - Storybook
+        - Preset builder
+    validations:
+      required: true
+
+  - type: input
+    id: component
+    attributes:
+      label: Element
+      description: The tag, if the bug is in a component.
+      placeholder: amb-date-picker
+    validations:
+      required: false
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+      placeholder: |
+        Picking a day in the calendar does not fire `change`.
+        I expected `change` with `event.detail.value` set to the ISO date.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: The HTML and script that show the problem, or a link to a StackBlitz or CodeSandbox.
+      render: html
+      placeholder: |
+        <amb-date-picker name="start">Start date</amb-date-picker>
+        <script type="module">
+          import '@ambre-ds/ui';
+          document.querySelector('amb-date-picker').addEventListener('change', console.log);
+        </script>
+    validations:
+      required: true
+
+  - type: dropdown
+    id: brand
+    attributes:
+      label: Brand
+      options: [Ambre (default), Atlas, Verdant, Noir, Press, A custom preset]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options: [Light, Dark, Both]
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: From `npm ls @ambre-ds/ui`, or the commit if you build from source.
+      placeholder: 0.2.0
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, operating system, and framework
+      placeholder: Safari 19 on macOS 26, React 19
+    validations:
+      required: true
+
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: Screenshots, console errors, or what you already tried.
+    validations:
+      required: false

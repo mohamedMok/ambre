@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="social.css" />
+		<style>
+			/* The mark alone, 180 × 180, for the touch icon. Fixed sizes: the headless viewport can be wider. */
+			html,
+			body {
+				width: 180px;
+				height: 180px;
+			}
+
+			body {
+				background: var(--amb-color-bg-canvas);
+			}
+
+			.mark {
+				width: 132px;
+				height: 132px;
+				border-radius: 38px;
+			}
+
+			.mark::after {
+				inset: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<span class="mark"></span>
+	</body>
+</html>

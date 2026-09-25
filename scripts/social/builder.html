@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="social.css" />
+		<style>
+			.panel {
+				position: absolute;
+				top: 30px;
+				left: 0;
+				width: 380px;
+				padding: 20px;
+				border: 1px solid color-mix(in oklab, var(--amb-color-border-default) 35%, transparent);
+				border-radius: 18px;
+				background: var(--amb-color-bg-surface);
+				box-shadow:
+					inset 0 1px 0 var(--amb-color-highlight),
+					0 30px 60px -24px color-mix(in oklab, black 30%, transparent),
+					var(--amb-elevation-2);
+				rotate: -3deg;
+			}
+
+			.panel-title {
+				margin-bottom: 14px;
+				color: var(--amb-color-fg-subtle);
+				font-size: 13px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.token {
+				display: grid;
+				grid-template-columns: 30px 1fr auto;
+				align-items: center;
+				gap: 12px;
+				padding: 9px 0;
+				border-top: 1px solid color-mix(in oklab, var(--amb-color-border-default) 22%, transparent);
+				font-size: 16px;
+			}
+
+			.token code {
+				font-family: 'Source Sans 3', sans-serif;
+				font-weight: 600;
+			}
+
+			.token span:last-child {
+				color: var(--amb-color-fg-muted);
+				font-variant-numeric: tabular-nums;
+			}
+
+			.swatch {
+				width: 30px;
+				height: 30px;
+				border-radius: 9px;
+				box-shadow: inset 0 0 0 1px color-mix(in oklab, black 12%, transparent);
+			}
+
+			.roll {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				height: 44px;
+				margin-top: 14px;
+				border-radius: 10px;
+				background: var(--amb-color-bg-inverse);
+				color: var(--amb-color-fg-inverse);
+				font-weight: 700;
+			}
+
+			.shot { top: 250px; left: 200px; width: 310px; rotate: 4deg; }
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<section>
+				<div class="wordmark"><span class="mark"></span>Ambre</div>
+				<h1 class="headline">Build your<br /><em>brand.</em></h1>
+				<p class="lede">Edit every token, or roll one at random. Every component follows, live, with contrast checked.</p>
+				<div class="chips">
+					<span class="chip">86 tokens</span>
+					<span class="chip">40 contrast pairs</span>
+					<span class="chip">Export one file</span>
+				</div>
+			</section>
+
+			<section class="stack" aria-hidden="true">
+				<div class="panel">
+					<p class="panel-title">Preset builder</p>
+					<div class="token"><span class="swatch" style="background: #2f6b4f"></span><code>accent.bg</code><span>#2F6B4F</span></div>
+					<div class="token"><span class="swatch" style="background: #f4f1ea"></span><code>bg.canvas</code><span>#F4F1EA</span></div>
+					<div class="token"><span class="swatch" style="background: #1d2621"></span><code>fg.default</code><span>#1D2621</span></div>
+					<div class="token"><span class="swatch" style="background: linear-gradient(135deg, #e7efe9, #bcd3c4)"></span><code>radius.action</code><span>999px</span></div>
+					<div class="token"><span class="swatch" style="background: #d9e6dc"></span><code>font.family.sans</code><span>Nunito Sans</span></div>
+					<div class="roll">⟳ Randomize</div>
+				</div>
+				<!-- The preview in the brand being built: Verdant stands in for it. -->
+				<div class="shot" data-brand="verdant" data-theme="light">
+					<span class="shot-brand">Your brand</span>
+					<div class="shot-head"><span class="shot-title">Book a visit</span><span class="badge">Open</span></div>
+					<p class="label">Email</p>
+					<div class="field">ada@example.com</div>
+					<div class="actions"><span class="btn">Later</span><span class="btn primary">Book</span></div>
+				</div>
+			</section>
+
+			<p class="url">mohamedmok-ambre.surge.sh/builder</p>
+		</main>
+	</body>
+</html>

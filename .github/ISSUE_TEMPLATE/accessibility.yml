@@ -1,0 +1,63 @@
+name: Accessibility barrier
+description: Something cannot be used with a keyboard, a screen reader, zoom, high contrast, or reduced motion.
+labels: [accessibility, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        WCAG 2.2 AA is Ambre's floor, so a barrier is a bug and is fixed first.
+        You do not need to know the success criterion. Describe what you tried and what stopped you.
+
+  - type: input
+    id: component
+    attributes:
+      label: Element or page
+      placeholder: amb-radio-card, or /components/radio-card
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: how
+    attributes:
+      label: How you use the page
+      options:
+        - label: Keyboard only
+        - label: Screen reader
+        - label: Voice control
+        - label: Zoom or magnification
+        - label: Forced colors or high contrast
+        - label: Reduced motion
+
+  - type: input
+    id: tools
+    attributes:
+      label: Assistive technology and browser
+      placeholder: NVDA 2026.2 with Firefox 142 on Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: barrier
+    attributes:
+      label: What you tried, and what stopped you
+      placeholder: |
+        I tabbed into the plan cards and pressed the arrow keys.
+        NVDA announced "radio button, not checked" without the plan name.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      placeholder: The plan name and its description, as with a native radio.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: brand
+    attributes:
+      label: Brand and theme, if it matters
+      options: [Any, Ambre light, Ambre dark, Atlas, Verdant, Noir, Press, A custom preset]
+    validations:
+      required: false
