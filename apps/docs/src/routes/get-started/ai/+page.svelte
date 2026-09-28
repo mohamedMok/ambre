@@ -25,6 +25,19 @@
   }
 }`;
 
+	const lintCode = `npx -y -p @ambre-ds/mcp ambre-lint src`;
+
+	const actionCode = `name: Ambre
+on: pull_request
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mohamedMok/ambre/lint@main
+        with:
+          path: src`;
+
 	const skillInstall = `mkdir -p .claude/skills/ambre
 curl -o .claude/skills/ambre/SKILL.md ${siteUrl}/skills/ambre/SKILL.md`;
 
@@ -110,6 +123,16 @@ This project uses the Ambre design system (amb-* web components).
 	Every example on this site passes it in CI. It is also a library:
 	<code>import &#123; validate &#125; from '@ambre-ds/mcp'</code>, for a lint step or a code review bot.
 </p>
+
+<h2 id="lint">Lint pull requests</h2>
+<p>
+	The same validator checks a whole project, whoever wrote the markup: a person, Copilot, or an agent. HTML is checked
+	strictly. Svelte, Vue, JSX, TSX, and Astro templates are checked in framework mode, which leaves directives,
+	expressions, and event bindings alone.
+</p>
+<CodeBlock code={lintCode} lang="bash" title="Terminal" />
+<p>In GitHub Actions, every problem is annotated on the line of the pull request that caused it.</p>
+<CodeBlock code={actionCode} lang="js" title=".github/workflows/ambre.yml" />
 
 <h2 id="llms-txt">llms.txt</h2>
 <p>

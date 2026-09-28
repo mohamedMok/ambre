@@ -45,6 +45,22 @@ for (const [name, html, pattern] of mistakes) {
 	});
 }
 
+check('reads framework templates without false alarms', () => {
+	const templates = [
+		`<amb-button size={name(token) as 'sm' | 'md'} onclick={() => save()}>{label}</amb-button>`,
+		`<amb-prompt busy={busy || undefined} onsend={(e) => ask(e.detail.value)}>Message</amb-prompt>`,
+		`<amb-checkbox :checked="on" @change="toggle" v-if="shown">News</amb-checkbox>`,
+		`<amb-toggle [checked]="on" (change)="flip($event)">Alerts</amb-toggle>`,
+		`<amb-select {...props} key="region" ref={select}>Region{options}</amb-select>`
+	];
+	for (const template of templates) {
+		const result = validate(template, { framework: true });
+		assert.deepEqual(result.errors.map((issue) => issue.message), [], template);
+	}
+	// Framework mode still catches what is wrong in plain sight.
+	assert.match(validate(`<amb-button color="red">{label}</amb-button>`, { framework: true }).errors[0]?.message ?? '', /no `color` attribute/);
+});
+
 check('finds components by need', () => {
 	assert.equal(find('pick a date')[0]?.tag, 'amb-date-picker');
 	assert.equal(find('show a key figure and its change')[0]?.tag, 'amb-stat-tile');

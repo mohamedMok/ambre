@@ -7,3 +7,5 @@ build
 .DS_Store
 *.local
 .pnpm-store
+# A mock run checks the eval pipeline; only real model results are published.
+evals/results/*-mock-*

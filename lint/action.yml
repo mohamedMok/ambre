@@ -1,0 +1,27 @@
+name: Ambre lint
+description: Checks amb- markup against the Ambre component contracts, and annotates each problem on the pull request.
+author: Ambre contributors
+branding:
+  icon: check-square
+  color: orange
+
+inputs:
+  path:
+    description: Files or folders to check, separated by spaces.
+    default: .
+  version:
+    description: The version of @ambre-ds/mcp that carries the contracts. Match your @ambre-ds/ui version.
+    default: latest
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    # The inputs reach the shell as environment variables, never as interpolated code.
+    - shell: bash
+      env:
+        AMBRE_PATHS: ${{ inputs.path }}
+        AMBRE_VERSION: ${{ inputs.version }}
+      run: npx -y -p "@ambre-ds/mcp@${AMBRE_VERSION}" ambre-lint $AMBRE_PATHS

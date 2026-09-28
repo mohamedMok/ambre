@@ -49,16 +49,58 @@ function namedBySlot(c) {
 	return Boolean(slot && /accessible name/i.test(slot.description)) || /^slotted (text|label)/i.test(c.a11y.name);
 }
 
+/** Framework syntax on an element: Vue `@x :x v-x #x`, Svelte `bind: on: use: class: let:`, Angular `[x] (x)`, Alpine `x-`, JSX spreads. */
+const directive = /^(@|:|#|\[|\(|\{|v-|x-|bind:|on:|use:|class:|let:|transition:|in:|out:|animate:)/;
+
+/**
+ * Blanks out what is inside `{…}` in a template, keeping the braces and the line breaks, so an
+ * expression such as `size={name as 'sm' | 'md'}` or `{a > b}` reads as one opaque value.
+ * Line numbers stay right, and every value in braces stays marked as dynamic.
+ */
+function blankExpressions(source) {
+	let out = '';
+	let depth = 0;
+	let quote = '';
+	for (const char of source) {
+		if (depth === 0) {
+			out += char;
+			if (char === '{') depth = 1;
+			continue;
+		}
+		if (quote) {
+			if (char === quote) quote = '';
+		} else if (char === '"' || char === "'" || char === '`') {
+			quote = char;
+		} else if (char === '{') {
+			depth += 1;
+		} else if (char === '}') {
+			depth -= 1;
+			if (depth === 0) {
+				out += '}';
+				continue;
+			}
+		}
+		out += char === '\n' ? '\n' : '_';
+	}
+	return out;
+}
+
+/** Props a framework reads itself and never passes to the element. */
+const frameworkProps = new Set(['key', 'ref', 'classname', 'htmlfor', 'dangerouslysetinnerhtml', 'suppresshydrationwarning', 'this']);
+
 /**
  * @param {string} html
+ * @param {{ framework?: boolean }} [options] framework: the markup is a component template (JSX, Svelte, Vue,
+ *   Angular), so directives, expressions in attribute values, and framework event props are left alone.
  * @returns {{ valid: boolean, errors: Issue[], warnings: Issue[], elements: string[], packages: string[] }}
  * @typedef {{ line: number, element: string, message: string }} Issue
  */
-export function validate(html) {
+export function validate(html, options = {}) {
+	const framework = Boolean(options.framework);
 	const errors = [];
 	const warnings = [];
 	const used = new Set();
-	const source = String(html);
+	const source = framework ? blankExpressions(String(html)) : String(html);
 	const root = parse(source, { comment: false, blockTextElements: { script: true, style: true, pre: true } });
 
 	const lineOf = (node) => (node.range ? source.slice(0, node.range[0]).split('\n').length : 0);
@@ -102,7 +144,11 @@ export function validate(html) {
 
 		for (const [raw, value] of Object.entries(node.attributes)) {
 			const name = raw.toLowerCase();
+			if (framework && (directive.test(raw) || frameworkProps.has(name))) continue;
+			// An expression, such as checked={isOn} or variant="{{ tone }}", is only known at run time.
+			const dynamic = framework && /[{}]/.test(value);
 			const prop = props.get(name);
+			if (prop && dynamic) continue;
 			if (prop) {
 				if (prop.type === 'boolean' && /^(false|0|no|off)$/i.test(value)) {
 					report(errors, node, `\`${name}="${value}"\` makes it true: a boolean attribute is true when present. Remove the attribute for false.`);
@@ -119,6 +165,8 @@ export function validate(html) {
 				continue;
 			}
 			if (name.startsWith('on')) {
+				// onChange={…} in React and onchange={…} in Svelte are framework bindings, not inline handlers.
+				if (framework && dynamic) continue;
 				const event = name.slice(2);
 				if (events.has(event) && !handlers.has(name)) {
 					report(errors, node, `\`${name}\` does nothing: \`${event}\` is a custom event and has no inline handler. Use addEventListener('${event}', …) or your framework's event binding.`);

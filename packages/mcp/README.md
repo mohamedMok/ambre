@@ -31,6 +31,22 @@ Cursor, Claude Desktop, and other clients:
 | `list_examples`, `get_example` | Complete screens to adapt |
 | `validate_markup` | Every problem in a piece of HTML, with its line and a fix |
 
+## Lint a project
+
+```bash
+npx -y -p @ambre-ds/mcp ambre-lint src
+```
+
+HTML is checked strictly. Svelte, Vue, JSX, TSX, and Astro templates are checked in framework mode: directives, `{expressions}`, and framework event bindings are left alone. The command exits with 1 when there is an error.
+
+In GitHub Actions, each problem is annotated on the pull request:
+
+```yaml
+- uses: mohamedMok/ambre/lint@main
+  with:
+    path: src
+```
+
 ## As a library
 
 ```js

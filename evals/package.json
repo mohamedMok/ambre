@@ -1,0 +1,13 @@
+{
+  "name": "@ambre-ds/evals",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ambre Eval: how often models write valid Ambre markup, with no help, with the skill, and with the MCP tools.",
+  "scripts": {
+    "start": "node run.mjs"
+  },
+  "dependencies": {
+    "@ambre-ds/mcp": "workspace:*"
+  }
+}

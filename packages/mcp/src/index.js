@@ -5,3 +5,5 @@
 export { attributeOf, component, example, find, knowledge } from './knowledge.js';
 export { componentMarkdown, exampleMarkdown, llmsFull, llmsIndex, skill, snippet } from './markdown.js';
 export { report, validate } from './validate.js';
+export { instructions, jsonSchema, tools } from './tools.js';
+export { lint } from './lint.js';

@@ -21,7 +21,8 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "ambre-mcp": "./bin/ambre-mcp.js"
+    "ambre-mcp": "./bin/ambre-mcp.js",
+    "ambre-lint": "./bin/ambre-lint.js"
   },
   "files": [
     "bin",

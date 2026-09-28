@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@ambre-ds/docs", "@ambre-ds/storybook"]
+  "ignore": ["@ambre-ds/docs", "@ambre-ds/storybook", "@ambre-ds/evals"]
 }
