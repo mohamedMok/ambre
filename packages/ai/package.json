@@ -1,6 +1,6 @@
 {
   "name": "@ambre-ds/ai",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Ambre AI compositions: a prompt field, chat messages, a thinking indicator, and suggestions. Built from the core components and the same tokens.",
   "keywords": [
     "design-system",
