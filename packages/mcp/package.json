@@ -1,6 +1,6 @@
 {
   "name": "@ambre-ds/mcp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The Ambre design system for AI agents: an MCP server that looks up every amb- element, finds the right one for a need, serves complete examples, and validates markup against the component contracts.",
   "keywords": [
     "design-system",
